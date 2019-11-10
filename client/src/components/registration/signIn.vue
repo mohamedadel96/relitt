@@ -8,5 +8,8 @@
 export default {};
 </script>
 
-<style>
+<style lang="scss">
+section {
+    color: $primary
+}
 </style>
