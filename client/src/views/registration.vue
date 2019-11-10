@@ -2,7 +2,7 @@
   <main>
     <section id="registration">
         <div id="reg-container" class="d-flex justify-content-center align-items-center">
-            <div class="block col-lg-4 col-md-6 col-sm-8 col-11 rounded">
+            <div class="block col-lg-4 col-md-6 col-sm-8 col-11 mt-5">
                 <router-view/>
             </div>
         </div>
@@ -29,8 +29,8 @@ export default {
         height: 100%;
         .block {
             background: $transDarkBlue;
-            height: 80%;
-            
+            height: 82%;
+            border-radius: 12px;
         }
     }
 }
