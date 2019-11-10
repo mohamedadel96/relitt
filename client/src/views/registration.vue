@@ -3,7 +3,7 @@
     <section id="registration">
       <div id="reg-container" class="d-flex justify-content-center align-items-center">
         <div class="block col-lg-4 col-md-6 col-sm-8 col-11 mt-5 d-flex justify-content-center align-items-center">
-          <div class="col-9">
+          <div class="col-10">
             <router-view />
           </div>
         </div>
@@ -13,7 +13,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+
+};
 </script>
 
 <style lang="scss" scoped>
@@ -23,7 +25,7 @@ export default {};
       rgba(0, 0, 0, 0.801)
     ),
     url("https://backgrounddownload.com/wp-content/uploads/2018/09/underwater-city-background-8.jpg");
-  height: 722px;
+  height: 100vh;
   width: 100%;
   background-size: cover;
   margin: 0;
@@ -32,7 +34,7 @@ export default {};
     .block {
       background: $transDarkBlue;
       height: 82%;
-      border-radius: 12px;
+      border-radius: 10px;
     }
   }
 }
