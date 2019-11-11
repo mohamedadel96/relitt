@@ -1,5 +1,5 @@
 <template>
-  <section id="signup">
+  <section id="login">
     <div class="mb-5 mx-md-3 mx-1">
       <p class="title">Welcome back, We are happy you are here again</p>
     </div>
@@ -15,11 +15,15 @@
         </div>
 
         <div class="mt-4">
-          <button class="btn btn-primary btn-block py-3">SIGNUP</button>
+          <button class="btn btn-primary btn-block py-3">LOGIN</button>
         </div>
       </form>
 
-      <div class="mt-5">
+      <div class="mt-2 text-right">
+          <router-link to="/registration/reset-password">Forget password</router-link>
+      </div>
+
+      <div class="mt-4">
         <p class="text-secondary text-center mb-1">or signup using social media</p>
         <button class="btn btn-secondary btn-block py-3 my-2">facebook</button>
         <button class="btn btn-secondary btn-block py-3">google</button>
@@ -27,7 +31,7 @@
 
       <div class="mt-3 d-flex justify-content-between">
         <p class="text-secondary">if you have account</p>
-        <router-link class="text-white" to="/registration/login">LOGIN</router-link>
+        <router-link class="text-white" to="/registration/signup">SIGNUP</router-link>
       </div>
     </div>
   </section>
@@ -38,7 +42,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-#signup {
+#login {
   p.title {
     color: $fontColor_white;
     text-align: center;

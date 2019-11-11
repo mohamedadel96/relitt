@@ -101,5 +101,9 @@ export default {};
     }
   }
 
+  .py-3 {
+    padding-top: 0.8rem !important;
+    padding-bottom: 0.8rem !important;
+  }
 }
 </style>
