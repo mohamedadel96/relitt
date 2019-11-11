@@ -5,11 +5,16 @@
         <h3>logo</h3>
         <div>
           <button class="btn btn-custom rounded mx-3 px-4" v-if="$route.name === 'login'">signup</button>
-          <button class="btn btn-custom rounded mx-3 px-4" v-if="$route.name === 'signup'">login</button>
+          <button
+            class="btn btn-custom rounded mx-3 px-4"
+            v-if="$route.name === 'signup' || $route.name === 'resetPassword'"
+          >login</button>
         </div>
       </div>
       <div id="reg-container" class="d-flex justify-content-center align-items-center">
-        <div class="block col-xl-4 col-lg-5 col-md-6 col-sm-8 col-11 mt-5 pt-5 px-0 d-flex justify-content-center">
+        <div
+          class="block col-xl-4 col-lg-5 col-md-6 col-sm-8 col-11 mt-5 pt-5 px-0 d-flex justify-content-center"
+        >
           <div class="col-xl-9 col-lg-10 col-md-10 col-11 pt-3">
             <router-view />
           </div>
@@ -20,9 +25,7 @@
 </template>
 
 <script>
-export default {
-
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>

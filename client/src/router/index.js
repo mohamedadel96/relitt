@@ -24,6 +24,11 @@ const routes = [
         path: '/registration/signup',
         name: 'signup',
         component: () => import('../components/registration/signup.vue')
+      },
+      {
+        path: '/registration/reset-password',
+        name: 'resetPassword',
+        component: () => import('../components/registration/resetPassword.vue')
       }
     ]
   }
