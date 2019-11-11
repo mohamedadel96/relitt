@@ -1,5 +1,5 @@
 <template>
-  <section id="sign_in">
+  <section id="entrance">
     <div class="mb-5">
       <p>just few info to go</p>
     </div>
@@ -8,20 +8,20 @@
       <form>
         <div class="d-flex justify-content-between my-3">
           <div class="col-6 pl-0 pr-2">
-            <input class="col-12 border-0 py-2" type="text" placeholder="firstname" />
+            <input class="col-12 border-0 py-3" type="text" placeholder="firstname" />
           </div>
           <div class="col-6 pl-2 pr-0">
-            <input class="col-12 border-0 py-2" type="text" placeholder="lastname" />
+            <input class="col-12 border-0 py-3" type="text" placeholder="lastname" />
           </div>
         </div>
 
         <div>
-          <input class="col-12 border-0 py-2" type="text" />
+          <input class="col-12 border-0 py-3" type="text" />
         </div>
 
         <div>
           <div class="d-flex my-3">
-            <div class="bill col-6 py-2 d-flex align-items-center justify-content-center">
+            <div class="bill col-6 py-3 d-flex align-items-center justify-content-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="21.628"
@@ -40,7 +40,7 @@
               </svg>
               <span>Male</span>
             </div>
-            <div class="bill col-6 py-2 d-flex align-items-center justify-content-center">
+            <div class="bill col-6 py-3 d-flex align-items-center justify-content-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="22.17"
@@ -63,7 +63,7 @@
         </div>
 
         <div class="mt-4">
-          <button class="btn btn-primary btn-block py-2">Done</button>
+          <button class="btn btn-primary btn-block py-3">Done</button>
         </div>
       </form>
     </div>
@@ -75,7 +75,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-#sign_in {
+#entrance {
   p {
     color: $fontColor_white;
     text-align: center;
@@ -101,18 +101,5 @@ export default {};
     }
   }
 
-  .py-2 {
-    padding-top: 0.7rem !important;
-    padding-bottom: 0.7rem !important;
-  }
-
-  .my-3 {
-    margin-top: 0.7rem !important;
-    margin-bottom: 0.7rem !important;
-  }
-
-  button {
-    border-radius: 6px;
-  }
 }
 </style>
