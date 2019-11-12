@@ -16,7 +16,7 @@
             <circle class="a" cx="3.55" cy="3.55" r="3.55" />
             </svg>
         </div>
-        <div class="burger-btn" @click="NavItems = !NavItems">
+        <div class="burger-btn" @click="hideNavItems = !hideNavItems">
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;fill:#fff" xml:space="preserve">
                 <g>
@@ -27,19 +27,19 @@
             </svg>
         </div>
         <transition name="fade">
-            <div id="navItems" class="col-lg-5 col-md-6 col-12 pr-md-5 pr-0 px-1" v-if="showNavItems">
-                <ul class="d-md-flex text-center justify-content-between pr-md-5 pr-0 px-1">
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Download</li>
-                    <li>
-                        <router-link class="text-white" to="/registration/signup">Register</router-link>
-                    </li>
-                    <li>
-                        <router-link class="text-white" to="/registration/signup">Login</router-link>
-                    </li>
-                </ul>
-            </div>
+        <div id="navItems" :class="[{'d-none': hideNavItems} ,'col-lg-5 col-md-6 col-12 pr-md-5 pr-0 px-1']">
+            <ul class="d-md-flex text-center justify-content-between pr-md-5 pr-0 px-1">
+                <li>Home</li>
+                <li>About</li>
+                <li>Download</li>
+                <li>
+                    <router-link class="text-white" to="/registration/signup">Register</router-link>
+                </li>
+                <li>
+                    <router-link class="text-white" to="/registration/signup">Login</router-link>
+                </li>
+            </ul>
+        </div>
         </transition>
     </nav>
 </template>
@@ -48,11 +48,11 @@
 export default {
     data() {
         return {
-            NavItems: false
+            hideNavItems: false
         }
     },
     mounted() {
-        if (window.innerWidth < 767) this.NavItems = true
+        if (window.innerWidth < 767) this.hideNavItems = true
     },
 };
 </script>
@@ -94,12 +94,5 @@ export default {
             }
         }
     }
-}
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
 }
 </style>
