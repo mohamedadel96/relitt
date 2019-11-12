@@ -26,7 +26,7 @@
                 </g>
             </svg>
         </div>
-        <transition name="fade">
+
         <div id="navItems" :class="[{'d-none': hideNavItems} ,'col-lg-5 col-md-6 col-12 pr-md-5 pr-0 px-1']">
             <ul class="d-md-flex text-center justify-content-between pr-md-5 pr-0 px-1">
                 <li>Home</li>
@@ -40,7 +40,6 @@
                 </li>
             </ul>
         </div>
-        </transition>
     </nav>
 </template>
 
@@ -86,10 +85,16 @@ export default {
             top: 13px;
             right: 10px;
         }
-        ul {        
-            li {
-                &:hover {
-                    background: #222;
+        #navItems {
+            position: absolute;
+            background: $background_transBlack;
+            width: 100%;
+            top: 13.7vh;
+            ul {     
+                li {
+                    &:hover {
+                        background: #222;
+                    }
                 }
             }
         }
