@@ -89,7 +89,7 @@ export default {
             position: absolute;
             background: $background_transBlack;
             width: 100%;
-            top: 13.7vh;
+            top: 63px;
             ul {     
                 li {
                     &:hover {
