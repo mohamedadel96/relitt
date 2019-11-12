@@ -15,6 +15,8 @@ export default {
 
 <style lang="scss">
     header {
-        background: #888
+        background-image: linear-gradient(rgba(0, 0, 0, 0.39), #165566d2),
+        url('https://www.eloundamare.com/img/Backgrounds/Experiences/all/Scuba-Diving.jpg');
+        height: 100vh
     }
 </style>
