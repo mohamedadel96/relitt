@@ -6,12 +6,16 @@
         <h1 class="text-white">Please be open for water</h1>
         <p class="text-white">your journey shall began now!</p>
         <div>
-          <button class="py-3 rounded col-4">Register</button>
-          <button class="py-3 btn btn-light rounded col-4 mx-4">Login</button>
+          <button class="py-3 rounded col-md-4 col-5">
+            <router-link class="text-white" to="/registration/signup">Register</router-link>
+          </button>
+          <button class="py-3 btn btn-light rounded col-md-4 col-5 mx-4">
+            <router-link class="text-white" to="/registration/signup">Login</router-link>
+          </button>
         </div>
       </div>
       <div class="col-md-4 d-none d-md-block">
-        <div class="mobile"></div>
+        <!-- <div class="mobile"></div> -->
       </div>
     </div>
   </header>
