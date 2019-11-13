@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import appHeader from '../components/home/header'
+import appHeader from "../components/home/header";
 
 export default {
-components: {
-  appHeader
-}
-}
+  components: {
+    appHeader
+  }
+};
 </script>
 
 <style>
