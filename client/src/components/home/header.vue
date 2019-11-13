@@ -10,7 +10,7 @@
           <button class="py-3 btn btn-light rounded col-4 mx-4">Login</button>
         </div>
       </div>
-      <div class="col-md-4 col-12">
+      <div class="col-md-4 d-none d-md-block">
         <div class="mobile"></div>
       </div>
     </div>
