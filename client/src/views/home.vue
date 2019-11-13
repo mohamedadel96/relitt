@@ -2,7 +2,7 @@
   <section>
     <app-header />
     <app-features />
-    <hr class="col-7" />
+    <hr class="col-7 border" />
   </section>
 </template>
 
@@ -18,8 +18,5 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-hr {
-  border: 1px solid #ddd;
-}
+<style lang="scss">
 </style>

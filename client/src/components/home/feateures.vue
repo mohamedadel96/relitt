@@ -36,7 +36,7 @@
         <p class="desc">Lorem ipsum dolor sit amet consectetur aolore impedit nostrum!</p>
       </div>
     </div>
-    <div class="d-flex justify-content-center pb-5 pt-3">
+    <div class="d-flex justify-content-center pb-4 pt-3">
       <button class="btn btn-primary rounded py-3 px-5">Get started now!</button>
     </div>
   </section>
