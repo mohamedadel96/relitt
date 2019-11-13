@@ -73,5 +73,9 @@ export default {};
     color: $fontColor_white;
     box-shadow: 2px 2px 5px #555;
   }
+
+  button {
+    border-radius: 10px !important;
+  }
 }
 </style>

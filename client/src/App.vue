@@ -10,8 +10,5 @@
   margin-bottom: 0.7rem !important;
 }
 
-button {
-  border-radius: 10px !important;
-}
 
 </style>
