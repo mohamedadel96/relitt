@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/home.vue'
+import App from '../views/app.vue'
 
 Vue.use(VueRouter)
 
@@ -12,38 +13,48 @@ const routes = [
   },
   {
     path: '/registration',
-    name: 'registration',
     component: () => import('../views/registration.vue'),
     children: [
       {
-        path: '/registration/entrance',
-        name: 'entrance',
+        path: '',
+        name: 'registration',
         component: () => import('../components/registration/entrance.vue')
       },
       {
-        path: '/registration/signup',
+        path: 'signup',
         name: 'signup',
         component: () => import('../components/registration/signup.vue')
       },
       {
-        path: '/registration/reset-password',
+        path: 'reset-password',
         name: 'resetPassword',
         component: () => import('../components/registration/resetPassword.vue')
       },
       {
-        path: '/registration/code',
+        path: 'code',
         name: 'code',
         component: () => import('../components/registration/code.vue')
       },
       {
-        path: '/registration/change-password',
+        path: 'change-password',
         name: 'changePassword',
         component: () => import('../components/registration/changePassword.vue')
       },
       {
-        path: '/registration/login',
+        path: 'login',
         name: 'login',
         component: () => import('../components/registration/login.vue')
+      }
+    ]
+  },
+  {
+    path: '/app',
+    component: App,
+    children: [
+      {
+        path: '',
+        name: 'app',
+        component: () => import('../views/feeds&dashboard.vue'),
       }
     ]
   }
