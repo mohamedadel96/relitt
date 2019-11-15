@@ -1,5 +1,5 @@
 <template>
-  <section class="d-flex mt-4">
+  <section id="feeds-dashboard" class="d-flex mt-4">
     <div class="col-3 d-md-block d-none px-4">
       <div class="px-1">
         <user-card />
@@ -13,7 +13,9 @@
     <div class="col-md-6 col-12">
       <router-view />
     </div>
-    <div class="col-3 d-md-block d-none">card</div>
+    <div class="col-3 d-md-block d-none px-3">
+      <div class="search-sec px-1 col-12 px-0 rounded"></div>
+    </div>
   </section>
 </template>
 
@@ -30,4 +32,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#feeds-dashboard {
+  .search-sec {
+    background: $background_white;
+    box-shadow: 1px 1px 4px #ddd;
+  }
+}
 </style>

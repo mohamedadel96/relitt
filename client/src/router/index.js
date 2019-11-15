@@ -54,7 +54,7 @@ const routes = [
       {
         path: '',
         name: 'app',
-        component: () => import('../views/feeds&dashboard.vue'),
+        component: () => import('../views/feeds-dashboard.vue'),
       }
     ]
   }

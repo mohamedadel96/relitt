@@ -25,10 +25,10 @@
       </ul>
     </div>
 
-    <div class="col-3 block_3 d-flex justify-content-end">
+    <div class="col-3 block_3 d-flex justify-content-end px-3">
       <div class="d-flex justify-content-center align-items-center border rounded-circle mx-2">1</div>
       <div class="d-flex justify-content-center align-items-center border rounded-circle mx-2">2</div>
-      <div class="d-flex justify-content-center align-items-center border rounded-circle mx-2">3</div>
+      <div class="d-flex justify-content-center align-items-center border rounded-circle ml-2">3</div>
     </div>
   </nav>
 </template>
