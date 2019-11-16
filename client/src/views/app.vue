@@ -17,6 +17,6 @@ export default {
 <style>
 #app {
   background: #fafafa;
-  height: 100vh;
+  height: 1000vh;
 }
 </style>

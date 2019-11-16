@@ -87,8 +87,8 @@ export default {};
 
   .friends {
     img {
-      width: 75px;
-      height: 75px;
+      width: 60px;
+      height: 60px;
     }
     .name {
       font-size: 20px;
