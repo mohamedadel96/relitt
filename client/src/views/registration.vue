@@ -57,7 +57,6 @@ export default {};
   background-image: linear-gradient(rgba(0, 0, 0, 0.39), #165566d2),
     url("http://o2live.in/images/9.png");
   min-height: 100vh;
-  // padding-bottom: 60px;
   width: 100%;
   background-size: cover;
   margin: 0;
