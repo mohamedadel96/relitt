@@ -19,8 +19,9 @@
           </div>
         </div>
         <div>
-          <button class="btn btn-primary btn-block">Follow</button>
+          <button class="btn btn-outline-primary btn-block">Follow</button>
         </div>
+        <hr class="border" />
       </div>
       <!-- del -->
 
@@ -37,8 +38,9 @@
           </div>
         </div>
         <div>
-          <button class="btn btn-primary btn-block">Follow</button>
+          <button class="btn btn-outline-primary btn-block">Follow</button>
         </div>
+        <hr class="border" />
       </div>
 
       <div class="mb-4">
@@ -54,8 +56,9 @@
           </div>
         </div>
         <div>
-          <button class="btn btn-primary btn-block">Follow</button>
+          <button class="btn btn-outline-primary btn-block">Follow</button>
         </div>
+        <hr class="border" />
       </div>
       <!-- del -->
     </div>
