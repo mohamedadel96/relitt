@@ -53,8 +53,14 @@ const routes = [
     children: [
       {
         path: '',
-        name: 'app',
         component: () => import('../views/feeds-dashboard.vue'),
+        children: [
+          {
+            path: '',
+            name: 'app',
+            component: () => import('../components/app/feeds.vue'),
+          }
+        ]
       }
     ]
   }
