@@ -1,6 +1,6 @@
 <template>
   <section id="feeds">
-    <div class="search py-2 d-flex justify-content-between align-items-center">
+    <div class="search rounded py-1 d-flex justify-content-between align-items-center">
       <input class="py-2 px-4" placeholder="what's in your mind" type="text" />
       <div>
         <span class="px-0">ico</span>
@@ -9,7 +9,7 @@
     </div>
 
     <div class="posts">
-      <div class="post">
+      <div class="post rounded">
         <div class="post-info px-3 mt-3 d-flex justify-content-between align-items-center">
           <div class="d-flex align-items-center py-2">
             <img
@@ -118,6 +118,7 @@ export default {};
       .post-media {
         .st-pic {
           height: 230px;
+          object-fit: cover;
         }
         .pics {
           padding-top: 2px;
@@ -125,6 +126,7 @@ export default {};
           img {
             height: 130px;
             padding: 0 2px 0 0;
+            object-fit: cover;
             &:last-of-type {
               padding: 0;
             }

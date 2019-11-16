@@ -1,7 +1,7 @@
 <template>
   <section id="friendsSearch">
     <p class="title font-weight-bold">Find friends</p>
-    <div class="search mb-3">
+    <div class="search mb-3 d-flex align-items-center">
       <span class="px-4">ico</span>
       <input placeholder="Search people" class="py-3" type="text" />
     </div>
