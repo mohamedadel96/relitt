@@ -1,21 +1,38 @@
 <template>
   <section id="signup">
     <div class="mb-5 mx-md-3 mx-1">
-      <p class="title font-weight-bold px-lg-5 px-0 fontSM">Welcome back, We are happy you are here again</p>
+      <p
+        class="title font-weight-bold px-lg-5 px-0 fontSM"
+      >Welcome back, We are happy you are here again</p>
     </div>
 
     <div>
       <form class="mb-3" @submit.prevent>
         <div>
-          <input class="col-12 border-0 py-3 fontSM" type="text" placeholder="Email" autocomplete="off" v-model="form.email" />
+          <input
+            class="col-12 border-0 py-3 fontSM"
+            type="text"
+            placeholder="Email"
+            autocomplete="off"
+            v-model="form.email"
+          />
         </div>
 
         <div class="my-2">
-          <input class="col-12 border-0 py-3 fontSM" type="password" placeholder="Password" autocomplete="off" v-model="form.password"/>
+          <input
+            class="col-12 border-0 py-3 fontSM"
+            type="password"
+            placeholder="Password"
+            autocomplete="off"
+            v-model="form.password"
+          />
         </div>
 
         <div class="mt-3">
-          <button class="btn btn-primary btn-block py-3 font-weight-bold fontSM" @click="submit">SIGNUP</button>
+          <button
+            class="btn btn-primary btn-block py-3 font-weight-bold fontSM"
+            @click="submit"
+          >SIGNUP</button>
         </div>
       </form>
 
@@ -41,20 +58,20 @@ export default {
         email: null,
         password: null
       }
-    }
+    };
   },
   methods: {
     async submit() {
       try {
-        let res = await this.$store.dispatch('SIGNUP', this.form)
-        console.log(res)
-        console.log('errorrrrr')
-        
+        let res = await this.$store.dispatch("SIGNUP", this.form);
+        if (res !== "done") return; //will return error in popup
+
+        this.$router.push("/app");
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
-  },
+  }
 };
 </script>
 
@@ -83,6 +100,5 @@ export default {
   button {
     border-radius: 9px;
   }
-  
 }
 </style>
