@@ -7,11 +7,11 @@
     <div>
       <form class="mb-3" @submit.prevent>
         <div>
-          <input class="col-12 border-0 py-3 fontSM" type="text" placeholder="Email" v-model="form.email" />
+          <input class="col-12 border-0 py-3 fontSM" type="text" placeholder="Email" autocomplete="off" v-model="form.email" />
         </div>
 
         <div class="my-2">
-          <input class="col-12 border-0 py-3 fontSM" type="password" placeholder="Password" v-model="form.password"/>
+          <input class="col-12 border-0 py-3 fontSM" type="password" placeholder="Password" autocomplete="off" v-model="form.password"/>
         </div>
 
         <div class="mt-3">

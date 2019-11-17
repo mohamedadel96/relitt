@@ -5,29 +5,29 @@
     </div>
 
     <div>
-      <form>
+      <form @submit.prevent>
         <div class="d-flex justify-content-between my-3">
           <div class="col-6 pl-0 pr-2">
-            <input class="col-12 border-0 py-3" type="text" placeholder="firstname" />
+            <input class="col-12 border-0 py-3" type="text" placeholder="firstname" autocomplete="off" v-model="form.firstname"/>
           </div>
           <div class="col-6 pl-2 pr-0">
-            <input class="col-12 border-0 py-3" type="text" placeholder="lastname" />
+            <input class="col-12 border-0 py-3" type="text" placeholder="lastname" autocomplete="off" v-model="form.lastname"/>
           </div>
         </div>
 
         <div>
-          <input class="col-12 border-0 py-3" type="text" />
+          <input class="col-12 border-0 py-3" type="text" autocomplete="off" v-model="form.birthdate" />
         </div>
 
         <div>
           <div class="d-flex my-3">
-            <div class="bill col-6 py-3 d-flex align-items-center justify-content-center">
+            <div :class="[{'active': form.gender}, 'gender col-6 py-3 d-flex align-items-center justify-content-center']" @click="form.gender = 1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="21.628"
                 height="24.088"
                 viewBox="0 0 21.628 24.088"
-                style="fill: #777"
+                :style="form.gender ? 'fill: #fff' : 'fill: #777'"
                 class="mx-1"
               >
                 <g transform="translate(0 0)">
@@ -40,13 +40,13 @@
               </svg>
               <span>Male</span>
             </div>
-            <div class="bill col-6 py-3 d-flex align-items-center justify-content-center">
+            <div :class="[{'active': !form.gender}, 'gender col-6 py-3 d-flex align-items-center justify-content-center']" @click="form.gender = 0">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="22.17"
                 height="24.287"
                 viewBox="0 0 22.17 24.287"
-                style="fill: #fff"
+                :style="form.gender ? 'fill: #777' : 'fill: #fff'"
                 class="mx-1"
               >
                 <g transform="translate(0 0)">
@@ -63,7 +63,7 @@
         </div>
 
         <div class="mt-4">
-          <button class="btn btn-primary btn-block py-3">Done</button>
+          <button class="btn btn-primary btn-block py-3" @click="submit">Done</button>
         </div>
       </form>
     </div>
@@ -71,39 +71,65 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      form: {
+        firstname: null,
+        lastname: null,
+        birthdate: null,
+        gender: 0
+      }
+    }
+  },
+  methods: {
+    submit() {
+        this.$store.dispatch('ENTRANCE', this.form)
+    }
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 #entrance {
+  margin-top: 50px;
+   margin-bottom: 150px;
   p {
     color: $fontColor_white;
-    text-align: center;
-    font-weight: bold;
-  }
+      text-align: center;
+      font-weight: bold;
+    }     
+  
+    input {
+      border-radius: 9px;
+      outline: none;
+    }
+  
+    .gender {
+      background: $background_white;
+      cursor: pointer;
+  
+      &:first-of-type {
+        border-radius: 6px 0 0 6px;
+      }
+  
+      &:last-of-type {
+        border-radius: 0 6px 6px 0;
+      }
 
-  input {
-    border-radius: 9px;
-    outline: none;
-  }
-
-  .bill {
-    background: $background_white;
-
-    &:first-of-type {
-      border-radius: 6px 0 0 6px;
+      &.active {
+        background: $blue;
+        color: $fontColor_white;
+      }
+    }
+  
+    .py-3 {
+      padding-top: 0.8rem !important;
+      padding-bottom: 0.8rem !important;
     }
 
-    &:last-of-type {
-      border-radius: 0 6px 6px 0;
-      background: $blue;
-      color: $fontColor_white;
+    button {
+            border-radius: 9px;
     }
-  }
-
-  .py-3 {
-    padding-top: 0.8rem !important;
-    padding-bottom: 0.8rem !important;
-  }
 }
 </style>
