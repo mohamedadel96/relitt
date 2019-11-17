@@ -44,8 +44,15 @@ export default {
     }
   },
   methods: {
-    submit() {
-      this.$store.dispatch('SIGNUP', this.form)
+    async submit() {
+      try {
+        let res = await this.$store.dispatch('SIGNUP', this.form)
+        console.log(res)
+        console.log('errorrrrr')
+        
+      } catch (error) {
+        console.log(error)
+      }
     }
   },
 };
