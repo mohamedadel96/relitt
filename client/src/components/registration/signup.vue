@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     submit() {
-      console.log(this.form)
+      this.$store.dispatch('SIGNUP', this.form)
     }
   },
 };
