@@ -7,6 +7,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    token: JSON.parse(localStorage.getItem('user')) ? (JSON.parse(localStorage.getItem('user'))).data.token : null
+  },
+  getters: {
+    getToken(state) {
+      return state.token
+    }
   },
   mutations: {
   },
