@@ -11,7 +11,7 @@
         </div>
 
         <div class="my-3">
-          <input class="col-12 border-0 py-3" type="text" placeholder="Password" />
+          <input class="col-12 border-0 py-3" type="password" placeholder="Password" />
         </div>
 
         <div class="mt-4">
@@ -20,7 +20,7 @@
       </form>
 
       <div class="mt-2 text-right">
-          <router-link to="/registration/reset-password">Forget password</router-link>
+        <router-link to="/registration/reset-password">Forget password</router-link>
       </div>
 
       <div class="mt-4">
@@ -62,6 +62,5 @@ export default {};
   a {
     text-decoration: none;
   }
-  
 }
 </style>
