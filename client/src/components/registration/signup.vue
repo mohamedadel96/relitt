@@ -1,7 +1,7 @@
 <template>
   <section id="signup">
     <div class="mb-5 mx-md-3 mx-1">
-      <p class="title font-weight-bold px-5 fontSM">Welcome back, We are happy you are here again</p>
+      <p class="title font-weight-bold px-lg-5 px-0 fontSM">Welcome back, We are happy you are here again</p>
     </div>
 
     <div>

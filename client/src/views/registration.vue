@@ -34,9 +34,9 @@
           </router-link>
         </div>
       </div>
-      <div id="reg-container" class="d-flex justify-content-center align-items-center mx-4">
+      <div id="reg-container" class="d-flex justify-content-center align-items-center mx-md-4 mx-2">
         <div
-          class="block col-xl-4 col-lg-5 col-md-6 col-sm-8 col-11 mt-5 pt-4 px-2 d-flex justify-content-center"
+          class="block col-xl-4 col-lg-5 col-md-7 col-sm-8 col-12 mt-5 pt-4 px-2 d-flex justify-content-center"
         >
           <div class="col-xl-9 col-lg-10 col-md-10 col-11 pt-4 px-0">
             <router-view />
@@ -65,7 +65,7 @@ export default {};
   #reg-container {
     .block {
       background: $transDarkBlue;
-      min-height: 83vh;
+      // min-height: 83vh;
       border-radius: 10px;
     }
   }
