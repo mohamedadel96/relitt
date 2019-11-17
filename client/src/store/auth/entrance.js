@@ -1,11 +1,11 @@
-import authServices from '../../services/auth'
 
 export default {
   state: {
-    entrance: null
+    entrance: JSON.parse(sessionStorage.getItem('entranceData')) ? JSON.parse(sessionStorage.getItem('entranceData')) : null
   },
   mutations: {
     saveEntranceData(state, data) {
+        sessionStorage.setItem('entranceData', JSON.stringify(data))
         state.entrance = data
     }
   },
