@@ -5,17 +5,17 @@
     </div>
 
     <div>
-      <form class="mb-3">
+      <form class="mb-3" @submit.prevent>
         <div>
-          <input class="col-12 border-0 py-3 fontSM" type="text" placeholder="Email" />
+          <input class="col-12 border-0 py-3 fontSM" type="text" placeholder="Email" v-model="form.email" />
         </div>
 
         <div class="my-2">
-          <input class="col-12 border-0 py-3 fontSM" type="text" placeholder="Password" />
+          <input class="col-12 border-0 py-3 fontSM" type="password" placeholder="Password" v-model="form.password"/>
         </div>
 
         <div class="mt-3">
-          <button class="btn btn-primary btn-block py-3 font-weight-bold fontSM">SIGNUP</button>
+          <button class="btn btn-primary btn-block py-3 font-weight-bold fontSM" @click="submit">SIGNUP</button>
         </div>
       </form>
 
@@ -34,7 +34,21 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      form: {
+        email: null,
+        password: null
+      }
+    }
+  },
+  methods: {
+    submit() {
+      console.log(this.form)
+    }
+  },
+};
 </script>
 
 <style lang="scss" scoped>
