@@ -21,24 +21,24 @@
         <div>
           <router-link to="/registration/signup">
             <button
-              class="btn btn-custom rounded mx-3 px-4"
+              class="btn btn-custom rounded mx-3 px-5 fontSM font-weight-bold"
               v-if="$route.name === 'login' || $route.name === 'changePassword'"
             >signup</button>
           </router-link>
 
           <router-link to="/registration/login">
             <button
-              class="btn btn-custom rounded mx-3 px-4"
+              class="btn btn-custom rounded mx-3 px-5 fontSM font-weight-bold"
               v-if="$route.name === 'signup' || $route.name === 'resetPassword' || $route.name === 'code'"
             >login</button>
           </router-link>
         </div>
       </div>
-      <div id="reg-container" class="d-flex justify-content-center align-items-center">
+      <div id="reg-container" class="d-flex justify-content-center align-items-center mx-4">
         <div
-          class="block col-xl-4 col-lg-5 col-md-6 col-sm-8 col-11 mt-5 pt-5 px-0 d-flex justify-content-center"
+          class="block col-xl-4 col-lg-5 col-md-6 col-sm-8 col-11 mt-5 pt-4 px-2 d-flex justify-content-center"
         >
-          <div class="col-xl-9 col-lg-10 col-md-10 col-11 pt-3">
+          <div class="col-xl-9 col-lg-10 col-md-10 col-11 pt-4 px-0">
             <router-view />
           </div>
         </div>
@@ -54,8 +54,10 @@ export default {};
 <style lang="scss" scoped>
 #registration {
   position: relative;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.39), #165566d2),
-    url("http://o2live.in/images/9.png");
+  background-image: url("../assets/img/reg-background.jpg");
+     -moz-box-shadow:    inset 0 10px 10px #000000;
+   -webkit-box-shadow: inset 0 0 10px #000000;
+   box-shadow:         inset 0 10px 100px #000000b6;
   min-height: 100vh;
   width: 100%;
   background-size: cover;

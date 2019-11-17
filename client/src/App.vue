@@ -4,7 +4,28 @@
   </div>
 </template>
 
-<style>
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.fontXS {
+  font-size: $fontXS
+}
+.fontSM {
+  font-size: $fontSM
+}
+.fontMD {
+  font-size: $fontMD
+}
+.fontLG {
+  font-size: $fontLG
+}
+.fontXl {
+  font-size: $fontXl
+}
+
 .my-3 {
   margin-top: 0.7rem !important;
   margin-bottom: 0.7rem !important;

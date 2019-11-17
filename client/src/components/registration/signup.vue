@@ -1,33 +1,33 @@
 <template>
   <section id="signup">
     <div class="mb-5 mx-md-3 mx-1">
-      <p class="title">Welcome back, We are happy you are here again</p>
+      <p class="title font-weight-bold px-5 fontSM">Welcome back, We are happy you are here again</p>
     </div>
 
     <div>
-      <form>
+      <form class="mb-3">
         <div>
-          <input class="col-12 border-0 py-3" type="text" placeholder="Email" />
+          <input class="col-12 border-0 py-3 fontSM" type="text" placeholder="Email" />
         </div>
 
-        <div class="my-3">
-          <input class="col-12 border-0 py-3" type="text" placeholder="Password" />
+        <div class="my-2">
+          <input class="col-12 border-0 py-3 fontSM" type="text" placeholder="Password" />
         </div>
 
-        <div class="mt-4">
-          <button class="btn btn-primary btn-block py-3">SIGNUP</button>
+        <div class="mt-3">
+          <button class="btn btn-primary btn-block py-3 font-weight-bold fontSM">SIGNUP</button>
         </div>
       </form>
 
-      <div class="mt-5">
-        <p class="text-secondary text-center mb-1">or signup using social media</p>
+      <div class="mt-4 pt-5 pb-1">
+        <p class="text-secondary text-center mb-1 fontXS">or signup using social media</p>
         <button class="btn btn-secondary btn-block py-3 my-2">facebook</button>
         <button class="btn btn-secondary btn-block py-3">google</button>
       </div>
 
       <div class="mt-3 d-flex justify-content-between">
-        <p class="text-secondary">if you have account</p>
-        <router-link class="text-white" to="/registration/login">LOGIN</router-link>
+        <p class="text-secondary fontSM">if you have account</p>
+        <router-link class="text-white font-weight-bold fontSM" to="/registration/login">LOGIN</router-link>
       </div>
     </div>
   </section>
@@ -57,6 +57,10 @@ export default {};
 
   a {
     text-decoration: none;
+  }
+
+  button {
+    border-radius: 9px;
   }
   
 }
