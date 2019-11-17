@@ -11,7 +11,10 @@ export default {
   },
   actions: {
     ENTRANCE({commit}, form) {
-        commit('saveEntranceData', form)       
+        return new Promise((resolve, reject) => {
+            commit('saveEntranceData', form)       
+            resolve('saved')
+        })
     }
   }
 }

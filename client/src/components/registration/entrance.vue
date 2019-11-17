@@ -83,8 +83,9 @@ export default {
     }
   },
   methods: {
-    submit() {
-        this.$store.dispatch('ENTRANCE', this.form)
+    async submit() {
+      await this.$store.dispatch('ENTRANCE', this.form)
+      this.$router.push('/registration/signup')
     }
   },
 };
