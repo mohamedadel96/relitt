@@ -7,5 +7,10 @@ export default {
 
     login(form) {
         return Api().post('auth', form)
-     }
+     },
+
+     resetPassword(form) {
+      return Api().post('auth/forget_password', form)
+   }
+     
 }

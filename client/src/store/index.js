@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import entrance from './auth/entrance'
 import signup from './auth/signup'
 import login from './auth/login'
+import resetPassword from './auth/resetPassword'
 
 Vue.use(Vuex)
 
@@ -31,6 +32,7 @@ export default new Vuex.Store({
   modules: {
     entrance,
     signup,
-    login
+    login,
+    resetPassword
   }
 })

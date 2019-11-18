@@ -1,17 +1,23 @@
 <template>
   <section id="resetPassword">
-    <div class="mb-5 mx-md-3 mx-1">
-      <p class="title">Enter your email, we will send you a password</p>
+    <div class="mt-4 mb-5 pt-5 mx-md-3 mx-1">
+      <p class="title font-weight-bold px-lg-5 px-0 fontSM">Enter your email, we will send you a password</p>
     </div>
 
     <div>
-      <form>
+      <form @submit.prevent>
         <div>
-          <input class="col-12 border-0 py-3" type="text" placeholder="Email" />
+          <input
+            class="col-12 border-0 py-3 fontSM"
+            type="text"
+            placeholder="Email"
+            autocomplete="off"
+            v-model="form.email"
+          />
         </div>
 
-        <div class="mt-4">
-          <button class="btn btn-primary btn-block py-3">Reset Password</button>
+        <div class="mt-3">
+          <button @click="submit" class="btn btn-primary btn-block py-3">Reset Password</button>
         </div>
       </form>
     </div>
@@ -19,12 +25,32 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      form: {
+        email: null
+      }
+    }
+  },
+    methods: {
+    async submit() {
+      try {
+        let res = await this.$store.dispatch("RESETPASSWORD", this.form);
+
+        this.$router.push('/registration/code');
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
 #resetPassword {
-    margin-top: 100px;
+    margin-top: 50px;
+   margin-bottom: 240px;
   p.title {
     color: $fontColor_white;
     text-align: center;
@@ -43,6 +69,10 @@ export default {};
 
   a {
     text-decoration: none;
+  }
+
+  button {
+    border-radius: 9px;
   }
   
 }
