@@ -6,12 +6,13 @@
         <h1 class="text-white">Please be open for water</h1>
         <p class="text-white">your journey shall began now!</p>
         <div>
-          <button class="py-3 rounded col-md-4 col-5">
-            <router-link class="text-white" to="/registration/signup">Register</router-link>
-          </button>
-          <button class="py-3 btn btn-light rounded col-md-4 col-5 mx-4">
-            <router-link class="text-white" to="/registration/signup">Login</router-link>
-          </button>
+            <router-link to="/registration/signup">
+              <button class="reg-btn text-white py-3 rounded font-weight-bold col-md-4 col-5">Register</button>
+            </router-link>
+
+            <router-link to="/registration/login">
+              <button class="log-btn py-3 btn btn-light rounded font-weight-bold col-md-4 col-5 mx-4">Login</button>
+            </router-link>
         </div>
       </div>
       <div class="d-none d-md-block">
@@ -56,27 +57,30 @@ header {
     }
 
     button {
+      letter-spacing: 1px;
       color: white;
       transition: 0.4s;
-
-      &:first-of-type {
+      &.reg-btn {
         background: $darkBlue;
         border: 1px solid $darkBlue;
 
         &:hover {
           background: $transDarkBlue;
         }
+
       }
 
-      &:last-of-type {
+      &.log-btn {
         background: none;
-        border: 1px solid $background_white;
-
+        
         &:hover {
-          background: $background_white;
-          color: $darkBlue;
+          background: $darkBlue;
+          border: 1px solid $darkBlue;
         }
+
       }
+
+
     }
   }
 
