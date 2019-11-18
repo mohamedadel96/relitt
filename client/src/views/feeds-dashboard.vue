@@ -1,6 +1,6 @@
 <template>
   <section id="feeds-dashboard" class="d-flex mt-4">
-    <div class="col-3 d-md-block d-none px-4">
+    <div class="col-md-3 d-md-block d-none px-4">
       <div class="px-1">
         <user-card />
         <div>
@@ -13,7 +13,7 @@
     <div class="col-md-6 col-12">
       <router-view />
     </div>
-    <div class="col-3 d-md-block d-none px-3">
+    <div class="col-md-3 d-md-block d-none px-3">
       <div class="search-sec pl-4 pr-5 pt-4 col-12 px-0 rounded">
         <friends-search />
       </div>

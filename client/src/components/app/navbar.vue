@@ -1,5 +1,5 @@
 <template>
-  <nav class="py-2 border-bottom d-flex justify-content-between align-items-baseline">
+  <nav class="py-3 border-bottom d-flex justify-content-between align-items-center">
     <div class="px-4 col-3">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -26,9 +26,11 @@
     </div>
 
     <div class="col-3 block_3 d-flex justify-content-end px-3">
-      <div class="d-flex justify-content-center align-items-center border rounded-circle mx-2">1</div>
-      <div class="d-flex justify-content-center align-items-center border rounded-circle mx-2">2</div>
-      <div class="d-flex justify-content-center align-items-center border rounded-circle ml-2">3</div>
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40"><defs><clipPath id="a"><rect width="40" height="40" transform="translate(275 18)" fill="#80878d" stroke="#707070" stroke-width="1"/></clipPath></defs><g transform="translate(-275 -18)" clip-path="url(#a)"><path d="M129.8,15.8l2.1,2.1V19h-18V18l2.1-2.1V10a6.823,6.823,0,0,1,1.5-4.3,6.259,6.259,0,0,1,3.8-2.4V2.6a1.606,1.606,0,0,1,.5-1.1,1.46,1.46,0,0,1,2.2,0,1.606,1.606,0,0,1,.5,1.1v.7a6.259,6.259,0,0,1,3.8,2.4,6.824,6.824,0,0,1,1.5,4.3ZM120.9,20h3.9a1.98,1.98,0,0,1-3.4,1.4A2.389,2.389,0,0,1,120.9,20Z" transform="translate(172.1 27)" fill="#80878d"/></g></svg>
+      <div class="d-flex justify-content-center align-items-center border rounded-circle mx-2 overflow-hidden">
+        <img class="avatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="avatar">
+      </div>
+      <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><g transform="translate(-1220 -1705)"><circle cx="20" cy="20" r="20" transform="translate(1220 1705)" fill="#f5f6f8"/><path d="M7.08-6.12V-10.1H4.94v3.98H.96v2.14H4.94V0H7.08V-3.98h3.98V-6.12Z" transform="translate(1234.04 1730.1)" fill="#80878d"/></g></svg>
     </div>
   </nav>
 </template>
@@ -44,7 +46,7 @@ nav {
   li {
     list-style: none;
     cursor: pointer;
-    font-size: 16px;
+    font-size: $fontLG;
     opacity: 0.7;
     &.active {
       opacity: 0.9;
@@ -55,6 +57,10 @@ nav {
     div {
       height: 40px;
       width: 40px;
+      .avatar {
+      width: 60px;
+      height: 60px;
+      }
     }
   }
 }

@@ -34,8 +34,8 @@ export default {};
   box-shadow: 1px 1px 4px #ddd;
   .block_1 {
     img {
-      width: 90px;
-      height: 90px;
+      width: 70px;
+      height: 70px;
     }
     p.name {
       font-size: 26px;
