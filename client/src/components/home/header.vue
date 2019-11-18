@@ -77,10 +77,7 @@ header {
           background: $darkBlue;
           border: 1px solid $darkBlue;
         }
-
       }
-
-
     }
   }
 

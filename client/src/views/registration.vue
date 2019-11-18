@@ -54,10 +54,8 @@ export default {};
 <style lang="scss" scoped>
 #registration {
   position: relative;
-  background-image: url("../assets/img/reg-background.jpg");
-     -moz-box-shadow:    inset 0 10px 10px #000000;
-   -webkit-box-shadow: inset 0 0 10px #000000;
-   box-shadow:         inset 0 10px 100px #000000b6;
+  background-image:radial-gradient( rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.6)), url("../assets/img/reg-background.jpg");
+  background-size: cover;
   min-height: 100vh;
   width: 100%;
   background-size: cover;
@@ -65,7 +63,6 @@ export default {};
   #reg-container {
     .block {
       background: $transDarkBlue;
-      // min-height: 83vh;
       border-radius: 10px;
     }
   }
