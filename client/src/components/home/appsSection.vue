@@ -23,6 +23,8 @@ export default {};
 #appSection {
   background-image: linear-gradient(rgba(0, 0, 0, 0.39), #165566d2),
     url("https://www.eloundamare.com/img/Backgrounds/Experiences/all/Scuba-Diving.jpg");
+    background-repeat: no-repeat;
+  background-attachment: fixed;
 
   .content {
     height: 500px;

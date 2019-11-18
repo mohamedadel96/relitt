@@ -14,8 +14,8 @@
           </button>
         </div>
       </div>
-      <div class="col-md-4 d-none d-md-block">
-        <!-- <div class="mobile"></div> -->
+      <div class="d-none d-md-block">
+        <img class="mobile" src="../../assets/img/mobile.png" alt="">
       </div>
     </div>
   </header>
@@ -32,9 +32,12 @@ export default {
 
 <style lang="scss" scoped>
 header {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.39), #165566d2),
-    url("https://www.eloundamare.com/img/Backgrounds/Experiences/all/Scuba-Diving.jpg");
+  background-image: radial-gradient( rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.6)),
+    url("../../assets/img/home-background.png");
   height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 
   .content {
     height: 86vh;
@@ -78,9 +81,8 @@ header {
   }
 
   .mobile {
-    // height: 450px;
-    height: 75vh;
-    border: 1px solid #ddd;
+    height: 100%;
+    width: 100%;
   }
 }
 </style>
