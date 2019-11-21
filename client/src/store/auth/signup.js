@@ -10,7 +10,7 @@ export default {
           ...rootState.entrance.info
         }).then(res => {
           if (res.data.code !== 200) return reject(res.data.errors)
-
+          
           commit('saveAuthData', res.data, { root: true })
           resolve('done')
         })
