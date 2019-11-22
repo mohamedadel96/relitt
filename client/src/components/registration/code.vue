@@ -5,13 +5,13 @@
     </div>
 
     <div>
-      <form>
+      <form @submit.prevent>
         <div>
-          <input class="col-12 border-0 py-3" type="text" placeholder="Code" />
+          <input class="col-12 border-0 py-3" type="text" placeholder="Code" v-model="form.code" />
         </div>
 
         <div class="mt-4">
-          <button class="btn btn-primary btn-block py-3">Done</button>
+          <button class="btn btn-primary btn-block py-3" @submit="submit">Done</button>
         </div>
       </form>
     </div>
@@ -19,12 +19,39 @@
 </template>
 
 <script>
-export default {};
+export default {
+data() {
+    return {
+      form: {
+        code: null,
+      },
+    }
+  },
+    methods: {
+    async submit() {
+      let email = JSON.parse(sessionStorage.getItem('email'))
+      console.log(email)
+
+      sessionStorage.setItem("code",this.form.code)
+      try {
+        let res = await this.$store.dispatch("CODEVALIDATE", this.form , email);
+
+        this.$router.push('/registration/change-password');
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+
+
+};
 </script>
 
 <style lang="scss" scoped>
 #code {
     margin-top: 100px;
+    margin-bottom: 240px;
+
   p.title {
     color: $fontColor_white;
     text-align: center;

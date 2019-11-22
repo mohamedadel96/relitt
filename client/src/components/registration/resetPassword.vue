@@ -35,6 +35,7 @@ export default {
   },
     methods: {
     async submit() {
+      
       try {
         let res = await this.$store.dispatch("RESETPASSWORD", this.form);
 
@@ -42,6 +43,7 @@ export default {
       } catch (error) {
         console.log(error);
       }
+
     }
   }
 };
