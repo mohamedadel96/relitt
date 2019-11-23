@@ -23,10 +23,7 @@
           />
         </div>
         <div class="text-center">
-          <p
-            v-if="error.message"
-            :class="error.state ? 'text-danger' : 'text-success'"
-          >{{ error.message }}</p>
+          <p :class="error.state ? 'text-danger' : 'text-success'">{{ error.message }}</p>
         </div>
         <div class="mt-4">
           <button
