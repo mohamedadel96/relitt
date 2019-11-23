@@ -66,7 +66,7 @@
             <p class="col-5 mb-0 text-secondary">
               <span>13</span> attendance
             </p>
-            <button class="mr-3 btn btn-primary btn-block">Join</button>
+            <button class="mr-3 btn btn-primary btn-block py-2">Join</button>
           </div>
         </div>
       </div>

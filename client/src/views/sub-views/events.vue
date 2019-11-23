@@ -3,7 +3,7 @@
     <div class="d-flex justify-content">
       <div class="col-md-3 px-4 mt-4 overflow-hidden">
         <div>
-          <button class="btn btn-primary btn-block mb-2">Create event</button>
+          <button class="btn btn-primary btn-block mb-2 py-2">Create event</button>
           <p class="text-secondary text-center">Your upcoming events</p>
         </div>
         <div>
