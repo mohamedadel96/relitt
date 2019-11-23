@@ -19,18 +19,18 @@
           </svg>
         </div>
         <div>
-          <router-link to="/registration/signup">
-            <button
-              class="btn btn-custom rounded mx-3 px-5 fontSM font-weight-bold"
-              v-if="$route.name === 'login' || $route.name === 'changePassword'"
-            >signup</button>
+          <router-link
+            to="/registration"
+            v-if="$route.name === 'login' || $route.name === 'changePassword'"
+          >
+            <button class="btn btn-custom rounded mx-3 px-5 fontSM font-weight-bold">signup</button>
           </router-link>
 
-          <router-link to="/registration/login">
-            <button
-              class="btn btn-custom rounded mx-3 px-5 fontSM font-weight-bold"
-              v-if="$route.name === 'signup' || $route.name === 'resetPassword' || $route.name === 'code'"
-            >login</button>
+          <router-link
+            to="/registration/login"
+            v-if="$route.name === 'signup' || $route.name === 'resetPassword' || $route.name === 'code'"
+          >
+            <button class="btn btn-custom rounded mx-3 px-5 fontSM font-weight-bold">login</button>
           </router-link>
         </div>
       </div>
@@ -54,7 +54,11 @@ export default {};
 <style lang="scss" scoped>
 #registration {
   position: relative;
-  background-image:radial-gradient( rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.6)), url("../assets/img/reg-background.jpg");
+  background-image: radial-gradient(
+      rgba(255, 255, 255, 0.1),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url("../assets/img/reg-background.jpg");
   background-size: cover;
   min-height: 100vh;
   width: 100%;

@@ -68,7 +68,7 @@ export default {
       try {
         let res = await this.$store.dispatch("CHANGEPASSWORD", this.form);
 
-        this.$router.push("/registration");
+        this.$router.push("/registration/login");
       } catch (error) {
         console.log(error);
       }

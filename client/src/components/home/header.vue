@@ -6,17 +6,19 @@
         <h1 class="text-white">Please be open for water</h1>
         <p class="text-white">your journey shall began now!</p>
         <div>
-            <router-link to="/registration/signup">
-              <button class="reg-btn text-white py-3 rounded font-weight-bold col-md-4 col-5">Register</button>
-            </router-link>
+          <router-link to="/registration">
+            <button class="reg-btn text-white py-3 rounded font-weight-bold col-md-4 col-5">Register</button>
+          </router-link>
 
-            <router-link to="/registration/login">
-              <button class="log-btn py-3 btn btn-light rounded font-weight-bold col-md-4 col-5 mx-4">Login</button>
-            </router-link>
+          <router-link to="/registration/login">
+            <button
+              class="log-btn py-3 btn btn-light rounded font-weight-bold col-md-4 col-5 mx-4"
+            >Login</button>
+          </router-link>
         </div>
       </div>
       <div class="d-none d-md-block">
-        <img class="mobile" src="../../assets/img/mobile.png" alt="">
+        <img class="mobile" src="../../assets/img/mobile.png" alt />
       </div>
     </div>
   </header>
@@ -33,7 +35,10 @@ export default {
 
 <style lang="scss" scoped>
 header {
-  background-image: radial-gradient( rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.6)),
+  background-image: radial-gradient(
+      rgba(255, 255, 255, 0.1),
+      rgba(0, 0, 0, 0.6)
+    ),
     url("../../assets/img/home-background.png");
   height: 100vh;
   background-size: cover;
@@ -67,12 +72,11 @@ header {
         &:hover {
           background: $transDarkBlue;
         }
-
       }
 
       &.log-btn {
         background: none;
-        
+
         &:hover {
           background: $darkBlue;
           border: 1px solid $darkBlue;

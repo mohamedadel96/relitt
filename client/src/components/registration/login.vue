@@ -1,7 +1,7 @@
 <template>
   <section id="login">
     <div class="mb-5 mx-md-3 mx-1">
-     <p
+      <p
         class="title font-weight-bold px-lg-5 px-0 fontSM"
       >Welcome back, We are happy you are here again</p>
     </div>
@@ -28,7 +28,7 @@
           />
         </div>
 
-       <div class="mt-3">
+        <div class="mt-3">
           <button
             class="btn btn-primary btn-block py-3 font-weight-bold fontSM"
             @click="submit"
@@ -48,7 +48,7 @@
 
       <div class="mt-3 d-flex justify-content-between">
         <p class="text-secondary fontSM">if you don't have account</p>
-        <router-link class="text-white font-weight-bold fontSM" to="/registration/signup">SIGNUP</router-link>
+        <router-link class="text-white font-weight-bold fontSM" to="/registration">SIGNUP</router-link>
       </div>
     </div>
   </section>
@@ -101,7 +101,7 @@ export default {
     text-decoration: none;
   }
 
-    button {
+  button {
     border-radius: 9px;
   }
 }
