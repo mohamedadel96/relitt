@@ -1,10 +1,61 @@
 <template>
-  <section>events</section>
+  <section id="events">
+    <div class="d-flex justify-content">
+      <div class="col-md-3 px-4 mt-4 overflow-hidden">
+        <div>
+          <button class="btn btn-primary btn-block mb-2">Create event</button>
+          <p class="text-secondary text-center">Your upcoming events</p>
+        </div>
+        <div>
+          <event-ad />
+          <event-ad />
+          <event-ad />
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="tabs d-flex mt-4 justify-content-center mr-5">
+          <p class="mr-5">
+            <router-link class="active" to="/app/events">Events</router-link>
+          </p>
+          <p class="mr-5">
+            <router-link to="/app/centers">Centers</router-link>
+          </p>
+        </div>
+        <div class="col-md-10 col-12 px-5">
+          <event-cards />
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
-export default {};
+import eventAd from "../../components/app/eventAD";
+import eventCards from "../../components/app/eventCards";
+
+export default {
+  components: {
+    eventAd,
+    eventCards
+  }
+};
 </script>
 
-<style>
+<style lang="scss" scoped>
+#events {
+  .tabs {
+    p {
+      a {
+        text-decoration: none;
+        color: $gray;
+        letter-spacing: 1px;
+        &.active {
+          border-bottom: 3px solid $blue;
+          color: $blue;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
 </style>
