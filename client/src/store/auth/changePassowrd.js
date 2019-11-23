@@ -5,8 +5,6 @@ export default {
   actions: {
     CHANGEPASSWORD({ rootState }, form) {
       return new Promise((resolve, reject) => {
-        console.log(rootState.code)
-        console.log(rootState.resetPassword)
 
         authServices.changePassword({
           ...form,

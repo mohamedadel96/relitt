@@ -9,7 +9,7 @@
         <div>
           <input
             class="col-12 border-0 py-3"
-            type="text"
+            type="password"
             placeholder="New password"
             v-model="form.password"
           />
@@ -17,7 +17,7 @@
         <div class="mt-3">
           <input
             class="col-12 border-0 py-3"
-            type="text"
+            type="password"
             placeholder="Confirm password"
             v-model="form.confirmPassword"
           />
@@ -73,20 +73,6 @@ export default {
         console.log(error);
       }
     }
-    // matchPassword(form) {
-    //   if (
-    //     document.getElementById("password").value ==
-    //     document.getElementById("confirm_password").value
-    //   ) {
-    //     document.getElementById("check").style.color = "green";
-    //     document.getElementById("check").innerHTML = "matching";
-    //     this.flag = true;
-    //   } else {
-    //     document.getElementById("check").style.color = "red";
-    //     document.getElementById("check").innerHTML = "not matching";
-    //     this.flag = false;
-    //   }
-    // }
   }
 };
 </script>
@@ -111,11 +97,5 @@ export default {
   a {
     text-decoration: none;
   }
-
-  // p.check {
-  //   padding-top: 25px;
-  //   text-align: center;
-  //   font-weight: bold;
-  // }
 }
 </style>
