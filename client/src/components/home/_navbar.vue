@@ -45,7 +45,7 @@
         <li>About</li>
         <li>Download</li>
         <li>
-          <router-link class="text-white" to="/registration/signup">Register</router-link>
+          <router-link class="text-white" to="/registration">Register</router-link>
         </li>
         <li>
           <router-link class="text-white" to="/registration/signup">Login</router-link>

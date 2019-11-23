@@ -4,6 +4,9 @@ import entrance from './auth/entrance'
 import signup from './auth/signup'
 import login from './auth/login'
 import resetPassword from './auth/resetPassword'
+import code from './auth/code'
+import changePassowrd from './auth/changePassowrd'
+
 
 Vue.use(Vuex)
 
@@ -27,12 +30,12 @@ export default new Vuex.Store({
       state.token = data.data.token
     }
   },
-  actions: {
-  },
   modules: {
     entrance,
     signup,
     login,
-    resetPassword
+    resetPassword,
+    code,
+    changePassowrd
   }
 })

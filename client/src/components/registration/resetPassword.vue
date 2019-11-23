@@ -1,7 +1,9 @@
 <template>
   <section id="resetPassword">
     <div class="mt-4 mb-5 pt-5 mx-md-3 mx-1">
-      <p class="title font-weight-bold px-lg-5 px-0 fontSM">Enter your email, we will send you a password</p>
+      <p
+        class="title font-weight-bold px-lg-5 px-0 fontSM"
+      >Enter your email, we will send you a password</p>
     </div>
 
     <div>
@@ -31,14 +33,14 @@ export default {
       form: {
         email: null
       }
-    }
+    };
   },
-    methods: {
+  methods: {
     async submit() {
       try {
         let res = await this.$store.dispatch("RESETPASSWORD", this.form);
 
-        this.$router.push('/registration/code');
+        this.$router.push("/registration/code");
       } catch (error) {
         console.log(error);
       }
@@ -49,8 +51,8 @@ export default {
 
 <style lang="scss" scoped>
 #resetPassword {
-    margin-top: 50px;
-   margin-bottom: 240px;
+  margin-top: 50px;
+  margin-bottom: 240px;
   p.title {
     color: $fontColor_white;
     text-align: center;
@@ -74,6 +76,5 @@ export default {
   button {
     border-radius: 9px;
   }
-  
 }
 </style>

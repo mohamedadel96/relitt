@@ -3,15 +3,14 @@
     <div class="mb-5 mx-md-3 mx-1">
       <p class="title">Enter code, we sent you email with code to reset password</p>
     </div>
-
     <div>
-      <form>
+      <form @submit.prevent>
         <div>
-          <input class="col-12 border-0 py-3" type="text" placeholder="Code" />
+          <input class="col-12 border-0 py-3" type="text" placeholder="Code" v-model="form.code" />
         </div>
 
         <div class="mt-4">
-          <button class="btn btn-primary btn-block py-3">Done</button>
+          <button @click="submit" class="btn btn-primary btn-block py-3">Done</button>
         </div>
       </form>
     </div>
@@ -19,12 +18,33 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      form: {
+        code: null
+      }
+    };
+  },
+  methods: {
+    async submit() {
+      try {
+        let res = await this.$store.dispatch("CODEVALIDATE", this.form);
+
+        this.$router.push("/registration/change-password");
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
 #code {
-    margin-top: 100px;
+  margin-top: 100px;
+  margin-bottom: 240px;
+
   p.title {
     color: $fontColor_white;
     text-align: center;
