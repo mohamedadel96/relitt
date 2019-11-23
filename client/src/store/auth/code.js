@@ -2,34 +2,33 @@ import authServices from '../../services/auth'
 
 export default {
   state: {
-    vcode: JSON.parse(sessionStorage.getItem('vcode')) ? JSON.parse(sessionStorage.getItem('vcode')) : null
+    code: JSON.parse(sessionStorage.getItem('code')) ? JSON.parse(sessionStorage.getItem('code')) : null
   },
   mutations:
   {
     saveCode(state, data) {
-      sessionStorage.setItem('vcode', JSON.stringify(data))
-      state.vcode = data
+      sessionStorage.setItem('code', JSON.stringify(data))
+      state.code = data
     }
   },
-    actions: {
-      CODEVALIDATE({ rootState , commit,state }, form) {
-        return new Promise((resolve, reject) => {
+  actions: {
+    CODEVALIDATE({ rootState, commit }, form) {
+      return new Promise((resolve, reject) => {
 
-          authServices.codeValidate({
-            ...form,
-            ...rootState.resetPassword
-          }).then(res => {
-            if (res.data.code !== 200) return reject(res.data.errors)
+        authServices.codeValidate({
+          ...form,
+          ...rootState.resetPassword
+        }).then(res => {
+          if (res.data.code !== 200) return reject(res.data.errors)
 
-            commit("saveCode", form.code)
-            console.log(state.vcode)
-            resolve(res.message)
-          })
-
+          commit("saveCode", form.code)
+          resolve(res.message)
         })
-      }
+
+      })
     }
   }
+}
 
 
 
