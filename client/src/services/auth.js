@@ -15,6 +15,9 @@ export default {
 
    codeValidate(form) {
       return Api().post('auth/validate_code', form)
+   },
+   changePassword(form) {
+      return Api().post('auth/reset_password', form)
    }
 
 
