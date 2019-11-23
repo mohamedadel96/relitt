@@ -52,8 +52,11 @@ export default {};
   .cards {
     .card {
       box-shadow: 3px 3px 4px #ddd;
+      transition: 0.3s;
+      &:hover {
+        box-shadow: 5px 5px 7px #aaa;
+      }
       .image {
-        // width: 300px;
         img {
           width: 100%;
           object-fit: cover;
