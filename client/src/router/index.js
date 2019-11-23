@@ -92,6 +92,14 @@ const routes = [
             meta: {
               requiresAuth: true
             }
+          },
+          {
+            path: 'dashboard',
+            name: 'dashboard',
+            component: () => import('../components/app/dashboard.vue'),
+            meta: {
+              requiresAuth: true
+            }
           }
         ]
       }
