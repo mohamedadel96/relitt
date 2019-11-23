@@ -12,11 +12,11 @@
       </div>
       <div class="block_2 d-flex pb-4 mt-4">
         <div class="col-6 text-center pr-5 border-right">
-          <p class="num mb-0 font-weight-bold">125</p>
+          <p class="num mb-0 font-weight-bold">15800000</p>
           <p class="mb-0 opacity font-weight-bold">Followers</p>
         </div>
         <div class="col-6 text-center pl-5 border-left">
-          <p class="num mb-0 font-weight-bold">150</p>
+          <p class="num mb-0 font-weight-bold">31</p>
           <p class="mb-0 opacity font-weight-bold">Following</p>
         </div>
       </div>

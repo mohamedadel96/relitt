@@ -80,7 +80,7 @@ const routes = [
     children: [
       {
         path: '',
-        component: () => import('../views/feeds-dashboard.vue'),
+        component: () => import('../views/sub-views/feeds-dashboard.vue'),
         meta: {
           requiresAuth: true
         },
@@ -102,6 +102,22 @@ const routes = [
             }
           }
         ]
+      },
+      {
+        path: 'events',
+        name: 'events',
+        component: () => import('../views/sub-views/events.vue'),
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: 'centers',
+        name: 'centers',
+        component: () => import('../views/sub-views/centers.vue'),
+        meta: {
+          requiresAuth: true
+        }
       }
     ]
   }
