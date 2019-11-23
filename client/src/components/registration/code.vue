@@ -7,7 +7,7 @@
     <div>
       <form @submit.prevent>
         <div>
-          <input class="col-12 border-0 py-3" type="text" placeholder="Code" v-model="code" />
+          <input class="col-12 border-0 py-3" type="text" placeholder="Code" v-model="form.code" />
         </div>
 
         <div class="mt-4">
@@ -19,18 +19,22 @@
 </template>
 
 <script>
-export default { 
-   data() {
+export default {
+data() {
     return {
       form: {
-        code: null
-      }
+        code: null,
+      },
     }
   },
     methods: {
     async submit() {
+      let email = JSON.parse(sessionStorage.getItem('email'))
+      console.log(email)
+
+      sessionStorage.setItem("code",this.form.code)
       try {
-        let res = await this.$store.dispatch("CODEVALIDATE", this.form);
+        let res = await this.$store.dispatch("CODEVALIDATE", this.form , email);
 
         this.$router.push('/registration/change-password');
       } catch (error) {
@@ -38,13 +42,16 @@ export default {
       }
     }
   }
-  };
 
+
+};
 </script>
 
 <style lang="scss" scoped>
 #code {
     margin-top: 100px;
+    margin-bottom: 240px;
+
   p.title {
     color: $fontColor_white;
     text-align: center;

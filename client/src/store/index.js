@@ -4,7 +4,9 @@ import entrance from './auth/entrance'
 import signup from './auth/signup'
 import login from './auth/login'
 import resetPassword from './auth/resetPassword'
-import codeValidate from './auth/code-validate'
+import codeValidate from './auth/codeValidate'
+
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({

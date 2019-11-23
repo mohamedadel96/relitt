@@ -16,4 +16,5 @@ export default {
       return Api().post('auth/validate_code', form)
    }
      
+     
 }
