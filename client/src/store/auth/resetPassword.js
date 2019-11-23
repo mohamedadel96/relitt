@@ -6,21 +6,22 @@ export default {
   },
   mutations:
   {
-    saveResetData(state, data) {
+    saveEmail(state, data) {
       sessionStorage.setItem('email', JSON.stringify(data))
       state.email = data
-    }    
+    }
   },
   actions: {
-    RESETPASSWORD({}, form) {
+    RESETPASSWORD({ commit }, form) {
       return new Promise((resolve, reject) => {
 
         authServices.resetPassword(form).then(res => {
           if (res.data.code !== 200) return reject(res.data.errors)
-          commit("saveResetData", form)
+          commit("saveEmail", form.email)
+
           resolve(res.message)
         })
-        
+
       })
     }
   }

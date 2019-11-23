@@ -3,7 +3,6 @@
     <div class="mb-5 mx-md-3 mx-1">
       <p class="title">Enter code, we sent you email with code to reset password</p>
     </div>
-
     <div>
       <form @submit.prevent>
         <div>
@@ -11,7 +10,7 @@
         </div>
 
         <div class="mt-4">
-          <button class="btn btn-primary btn-block py-3" @submit="submit">Done</button>
+          <button @click="submit" class="btn btn-primary btn-block py-3">Done</button>
         </div>
       </form>
     </div>
@@ -20,37 +19,31 @@
 
 <script>
 export default {
-data() {
+  data() {
     return {
       form: {
-        code: null,
-      },
-    }
+        code: null
+      }
+    };
   },
-    methods: {
+  methods: {
     async submit() {
-      let email = JSON.parse(sessionStorage.getItem('email'))
-      console.log(email)
-
-      sessionStorage.setItem("code",this.form.code)
       try {
-        let res = await this.$store.dispatch("CODEVALIDATE", this.form , email);
+        let res = await this.$store.dispatch("CODEVALIDATE", this.form);
 
-        this.$router.push('/registration/change-password');
+        this.$router.push("/registration/change-password");
       } catch (error) {
         console.log(error);
       }
     }
   }
-
-
 };
 </script>
 
 <style lang="scss" scoped>
 #code {
-    margin-top: 100px;
-    margin-bottom: 240px;
+  margin-top: 100px;
+  margin-bottom: 240px;
 
   p.title {
     color: $fontColor_white;

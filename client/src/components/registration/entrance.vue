@@ -8,20 +8,40 @@
       <form @submit.prevent>
         <div class="d-flex justify-content-between my-3">
           <div class="col-6 pl-0 pr-2">
-            <input class="col-12 border-0 py-3" type="text" placeholder="firstname" autocomplete="off" v-model="form.firstname"/>
+            <input
+              class="col-12 border-0 py-3"
+              type="text"
+              placeholder="firstname"
+              autocomplete="off"
+              v-model="form.firstname"
+            />
           </div>
           <div class="col-6 pl-2 pr-0">
-            <input class="col-12 border-0 py-3" type="text" placeholder="lastname" autocomplete="off" v-model="form.lastname"/>
+            <input
+              class="col-12 border-0 py-3"
+              type="text"
+              placeholder="lastname"
+              autocomplete="off"
+              v-model="form.lastname"
+            />
           </div>
         </div>
 
         <div>
-          <input class="col-12 border-0 py-3" type="text" autocomplete="off" v-model="form.birthdate" />
+          <input
+            class="col-12 border-0 py-3"
+            type="text"
+            autocomplete="off"
+            v-model="form.birthdate"
+          />
         </div>
 
         <div>
           <div class="d-flex my-3">
-            <div :class="[{'active': form.gender}, 'gender col-6 py-3 d-flex align-items-center justify-content-center']" @click="form.gender = 1">
+            <div
+              :class="[{'active': form.gender}, 'gender col-6 py-3 d-flex align-items-center justify-content-center']"
+              @click="form.gender = 1"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="21.628"
@@ -40,7 +60,10 @@
               </svg>
               <span>Male</span>
             </div>
-            <div :class="[{'active': !form.gender}, 'gender col-6 py-3 d-flex align-items-center justify-content-center']" @click="form.gender = 0">
+            <div
+              :class="[{'active': !form.gender}, 'gender col-6 py-3 d-flex align-items-center justify-content-center']"
+              @click="form.gender = 0"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="22.17"
@@ -80,57 +103,57 @@ export default {
         birthdate: null,
         gender: 0
       }
-    }
+    };
   },
   methods: {
     async submit() {
-      await this.$store.dispatch('ENTRANCE', this.form)
-      this.$router.push('/registration/signup')
+      await this.$store.dispatch("ENTRANCE", this.form);
+      this.$router.push("/registration/signup");
     }
-  },
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 #entrance {
   margin-top: 50px;
-   margin-bottom: 150px;
+  margin-bottom: 150px;
   p {
     color: $fontColor_white;
-      text-align: center;
-      font-weight: bold;
-    }     
-  
-    input {
-      border-radius: 9px;
-      outline: none;
-    }
-  
-    .gender {
-      background: $background_white;
-      cursor: pointer;
-  
-      &:first-of-type {
-        border-radius: 6px 0 0 6px;
-      }
-  
-      &:last-of-type {
-        border-radius: 0 6px 6px 0;
-      }
+    text-align: center;
+    font-weight: bold;
+  }
 
-      &.active {
-        background: $blue;
-        color: $fontColor_white;
-      }
-    }
-  
-    .py-3 {
-      padding-top: 0.8rem !important;
-      padding-bottom: 0.8rem !important;
+  input {
+    border-radius: 9px;
+    outline: none;
+  }
+
+  .gender {
+    background: $background_white;
+    cursor: pointer;
+
+    &:first-of-type {
+      border-radius: 6px 0 0 6px;
     }
 
-    button {
-            border-radius: 9px;
+    &:last-of-type {
+      border-radius: 0 6px 6px 0;
     }
+
+    &.active {
+      background: $blue;
+      color: $fontColor_white;
+    }
+  }
+
+  .py-3 {
+    padding-top: 0.8rem !important;
+    padding-bottom: 0.8rem !important;
+  }
+
+  button {
+    border-radius: 9px;
+  }
 }
 </style>
