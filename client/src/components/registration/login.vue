@@ -47,7 +47,7 @@
       </div>
 
       <div class="mt-3 d-flex justify-content-between">
-        <p class="text-secondary fontSM">if you have account</p>
+        <p class="text-secondary fontSM">if you don't have account</p>
         <router-link class="text-white font-weight-bold fontSM" to="/registration/signup">SIGNUP</router-link>
       </div>
     </div>

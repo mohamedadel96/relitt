@@ -11,7 +11,7 @@
         </div>
 
         <div class="mt-4">
-          <button class="btn btn-primary btn-block py-3" @submit="submit">Done</button>
+          <button @click="submit" class="btn btn-primary btn-block py-3">Done</button>
         </div>
       </form>
     </div>
@@ -29,13 +29,14 @@ data() {
   },
     methods: {
     async submit() {
-      let email = JSON.parse(sessionStorage.getItem('email'))
-      console.log(email)
+      console.log(this.form.code)
 
       sessionStorage.setItem("code",this.form.code)
-      try {
-        let res = await this.$store.dispatch("CODEVALIDATE", this.form , email);
+            console.log(this.form.code)
 
+      try {
+        let res = await this.$store.dispatch("CODEVALIDATE", this.form );
+        
         this.$router.push('/registration/change-password');
       } catch (error) {
         console.log(error);
