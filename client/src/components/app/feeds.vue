@@ -110,7 +110,7 @@ export default {};
           margin-bottom: -5px;
         }
         .job {
-          color: #777;
+          color: $gray;
           opacity: 0.7;
           font-size: 16px;
         }
@@ -135,16 +135,16 @@ export default {};
       }
       .post-decription {
         .description {
-          color: #777;
+          color: $gray;
         }
         .details {
           font-size: 16px;
-          color: #777;
+          color: $gray;
           opacity: 0.6;
         }
       }
       .post-options {
-        color: #777;
+        color: $gray;
         opacity: 0.7;
       }
     }

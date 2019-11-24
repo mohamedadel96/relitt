@@ -5,25 +5,25 @@
 </template>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 * {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .fontXS {
-  font-size: $fontXS
+  font-size: $fontXS;
 }
 .fontSM {
-  font-size: $fontSM
+  font-size: $fontSM;
 }
 .fontMD {
-  font-size: $fontMD
+  font-size: $fontMD;
 }
 .fontLG {
-  font-size: $fontLG
+  font-size: $fontLG;
 }
-.fontXl {
-  font-size: $fontXl
+.fontXL {
+  font-size: $fontXL;
 }
 
 .my-3 {
