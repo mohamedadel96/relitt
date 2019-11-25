@@ -10,7 +10,10 @@ import navBar from "../components/app/navbar";
 export default {
   components: {
     navBar
-  }
+  },
+  mounted() {
+    this.$store.dispatch()
+  },
 };
 </script>
 
