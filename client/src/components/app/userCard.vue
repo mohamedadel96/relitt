@@ -1,13 +1,13 @@
 <template>
   <section id="userCard" class="pb-3 rounded">
-    <div>
+    <div v-if="userCard">
       <div class="block_1 text-center">
         <img
           class="border rounded-circle mt-5"
           src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
           alt="user image"
         />
-        <p class="name font-weight-bold mb-0">Mohamed adel</p>
+        <p class="name font-weight-bold mb-0">{{userCard.firstname}} {{userCard.lastname}}</p>
         <p class="job">Senior diver</p>
       </div>
       <div class="block_2 d-flex pb-4 mt-4">
@@ -25,7 +25,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    userCard() {
+      return this.$store.getters.userCard
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>

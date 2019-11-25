@@ -20,5 +20,4 @@ export default {
       return Api().post('auth/reset_password', form)
    }
 
-
 }

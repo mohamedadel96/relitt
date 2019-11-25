@@ -12,7 +12,7 @@ export default {
     navBar
   },
   mounted() {
-    this.$store.dispatch()
+    this.$store.dispatch('USERCARD')
   },
 };
 </script>
