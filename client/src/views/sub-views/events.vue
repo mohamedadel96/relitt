@@ -29,6 +29,12 @@
         </div>
       </div>
     </div>
+    <paginate
+      :page-count="20"
+      :prev-text="'Prev'"
+      :next-text="'Next'"
+      :container-class="'className'"
+    ></paginate>
   </section>
 </template>
 
@@ -42,8 +48,8 @@ export default {
     eventCards
   },
   mounted() {
-    this.$store.dispatch('EVENTS', )
-  },
+    this.$store.dispatch("EVENTS");
+  }
 };
 </script>
 
@@ -55,6 +61,7 @@ export default {
         text-decoration: none;
         color: $gray;
         letter-spacing: 1px;
+
         &.active {
           border-bottom: 3px solid $blue;
           color: $blue;
@@ -63,9 +70,11 @@ export default {
       }
     }
   }
-    .search {
+
+  .search {
     background: $background_white;
     box-shadow: 3px 3px 4px #ddd;
   }
+
 }
 </style>
