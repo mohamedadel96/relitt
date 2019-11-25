@@ -24,6 +24,7 @@
           </p>
         </div>
         <div class="col-md-10 col-12 px-5">
+          <div class="search rounded py-3 mb-3 text-center fontMD">Alexandria, Egypt</div>
           <event-cards />
         </div>
       </div>
@@ -39,7 +40,10 @@ export default {
   components: {
     eventAd,
     eventCards
-  }
+  },
+  mounted() {
+    this.$store.dispatch('EVENTS', )
+  },
 };
 </script>
 
@@ -58,6 +62,10 @@ export default {
         }
       }
     }
+  }
+    .search {
+    background: $background_white;
+    box-shadow: 3px 3px 4px #ddd;
   }
 }
 </style>
