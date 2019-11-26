@@ -1,7 +1,7 @@
 <template>
   <section id="centerCard">
     <div class="search rounded py-3 mb-3 text-center fontMD">Alexandria, Egypt</div>
-    <div class="cards" v-for="( i, centercard ) in centercards" :key="i">
+    <div class="cards" v-for="( centercard, i ) in centercards" :key="i">
       <div class="card border-0 rounded d-flex flex-nowrap flex-row mb-3">
         <div class="image col-4 px-0">
           <img
@@ -15,9 +15,7 @@
             <div class="col-6 px-2">
               <p class="mb-0 font-weight-bold fontMD">{{centercard.name}}</p>
               <p class="mb-2 text-secondary fontXS">{{centercard.location_name}}</p>
-              <p
-                class="mb-0 text-secondary fontSM"
-              >{{centercard.description}}</p>
+              <p class="mb-0 text-secondary fontSM">{{centercard.description}}</p>
             </div>
             <div class="col-6 px-4 text-center">
               <div>
@@ -55,11 +53,10 @@
 
 <script>
 export default {
-  computed:{
-    centercards(){
-      return this.$store.getters.getCenterCard
+  computed: {
+    centercards() {
+      return this.$store.getters.getCenterCard;
     }
-
   }
 };
 </script>

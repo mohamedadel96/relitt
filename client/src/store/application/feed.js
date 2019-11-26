@@ -5,7 +5,7 @@ export default {
     feeds: null
   },
   getters: {
-    getFeed(state) {
+    feeds(state) {
       return state.feeds
     }
   },
@@ -14,10 +14,11 @@ export default {
       state.feeds = data
     }
   },
-  actions:{
+  actions: {
     FEED({ commit }) {
       return new Promise((resolve, reject) => {
         appServices.feed().then(res => {
+          console.log(res)
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }

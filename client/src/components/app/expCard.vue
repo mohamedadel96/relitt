@@ -1,6 +1,6 @@
 <template>
-  <section id="expCard" class="pt-2 pb-3 px-3 rounded" v-if="expcard" >
-    <div >
+  <section id="expCard" class="pt-2 pb-3 px-3 rounded" v-if="expcard">
+    <div>
       <div class="block_1 d-flex pt-4 justify-content-between">
         <p class="title font-weight-bold mb-0 col-9 px-0">Average duration under water</p>
         <div class="time text-center pl-4 mr-5">
@@ -22,24 +22,22 @@
           </p>
         </div>
       </div>
-    </div>  
-    
+    </div>
   </section>
 </template>
 
 <script>
 export default {
   computed: {
-    expcard(){
-      return this.$store.getters.getExpCard
+    expcard() {
+      return this.$store.getters.expCard;
     }
   },
   methods: {
-    round(num){
-      return parseInt(num)
+    round(num) {
+      return parseInt(num);
     }
-  },
- 
+  }
 };
 </script>
 

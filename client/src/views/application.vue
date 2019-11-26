@@ -12,7 +12,8 @@ export default {
     navBar
   },
   mounted() {
-    this.$store.dispatch('USERCARD')
+    this.$store.dispatch("USERCARD");
+    this.$store.dispatch("EXPCARD");
   }
 };
 </script> 
