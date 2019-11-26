@@ -4,19 +4,19 @@
       <div class="block_1 text-center">
         <img
           class="border rounded-circle mt-5"
-          src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+          :src="userCard.image"
           alt="user image"
         />
         <p class="name font-weight-bold mb-0">{{userCard.firstname}} {{userCard.lastname}}</p>
-        <p class="job">Senior diver</p>
+        <p class="job">{{userCard.type}}</p>
       </div>
       <div class="block_2 d-flex pb-4 mt-4">
         <div class="col-6 text-center pr-5 border-right">
-          <p class="num mb-0 font-weight-bold">10000000</p>
+          <p class="num mb-0 font-weight-bold">{{userCard.followers_count}}</p>
           <p class="mb-0 opacity font-weight-bold">Followers</p>
         </div>
         <div class="col-6 text-center pl-5 border-left">
-          <p class="num mb-0 font-weight-bold">31</p>
+          <p class="num mb-0 font-weight-bold">{{userCard.following_count}}</p>
           <p class="mb-0 opacity font-weight-bold">Following</p>
         </div>
       </div>
