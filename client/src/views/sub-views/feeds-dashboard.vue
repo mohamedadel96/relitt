@@ -27,6 +27,11 @@ import expCard from "../../components/app/expCard";
 import friendsSearch from "../../components/app/friendsSearch";
 
 export default {
+ mounted(){
+    this.$store.dispatch('FEED', null, {root:true})
+    this.$store.dispatch('EXPCARD', null, {root:true})
+
+  },
   components: {
     userCard,
     expCard,

@@ -33,7 +33,7 @@
       :page-count="20"
       :prev-text="'Prev'"
       :next-text="'Next'"
-      :container-class="'paginate'"
+      :container-class="'className'"
     ></paginate>
   </section>
 </template>
