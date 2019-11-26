@@ -24,10 +24,17 @@
           </p>
         </div>
         <div class="col-md-10 col-12 px-5">
+          <div class="search rounded py-3 mb-3 text-center fontMD">Alexandria, Egypt</div>
           <event-cards />
         </div>
       </div>
     </div>
+    <paginate
+      :page-count="20"
+      :prev-text="'Prev'"
+      :next-text="'Next'"
+      :container-class="'className'"
+    ></paginate>
   </section>
 </template>
 
@@ -39,6 +46,9 @@ export default {
   components: {
     eventAd,
     eventCards
+  },
+  mounted() {
+    this.$store.dispatch("EVENTS");
   }
 };
 </script>
@@ -51,6 +61,7 @@ export default {
         text-decoration: none;
         color: $gray;
         letter-spacing: 1px;
+
         &.active {
           border-bottom: 3px solid $blue;
           color: $blue;
@@ -59,5 +70,11 @@ export default {
       }
     }
   }
+
+  .search {
+    background: $background_white;
+    box-shadow: 3px 3px 4px #ddd;
+  }
+
 }
 </style>

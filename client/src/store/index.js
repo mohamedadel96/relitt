@@ -6,7 +6,8 @@ import login from './auth/login'
 import resetPassword from './auth/resetPassword'
 import code from './auth/code'
 import changePassowrd from './auth/changePassowrd'
-
+import userCard from './application/userCard'
+import events from './application/events'
 
 Vue.use(Vuex)
 
@@ -37,6 +38,8 @@ export default new Vuex.Store({
     login,
     resetPassword,
     code,
-    changePassowrd
+    changePassowrd,
+    userCard,
+    events
   }
 })

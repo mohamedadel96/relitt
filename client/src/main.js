@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import Paginate from 'vuejs-paginate'
 import 'bootstrap/dist/css/bootstrap.css'
 
 Vue.config.productionTip = false
@@ -30,6 +31,7 @@ router.beforeEach((to, from, next) => {
   }
 })
 
+Vue.component('paginate', Paginate)
 new Vue({
   router,
   store,
