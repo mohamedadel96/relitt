@@ -1,0 +1,39 @@
+<template>
+  <section id="dashboard">
+    <div class="search rounded py-1 d-flex justify-content-between align-items-center">
+      <select class="py-2 px-4 mr-4">
+        <option value>free diving</option>
+      </select>
+    </div>
+
+    <div class="posts mt-3">
+      <exp-card class="mt-2" />
+      <exp-card class="mt-2" />
+      <exp-card class="mt-2" />
+    </div>
+  </section>
+</template>
+
+<script>
+import expCard from "./expCard";
+export default {
+  components: {
+    expCard
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+#dashboard {
+  .search {
+    background: $background_white;
+    box-shadow: 1px 1px 4px #ddd;
+    select {
+      width: 100%;
+      background: none;
+      border: none;
+      outline: none;
+    }
+  }
+}
+</style>
