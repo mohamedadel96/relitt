@@ -12,7 +12,7 @@
         <div class="col-8 px-0 mt-3 d-flex flex-wrap align-items-between">
           <div class="desc d-flex justify-content-between">
             <div class="col-10">
-              <p class="mb-0 font-weight-bold fontMD">{{event. title}}</p>
+              <p class="mb-0 font-weight-bold fontMD">{{event.title}}</p>
               <p class="mb-2 text-secondary fontXS">Bedforeshine</p>
               <p
                 class="mb-0 text-secondary fontSM"
