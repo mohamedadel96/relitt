@@ -9,7 +9,7 @@ import changePassowrd from './auth/changePassowrd'
 import userCard from './application/userCard'
 import events from './application/events'
 import expCard from './application/expCard'
-import feed from './application/feed'
+import feeds from './application/feeds'
 import centerCard from './application/centerCard'
 
 Vue.use(Vuex)
@@ -43,8 +43,8 @@ export default new Vuex.Store({
     changePassowrd,
     userCard,
     events,
-    feed,
-    expCard, 
+    feeds,
+    expCard,
     centerCard
   }
 })

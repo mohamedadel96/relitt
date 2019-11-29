@@ -27,7 +27,7 @@
             :maxValue="expCard.dive_count_scuba"
             measure="dives"
             class="mt-4"
-          />          
+          />
         </div>
       </div>
     </div>
@@ -48,20 +48,18 @@ import expCard from "../../components/app/expCard";
 import friendsSearch from "../../components/app/friendsSearch";
 
 export default {
-
-    components: {
+  components: {
     userCard,
     expCard,
     friendsSearch
   },
   computed: {
-    expCard(){
-      return this.$store.getters.expCard
+    expCard() {
+      return this.$store.getters.expCard;
     }
   },
   mounted() {
     this.$store.dispatch("FEED");
-    this.$store.dispatch("EXPCARD");
   }
 };
 </script>
