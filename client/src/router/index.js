@@ -6,6 +6,7 @@ import App from '../views/application.vue'
 Vue.use(VueRouter)
 
 const routes = [
+
   {
     path: '/',
     name: 'home',
@@ -88,7 +89,7 @@ const routes = [
           {
             path: '',
             name: 'app',
-            component: () => import('../components/app/feeds.vue'),
+            component: () => import('../components/application/feeds.vue'),
             meta: {
               requiresAuth: true
             }
@@ -96,7 +97,7 @@ const routes = [
           {
             path: 'dashboard',
             name: 'dashboard',
-            component: () => import('../components/app/dashboard.vue'),
+            component: () => import('../components/application/dashboard.vue'),
             meta: {
               requiresAuth: true
             }
@@ -118,12 +119,22 @@ const routes = [
         meta: {
           requiresAuth: true
         }
+      },
+      {
+        path: 'center',
+        name: 'center',
+        component: () => import('../views/sub-views/center.vue'),
+        meta: {
+          requiresAuth: true
+        }
+
       }
     ]
   }
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
 

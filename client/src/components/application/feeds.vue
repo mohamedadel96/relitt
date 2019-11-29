@@ -8,18 +8,18 @@
       </div>
     </div>
 
-    <div class="posts">
-      <div class="post rounded">
+    <div class="posts" v-if="feeds">
+      <div class="post rounded" v-for="(feed,i) in feeds" :key="i">
         <div class="post-info px-3 mt-3 d-flex justify-content-between align-items-center">
           <div class="d-flex align-items-center py-2">
             <img
               class="border rounded-circle mr-3"
-              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+              :src="feed.user.image"
               alt="friend profile picture"
             />
             <div>
-              <p class="name font-weight-bold">Ahmed reda</p>
-              <p class="mb-0 job">12 min ago</p>
+              <p class="name font-weight-bold">{{feed.user.firstname}} {{feed.user.lastname}}</p>
+              <p class="mb-0 job">{{feed.created_at}}</p>
             </div>
           </div>
           <div>
@@ -53,12 +53,10 @@
         </div>
 
         <div class="post-decription px-3">
-          <p
-            class="description"
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis necessitatibus culpa iure eum quas dolore, impedit itaque atque illo voluptate enim illum officia! Soluta explicabo repudiandae id reprehenderit, animi mollitia?</p>
+          <p class="description">{{feeds.body}}</p>
           <div class="details d-flex">
             <p class="mb-0">
-              <span>12&nbsp;</span>
+              <span>{{feeds.likes_count}}&nbsp;</span>
               <span>Likes</span>
             </p>
             <p class="px-2 mb-0">-</p>
@@ -81,7 +79,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    feeds() {
+      return this.$store.getters.feeds;
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>

@@ -8,10 +8,6 @@
         </div>
         <div>
           <event-ad />
-          <!-- test -->
-          <event-ad />
-          <event-ad />
-          <!-- test -->
         </div>
       </div>
       <div class="col-md-9">
@@ -29,18 +25,13 @@
         </div>
       </div>
     </div>
-    <paginate
-      :page-count="20"
-      :prev-text="'Prev'"
-      :next-text="'Next'"
-      :container-class="'paginate'"
-    ></paginate>
+    <paginate :page-count="20" prev-text="Prev" next-text="Next" container-class="paginate"></paginate>
   </section>
 </template>
 
 <script>
-import eventAd from "../../components/app/eventAD";
-import eventCards from "../../components/app/eventCards";
+import eventAd from "../../components/application/eventAD";
+import eventCards from "../../components/application/eventCards";
 
 export default {
   components: {
@@ -75,6 +66,5 @@ export default {
     background: $background_white;
     box-shadow: 3px 3px 4px #ddd;
   }
-
 }
 </style>

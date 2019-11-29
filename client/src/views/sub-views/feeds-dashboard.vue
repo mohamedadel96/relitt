@@ -1,12 +1,33 @@
 <template>
   <section id="feeds-dashboard" class="d-flex mt-4">
-    <div class="col-md-3 d-md-block d-none px-4">
+    <div class="col-md-3 d-md-block d-none px-4" v-if="expCard">
       <div class="px-1">
         <user-card />
         <div>
-          <exp-card class="mt-4" />
-          <exp-card class="mt-4" />
-          <exp-card class="mt-4" />
+          <exp-card
+            title="Average duration under water"
+            :value="expCard.avg_duration"
+            :minValue="expCard.avg_duration_diving"
+            :maxValue="expCard.avg_duration_scuba"
+            measure="min"
+            class="mt-4"
+          />
+          <exp-card
+            title="Max Depth"
+            :value="expCard.max_depth"
+            :minValue="expCard.max_depth_diving"
+            :maxValue="expCard.max_depth_scuba"
+            measure="m"
+            class="mt-4"
+          />
+          <exp-card
+            title="Number of Dives"
+            :value="expCard.dive_count"
+            :minValue="expCard.dive_count_diving"
+            :maxValue="expCard.dive_count_scuba"
+            measure="dives"
+            class="mt-4"
+          />
         </div>
       </div>
     </div>
@@ -22,15 +43,23 @@
 </template>
 
 <script>
-import userCard from "../../components/app/userCard";
-import expCard from "../../components/app/expCard";
-import friendsSearch from "../../components/app/friendsSearch";
+import userCard from "../../components/application/userCard";
+import expCard from "../../components/application/expCard";
+import friendsSearch from "../../components/application/friendsSearch";
 
 export default {
   components: {
     userCard,
     expCard,
     friendsSearch
+  },
+  computed: {
+    expCard() {
+      return this.$store.getters.expCard;
+    }
+  },
+  mounted() {
+    this.$store.dispatch("FEEDS");
   }
 };
 </script>

@@ -1,33 +1,42 @@
 <template>
-  <section id="expCard" class="pt-2 pb-3 px-3 rounded">
-    <div>
+  <section id="expCard" class="pt-2 pb-3 px-3 rounded"  >
+    <div >
       <div class="block_1 d-flex pt-4 justify-content-between">
-        <p class="title font-weight-bold mb-0 col-9 px-0">Average duration under water</p>
+        <p class="title font-weight-bold mb-0 col-9 px-0">{{title}}</p>
         <div class="time text-center pl-4 mr-5">
-          <p class="font-weight-bold">30</p>
-          <p class="mb-0 text-right">min</p>
+          <p class="font-weight-bold">{{parseInt(value)}}</p>
+          <p class="mb-0 text-right">{{measure}}</p>
         </div>
       </div>
       <div class="block_2 d-flex justify-content-end pb-2 mt-4">
         <div class="border-right">
           <p class="mb-0 px-2 font-weight-bold">
-            <span class="px-1">12</span>
-            <span>min</span>
+            <span class="px-1">{{parseInt(minValue)}}</span>
+            <span>{{measure}}</span>
           </p>
         </div>
         <div class="border-left">
           <p class="mb-0 px-2 font-weight-bold">
-            <span class="px-1">30</span>
-            <span>min</span>
+            <span class="px-1">{{parseInt(maxValue)}}</span>
+            <span>{{measure}}</span>
           </p>
         </div>
       </div>
-    </div>
+    </div>  
+    
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+  props:["value" , "minValue" , "maxValue", "measure", "title"],
+  methods: {
+    round(num){
+      return parseInt(num)
+    }
+  },
+ 
+};
 </script>
 
 <style lang="scss" scoped>
