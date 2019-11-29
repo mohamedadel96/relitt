@@ -1,43 +1,41 @@
 <template>
-  <section id="expCard" class="pt-2 pb-3 px-3 rounded" v-if="expcard">
-    <div>
+  <section id="expCard" class="pt-2 pb-3 px-3 rounded"  >
+    <div >
       <div class="block_1 d-flex pt-4 justify-content-between">
         <p class="title font-weight-bold mb-0 col-9 px-0">Average duration under water</p>
         <div class="time text-center pl-4 mr-5">
-          <p class="font-weight-bold">{{round(expcard.avg_duration)}}</p>
-          <p class="mb-0 text-right">min</p>
+          <p class="font-weight-bold">{{parseInt(avg)}}</p>
+          <p class="mb-0 text-right">{{measure}}</p>
         </div>
       </div>
       <div class="block_2 d-flex justify-content-end pb-2 mt-4">
         <div class="border-right">
           <p class="mb-0 px-2 font-weight-bold">
-            <span class="px-1">{{round(expcard.avg_duration_diving)}}</span>
-            <span>min</span>
+            <span class="px-1">{{parseInt(diving)}}</span>
+            <span>{{measure}}</span>
           </p>
         </div>
         <div class="border-left">
           <p class="mb-0 px-2 font-weight-bold">
-            <span class="px-1">{{round(expcard.avg_duration_scuba)}}</span>
-            <span>min</span>
+            <span class="px-1">{{parseInt(scuba)}}</span>
+            <span>{{measure}}</span>
           </p>
         </div>
       </div>
-    </div>
+    </div>  
+    
   </section>
 </template>
 
 <script>
 export default {
-  computed: {
-    expcard() {
-      return this.$store.getters.expCard;
+  props:["avg" , "diving" , "scuba", "measure"],
+  methods: {
+    round(num){
+      return parseInt(num)
     }
   },
-  methods: {
-    round(num) {
-      return parseInt(num);
-    }
-  }
+ 
 };
 </script>
 

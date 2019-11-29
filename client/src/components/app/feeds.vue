@@ -82,7 +82,7 @@
 export default {
   computed: {
     feed() {
-      return this.$store.getters.feeds;
+      return this.$store.getters.getFeed;
     }
   }
 };

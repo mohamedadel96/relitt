@@ -4,9 +4,27 @@
       <div class="px-1">
         <user-card />
         <div>
-          <exp-card class="mt-4" />
-          <exp-card class="mt-4" />
-          <exp-card class="mt-4" />
+          <exp-card
+            :avg="expCard.avg_duration"
+            :diving="expCard.avg_duration_diving"
+            :scuba="expCard.avg_duration_scuba"
+            :measure="'min'"
+            class="mt-4"
+          />
+          <exp-card
+            :avg="expCard.max_depth"
+            :diving="expCard.max_depth_diving"
+            :scuba="expCard.max_depth_scuba"
+            :measure="'m'"
+            class="mt-4"
+          />
+          <exp-card
+            :avg="expCard.dive_count"
+            :diving="expCard.dive_count_diving"
+            :scuba="expCard.dive_count_scuba"
+            :measure="'dives'"
+            class="mt-4"
+          />
         </div>
       </div>
     </div>
@@ -27,13 +45,23 @@ import expCard from "../../components/app/expCard";
 import friendsSearch from "../../components/app/friendsSearch";
 
 export default {
-  mounted() {
-    this.$store.dispatch("FEED");
-  },
   components: {
     userCard,
     expCard,
     friendsSearch
+  },
+  computed: {
+    expCard() {
+      return this.$store.getters.expCard;
+    }
+  },
+  mounted() {
+    this.$store.dispatch("FEED", null, {
+      root: true
+    });
+    this.$store.dispatch("EXPCARD", null, {
+      root: true
+    });
   }
 };
 </script>
