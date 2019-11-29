@@ -39,8 +39,8 @@
 </template>
 
 <script>
-import eventAd from "../../components/app/eventAD";
-import eventCards from "../../components/app/eventCards";
+import eventAd from "../../components/application/eventAD";
+import eventCards from "../../components/application/eventCards";
 
 export default {
   components: {

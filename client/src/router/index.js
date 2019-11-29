@@ -89,7 +89,7 @@ const routes = [
           {
             path: '',
             name: 'app',
-            component: () => import('../components/app/feeds.vue'),
+            component: () => import('../components/application/feeds.vue'),
             meta: {
               requiresAuth: true
             }
@@ -97,7 +97,7 @@ const routes = [
           {
             path: 'dashboard',
             name: 'dashboard',
-            component: () => import('../components/app/dashboard.vue'),
+            component: () => import('../components/application/dashboard.vue'),
             meta: {
               requiresAuth: true
             }
@@ -134,7 +134,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode:'history',
+  mode: 'history',
   routes
 })
 

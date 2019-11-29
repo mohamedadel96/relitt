@@ -6,13 +6,13 @@
 </template>
 
 <script>
-import navBar from "../components/app/navbar";
+import navBar from "../components/application/navbar";
 export default {
   components: {
     navBar
   },
   mounted() {
-    this.$store.dispatch('USERCARD')
+    this.$store.dispatch("USERCARD");
     this.$store.dispatch("EXPCARD");
   }
 };

@@ -43,9 +43,9 @@
 </template>
 
 <script>
-import userCard from "../../components/app/userCard";
-import expCard from "../../components/app/expCard";
-import friendsSearch from "../../components/app/friendsSearch";
+import userCard from "../../components/application/userCard";
+import expCard from "../../components/application/expCard";
+import friendsSearch from "../../components/application/friendsSearch";
 
 export default {
   components: {
