@@ -6,10 +6,10 @@
       </select>
     </div>
 
-    <div class="posts mt-3">
-      <exp-card class="mt-2" />
-      <exp-card class="mt-2" />
-      <exp-card class="mt-2" />
+    <div class="posts mt-3"> 
+          <exp-card :value="expCard.avg_duration"  :minValue="expCard.avg_duration_diving" :maxValue="expCard.avg_duration_scuba" measure="min" title="Average duration under water" class="mt-4" />
+          <exp-card :value="expCard.max_depth" :minValue='expCard.max_depth_diving' :maxValue='expCard.max_depth_scuba' measure="m" title="Max Depth" class="mt-4" />
+          <exp-card :value="expCard.dive_count" :minValue='expCard.dive_count_diving' :maxValue='expCard.dive_count_scuba' measure="dive" title="Number of Dives" class="mt-4" />
     </div>
   </section>
 </template>
@@ -19,7 +19,11 @@ import expCard from "./expCard";
 export default {
   components: {
     expCard
-  }
+  },
+  computed: {
+    expCard(){
+      return this.$store.getters.expCard
+    }}
 };
 </script>
 

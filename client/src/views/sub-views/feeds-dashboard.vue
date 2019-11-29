@@ -5,26 +5,29 @@
         <user-card />
         <div>
           <exp-card
+            title="Average duration under water"
             :value="expCard.avg_duration"
             :minValue="expCard.avg_duration_diving"
             :maxValue="expCard.avg_duration_scuba"
-            :measure="'min'"
+            measure="min"
             class="mt-4"
           />
           <exp-card
+            title="Max Depth"
             :value="expCard.max_depth"
             :minValue="expCard.max_depth_diving"
             :maxValue="expCard.max_depth_scuba"
-            :measure="'m'"
+            measure="m"
             class="mt-4"
           />
           <exp-card
+            title="Number of Dives"
             :value="expCard.dive_count"
             :minValue="expCard.dive_count_diving"
             :maxValue="expCard.dive_count_scuba"
-            :measure="'dives'"
+            measure="dives"
             class="mt-4"
-          />
+          />          
         </div>
       </div>
     </div>
@@ -32,7 +35,7 @@
       <router-view />
     </div>
     <div class="col-md-3 d-md-block d-none px-3">
-      <div class="search-sec pl-4 pr-5 pt-4 col-12 px-0 rounded">
+      <div class="search-sec pl-4 pr-5 pt-4 col-12 px-0 rounded">Nu
         <friends-search />
       </div>
     </div>
@@ -45,14 +48,15 @@ import expCard from "../../components/app/expCard";
 import friendsSearch from "../../components/app/friendsSearch";
 
 export default {
-  components: {
+
+    components: {
     userCard,
     expCard,
     friendsSearch
   },
   computed: {
-    expCard() {
-      return this.$store.getters.expCard;
+    expCard(){
+      return this.$store.getters.expCard
     }
   },
   mounted() {

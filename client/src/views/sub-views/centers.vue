@@ -26,7 +26,9 @@ import centerCards from "../../components/app/centerCards";
 export default {
   components: {
     centerCards
-  }
+  }, mounted(){
+    this.$store.dispatch('CENTERCARD')
+    }
 };
 </script>
 

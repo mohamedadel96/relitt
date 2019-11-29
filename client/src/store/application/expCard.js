@@ -14,8 +14,8 @@ export default {
       state.expcard = data
     }
   },
-  actions: {
-    EXPCARD({ commit }) {
+  actions:{
+    EXPCARD( { commit } ) {
       return new Promise((resolve, reject) => {
         appServices.expCard().then(res => {
           if (res.data.status === 401) {
