@@ -13,9 +13,9 @@ export default {
   },
   mounted() {
     this.$store.dispatch('USERCARD')
-  },
+  }
 };
-</script>
+</script> 
 
 <style>
 #app {
