@@ -8,18 +8,18 @@
       </div>
     </div>
 
-    <div class="posts" v-if="feed">
-      <div class="post rounded" v-for="(feeds,i) in feed" :key="i">
+    <div class="posts" v-if="feeds">
+      <div class="post rounded" v-for="(feed,i) in feeds" :key="i">
         <div class="post-info px-3 mt-3 d-flex justify-content-between align-items-center">
           <div class="d-flex align-items-center py-2">
             <img
               class="border rounded-circle mr-3"
-              :src="feeds.user.image"
+              :src="feed.user.image"
               alt="friend profile picture"
             />
             <div>
-              <p class="name font-weight-bold">{{feeds.user.firstname}} {{feeds.user.lastname}}</p>
-              <p class="mb-0 job">{{feeds.created_at}}</p>
+              <p class="name font-weight-bold">{{feed.user.firstname}} {{feed.user.lastname}}</p>
+              <p class="mb-0 job">{{feed.created_at}}</p>
             </div>
           </div>
           <div>

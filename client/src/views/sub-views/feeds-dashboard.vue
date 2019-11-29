@@ -59,7 +59,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch("FEED");
+    this.$store.dispatch("FEEDS");
   }
 };
 </script>

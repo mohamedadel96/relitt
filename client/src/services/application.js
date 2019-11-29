@@ -8,7 +8,7 @@ export default {
    events() {
       return Api().get(`events?lat=&lng=&page=`)
    },
-   feed() {
+   feeds() {
       return Api().get('home/feed?page=1&page_size=10')
    },
    expCard() {

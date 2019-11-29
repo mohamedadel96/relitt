@@ -15,9 +15,9 @@ export default {
     }
   },
   actions: {
-    FEED({ commit }) {
+    FEEDS({ commit }) {
       return new Promise((resolve, reject) => {
-        appServices.feed().then(res => {
+        appServices.feeds().then(res => {
           console.log(res)
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
