@@ -14,8 +14,8 @@ export default {
       state.events = data
     }
   },
-  actions:{
-    EVENTS( { commit } ) {
+  actions: {
+    EVENTS({ commit }) {
       return new Promise((resolve, reject) => {
         appServices.events().then(res => {
           if (res.data.status === 401) {
