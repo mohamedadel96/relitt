@@ -26,9 +26,10 @@ import centerCards from "../../components/application/centerCards";
 export default {
   components: {
     centerCards
-  }, mounted(){
-    this.$store.dispatch('CENTERCARD')
-    }
+  },
+  mounted() {
+    this.$store.dispatch("CENTERCARD");
+  }
 };
 </script>
 
@@ -40,6 +41,7 @@ export default {
         text-decoration: none;
         color: $gray;
         letter-spacing: 1px;
+
         &.active {
           border-bottom: 3px solid $blue;
           color: $blue;

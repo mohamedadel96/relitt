@@ -47,6 +47,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import review from "../../components/application/review";
 import location from "../../components/application/location";
@@ -58,14 +59,17 @@ export default {
   }
 };
 </script>
+
 <style lang="scss" scoped>
 #center {
   background-color: #fafafb;
   color: #00223c;
+
   img {
     width: 100%;
     height: 30%;
   }
+
   .container-fluid {
     width: 80%;
     padding: 60px 65px;
@@ -73,19 +77,24 @@ export default {
     -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.05);
     -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.05);
     box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.05);
+
     h1 {
       font-size: $fontXL;
     }
+
     h2 {
       font-size: $fontLG;
       margin: 20px;
     }
+
     .cards img {
       font-size: $fontMD;
     }
+
     hr {
       margin: 10px 0px;
     }
+
     p {
       margin: 10px 20px;
     }
