@@ -1,27 +1,27 @@
 <template>
   <section id="feeds-dashboard" class="d-flex mt-4">
-    <div class="col-md-3 d-md-block d-none px-4">
+    <div class="col-md-3 d-md-block d-none px-4" v-if="expCard">
       <div class="px-1">
         <user-card />
         <div>
           <exp-card
-            :avg="expCard.avg_duration"
-            :diving="expCard.avg_duration_diving"
-            :scuba="expCard.avg_duration_scuba"
+            :value="expCard.avg_duration"
+            :minValue="expCard.avg_duration_diving"
+            :maxValue="expCard.avg_duration_scuba"
             :measure="'min'"
             class="mt-4"
           />
           <exp-card
-            :avg="expCard.max_depth"
-            :diving="expCard.max_depth_diving"
-            :scuba="expCard.max_depth_scuba"
+            :value="expCard.max_depth"
+            :minValue="expCard.max_depth_diving"
+            :maxValue="expCard.max_depth_scuba"
             :measure="'m'"
             class="mt-4"
           />
           <exp-card
-            :avg="expCard.dive_count"
-            :diving="expCard.dive_count_diving"
-            :scuba="expCard.dive_count_scuba"
+            :value="expCard.dive_count"
+            :minValue="expCard.dive_count_diving"
+            :maxValue="expCard.dive_count_scuba"
             :measure="'dives'"
             class="mt-4"
           />
@@ -56,12 +56,8 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch("FEED", null, {
-      root: true
-    });
-    this.$store.dispatch("EXPCARD", null, {
-      root: true
-    });
+    this.$store.dispatch("FEED");
+    this.$store.dispatch("EXPCARD");
   }
 };
 </script>
