@@ -121,7 +121,7 @@ const routes = [
         }
       },
       {
-        path: 'center',
+        path: 'centers/:id',
         name: 'center',
         component: () => import('../views/sub-views/center.vue'),
         meta: {
@@ -134,7 +134,6 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'history',
   routes
 })
 
