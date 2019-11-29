@@ -11,13 +11,13 @@
           />
         </div>
         <div class="col-8 px-0 mt-3 d-flex flex-wrap align-items-between">
-          <div class="desc d-flex justify-content-between">
-            <div class="col-8 px-2">
+          <div class="col-12 d-flex justify-content-between">
+            <div class="details col-7 px-2">
               <p class="mb-0 font-weight-bold fontMD">{{centercard.name}}</p>
               <p class="mb-2 text-secondary fontXS">{{centercard.location_name}}</p>
-              <p class="mb-0 text-secondary fontSM">{{centercard.description}}</p>
+              <p class="mb-0 text-secondary fontSM desc">{{centercard.description}}</p>
             </div>
-            <div class="col-4 px-4 text-center">
+            <div class="col-5 px-0 text-center">
               <div>
                 <p class="fontXL font-weight-bold text-right">icon stars</p>
               </div>
@@ -78,6 +78,15 @@ export default {
         img {
           width: 100%;
           object-fit: cover;
+        }
+      }
+
+      .details {
+        .desc {
+          height: 120px;
+          overflow: hidden;
+          white-space: pre-line;
+          text-overflow: ellipsis;
         }
       }
 
