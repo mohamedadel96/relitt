@@ -12,12 +12,14 @@
         </div>
         <div class="col-8 px-0 mt-3 d-flex flex-wrap align-items-between">
           <div class="desc d-flex justify-content-between">
-            <div class="col-6 px-2">
+            <div class="col-8 px-2">
               <p class="mb-0 font-weight-bold fontMD">{{centercard.name}}</p>
               <p class="mb-2 text-secondary fontXS">{{centercard.location_name}}</p>
-              <p class="mb-0 text-secondary fontSM">{{centercard.description}}</p>
+              <p
+                class="mb-0 text-secondary fontSM"
+              >{{centercard.description}}</p>
             </div>
-            <div class="col-6 px-4 text-center">
+            <div class="col-4 px-4 text-center">
               <div>
                 <p class="fontXL font-weight-bold text-right">icon stars</p>
               </div>
@@ -53,10 +55,11 @@
 
 <script>
 export default {
-  computed: {
-    centercards() {
-      return this.$store.getters.getCenterCard;
+  computed:{
+    centercards(){
+      return this.$store.getters.getCenterCard
     }
+
   }
 };
 </script>

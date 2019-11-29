@@ -28,9 +28,10 @@
         </div>
 
         <div class="post-media mb-3">
+         
           <img
             class="st-pic col-12 px-0"
-            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
             alt="post picture"
           />
           <div class="pics">
@@ -53,7 +54,9 @@
         </div>
 
         <div class="post-decription px-3">
-          <p class="description">{{feeds.body}}</p>
+          <p
+            class="description"
+          >{{feeds.body}}</p>
           <div class="details d-flex">
             <p class="mb-0">
               <span>{{feeds.likes_count}}&nbsp;</span>
@@ -80,11 +83,12 @@
 
 <script>
 export default {
-  computed: {
-    feed() {
-      return this.$store.getters.getFeed;
+  computed:{
+    feed(){
+      return this.$store.getters.getFeed
     }
   }
+
 };
 </script>
 

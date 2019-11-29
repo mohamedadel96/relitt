@@ -41,6 +41,7 @@ export default {
         review,
         location
     }
+
 }
 </script>
 <style lang="scss" scoped>
