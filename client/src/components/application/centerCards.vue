@@ -1,7 +1,7 @@
 <template>
   <section id="centerCard">
     <div class="search rounded py-3 mb-3 text-center fontMD">Alexandria, Egypt</div>
-    <div class="cards" v-for="( centercard, i ) in centercards" :key="i">
+    <div class="cards" v-for="( card, i ) in centercards" :key="i">
       <div class="card border-0 rounded d-flex flex-nowrap flex-row mb-3">
         <div class="image col-4 px-0">
           <img
@@ -13,9 +13,9 @@
         <div class="col-8 px-0 mt-3 d-flex flex-wrap align-items-between">
           <div class="col-12 d-flex justify-content-between">
             <div class="details col-7 px-2">
-              <p class="mb-0 font-weight-bold fontMD">{{centercard.name}}</p>
-              <p class="mb-2 text-secondary fontXS">{{centercard.location_name}}</p>
-              <p class="mb-0 text-secondary fontSM desc">{{centercard.description}}</p>
+              <p class="mb-0 font-weight-bold fontMD">{{card.name}}</p>
+              <p class="mb-2 text-secondary fontXS">{{card.location_name}}</p>
+              <p class="mb-0 text-secondary fontSM desc">{{card.description}}</p>
             </div>
             <div class="col-5 px-0 text-center">
               <div>
@@ -43,7 +43,10 @@
               <span class="pr-2">icon</span>
               <span class="pr-2">icon</span>
             </p>
-            <button class="mr-3 btn btn-primary btn-block py-2">Contact</button>
+            <router-link
+              class="mr-3 btn btn-primary btn-block py-2"
+              :to="'/app/centers/' + card.id"
+            >Contact</router-link>
           </div>
         </div>
       </div>
