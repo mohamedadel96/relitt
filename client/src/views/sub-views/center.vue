@@ -6,43 +6,27 @@
     <div class="container-fluid">
       <h2
         class="text-capitalize font-weight-bold"
-      >From citadel to qitbay to al montazah walking tour</h2>
+      >{{center.name}}</h2>
       <hr />
       <diV class="Ddescrition">
         <div class="icon"></div>
         <p class="font-weight-bold">Descrition</p>
-        <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad consequuntur quam suscipit mollitia dicta quae minima quo quas perferendis molestiae dolorum, at magni optio laudantium harum commodi, dolorem culpa nobis? lconsectetur adipisicing elit. Facere molestiae accusantium obcaecati corrupti aperiam maxime, cumque illo fugiat itaque delectus consequuntur hic blanditiis doloremque deserunt nihil laborum consequatur aliquid tenetur!</p>
+        <p>{{center.description}}</p>
       </diV>
       <hr />
       <div class="service">
         <p class="text-capitalize font-weight-bold">Services</p>
-        <div class="row">
-          <div class="col-lg-6">
-            <p>Scuba diving</p>
-          </div>
-          <div class="col-lg-6">
-            <p>Scuba diving</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6">
-            <p>Scuba diving</p>
-          </div>
-          <div class="col-lg-6">
-            <p>Scuba diving</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6">
-            <p>Scuba diving</p>
-          </div>
-          <div class="col-lg-6">
-            <p>Scuba diving</p>
+        <div class="row" >
+          <div class="col-lg-6" v-for="(service , i) in center.services" :key="i">
+            <img :src="service.image" :alt="service.name" >
+            <p class="d-inline-block">{{service.name}}</p>
           </div>
         </div>
       </div>
       <hr />
       <review></review>
+      <centerComment></centerComment>
+      
       <location></location>
     </div>
   </div>
@@ -51,11 +35,13 @@
 <script>
 import review from "../../components/application/review";
 import location from "../../components/application/location";
+import centerComment from "../../components/application/centerComment";
 
 export default {
   components: {
     review,
-    location
+    location,
+    centerComment
   },
   computed: {
     center() {
@@ -96,6 +82,10 @@ export default {
 
     p {
       margin: 10px 20px;
+    }
+    .service img{
+      width: 50px;
+      height: 50px;
     }
   }
 }
