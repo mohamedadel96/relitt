@@ -2,11 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import Paginate from 'vuejs-paginate'
+import InfiniteLoading from 'vue-infinite-loading';
 import 'bootstrap/dist/css/bootstrap.css'
 
 Vue.config.productionTip = false
-
 
 // router Guard
 router.beforeEach((to, from, next) => {
@@ -31,7 +30,15 @@ router.beforeEach((to, from, next) => {
   }
 })
 
-Vue.component('paginate', Paginate)
+Vue.use(InfiniteLoading, {
+  props: {
+    spinner: 'bubbles',
+  },
+  slots: {
+    noMore: 'No more Posts'
+  },
+});
+
 new Vue({
   router,
   store,

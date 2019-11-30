@@ -8,7 +8,7 @@
       </div>
     </div>
 
-    <div class="posts" v-if="feeds">
+    <div class="posts" v-if="feeds.length">
       <div class="post rounded" v-for="(feed,i) in feeds" :key="i">
         <div class="post-info px-3 mt-3 d-flex justify-content-between align-items-center">
           <div class="d-flex align-items-center py-2">
@@ -75,14 +75,35 @@
         </div>
       </div>
     </div>
+
+    <infinite-loading @infinite="moreFeeds"></infinite-loading>
   </section>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      filter: {
+        page: 1
+      }
+    };
+  },
   computed: {
     feeds() {
       return this.$store.getters.feeds;
+    }
+  },
+  methods: {
+    moreFeeds(state) {
+      this.$store.dispatch("FEEDS", this.filter).then(res => {
+        if (res !== "end") {
+          this.filter.page += 1;
+          state.loaded();
+        } else {
+          state.complete();
+        }
+      });
     }
   }
 };
