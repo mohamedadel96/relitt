@@ -6,7 +6,7 @@
       </select>
     </div>
 
-    <div>
+    <div class="chartSec mt-3 p-2">
       <chart class="chart" />
     </div>
 
@@ -68,9 +68,13 @@ export default {
     }
   }
 
-  .chart {
-    height: 300px;
-    overflow: hidden;
+  .chartSec {
+    background: $background_white;
+    box-shadow: 1px 1px 4px #ddd;
+    .chart {
+      height: 300px;
+      overflow: hidden;
+    }
   }
 }
 </style>
