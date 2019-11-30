@@ -4,18 +4,18 @@
       <img src="../../assets/img/Layer1.png" />
     </div>
     <div class="container-fluid">
-      <h1
+      <h2
         class="text-capitalize font-weight-bold"
-      >From citadel to qitbay to al montazah walking tour</h1>
+      >From citadel to qitbay to al montazah walking tour</h2>
       <hr />
       <diV class="Ddescrition">
         <div class="icon"></div>
-        <h2 class="font-weight-bold">Descrition</h2>
+        <p class="font-weight-bold">Descrition</p>
         <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad consequuntur quam suscipit mollitia dicta quae minima quo quas perferendis molestiae dolorum, at magni optio laudantium harum commodi, dolorem culpa nobis? lconsectetur adipisicing elit. Facere molestiae accusantium obcaecati corrupti aperiam maxime, cumque illo fugiat itaque delectus consequuntur hic blanditiis doloremque deserunt nihil laborum consequatur aliquid tenetur!</p>
       </diV>
       <hr />
       <div class="service">
-        <h2 class="text-capitalize font-weight-bold">Services</h2>
+        <p class="text-capitalize font-weight-bold">Services</p>
         <div class="row">
           <div class="col-lg-6">
             <p>Scuba diving</p>
@@ -78,17 +78,8 @@ export default {
     -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.05);
     box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.05);
 
-    h1 {
-      font-size: $fontXL;
-    }
-
     h2 {
-      font-size: $fontLG;
       margin: 20px;
-    }
-
-    .cards img {
-      font-size: $fontMD;
     }
 
     hr {
