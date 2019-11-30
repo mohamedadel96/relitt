@@ -18,7 +18,6 @@ export default {
         CENTER({ commit }, id) {
             return new Promise((resolve, reject) => {
                 appServices.center(id).then(res => {
-                    console.log(res.data)
                     if (res.data.status === 401) {
                         // we will handle logout option // call logout function
                     }
