@@ -7,7 +7,7 @@
       <event-info />
       <attendance />
       <comments />
-      <add-comment />data
+      <add-comment />
     </div>
   </section>
 </template>
