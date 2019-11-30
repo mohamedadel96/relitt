@@ -6,6 +6,10 @@
       </select>
     </div>
 
+    <div>
+      <chart class="chart" />
+    </div>
+
     <div class="posts mt-3" v-if="expCard">
       <exp-card
         :value="expCard.avg_duration"
@@ -37,8 +41,10 @@
 
 <script>
 import expCard from "./expCard";
+import chart from "./chart";
 export default {
   components: {
+    chart,
     expCard
   },
   computed: {
@@ -60,6 +66,11 @@ export default {
       border: none;
       outline: none;
     }
+  }
+
+  .chart {
+    height: 300px;
+    overflow: hidden;
   }
 }
 </style>
