@@ -1,5 +1,5 @@
 <template>
-  <div id="center">
+  <div id="center" v-if="center">
     <div class="backgroundimg">
       <img src="../../assets/img/Layer1.png" />
     </div>
@@ -56,6 +56,14 @@ export default {
   components: {
     review,
     location
+  },
+  computed: {
+    center() {
+      return this.$store.getters.center;
+    }
+  },
+  mounted() {
+    this.$store.dispatch("CENTER", this.$route.params.id);
   }
 };
 </script>

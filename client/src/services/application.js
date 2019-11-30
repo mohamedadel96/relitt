@@ -16,6 +16,9 @@ export default {
    },
    centerCard() {
       return Api().get('centers?lat=29.9490403&lng=31.2916668&page=1')
+   },
+   center(id) {
+      return Api().get(`centers/${id}`)
    }
-   
+
 }
