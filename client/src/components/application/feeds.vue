@@ -19,7 +19,7 @@
             />
             <div>
               <p class="name font-weight-bold">{{feed.user.firstname}} {{feed.user.lastname}}</p>
-              <p class="mb-0 job">{{feed.created_at}}</p>
+              <p class="mb-0 job">{{feed.created_at | moment("from", "now")}}</p>
             </div>
           </div>
           <div>

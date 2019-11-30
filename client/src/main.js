@@ -30,6 +30,7 @@ router.beforeEach((to, from, next) => {
   }
 })
 
+Vue.use(require('vue-moment'));
 Vue.use(InfiniteLoading, {
   props: {
     spinner: 'bubbles',
