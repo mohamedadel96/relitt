@@ -7,6 +7,7 @@
       <event-info />
       <attendance />
       <comments />
+      <add-comment />
     </div>
   </section>
 </template>
@@ -15,12 +16,14 @@
 import eventInfo from "../../components/application/eventInfo";
 import attendance from "../../components/application/attendance";
 import comments from "../../components/application/comments";
+import addComment from "../../components/application/addComment";
 
 export default {
   components: {
     eventInfo,
     attendance,
-    comments
+    comments,
+    addComment
   },
   mounted() {
     this.$store.dispatch("EVENT", this.$route.params.id);
