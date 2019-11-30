@@ -6,21 +6,21 @@
     <div class="container-fluid col-10 p-5">
       <event-info />
       <attendance />
-      <review />
+      <comments />
     </div>
   </section>
 </template>
 
 <script>
-import review from "../../components/application/review";
 import eventInfo from "../../components/application/eventInfo";
 import attendance from "../../components/application/attendance";
+import comments from "../../components/application/comments";
 
 export default {
   components: {
-    review,
     eventInfo,
-    attendance
+    attendance,
+    comments
   },
   mounted() {
     this.$store.dispatch("EVENT", this.$route.params.id);
