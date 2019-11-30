@@ -1,6 +1,6 @@
 <template>
-  <section id="expCard" class="pt-2 pb-3 px-3 rounded"  >
-    <div >
+  <section id="expCard" class="pt-2 pb-3 px-3 rounded">
+    <div>
       <div class="block_1 d-flex pt-4 justify-content-between">
         <p class="title font-weight-bold mb-0 col-9 px-0">{{title}}</p>
         <div class="time text-center pl-4 mr-5">
@@ -22,20 +22,18 @@
           </p>
         </div>
       </div>
-    </div>  
-    
+    </div>
   </section>
 </template>
 
 <script>
 export default {
-  props:["value" , "minValue" , "maxValue", "measure", "title"],
+  props: ["value", "minValue", "maxValue", "measure", "title"],
   methods: {
-    round(num){
-      return parseInt(num)
+    round(num) {
+      return parseInt(num);
     }
-  },
- 
+  }
 };
 </script>
 
@@ -44,14 +42,10 @@ export default {
   background: $background_white;
   box-shadow: 1px 1px 4px #ddd;
   .block_1 {
-    p.title {
-      font-size: 22px;
-    }
     div.time {
       p {
         color: $blue;
         &:first-of-type {
-          font-size: 40px;
           margin-bottom: -12px;
         }
 
@@ -66,7 +60,6 @@ export default {
   .block_2 {
     p {
       color: #aaa;
-      font-size: 14px;
     }
   }
 }

@@ -110,13 +110,11 @@ export default {
           height: 60px;
         }
         .name {
-          font-size: 20px;
           margin-bottom: -5px;
         }
         .job {
           color: $gray;
           opacity: 0.7;
-          font-size: 16px;
         }
       }
       .post-media {
@@ -142,7 +140,6 @@ export default {
           color: $gray;
         }
         .details {
-          font-size: 16px;
           color: $gray;
           opacity: 0.6;
         }

@@ -71,9 +71,6 @@ export default {};
 
 <style lang="scss" scoped>
 #friendsSearch {
-  .title {
-    font-size: 20px;
-  }
   .search {
     background: #f8f8ff;
     border-radius: 11px;
@@ -81,7 +78,6 @@ export default {};
       background: none;
       border: none;
       outline: none;
-      font-size: 18px;
     }
   }
 
@@ -91,13 +87,11 @@ export default {};
       height: 60px;
     }
     .name {
-      font-size: 20px;
       margin-bottom: -5px;
     }
     .job {
       color: #777;
       opacity: 0.7;
-      font-size: 16px;
     }
   }
 }

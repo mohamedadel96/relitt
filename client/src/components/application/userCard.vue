@@ -2,11 +2,7 @@
   <section id="userCard" class="pb-3 rounded">
     <div v-if="userCard">
       <div class="block_1 text-center">
-        <img
-          class="border rounded-circle mt-5"
-          :src="userCard.image"
-          alt="user image"
-        />
+        <img class="border rounded-circle mt-5" :src="userCard.image" alt="user image" />
         <p class="name font-weight-bold mb-0">{{userCard.firstname}} {{userCard.lastname}}</p>
         <p class="job">{{userCard.type}}</p>
       </div>
@@ -28,7 +24,7 @@
 export default {
   computed: {
     userCard() {
-      return this.$store.getters.userCard
+      return this.$store.getters.userCard;
     }
   }
 };
@@ -43,12 +39,8 @@ export default {
       width: 70px;
       height: 70px;
     }
-    p.name {
-      font-size: 26px;
-    }
     p.job {
       opacity: 0.7;
-      font-size: 18px;
       color: #777;
     }
   }
@@ -56,7 +48,6 @@ export default {
   .block_2 {
     .num {
       color: $blue;
-      font-size: 22px;
     }
     .opacity {
       opacity: 0.6;
