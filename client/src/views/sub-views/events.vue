@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    <paginate :page-count="20" prev-text="Prev" next-text="Next" container-class="paginate"></paginate>
+    
   </section>
 </template>
 

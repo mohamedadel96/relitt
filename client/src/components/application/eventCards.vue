@@ -1,7 +1,11 @@
 <template>
   <section id="eventCards">
     <div class="cards" v-if="events">
-      <div class="card border-0 rounded d-flex flex-nowrap flex-row mb-3" v-for="(event,i) in events" :key="i">
+      <div
+        class="card border-0 rounded d-flex flex-nowrap flex-row mb-3"
+        v-for="(event,i) in events"
+        :key="i"
+      >
         <div class="image col-4 px-0">
           <img
             class="p-3"
@@ -20,9 +24,11 @@
             </div>
             <div class="mr-3 text-center">
               <div>
-                <p class="fontXL font-weight-bold num">20</p>
-                <p class="fontLG font-weight-bold mb-0">JUN</p>
-                <p class="fontXS text-secondary">10 am</p>
+                <p class="fontXL font-weight-bold num">{{event.start_date | moment('D')}}</p>
+                <p
+                  class="fontLG font-weight-bold mb-0 text-uppercase"
+                >{{event.start_date | moment('MMM')}}</p>
+                <p class="fontXS text-secondary">{{event.start_date | moment('h a')}}</p>
               </div>
             </div>
           </div>
@@ -42,7 +48,7 @@
 export default {
   computed: {
     events() {
-      return this.$store.getters.events
+      return this.$store.getters.events;
     }
   }
 };

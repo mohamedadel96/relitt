@@ -57,9 +57,6 @@ export default {
     expCard() {
       return this.$store.getters.expCard;
     }
-  },
-  mounted() {
-    this.$store.dispatch("FEEDS");
   }
 };
 </script>

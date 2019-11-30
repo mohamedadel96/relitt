@@ -113,6 +113,14 @@ const routes = [
         }
       },
       {
+        path: 'events/:id',
+        name: 'event',
+        component: () => import('../views/sub-views/event.vue'),
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
         path: 'centers',
         name: 'centers',
         component: () => import('../views/sub-views/centers.vue'),
@@ -127,7 +135,6 @@ const routes = [
         meta: {
           requiresAuth: true
         }
-
       }
     ]
   }

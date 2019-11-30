@@ -15,11 +15,10 @@
         </div>
         <div class="prop col-4 px-0">
           <p class="fontMD font-weight-bold mb-0 head">Perfect</p>
-          <p class="fontXS text-secondary mb-0">Genral</p>
+          <p class="fontXS text-secondary mb-0">price</p>
         </div>
       </div>
     </div>
- 
   </div>
 </template>
 
@@ -29,7 +28,8 @@ export default {
     center() {
       return this.$store.getters.center;
     }
-  }};
+  }
+};
 </script>
 
 <style lang="scss">
@@ -50,23 +50,6 @@ export default {
 
   .rate {
     margin-bottom: 3rem !important;
-  }
-
-  .card img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-top: 19px;
-  }
-
-  .card {
-    border: none;
-    border-top: 1px solid #ddd;
-  }
-
-  .head {
-    font-weight: bold !important;
-    color: #7052d5 !important;
   }
 }
 </style>
