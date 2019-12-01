@@ -53,10 +53,10 @@
         </div>
 
         <div class="post-decription px-3">
-          <p class="description fontCS">{{feeds.body}}</p>
+          <p class="description fontCS">{{feed.body}}</p>
           <div class="details d-flex">
             <p class="mb-0 fontXS">
-              <span>{{feeds.likes_count}}&nbsp;</span>
+              <span>{{feed.likes_count}}&nbsp;</span>
               <span>Likes</span>
             </p>
             <p class="px-2 mb-0">-</p>

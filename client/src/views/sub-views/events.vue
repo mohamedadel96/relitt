@@ -7,7 +7,7 @@
           <p class="text-secondary text-center">Your upcoming events</p>
         </div>
         <div>
-          <event-ad />
+          <myEvent/>
         </div>
       </div>
       <div class="col-md-9">
@@ -30,17 +30,17 @@
 </template>
 
 <script>
-import eventAd from "../../components/application/eventAD";
+import myEvent from "../../components/application/myEvent";
 import eventCards from "../../components/application/eventCards";
 
 export default {
   components: {
-    eventAd,
+    myEvent,
     eventCards
   },
   mounted() {
     this.$store.dispatch("EVENTS");
-    this.$store.dispatch("EVENTAD");
+    this.$store.dispatch("MYEVENT");
 
   }
 };

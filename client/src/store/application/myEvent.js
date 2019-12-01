@@ -15,7 +15,7 @@ export default {
     }
   },
   actions:{
-    MYEVENT( { commit } ) {
+    MYEVENT( {commit} ) {
       return new Promise((resolve, reject) => {
         appServices.myEvent().then(res => {
           if (res.data.status === 401) {
