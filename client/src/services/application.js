@@ -19,6 +19,9 @@ export default {
    },
    center(id) {
       return Api().get(`centers/${id}`)
+   },
+   eventAD(id) {
+      return Api().get("my_events")
    }
 
 }

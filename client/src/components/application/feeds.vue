@@ -18,8 +18,8 @@
               alt="friend profile picture"
             />
             <div>
-              <p class="name font-weight-bold">{{feed.user.firstname}} {{feed.user.lastname}}</p>
-              <p class="mb-0 job">{{feed.created_at | moment("from", "now")}}</p>
+              <p class="name font-weight-bold fontSM">{{feed.user.firstname}} {{feed.user.lastname}}</p>
+              <p class="mb-0 job fontCS">{{feed.created_at | moment("from", "now")}}</p>
             </div>
           </div>
           <div>
@@ -53,14 +53,14 @@
         </div>
 
         <div class="post-decription px-3">
-          <p class="description">{{feeds.body}}</p>
+          <p class="description fontCS">{{feeds.body}}</p>
           <div class="details d-flex">
-            <p class="mb-0">
+            <p class="mb-0 fontXS">
               <span>{{feeds.likes_count}}&nbsp;</span>
               <span>Likes</span>
             </p>
             <p class="px-2 mb-0">-</p>
-            <p class="mb-0">
+            <p class="mb-0 fontXS">
               <span>22&nbsp;</span>
               <span>Comments</span>
             </p>
@@ -69,7 +69,7 @@
 
         <hr class="border mx-3 my-1" />
 
-        <div class="post-options d-flex col-12 px-0 text-center">
+        <div class="post-options d-flex col-12 px-0 text-center fontCS">
           <div class="col-6 py-2 px-0">Like</div>
           <div class="col-6 py-2 px-0">Comment</div>
         </div>

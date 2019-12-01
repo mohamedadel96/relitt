@@ -1,5 +1,6 @@
 <template>
-  <section id="eventAD" class="mt-3">
+<div >
+  <section id="eventAD" class="mt-3" v-for="(event , i ) in  eventAd" :key="i">
     <div class="head ml-3 mt-2 mb-0">
       <p class="title fontMD font-weight-bold">Saturday in alexendria</p>
       <p class="desc mb-2 text-truncate text-secondary">description on it</p>
@@ -22,10 +23,18 @@
       </div>
     </div>
   </section>
+</div>
 </template>
 
 <script>
-export default {};
+export default {
+computed:{
+eventAd(){
+  return this.$store.getters.eventAD;
+}
+}
+
+};
 </script>
 
 <style lang="scss" scoped>
