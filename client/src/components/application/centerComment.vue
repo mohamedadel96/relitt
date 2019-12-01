@@ -1,7 +1,7 @@
 <template>
     <div id="comment">
       <div class="d-flex flex-wrap justify-content-between ml-2">
-        <div class="card col-md-5" v-for="i in data.reviews" :key="i">
+        <div class="card col-md-5" v-for="(center , i ) in data.reviews" :key="i">
           <div class="row no-gutters">
             <div class="col-md-4">
               <img
@@ -12,7 +12,7 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title m-0 d-inline-block">{{data.reviews.user.firstname}} {{data.reviews.user.lastname}}</h5>
+                <h5 class="card-title m-0 d-inline-block">{{center.user.firstname}} {{center.user.lastname}}</h5>
                 <p class="card-text m-0 d-lg-inline-flex justify-content-end fontXS">stars</p>
                 <p class="card-text fontXS">Last updated 3 mins ago</p>
                 <p
@@ -29,7 +29,12 @@
 
 <script>
 export default {
-      props:["data"]
+computed:{
+  data(){
+    return this.$store.getters.center
+  }
+}
+
 }
 </script>
 
