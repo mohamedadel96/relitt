@@ -29,8 +29,8 @@
 <script>
 export default {
 computed:{
-eventAd(){
-  return this.$store.getters.eventAD;
+myEvents(){
+  return this.$store.getters.myEvent;
 }
 }
 

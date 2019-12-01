@@ -2,27 +2,27 @@ import appServices from '../../services/application'
 
 export default {
   state: {
-    eventad: null
+    myevent: null
   },
   getters: {
-    eventAD(state) {
-       return state.eventad
+    myEvent(state) {
+      return state.myevent
     }
   },
   mutations: {
-    saveEventAD(state, data) {
-      state.eventad = data
+    saveMyEvent(state, data) {
+      state.myevent = data
     }
   },
   actions:{
-    eventAD( { commit } ) {
+    MYEVENT( { commit } ) {
       return new Promise((resolve, reject) => {
-        appServices.eventAD().then(res => {
+        appServices.myEvent().then(res => {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.errors)
-          commit('saveEventAD', res.data.data)
+          commit('saveMyEvent', res.data.data)
           resolve('done')
         })
       })
