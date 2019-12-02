@@ -5,19 +5,21 @@
           <div class="row no-gutters">
             <div class="col-md-4">
               <img
-                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+                :src="center.user.image"
                 class="card-img"
                 alt="..."
               />
             </div>
             <div class="col-md-8">
               <div class="card-body">
+                <div class="d-flex justify-content-between">
                 <h5 class="card-title m-0 d-inline-block">{{center.user.firstname}} {{center.user.lastname}}</h5>
                 <p class="card-text m-0 d-lg-inline-flex justify-content-end fontXS">stars</p>
-                <p class="card-text fontXS">Last updated 3 mins ago</p>
+                </div>
+                <p class="card-text fontXS">{{center.created_at | moment("from", "now")  }}</p>
                 <p
                   class="card-text"
-                >This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                >{{ center.comment}}</p>
               </div>
             </div>
           </div>

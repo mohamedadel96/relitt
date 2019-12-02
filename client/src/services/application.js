@@ -22,6 +22,9 @@ export default {
    },
    myEvent() {
       return Api().get("my_events")
+   },
+   event(id) {
+      return Api().get(`events/${id}`)
    }
 
 }

@@ -36,7 +36,10 @@
             <p class="col-5 mb-0 text-secondary">
               <span>13</span> attendance
             </p>
-            <button class="mr-3 btn btn-primary btn-block">Join</button>
+            <router-link
+              class="mr-3 btn btn-primary btn-block py-2"
+              :to="'/app/events/' + event.id"
+            >Join</router-link>
           </div>
         </div>
       </div>

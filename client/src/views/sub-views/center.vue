@@ -6,7 +6,7 @@
     <div class="container-fluid">
       <centerInfo :data="center"></centerInfo>
       <review></review>
-      <centerComment :data="center"></centerComment>
+      <centerComment ></centerComment>
       <location></location>
     </div>
   </div>

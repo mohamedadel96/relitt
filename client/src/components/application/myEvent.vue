@@ -18,8 +18,8 @@
           <p class="fontLG font-weight-bold mb-0">{{event.start_date | moment('MMM')}}</p>
           <p class="fontXS text-secondary">{{event.start_date | moment('h a')}}</p>
         </div>
-        <div class="col-9 d-flex align-items-between flex-wrap">
-          <p class="mb-1 pt-2 text-secondary">{{event.description}}</p>
+        <div class="col-9 d-flex align-items-between flex-wrap justify-content-around">
+          <p class="mb-1 text-secondary">{{event.description}}</p>
           <p class="text-secondary text-bold">13 attendance</p>
         </div>
       </div>
@@ -40,7 +40,7 @@ myEvents(){
 </script>
 
 <style lang="scss" scoped>
-#eventAD {
+#myEvent {
   background: $background_white;
   overflow: hidden;
   box-shadow: 1px 1px 4px #ddd;
