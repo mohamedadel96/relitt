@@ -1,12 +1,13 @@
 <template>
   <section id="dashboard">
     <div class="search rounded py-1 d-flex justify-content-between align-items-center">
-      <select class="py-2 px-4 mr-4">
-        <option value>free diving</option>
+      <select class="py-2 px-4 mr-4" v-model="hide">
+        <option value="free" selected>free diving</option>
+        <option value="all">all</option>
       </select>
     </div>
 
-    <div class="chartSec mt-3 p-2">
+    <div class="chartSec mt-3 p-2" v-show="hide=='all'" > 
       <chart class="chart" />
     </div>
 
@@ -43,6 +44,11 @@
 import expCard from "./expCard";
 import chart from "./chart";
 export default {
+  data() {
+    return {
+      hide:null
+    }
+  },
   components: {
     chart,
     expCard

@@ -10,6 +10,9 @@
   font-family: "Open Sans", sans-serif;
 }
 
+.fontXXS{
+font-size: 12px
+}
 .fontXS {
   font-size: $fontXS;
 }
@@ -25,7 +28,9 @@
 .fontXL {
   font-size: $fontXL;
 }
-
+.fontXXL{
+  font-size: $fontXXL
+}
 .my-3 {
   margin-top: 0.7rem !important;
   margin-bottom: 0.7rem !important;

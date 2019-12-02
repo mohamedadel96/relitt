@@ -11,7 +11,7 @@
         </div>
         <div class="prop col-4 px-0">
           <p class="fontMD font-weight-bold mb-0 head">Good</p>
-          <p class="fontXS text-secondary mb-0">price</p>
+          <p class="fontXS text-secondary mb-0">Quality</p>
         </div>
         <div class="prop col-4 px-0">
           <p class="fontMD font-weight-bold mb-0 head">Perfect</p>
@@ -23,7 +23,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    center() {
+      return this.$store.getters.center;
+    }
+  }
+};
 </script>
 
 <style lang="scss">

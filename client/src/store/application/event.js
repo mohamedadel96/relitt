@@ -2,27 +2,27 @@ import appServices from '../../services/application'
 
 export default {
     state: {
-        center: null
+        event: null
     },
     getters: {
-        center(state) {
-            return state.center
+        event(state) {
+            return state.event
         }
     },
     mutations: {
-        saveCenter(state, data) {
-            state.center = data
+        saveEvent(state, data) {
+            state.event = data
         }
     },
     actions: {
-        CENTER({ commit }, id) {
+        EVENT({ commit }, id) {
             return new Promise((resolve, reject) => {
-                appServices.center(id).then(res => {
+                appServices.event(id).then(res => {
                     if (res.data.status === 401) {
                         // we will handle logout option // call logout function
                     }
                     if (res.data.code !== 200) return reject(res.data.errors)
-                    commit('saveCenter', res.data.data)
+                    commit('saveEvent', res.data.data)
                     resolve('done')
                 })
             })

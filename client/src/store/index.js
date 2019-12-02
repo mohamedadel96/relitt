@@ -12,6 +12,8 @@ import expCard from './application/expCard'
 import feeds from './application/feeds'
 import centerCard from './application/centerCard'
 import center from './application/center'
+import myEvent from './application/myEvent'
+import event from './application/event'
 
 Vue.use(Vuex)
 
@@ -47,6 +49,9 @@ export default new Vuex.Store({
     feeds,
     expCard,
     centerCard,
-    center
+    center,
+    myEvent,
+    event
+
   }
 })

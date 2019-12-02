@@ -3,18 +3,18 @@
     <div v-if="userCard">
       <div class="block_1 text-center">
         <img class="border rounded-circle mt-5" :src="userCard.image" alt="user image" />
-        <p class="name font-weight-bold mb-0">{{userCard.firstname}} {{userCard.lastname}}</p>
-        <p class="job">{{userCard.type}}</p>
+        <p class="name font-weight-bold mb-0 fontMD">{{userCard.firstname}} {{userCard.lastname}}</p>
+        <p class="job fontCS">{{userCard.type}}</p>
       </div>
       <div class="block_2 d-flex pb-4 mt-4">
         <div class="col-6 text-center pr-5 border-right">
-          <p class="num mb-0 font-weight-bold">{{userCard.followers_count}}</p>
-          <p class="mb-0 opacity font-weight-bold">Followers</p>
+          <p class="num mb-0 font-weight-bold fontSM">{{userCard.followers_count}}</p>
+          <p class="mb-0 opacity font-weight-bold fontXS">Followers</p>
         </div>
         <div class="col-6 text-center pl-5 border-left">
-          <p class="num mb-0 font-weight-bold">{{userCard.following_count}}</p>
-          <p class="mb-0 opacity font-weight-bold">Following</p>
-        </div>
+          <p class="num mb-0 font-weight-bold fontSM">{{userCard.following_count}}</p>
+          <p class="mb-0 opacity font-weight-bold fontXS">Following</p>
+        </div> 
       </div>
     </div>
   </section>
