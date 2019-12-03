@@ -46,7 +46,7 @@ import chart from "./chart";
 export default {
   data() {
     return {
-      hide:null
+      hide:"free"
     }
   },
   components: {
