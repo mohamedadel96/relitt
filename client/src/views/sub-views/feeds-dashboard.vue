@@ -38,6 +38,7 @@
       <div class="search-sec pl-4 pr-5 pt-4 col-12 px-0 rounded">
         <friends-search />
       </div>
+        <myEvent />
     </div>
   </section>
 </template>
@@ -46,12 +47,15 @@
 import userCard from "../../components/application/userCard";
 import expCard from "../../components/application/expCard";
 import friendsSearch from "../../components/application/friendsSearch";
+import myEvent from "../../components/application/myEvent";
+
 
 export default {
   components: {
     userCard,
     expCard,
-    friendsSearch
+    friendsSearch,
+    myEvent
   },
   computed: {
     expCard() {

@@ -1,8 +1,8 @@
 <template>
   <section id="comments">
-    <div>
+    <div ><!--v-if="comments"-->
       <div class="d-flex flex-wrap justify-content-between ml-2">
-        <div class="card col-md-5" v-for="i in 4" :key="i">
+        <div class="card col-md-5" v-for="(i)  in 4" :key="i"> <!--v-for="(comment ,i ) in comments" :key="i"-->
           <div class="row no-gutters">
             <div class="col-md-4">
               <img
@@ -29,7 +29,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed:{
+    comments(){
+      return this.$store.getters.event
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
