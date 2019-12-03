@@ -16,7 +16,7 @@
     <div class="d-flex justify-content-between py-2">
       <div class="col-6 px-0 d-flex">
         <p class="mr-3">icon</p>
-        <p>{{event.start_date}}</p>
+        <p>{{event.start_date}} </p>
       </div>
       <div class="col-6 px-0 d-flex">
         <p class="mr-3">icon</p>
