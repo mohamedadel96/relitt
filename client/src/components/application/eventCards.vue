@@ -16,24 +16,24 @@
         <div class="col-8 px-0 mt-3 d-flex flex-wrap align-items-between">
           <div class="desc d-flex justify-content-between">
             <div class="col-10">
-              <p class="mb-0 font-weight-bold fontMD">{{event.title}}</p>
+              <p class="mb-0 font-weight-bold fontSM">{{event.title}}</p>
               <p class="mb-2 text-secondary fontXS">Bedforeshine</p>
               <p
-                class="mb-0 text-secondary fontSM"
+                class="mb-0 text-secondary fontXS"
               >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati dolor eaque tempore earum placeat voluptatum at, aspernatur animi quibusdam id,</p>
             </div>
             <div class="mr-3 text-center">
               <div>
-                <p class="fontXL font-weight-bold num">{{event.start_date | moment('D')}}</p>
+                <p class="fontMD font-weight-bold num">{{event.start_date | moment('D')}}</p>
                 <p
-                  class="fontLG font-weight-bold mb-0 text-uppercase"
+                  class="fontCS font-weight-bold mb-0 text-uppercase"
                 >{{event.start_date | moment('MMM')}}</p>
-                <p class="fontXS text-secondary">{{event.start_date | moment('h a')}}</p>
+                <p class="fontXXS text-secondary">{{event.start_date | moment('h a')}}</p>
               </div>
             </div>
           </div>
           <div class="col-12 px-0 pb-3 d-flex justify-content-between align-items-end">
-            <p class="col-5 mb-0 text-secondary">
+            <p class="col-5 mb-0 text-secondary fontXS">
               <span>13</span> attendance
             </p>
             <router-link

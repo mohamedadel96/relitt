@@ -11,13 +11,16 @@
 }
 
 .fontXXS{
-font-size: 12px
+font-size: $fontXXS;
 }
 .fontXS {
   font-size: $fontXS;
 }
 .fontSM {
   font-size: $fontSM;
+}
+.fontCS {
+  font-size: $fontCS;
 }
 .fontMD {
   font-size: $fontMD;
