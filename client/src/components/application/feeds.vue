@@ -30,25 +30,42 @@
         <div class="post-media mb-3">
           <img
             class="st-pic col-12 px-0"
-            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+            v-if="feed.images.length"
+            :src="feed.images[0].url"
             alt="post picture"
           />
-          <div class="pics">
-            <img
-              class="col-4"
-              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-              alt="post picture"
-            />
-            <img
-              class="col-4"
-              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-              alt="post picture"
-            />
-            <img
-              class="col-4"
-              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-              alt="post picture"
-            />
+          <div class="pics d-flex" v-if="feed.images.length - 1 > 0">
+            <div
+              :class="[feed.images.length - 1 == 1 ? 'col-12' : '', feed.images.length - 1 == 2 ? 'col-6' : '', feed.images.length - 1 > 2 ? 'col-4' : '']"
+            >
+              <img
+                class="col-12 px-0"
+                v-if="feed.images[1]"
+                :src="feed.images[1].url"
+                alt="post picture"
+              />
+            </div>
+
+            <div :class="[feed.images.length - 2 == 1 ? 'col-6' : 'col-4']">
+              <img
+                class="col-12 px-0"
+                v-if="feed.images[2]"
+                :src="feed.images[2].url"
+                alt="post picture"
+              />
+            </div>
+            <div class="col-4">
+              <img
+                class="col-12 px-0"
+                v-if="feed.images[3]"
+                :src="feed.images[3].url"
+                alt="post picture"
+              />
+              <div
+                class="imagesNum fontXXL font-weight-bold"
+                v-if="feed.images.length - 1"
+              >+ {{feed.images.length - 1}}</div>
+            </div>
           </div>
         </div>
 
@@ -114,6 +131,7 @@ export default {
   .search {
     background: $background_white;
     box-shadow: 1px 1px 4px #ddd;
+
     input {
       background: none;
       border: none;
@@ -125,46 +143,72 @@ export default {
     .post {
       background: $background_white;
       box-shadow: 1px 1px 4px #ddd;
+
       .post-info {
         img {
           width: 60px;
           height: 60px;
         }
+
         .name {
           margin-bottom: -5px;
         }
+
         .job {
           color: $gray;
           opacity: 0.7;
         }
       }
+
       .post-media {
         .st-pic {
           height: 230px;
           object-fit: cover;
         }
+
         .pics {
           padding-top: 2px;
+          overflow: hidden;
 
-          img {
+          div {
             height: 130px;
             padding: 0 2px 0 0;
-            object-fit: cover;
+            overflow: hidden;
+
             &:last-of-type {
               padding: 0;
+              position: relative;
+              .imagesNum {
+                position: absolute;
+                top: 0;
+                left: 0;
+                color: $fontColor_white;
+                z-index: 1;
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                align-items: center;
+              }
+            }
+            img {
+              object-fit: cover;
+              max-height: 300px;
             }
           }
         }
       }
+
       .post-decription {
         .description {
           color: $gray;
         }
+
         .details {
           color: $gray;
           opacity: 0.6;
         }
       }
+
       .post-options {
         color: $gray;
         opacity: 0.7;
