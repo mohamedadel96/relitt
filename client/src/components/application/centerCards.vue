@@ -37,15 +37,15 @@
               </div>
             </div>
           </div>
-          <div class="col-12 px-0 pb-3 d-flex justify-content-between align-items-end">
-            <div class="service" v-for="(service ,i) in card.services" :key="i">
-            <p class="col-8 mb-0 text-secondary">
-              <span class="pr-2 fontXS">{{service.name}}</span>
-              <img :src="service.image" alt="">
-            </p>
+          <div class="col-12 px-0 pb-3 d-flex justify-content-end  align-items-end">
+            <div class="service col-3 justify-content-start" v-for="(service ,i) in card.services" :key="i" >
+              <p class=" mb-0 text-secondary">
+                <img :src="service.image" alt="">
+                <span class=" fontXS">{{service.name}}</span>
+              </p>
             </div>
             <router-link 
-              class="mr-3 btn btn-primary btn-block py-2"
+              class="mr-3 btn btn-primary btn-block py-2 col-4"
               :to="'/app/centers/' + card.id"
             >Contact</router-link>
           </div>
@@ -107,8 +107,8 @@ export default {
       }
       .service{
           img {
-            width:50px;
-            height: 50px;
+            width:35px;
+            height: 35px;
             border-radius: 50% 
 
           }
