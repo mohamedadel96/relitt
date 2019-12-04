@@ -63,8 +63,8 @@
               />
               <div
                 class="imagesNum fontXXL font-weight-bold"
-                v-if="feed.images.length - 1"
-              >+ {{feed.images.length - 1}}</div>
+                v-if="feed.images.length - 4"
+              >+ {{feed.images.length - 4}}</div>
             </div>
           </div>
         </div>
