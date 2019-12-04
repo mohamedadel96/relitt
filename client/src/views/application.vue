@@ -18,9 +18,8 @@ export default {
 };
 </script> 
 
-<style>
+<style lang="scss" scoped>
 #app {
   background: #fafafa;
-  height: 1000vh;
 }
 </style>
