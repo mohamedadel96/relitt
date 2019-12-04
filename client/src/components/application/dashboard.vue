@@ -1,8 +1,8 @@
 <template>
   <section id="dashboard">
     <div class="search rounded py-1 d-flex justify-content-between align-items-center">
-      <select class="py-2 px-4 mr-4" v-model="hide">
-        <option value="free" selected>free diving</option>
+      <select class="py-2 px-4 mr-4 fontSM" v-model="hide">
+        <option value="free" selected >free diving</option>
         <option value="all">all</option>
       </select>
     </div>

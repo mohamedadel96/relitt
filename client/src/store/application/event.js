@@ -23,6 +23,7 @@ export default {
                     }
                     if (res.data.code !== 200) return reject(res.data.errors)
                     commit('saveEvent', res.data.data)
+                    console.log(res.data.data)
                     resolve('done')
                 })
             })

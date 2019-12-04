@@ -3,8 +3,8 @@
   <div  v-for="(event , i ) in  myEvents" :key="i">
     <section id="myEvent" class="mt-3">
       <div class="head ml-3 mt-2 mb-0">
-        <p class="title fontMD font-weight-bold">{{event.title}}</p>
-        <p class="desc mb-2 text-truncate text-secondary">{{event.location_name}}</p>
+        <p class="title fontMD font-weight-bold fontSM">{{event.title}}</p>
+        <p class="desc mb-2 text-truncate text-secondary fontXS">{{event.location_name}}</p>
       </div>
       <div class="image">
         <img
@@ -14,13 +14,13 @@
       </div>
       <div class="timing d-flex align-items-center">
         <div class="col-3 text-center">
-          <p class="fontXL font-weight-bold num">{{event.start_date | moment('D')}}</p>
-          <p class="fontLG font-weight-bold mb-0">{{event.start_date | moment('MMM')}}</p>
-          <p class="fontXS text-secondary">{{event.start_date | moment('h a')}}</p>
+          <p class="fontMD font-weight-bold num">{{event.start_date | moment('D')}}</p>
+          <p class="fontCS font-weight-bold mb-0">{{event.start_date | moment('MMM')}}</p>
+          <p class="fontXSS text-secondary">{{event.start_date | moment('h a')}}</p>
         </div>
         <div class="col-9 d-flex align-items-between flex-wrap justify-content-around">
-          <p class="mb-1 text-secondary">{{event.description}}</p>
-          <p class="text-secondary text-bold">13 attendance</p>
+          <p class="mb-1 text-secondary fontXS">{{event.description}}</p>
+          <p class="text-secondary text-bold fontXS">13 attendance</p>
         </div>
       </div>
     </section>
