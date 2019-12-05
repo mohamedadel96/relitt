@@ -7859,10 +7859,20 @@ vue-chartjs@^3.5.0:
   resolved "https://registry.yarnpkg.com/vue-chartjs/-/vue-chartjs-3.5.0.tgz#edd0c2be94c521bcbc5357c24afb9f3560855f84"
   integrity sha512-yWNhG3B6g6lvYqNInP0WaDWNZG/SNb6XnltkjR0wYC5pmLm6jvdiotj8er7Mui8qkJGfLZe6ULjrZdHWjegAUg==
 
+vue-facebook-login-component@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/vue-facebook-login-component/-/vue-facebook-login-component-1.4.0.tgz#65c216851b1fb254d945f92f01da7b52a1860caa"
+  integrity sha512-lkZjYxoGmuLK4qawtiWUVlu7COHaqh8DVyfkfqzfEspUmWYHDiYsy2cdhdtRt17N/1XpTk1Q2U13IXmFSZJHHw==
+
 vue-flash-message@^0.7.2:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/vue-flash-message/-/vue-flash-message-0.7.2.tgz#0668d6fa9fc70c65fd5c6ec246a415786960c34d"
   integrity sha512-swOK9PxlWKzt1zzAMJX4YMU2O3kS0JznbwLy8burtKK2vibYc7ODRiEdAVnxRDQ09TG4tElVeO3hwwGDxQktaw==
+
+vue-google-login@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/vue-google-login/-/vue-google-login-2.0.3.tgz#ca1d05a7b824ebf13e38aa8b82e79477ea4556d0"
+  integrity sha512-B2/2Vwwv/2g26UmLtOam8StAXGmE4OPoxaGG03y5HBYg1FciHSTVSMogmz5tUr6EsHhDd2Kny0LZPxgIrXVnjw==
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"
