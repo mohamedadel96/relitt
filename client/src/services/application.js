@@ -6,7 +6,7 @@ export default {
       return Api().get('profile')
    },
    events(payload) {
-      return Api().get(`events?lat=29.9490403&lng=31.2916668&page=${payload.page}`)
+      return Api().get(`events?page=${payload.page}`)
    },
    feeds(payload) {
       return Api().get(`home/feed?page=${payload.page}`)
