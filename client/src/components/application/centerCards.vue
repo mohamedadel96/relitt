@@ -37,12 +37,13 @@
               </div>
             </div>
           </div>
-          <div class="col-12 px-0 pb-3 d-flex justify-content-end  align-items-end">
-            <div class="service col-3 justify-content-start" v-for="(service ,i) in card.services" :key="i" >
-              <p class=" mb-0 text-secondary">
-                <img :src="service.image" alt="">
-                <span class=" fontXS">{{service.name}}</span>
-              </p>
+          <div class="col-12 px-0 pb-3 d-flex justify-content-between  align-items-end">
+            <div class=" row col-6">
+              <div class="service col-3 justify-content-start" v-for="(service ,i) in card.services" :key="i" >
+                <p class=" mb-0 text-secondary">
+                  <img :src="service.image" alt="" data-toggle="tooltip" data-placement="top" :title="service.name">
+                </p>
+              </div>
             </div>
             <router-link 
               class="mr-3 btn btn-primary btn-block py-2 col-4"

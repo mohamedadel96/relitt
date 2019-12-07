@@ -42,8 +42,13 @@
 
       <div class="mt-4 pt-4 pb-1">
         <p class="text-secondary text-center mb-1">or signup using social media</p>
-        <button class="btn btn-secondary btn-block py-3 my-2">facebook</button>
-        <button class="btn btn-secondary btn-block py-3">google</button>
+        <!-- <button class="btn btn-secondary btn-block py-3 my-2">facebook</button> -->
+        <v-facebook-login
+          class="btn btn-secondary btn-block py-3 my-2"
+          app-id="966242223397117"
+          @login="facebookLogin"
+        />
+        <GoogleLogin class="btn btn-secondary btn-block py-3" />
       </div>
 
       <div class="mt-3 d-flex justify-content-between">
@@ -55,7 +60,14 @@
 </template>
 
 <script>
+import GoogleLogin from "vue-google-login";
+import { VFBLogin as VFacebookLogin } from "vue-facebook-login-component";
+
 export default {
+  components: {
+    VFacebookLogin,
+    GoogleLogin
+  },
   data() {
     return {
       form: {
@@ -74,6 +86,9 @@ export default {
       } catch (error) {
         console.log(error);
       }
+    },
+    facebookLogin(res) {
+      console.log(res);
     }
   }
 };
