@@ -32,33 +32,7 @@
     </div>
 
     <div class="col-3 block_3 d-flex justify-content-end px-3">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        width="40"
-        height="40"
-        viewBox="0 0 40 40"
-      >
-        <defs>
-          <clipPath id="a">
-            <rect
-              width="40"
-              height="40"
-              transform="translate(275 18)"
-              fill="#80878d"
-              stroke="#707070"
-              stroke-width="1"
-            />
-          </clipPath>
-        </defs>
-        <g transform="translate(-275 -18)" clip-path="url(#a)">
-          <path
-            d="M129.8,15.8l2.1,2.1V19h-18V18l2.1-2.1V10a6.823,6.823,0,0,1,1.5-4.3,6.259,6.259,0,0,1,3.8-2.4V2.6a1.606,1.606,0,0,1,.5-1.1,1.46,1.46,0,0,1,2.2,0,1.606,1.606,0,0,1,.5,1.1v.7a6.259,6.259,0,0,1,3.8,2.4,6.824,6.824,0,0,1,1.5,4.3ZM120.9,20h3.9a1.98,1.98,0,0,1-3.4,1.4A2.389,2.389,0,0,1,120.9,20Z"
-            transform="translate(172.1 27)"
-            fill="#80878d"
-          />
-        </g>
-      </svg>
+      <img src="../../assets/img/icon/ring.svg" alt />
       <div
         class="d-flex justify-content-center align-items-center border rounded-circle mx-2 overflow-hidden"
       >
@@ -86,7 +60,6 @@
         </g>
       </svg>
     </div>
-
   </nav>
 </template>
 
@@ -94,12 +67,12 @@
 export default {
   data() {
     return {
-      isOpen:false,
-    }
+      isOpen: false
+    };
   },
-  methods:{
-    toggle(){
-      this.isOpen = !this.isOpen
+  methods: {
+    toggle() {
+      this.isOpen = !this.isOpen;
     }
   }
 };
