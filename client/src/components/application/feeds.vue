@@ -2,7 +2,7 @@
   <section id="feeds">
     <div class="search rounded py-1 d-flex justify-content-between align-items-center">
       <input class="py-2 px-4" placeholder="what's in your mind" type="text" />
-      <div>
+      <div class="d-flex align-items-center">
         <span class="px-0"><img src="../../assets/img/icon/path2.png" alt=""></span>
         <span class="px-3"><img src="../../assets/img/icon/path.svg" alt=""></span>
       </div>
