@@ -1,0 +1,21 @@
+<template>
+    <div>
+        <div class="dropdown-menu">
+            <span class="dropdown-item-text">Dropdown item text</span>
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+    </div>
+
+</template>
+
+<script>
+export default {
+    
+}
+</script>
+
+<style scoped>
+
+</style>

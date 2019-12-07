@@ -74,6 +74,7 @@
         width="40"
         height="40"
         viewBox="0 0 40 40"
+        @click="toggle()"
       >
         <g transform="translate(-1220 -1705)">
           <circle cx="20" cy="20" r="20" transform="translate(1220 1705)" fill="#f5f6f8" />
@@ -85,11 +86,23 @@
         </g>
       </svg>
     </div>
+
   </nav>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      isOpen:false,
+    }
+  },
+  methods:{
+    toggle(){
+      this.isOpen = !this.isOpen
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
