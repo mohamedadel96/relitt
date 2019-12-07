@@ -3,8 +3,8 @@
     <div class="search rounded py-1 d-flex justify-content-between align-items-center">
       <input class="py-2 px-4" placeholder="what's in your mind" type="text" />
       <div>
-        <span class="px-0">ico</span>
-        <span class="px-3">ico</span>
+        <span class="px-0"><img src="../../assets/img/icon/path2.png" alt=""></span>
+        <span class="px-3"><img src="../../assets/img/icon/path.svg" alt=""></span>
       </div>
     </div>
 
@@ -23,7 +23,7 @@
             </div>
           </div>
           <div>
-            <span>ico</span>
+            <span><img src="../../assets/img/icon/Icon - Share - Filled.svg" style="width:24px ; height:24px"  alt=""></span>
           </div>
         </div>
 
