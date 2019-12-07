@@ -3,8 +3,12 @@
     <div class="search rounded py-1 d-flex justify-content-between align-items-center">
       <input class="py-2 px-4" placeholder="what's in your mind" type="text" />
       <div class="d-flex align-items-center">
-        <span class="px-0"><img src="../../assets/img/icon/path2.png" alt=""></span>
-        <span class="px-3"><img src="../../assets/img/icon/path.svg" alt=""></span>
+        <span class="px-0">
+          <img src="../../assets/img/icon/path2.png" alt />
+        </span>
+        <span class="px-3">
+          <img src="../../assets/img/icon/path.svg" alt />
+        </span>
       </div>
     </div>
 
@@ -23,7 +27,13 @@
             </div>
           </div>
           <div>
-            <span><img src="../../assets/img/icon/Icon - Share - Filled.svg" style="width:24px ; height:24px"  alt=""></span>
+            <span>
+              <img
+                src="../../assets/img/icon/Icon - Share - Filled.svg"
+                style="width:24px ; height:24px"
+                alt
+              />
+            </span>
           </div>
         </div>
 
@@ -99,13 +109,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-      filter: {
-        page: 1
-      }
-    };
-  },
   computed: {
     feeds() {
       return this.$store.getters.feeds;
@@ -113,9 +116,8 @@ export default {
   },
   methods: {
     moreFeeds(state) {
-      this.$store.dispatch("FEEDS", this.filter).then(res => {
+      this.$store.dispatch("FEEDS").then(res => {
         if (res !== "end") {
-          this.filter.page += 1;
           state.loaded();
         } else {
           state.complete();

@@ -2,7 +2,10 @@ import appServices from '../../services/application'
 
 export default {
   state: {
-    feeds: []
+    feeds: [],
+    filter: {
+      page: 1
+    }
   },
   getters: {
     feeds(state) {
@@ -11,18 +14,21 @@ export default {
   },
   mutations: {
     saveFeed(state, data) {
+      state.filter.page += 1;
       state.feeds.push(...data)
     }
   },
   actions: {
-    FEEDS({ commit }, payload) {
+    FEEDS({ state, commit }) {
       return new Promise((resolve, reject) => {
-        appServices.feeds(payload).then(res => {
+        appServices.feeds(state.filter).then(res => {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.errors)
-          if (!res.data.data.length) return resolve('end')
+          if (!res.data.data.length) {
+            return resolve('end')
+          }
           commit('saveFeed', res.data.data)
           resolve('done')
         })
