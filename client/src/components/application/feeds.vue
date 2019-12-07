@@ -86,9 +86,9 @@
 
         <hr class="border mx-3 my-1" />
 
-        <div class="post-options d-flex col-12 px-0 text-center fontCS">
-          <div class="col-6 py-2 px-0">Like</div>
-          <div class="col-6 py-2 px-0">Comment</div>
+        <div class=" d-flex col-12 px-0 text-center ">
+          <div class="col-6 py-2 px-0 active-post fontSM font-weight-bold"><img src="../../assets/img/icon/Icon - Thumbs Up - Dark.png" class="mr-1 mb-1"> Like</div>
+          <div class="col-6 py-2 px-0 post-options fontCS"><img src="../../assets/img/icon/round-comment-24px.png" class="mr-1 ">Comment</div>
         </div>
       </div>
     </div>
@@ -98,7 +98,7 @@
 </template>
 
 <script>
-export default {
+export default { 
   data() {
     return {
       filter: {
@@ -208,7 +208,9 @@ export default {
           opacity: 0.6;
         }
       }
-
+       .active-post{
+         color: blue
+       }
       .post-options {
         color: $gray;
         opacity: 0.7;

@@ -53,14 +53,34 @@
         </div>
       </div>
     </div>
+    <infinite-loading @infinite="moreFeeds"></infinite-loading>
   </section>
 </template>
 
 <script>
 export default {
+    data() {
+    return {
+      filter: {
+        page: 1
+      }
+    };
+  },
   computed: {
     centercards() {
       return this.$store.getters.getCenterCard;
+    }
+  },
+  methods: {
+    moreFeeds(state) {
+      this.$store.dispatch("CENTERCARD", this.filter).then(res => {
+        if (res !== "end") {
+          this.filter.page += 1;
+          state.loaded();
+        } else {
+          state.complete();
+        }
+      });
     }
   }
 };
@@ -108,8 +128,8 @@ export default {
       }
       .service{
           img {
-            width:35px;
-            height: 35px;
+            width:25px;
+            height:25px;
             border-radius: 50% 
 
           }
