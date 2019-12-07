@@ -30,7 +30,7 @@
         <div>
           <input
             class="col-12 border-0 py-3"
-            type="text"
+            type="date"
             autocomplete="off"
             v-model="form.birthdate"
           />

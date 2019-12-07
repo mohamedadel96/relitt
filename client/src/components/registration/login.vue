@@ -8,24 +8,32 @@
 
     <div>
       <form class="mb-2" @submit.prevent>
-        <div>
+        <div class="form-group">
           <input
-            class="col-12 border-0 py-3 fontSM"
+            :class="['col-12 form-control border-0 py-3 fontSM', {'is-invalid': $v.form.email.$error}]"
             type="text"
             placeholder="Email"
             autocomplete="off"
             v-model="form.email"
           />
+          <div v-if="$v.form.email.$error" class="invalid-feedback fontMD">
+            <span v-if="!$v.form.email.required">Email is required</span>
+            <span v-if="!$v.form.email.email">Email is invalid</span>
+          </div>
         </div>
 
-        <div class="my-2">
+        <div class="form-group my-2">
           <input
-            class="col-12 border-0 py-3 fontSM"
+            :class="['col-12 form-control border-0 py-3 fontSM', {'is-invalid': $v.form.password.$error}]"
             type="password"
             placeholder="Password"
             autocomplete="off"
             v-model="form.password"
           />
+          <div v-if="$v.form.password.$error" class="invalid-feedback">
+            <span v-if="!$v.form.password.required">Password is required</span>
+            <span v-if="!$v.form.password.minLength">Password must be at least 6 characters</span>
+          </div>
         </div>
 
         <div class="mt-3">
@@ -42,7 +50,6 @@
 
       <div class="mt-4 pt-4 pb-1">
         <p class="text-secondary text-center mb-1">or signup using social media</p>
-        <!-- <button class="btn btn-secondary btn-block py-3 my-2">facebook</button> -->
         <v-facebook-login
           class="btn btn-secondary btn-block py-3 my-2"
           app-id="966242223397117"
@@ -62,6 +69,7 @@
 <script>
 import GoogleLogin from "vue-google-login";
 import { VFBLogin as VFacebookLogin } from "vue-facebook-login-component";
+import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
 
 export default {
   components: {
@@ -76,9 +84,19 @@ export default {
       }
     };
   },
+  validations: {
+    form: {
+      email: { required, email },
+      password: { required, minLength: minLength(6) }
+    }
+  },
   methods: {
     async submit() {
       try {
+        this.$v.$touch();
+        if (this.$v.$invalid) {
+          return;
+        }
         let res = await this.$store.dispatch("LOGIN", this.form);
         if (res !== "done") return; //will return error in popup
 
