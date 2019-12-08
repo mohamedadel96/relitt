@@ -6,12 +6,18 @@ export default {
       return Api().get('profile')
    },
    events(payload) {
+<<<<<<< HEAD
       return Api().get(`events?page=${payload.page}`)
+||||||| 3149f09
+      return Api().get(`events?lat=29.9490403&lng=31.2916668&page=${payload.page}`)
+=======
+      return Api().get(`events?lat=&lng=&page=${payload.page}`)
+>>>>>>> 62bb3320a060e7b159cbf295bf028b5c62920220
    },
    feeds(payload) {
       return Api().get(`home/feed?page=${payload.page}`)
    },
-   expCard() {
+   dashboard() {
       return Api().get('dashboard')
    },
    centerCard(payload) {

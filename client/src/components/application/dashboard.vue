@@ -2,36 +2,36 @@
   <section id="dashboard">
     <div class="search rounded py-1 d-flex justify-content-between align-items-center">
       <select class="py-2 px-4 mr-4 fontSM" v-model="hide">
-        <option value="free" selected >free diving</option>
+        <option value="free" selected>free diving</option>
         <option value="all">all</option>
       </select>
     </div>
 
-    <div class="chartSec mt-3 p-2" v-show="hide=='all'" > 
+    <div class="chartSec mt-3 p-2" v-show="hide=='all'">
       <chart class="chart" />
     </div>
 
-    <div class="posts mt-3" v-if="expCard">
+    <div class="posts mt-3" v-if="dashboard">
       <exp-card
-        :value="expCard.avg_duration"
-        :minValue="expCard.avg_duration_diving"
-        :maxValue="expCard.avg_duration_scuba"
+        :value="dashboard.avg_duration"
+        :minValue="dashboard.avg_duration_diving"
+        :maxValue="dashboard.avg_duration_scuba"
         measure="min"
         title="Average duration under water"
         class="mt-4"
       />
       <exp-card
-        :value="expCard.max_depth"
-        :minValue="expCard.max_depth_diving"
-        :maxValue="expCard.max_depth_scuba"
+        :value="dashboard.max_depth"
+        :minValue="dashboard.max_depth_diving"
+        :maxValue="dashboard.max_depth_scuba"
         measure="m"
         title="Max Depth"
         class="mt-4"
       />
       <exp-card
-        :value="expCard.dive_count"
-        :minValue="expCard.dive_count_diving"
-        :maxValue="expCard.dive_count_scuba"
+        :value="dashboard.dive_count"
+        :minValue="dashboard.dive_count_diving"
+        :maxValue="dashboard.dive_count_scuba"
         measure="dive"
         title="Number of Dives"
         class="mt-4"
@@ -46,16 +46,16 @@ import chart from "./chart";
 export default {
   data() {
     return {
-      hide:"free"
-    }
+      hide: "free"
+    };
   },
   components: {
     chart,
     expCard
   },
   computed: {
-    expCard() {
-      return this.$store.getters.expCard;
+    dashboard() {
+      return this.$store.getters.dashboard;
     }
   }
 };

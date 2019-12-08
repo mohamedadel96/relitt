@@ -10,8 +10,8 @@
   font-family: "Open Sans", sans-serif;
 }
 
-.fontXXS{
-font-size: $fontXXS;
+.fontXXS {
+  font-size: $fontXXS;
 }
 .fontXS {
   font-size: $fontXS;
@@ -31,8 +31,8 @@ font-size: $fontXXS;
 .fontXL {
   font-size: $fontXL;
 }
-.fontXXL{
-  font-size: $fontXXL
+.fontXXL {
+  font-size: $fontXXL;
 }
 .my-3 {
   margin-top: 0.7rem !important;
@@ -53,5 +53,13 @@ font-size: $fontXXS;
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+.form-control {
+  height: auto !important;
+}
+.invalid-feedback {
+  font-size: $fontSM !important;
+  font-weight: bold !important;
+  text-align: center !important;
 }
 </style>

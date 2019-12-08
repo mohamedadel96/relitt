@@ -1,30 +1,30 @@
 <template>
   <section id="feeds-dashboard" class="d-flex mt-4">
-    <div class="col-md-3 d-md-block d-none px-4" v-if="expCard">
+    <div class="col-md-3 d-md-block d-none px-4" v-if="dashboard">
       <div class="px-1">
         <user-card />
         <div>
           <exp-card
             title="Average duration under water"
-            :value="expCard.avg_duration"
-            :minValue="expCard.avg_duration_diving"
-            :maxValue="expCard.avg_duration_scuba"
+            :value="dashboard.avg_duration"
+            :minValue="dashboard.avg_duration_diving"
+            :maxValue="dashboard.avg_duration_scuba"
             measure="min"
             class="mt-4"
           />
           <exp-card
             title="Max Depth"
-            :value="expCard.max_depth"
-            :minValue="expCard.max_depth_diving"
-            :maxValue="expCard.max_depth_scuba"
+            :value="dashboard.max_depth"
+            :minValue="dashboard.max_depth_diving"
+            :maxValue="dashboard.max_depth_scuba"
             measure="m"
             class="mt-4"
           />
           <exp-card
             title="Number of Dives"
-            :value="expCard.dive_count"
-            :minValue="expCard.dive_count_diving"
-            :maxValue="expCard.dive_count_scuba"
+            :value="dashboard.dive_count"
+            :minValue="dashboard.dive_count_diving"
+            :maxValue="dashboard.dive_count_scuba"
             measure="dives"
             class="mt-4"
           />
@@ -38,7 +38,7 @@
       <div class="search-sec pl-4 pr-5 pt-4 col-12 px-0 rounded">
         <friends-search />
       </div>
-        <myEvent />
+      <myEvent />
     </div>
   </section>
 </template>
@@ -49,7 +49,6 @@ import expCard from "../../components/application/expCard";
 import friendsSearch from "../../components/application/friendsSearch";
 import myEvent from "../../components/application/myEvent";
 
-
 export default {
   components: {
     userCard,
@@ -58,8 +57,8 @@ export default {
     myEvent
   },
   computed: {
-    expCard() {
-      return this.$store.getters.expCard;
+    dashboard() {
+      return this.$store.getters.dashboard;
     }
   }
 };

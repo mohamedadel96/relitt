@@ -2,27 +2,27 @@ import appServices from '../../services/application'
 
 export default {
   state: {
-    expcard: null
+    dashboard: null
   },
   getters: {
-    expCard(state) {
-      return state.expcard
+    dashboard(state) {
+      return state.dashboard
     }
   },
   mutations: {
-    saveExpCard(state, data) {
-      state.expcard = data
+    saveDashboard(state, data) {
+      state.dashboard = data
     }
   },
-  actions:{
-    EXPCARD( { commit } ) {
+  actions: {
+    DASHBOARD({ commit }) {
       return new Promise((resolve, reject) => {
-        appServices.expCard().then(res => {
+        appServices.dashboard().then(res => {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.errors)
-          commit('saveExpCard', res.data.data)
+          commit('saveDashboard', res.data.data)
           resolve('done')
         })
       })

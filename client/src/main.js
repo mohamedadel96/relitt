@@ -3,9 +3,22 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import InfiniteLoading from 'vue-infinite-loading';
+import Vuelidate from 'vuelidate';
 import 'bootstrap/dist/css/bootstrap.css'
 
 Vue.config.productionTip = false
+
+Vue.use(require('vue-moment'));
+Vue.use(InfiniteLoading, {
+  props: {
+    spinner: 'bubbles',
+  },
+  slots: {
+    noMore: 'No more Posts'
+  },
+});
+
+Vue.use(Vuelidate);
 
 // router Guard
 router.beforeEach((to, from, next) => {
@@ -30,15 +43,6 @@ router.beforeEach((to, from, next) => {
   }
 })
 
-Vue.use(require('vue-moment'));
-Vue.use(InfiniteLoading, {
-  props: {
-    spinner: 'bubbles',
-  },
-  slots: {
-    noMore: 'No more Posts'
-  },
-});
 
 new Vue({
   router,
