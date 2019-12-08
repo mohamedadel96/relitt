@@ -40,8 +40,6 @@ export default {
   },
   mounted() {
     this.$store.dispatch("EVENTS");
-    this.$store.dispatch("MYEVENT");
-
   }
 };
 </script>
