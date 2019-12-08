@@ -13,7 +13,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch("USERCARD");
-    this.$store.dispatch("EXPCARD");
+    this.$store.dispatch("DASHBOARD");
     this.$store.dispatch("MYEVENT");
   }
 };

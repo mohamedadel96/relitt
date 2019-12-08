@@ -11,7 +11,7 @@ export default {
    feeds(payload) {
       return Api().get(`home/feed?page=${payload.page}`)
    },
-   expCard() {
+   dashboard() {
       return Api().get('dashboard')
    },
    centerCard(payload) {
