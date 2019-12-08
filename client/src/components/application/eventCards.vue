@@ -44,14 +44,34 @@
         </div>
       </div>
     </div>
+    <infinite-loading @infinite="moreFeeds"></infinite-loading>
   </section>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      filter: {
+        page: 1
+      }
+    };
+  },
   computed: {
     events() {
       return this.$store.getters.events;
+    }
+  },
+  methods: {
+    moreFeeds(state) {
+      this.$store.dispatch("EVENTS", this.filter).then(res => {
+        if (res !== "end") {
+          this.filter.page += 1;
+          state.loaded();
+        } else {
+          state.complete();
+        }
+      });
     }
   }
 };
