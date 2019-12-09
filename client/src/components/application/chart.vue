@@ -3,28 +3,17 @@ import { Line } from "vue-chartjs";
 
 export default {
   extends: Line,
+  props: ['timeline'],
   mounted() {
+    console.log()
     this.renderChart(
       {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December"
-        ],
+        labels: this.$props.timeline.map(item => item.date),
         datasets: [
           {
             label: "average air level",
             backgroundColor: "#007bff60",
-            data: [70, 20, 60, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+            data: [...this.$props.timeline.map(item => item.avg_air_level), -6000]
           }
         ]
       },
