@@ -10,6 +10,13 @@
 
       <div class="chartSec mt-3 p-2" v-show="hide=='all'">
         <chart class="chart" :timeline="dashboard.timeline" />
+        <!-- <apx-chart :timeline="dashboard.timeline"/> -->
+        
+      </div>
+      <div class="chartSec mt-3 p-2" v-show="hide=='all'">
+        <!-- <chart class="chart" :timeline="dashboard.timeline" /> -->
+        <apx-chart :timeline="dashboard.timeline"/>
+        
       </div>
 
       <div class="posts mt-3">
@@ -45,6 +52,8 @@
 <script>
 import expCard from "./expCard";
 import chart from "./chart";
+import apxChart from './apxChart'
+
 export default {
   data() {
     return {
@@ -53,7 +62,8 @@ export default {
   },
   components: {
     chart,
-    expCard
+    expCard,
+    apxChart
   },
   computed: {
     dashboard() {
