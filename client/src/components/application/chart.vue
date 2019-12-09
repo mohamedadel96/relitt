@@ -5,7 +5,6 @@ export default {
   extends: Line,
   props: ['timeline'],
   mounted() {
-    console.log()
     this.renderChart(
       {
         labels: this.$props.timeline.map(item => item.date),
