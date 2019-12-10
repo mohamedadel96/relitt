@@ -1,6 +1,10 @@
 import Api from './api'
 
 export default {
+   validateEmail(form) {
+      return Api().post('auth/validate_email', form)
+   },
+
    signup(form) {
       return Api().post('auth/signup', form)
    },

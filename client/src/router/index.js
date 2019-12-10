@@ -25,15 +25,15 @@ const routes = [
       {
         path: '',
         name: 'registration',
-        component: () => import('../components/registration/entrance.vue'),
+        component: () => import('../components/registration/signup.vue'),
         meta: {
           requiresVisitor: true
         }
       },
       {
-        path: 'signup',
-        name: 'signup',
-        component: () => import('../components/registration/signup.vue'),
+        path: 'entrance',
+        name: 'entrance',
+        component: () => import('../components/registration/entrance.vue'),
         meta: {
           requiresVisitor: true
         }

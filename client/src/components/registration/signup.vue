@@ -8,24 +8,32 @@
 
     <div>
       <form class="mb-3" @submit.prevent>
-        <div>
+        <div class="form-group">
           <input
-            class="col-12 border-0 py-3 fontSM"
+            :class="['col-12 form-control border-0 py-3 fontSM', {'is-invalid': $v.form.email.$error}]"
             type="text"
             placeholder="Email"
             autocomplete="off"
             v-model="form.email"
           />
+          <div v-if="$v.form.email.$error" class="invalid-feedback fontMD">
+            <span v-if="!$v.form.email.required">Email is required</span>
+            <span v-if="!$v.form.email.email">Email is invalid</span>
+          </div>
         </div>
 
-        <div class="my-2">
+        <div class="form-group my-2">
           <input
-            class="col-12 border-0 py-3 fontSM"
+            :class="['col-12 form-control border-0 py-3 fontSM', {'is-invalid': $v.form.password.$error}]"
             type="password"
             placeholder="Password"
             autocomplete="off"
             v-model="form.password"
           />
+          <div v-if="$v.form.password.$error" class="invalid-feedback">
+            <span v-if="!$v.form.password.required">Password is required</span>
+            <span v-if="!$v.form.password.minLength">Password must be at least 8 characters</span>
+          </div>
         </div>
 
         <div class="mt-3">
@@ -51,6 +59,8 @@
 </template>
 
 <script>
+import { required, email, minLength } from "vuelidate/lib/validators";
+
 export default {
   data() {
     return {
@@ -60,15 +70,37 @@ export default {
       }
     };
   },
+  validations: {
+    form: {
+      email: {
+        required,
+        email
+      },
+      password: {
+        required,
+        minLength: minLength(8)
+      }
+    }
+  },
   methods: {
     async submit() {
       try {
-        let res = await this.$store.dispatch("SIGNUP", this.form);
-        if (res !== "done") return; //will return error in popup
+        this.$v.$touch();
+        if (this.$v.$invalid) {
+          return;
+        }
 
-        this.$router.push("/app");
+        let res = await this.$store.dispatch("VALIDATEEMAIL", this.form);
+
+        this.$toasted.success(res);
+
+        this.$router.push({
+          name: "entrance"
+        });
       } catch (error) {
-        console.log(error);
+        error.errorDetails.email.map(msg => {
+          this.$toasted.error(msg);
+        });
       }
     }
   }

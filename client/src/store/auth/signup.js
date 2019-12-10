@@ -1,20 +1,21 @@
 import authServices from '../../services/auth'
 
 export default {
+  mutations: {
+    saveAuthData(state, payload) {
+      sessionStorage.setItem('signup', JSON.stringify(payload))
+    }
+  },
   actions: {
-    SIGNUP({ rootState, commit }, form) {
+    VALIDATEEMAIL({ commit }, form) {
       return new Promise((resolve, reject) => {
 
-        authServices.signup({
-          ...form,
-          ...rootState.entrance.info
-        }).then(res => {
+        commit('saveAuthData', form)
+        authServices.validateEmail(form).then(res => {
           if (res.data.code !== 200) return reject(res.data.errors)
-          
-          commit('saveAuthData', res.data, { root: true })
-          resolve('done')
+          resolve(res.data.message)
         })
-        
+
       })
     }
   }

@@ -7,33 +7,45 @@
     <div>
       <form @submit.prevent>
         <div class="d-flex justify-content-between my-3">
-          <div class="col-6 pl-0 pr-2">
+          <div class="form-group col-6 pl-0 pr-2">
             <input
-              class="col-12 border-0 py-3"
+              :class="['col-12 form-control border-0 py-3', {'is-invalid': $v.form.firstname.$error}]"
               type="text"
               placeholder="firstname"
               autocomplete="off"
               v-model="form.firstname"
             />
+            <div
+              v-if="!$v.form.firstname.required"
+              class="invalid-feedback fontMD"
+            >firstname is required</div>
           </div>
-          <div class="col-6 pl-2 pr-0">
+          <div class="form-group col-6 pl-2 pr-0">
             <input
-              class="col-12 border-0 py-3"
+              :class="['col-12 form-control border-0 py-3', {'is-invalid': $v.form.lastname.$error}]"
               type="text"
               placeholder="lastname"
               autocomplete="off"
               v-model="form.lastname"
             />
+            <div
+              v-if="!$v.form.lastname.required"
+              class="invalid-feedback fontMD"
+            >lastname is required</div>
           </div>
         </div>
 
-        <div>
+        <div class="form-group">
           <input
-            class="col-12 border-0 py-3"
+            :class="['col-12 form-control border-0 py-3', {'is-invalid': $v.form.birthdate.$error}]"
             type="date"
             autocomplete="off"
             v-model="form.birthdate"
           />
+          <div
+            v-if="!$v.form.birthdate.required"
+            class="invalid-feedback fontMD"
+          >birthdate is required</div>
         </div>
 
         <div>
@@ -94,6 +106,7 @@
 </template>
 
 <script>
+import { required } from "vuelidate/lib/validators";
 export default {
   data() {
     return {
@@ -101,14 +114,33 @@ export default {
         firstname: null,
         lastname: null,
         birthdate: null,
-        gender: 0
+        gender: 1
       }
     };
   },
+  validations: {
+    form: {
+      firstname: { required },
+      lastname: { required },
+      birthdate: { required }
+    }
+  },
   methods: {
     async submit() {
-      await this.$store.dispatch("ENTRANCE", this.form);
-      this.$router.push("/registration/signup");
+      try {
+        this.$v.$touch();
+        if (this.$v.$invalid) {
+          return;
+        }
+
+        let res = await this.$store.dispatch("SIGNUP", this.form);
+
+        this.$toasted.success(res);
+        this.$router.push({ name: "app" });
+      } catch (error) {
+        this.$toasted.error("please try again later");
+        console.log(error);
+      }
     }
   }
 };

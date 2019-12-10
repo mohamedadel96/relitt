@@ -1,19 +1,19 @@
+import authServices from '../../services/auth'
 
 export default {
-  state: {
-    info: JSON.parse(sessionStorage.getItem('entranceData')) ? JSON.parse(sessionStorage.getItem('entranceData')) : null
-  },
-  mutations: {
-    saveEntranceData(state, data) {
-      sessionStorage.setItem('entranceData', JSON.stringify(data))
-      state.info = data
-    }
-  },
   actions: {
-    ENTRANCE({ commit }, form) {
+    SIGNUP({ commit }, form) {
       return new Promise((resolve, reject) => {
-        commit('saveEntranceData', form)
-        resolve('done')
+        authServices.signup({
+          ...(JSON.parse(sessionStorage.getItem('signup'))),
+          ...form
+        }).then(res => {
+
+          if (res.data.code !== 200) return reject(res.data.errors)
+
+          commit('saveUserData', res.data, { root: true })
+          resolve('You are logged in successfully')
+        })
       })
     }
   }
