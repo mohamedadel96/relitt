@@ -29,7 +29,7 @@
     </div>
 
     <div class="posts" v-if="feeds.length">
-      <div class="post rounded" v-for="(feed,i) in feeds" :key="i">
+      <div class="post rounded" v-for="(feed,i) in feeds" :key="i" data-aos="zoom-in">
         <div class="post-info px-3 mt-3 d-flex justify-content-between align-items-center">
           <div class="d-flex align-items-center py-2">
             <img
