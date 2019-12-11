@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import entrance from './auth/entrance'
 import signup from './auth/signup'
 import login from './auth/login'
+import logout from './auth/logout'
 import resetPassword from './auth/resetPassword'
 import code from './auth/code'
 import changePassowrd from './auth/changePassowrd'
@@ -35,6 +36,10 @@ export default new Vuex.Store({
       localStorage.setItem('user', JSON.stringify(data.data))
       state.user = data.data
       state.token = data.data.token
+    },
+    removeAuthData(state){
+      state.user = null
+      state.token = null
     }
   },
   modules: {
@@ -51,7 +56,8 @@ export default new Vuex.Store({
     centerCard,
     center,
     myEvent,
-    event
+    event,
+    logout
 
   }
 })

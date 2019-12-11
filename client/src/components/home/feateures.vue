@@ -11,7 +11,7 @@
       <div class="block col-md-4 col-12 py-3 text-center">
         <img
           class="border rounded-circle"
-          src="../../assets/img/icon/Icon - Circle - Rounded@2x.png"
+          src="../../assets/img/icon/Group 686.png"
           alt="human"
         />
         <p class="font-weight-bold py-1">Custom your profile</p>
@@ -20,7 +20,7 @@
       <div class="block col-md-4 col-12 py-3 text-center">
         <img
           class="border rounded-circle"
-          src="../../assets/img/icon/Icon - Favorite - Rounded@2x.png"
+          src="../../assets/img/icon/Group 689.png"
           alt="human"
         />
         <p class="font-weight-bold py-1">Custom your profile</p>
