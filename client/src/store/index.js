@@ -32,7 +32,7 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    saveAuthData(state, data) {
+    saveUserData(state, data) {
       localStorage.setItem('user', JSON.stringify(data.data))
       state.user = data.data
       state.token = data.data.token

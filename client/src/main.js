@@ -1,9 +1,10 @@
 import Vue from 'vue'
+import InfiniteLoading from 'vue-infinite-loading';
+import Vuelidate from 'vuelidate';
+import Toasted from 'vue-toasted';
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import InfiniteLoading from 'vue-infinite-loading';
-import Vuelidate from 'vuelidate';
 import 'bootstrap/dist/css/bootstrap.css'
 
 Vue.config.productionTip = false
@@ -19,6 +20,11 @@ Vue.use(InfiniteLoading, {
 });
 
 Vue.use(Vuelidate);
+Vue.use(Toasted, {
+  position: 'bottom-right',
+  keepOnHover: true,
+  duration: 4000
+})
 
 // router Guard
 router.beforeEach((to, from, next) => {
