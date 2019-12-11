@@ -1,21 +1,15 @@
 import authServices from '../../services/auth'
 
 export default {
-    getters:{
-        getToken(state, getters, rootState){
-            return rootState
-        }
-
-    },
-
+  //  state:{
+  //    token:(JSON.stringify(localStorage.getItem('user'))).token  
+  //  },
   actions: {
-    LOGOUT({ commit }) {
+    LOGOUT({ commit },state ) {
       return new Promise((resolve, reject) => {
-
-        authServices.login(form).then(res => {
+        authServices.logout().then(res => {
           if (res.data.code !== 200) return reject(res.data.errors)
-
-          commit('saveAuthData', res.data, { root: true })
+          commit('removeAuthData', res.data, { root: true })
           resolve('done')
         })
         

@@ -27,7 +27,7 @@
           class="avatar "
           src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80 "
           alt="avatar"
-          @click="toggle()"
+          @click="logout()"
           />
           </div>    
             <div class="position-absolute " v-if="isOpen">
@@ -74,8 +74,9 @@ export default {
     },
     async logout() {
           try {
-            let res = await this.$store.dispatch("LOGOUT", this.form);
+            let res = await this.$store.dispatch("LOGOUT" );
             if (res !== "done") return; //will return error in popup
+            document.location.reload(true);
           } catch (error) {
             console.log(error);
           }
