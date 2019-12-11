@@ -28,11 +28,11 @@
           </div>
           <div>
             <span>
-              <img
+              <!-- <img
                 src="../../assets/img/icon/Icon - Share - Filled.svg"
                 style="width:24px ; height:24px"
                 alt
-              />
+              /> -->
             </span>
           </div>
         </div>
@@ -97,7 +97,7 @@
         <hr class="border mx-3 my-1" />
 
         <div class=" d-flex col-12 px-0 text-center ">
-          <div class="col-6 py-2 px-0 active-post fontSM font-weight-bold"><img src="../../assets/img/icon/Icon - Thumbs Up - Dark.png" class="mr-1 mb-1"> Like</div>
+          <div class="col-6 py-2 px-0 post-options fontSM font-weight-bold"><img src="../../assets/img/icon/Icon - Thumbs Up - Dark.png" class="mr-1 mb-1"> Like</div>
           <div class="col-6 py-2 px-0 post-options fontCS"><img src="../../assets/img/icon/round-comment-24px.png" class="mr-1 ">Comment</div>
         </div>
       </div>
@@ -210,9 +210,7 @@ export default {
           opacity: 0.6;
         }
       }
-       .active-post{
-         color: blue
-       }
+       
       .post-options {
         color: $gray;
         opacity: 0.7;
