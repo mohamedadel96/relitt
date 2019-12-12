@@ -2,10 +2,12 @@ import Vue from 'vue'
 import InfiniteLoading from 'vue-infinite-loading';
 import Vuelidate from 'vuelidate';
 import Toasted from 'vue-toasted';
+import Aos from 'aos'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'bootstrap/dist/css/bootstrap.css'
+import 'aos/dist/aos.css'
 
 Vue.config.productionTip = false
 
@@ -51,6 +53,14 @@ router.beforeEach((to, from, next) => {
 
 
 new Vue({
+  created() {
+    Aos.init(
+      {
+        duration: 1000,
+        delay: 100,
+      }
+    )
+  },
   router,
   store,
   render: h => h(App)

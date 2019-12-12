@@ -14,7 +14,6 @@
             v-if="!$v.form.code.required"
             class="invalid-feedback fontMD"
           >Code is required</div>
-          </div>
 
         </div>
 

@@ -24,7 +24,11 @@ const routes = [
     children: [
       {
         path: '',
-        name: 'registration',
+        redirect: 'signup'
+      },
+      {
+        path: 'signup',
+        name: 'signup',
         component: () => import('../components/registration/signup.vue'),
         meta: {
           requiresVisitor: true
