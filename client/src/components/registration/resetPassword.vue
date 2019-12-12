@@ -8,15 +8,19 @@
 
     <div>
       <form @submit.prevent>
-        <div>
+        <div class="form-group">
           <input
-            class="col-12 border-0 py-3 fontSM"
+            :class="['col-12 border-0 py-3 fontSM form-control',{'is-invalid': $v.form.email.$error}]"
             type="text"
             placeholder="Email"
             autocomplete="off"
             v-model="form.email"
-          />
-        </div>
+          />    
+        <div
+            v-if="!$v.form.email.required"
+            class="invalid-feedback fontMD"
+          >Email is required</div>
+          </div>
 
         <div class="mt-3">
           <button @click="submit" class="btn btn-primary btn-block py-3">Reset Password</button>
@@ -27,6 +31,8 @@
 </template>
 
 <script>
+import { required ,email } from 'vuelidate/lib/validators'
+
 export default {
   data() {
     return {
@@ -35,9 +41,19 @@ export default {
       }
     };
   },
+  validations: {
+    form: {
+      email: { required }
+      }
+  },
   methods: {
     async submit() {
       try {
+        this.$v.$touch();
+        if (this.$v.$invalid) {
+          return;
+        }
+
         let res = await this.$store.dispatch("RESETPASSWORD", this.form);
 
         this.$router.push("/registration/code");
