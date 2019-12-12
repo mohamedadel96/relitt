@@ -1,6 +1,11 @@
 <template>
   <section id="feeds">
     <div class="create-post rounded py-1">
+      <div
+        class="close border rounded py-1 px-2 pointer overlay"
+        v-show="postBtn"
+        @click="postBtn = false"
+      >x</div>
       <div class="post-media">
         <img class="m-3" src="http://qnimate.com/wp-content/uploads/2014/03/images2.jpg" alt />
       </div>
@@ -156,6 +161,7 @@ export default {
 
 <style lang="scss" scoped>
 #feeds {
+  position: relative;
   .create-post {
     background: $background_white;
     box-shadow: 1px 1px 4px #ddd;
@@ -206,6 +212,11 @@ export default {
         animation-duration: 2s;
         opacity: 1;
       }
+    }
+    .close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
     }
   }
 
