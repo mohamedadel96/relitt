@@ -2,7 +2,7 @@
   <section id="addComment" class="d-flex justify-content-center mx-4 mt-3">
     <div class="body col-12 px-3 py-3 rounded">
       <textarea class="border-0 col-12 px-0" placeholder="type your comment here" rows="3"></textarea>
-      <button class="btn btn-primary btn-block">com ment</button>
+      <button class="btn btn-primary btn-block">comment</button>
     </div>
   </section>
 </template>
