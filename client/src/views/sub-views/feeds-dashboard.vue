@@ -35,9 +35,9 @@
       <router-view />
     </div>
     <div class="col-md-3 d-md-block d-none px-3">
-      <div class="search-sec pl-4 pr-5 pt-4 col-12 px-0 rounded">
+      <!-- <div class="search-sec pl-4 pr-5 pt-4 col-12 px-0 rounded">
         <friends-search />
-      </div>
+      </div>-->
       <myEvent />
     </div>
   </section>

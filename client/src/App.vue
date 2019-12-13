@@ -62,4 +62,7 @@
   font-weight: bold !important;
   text-align: center !important;
 }
+.pointer {
+  cursor: pointer;
+}
 </style>
