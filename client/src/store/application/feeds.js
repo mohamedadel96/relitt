@@ -16,6 +16,9 @@ export default {
     saveFeed(state, data) {
       state.filter.page += 1;
       state.feeds.push(...data)
+    },
+    pushPost(state, data) {
+      state.feeds.unshift(data)
     }
   },
   actions: {
@@ -26,11 +29,8 @@ export default {
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.errors)
-          if (!res.data.data.length) {
-            return resolve('end')
-          }
-          commit('saveFeed', res.data.data)
-          resolve(res.data.data)
+          commit('pushPost', res.data.data)
+          resolve('done')
         })
       })
     },

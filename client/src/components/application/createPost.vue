@@ -9,7 +9,12 @@
       <img v-for="(url,i) in form.images" :key="i" class="m-3" :src="url" alt />
     </div>
     <div class="post-body d-flex justify-content-between align-items-start">
-      <textarea @focus="postBtn = true" class="py-2 px-4" placeholder="what's in your mind"></textarea>
+      <textarea
+        @focus="postBtn = true"
+        v-model="form.body"
+        class="py-2 px-4"
+        placeholder="what's in your mind"
+      ></textarea>
 
       <div
         v-show="postBtn"
@@ -99,13 +104,20 @@ export default {
     },
     post() {
       try {
+        this.disablePost = true;
         this.$store.dispatch("POST", this.form).then(res => {
           this.$toasted.success("your post uploaded successfully");
-          console.log(res);
+          this.clearPost();
         });
       } catch (error) {
         console.log("error while uploading post");
       }
+    },
+    clearPost() {
+      this.disablePost = false;
+      this.postBtn = false;
+      this.form.body = null;
+      this.form.images = [];
     }
   }
 };
