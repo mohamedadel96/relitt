@@ -6,7 +6,7 @@
       @click="postBtn = false"
     >x</div>
     <div class="post-media" v-show="postBtn">
-      <!-- <img class="m-3" src="http://qnimate.com/wp-content/uploads/2014/03/images2.jpg" alt /> -->
+      <img v-for="(url,i) in form.images" :key="i" class="m-3" :src="url" alt />
     </div>
     <div class="post-body d-flex justify-content-between align-items-start">
       <textarea @focus="postBtn = true" class="py-2 px-4" placeholder="what's in your mind"></textarea>
@@ -55,7 +55,7 @@
           :class="['col-12 px-3 pb-2 postBtn', {'d-flex align-items-end justify-content-end showBtn' : postBtn}]"
           v-show="postBtn"
         >
-          <button class="btn btn-primary">post</button>
+          <button :disabled="disablePost" @click="post" class="btn btn-primary">post</button>
         </div>
       </div>
     </div>
@@ -70,15 +70,42 @@ export default {
         body: null,
         images: []
       },
-      postBtn: false
+      postBtn: false,
+      disablePost: false
     };
   },
   methods: {
     uploadFiles(ref) {
-      console.log(this.$refs[ref].files);
-      
-      // let formData = new FormData();
-      // formData.append('files', files);
+      try {
+        this.disablePost = true;
+        let formData = new FormData();
+
+        for (let i = 0; i < this.$refs[ref].files.length; i++) {
+          let file = this.$refs[ref].files[i];
+          formData.append("files[" + i + "]", file);
+        }
+
+        this.$store.dispatch("UPLOADFILES", formData).then(res => {
+          this.$toasted.success("uploaded successfully");
+          res.map(file => {
+            this.form.images.push(file.filePath);
+          });
+
+          this.disablePost = false;
+        });
+      } catch (error) {
+        this.$toasted.error("error while uploading files");
+      }
+    },
+    post() {
+      try {
+        this.$store.dispatch("POST", this.form).then(res => {
+          this.$toasted.success("your post uploaded successfully");
+          console.log(res);
+        });
+      } catch (error) {
+        console.log("error while uploading post");
+      }
     }
   }
 };
@@ -92,6 +119,7 @@ export default {
 
   .post-media {
     overflow: hidden;
+
     img {
       width: 200px;
       height: 200px;
@@ -108,14 +136,17 @@ export default {
       width: 98%;
       resize: none;
       transition: 0.4s;
+
       &:focus {
         height: 250px;
       }
     }
 
     .enlargement {
-      -webkit-animation-name: elongation; /* Safari 4.0 - 8.0 */
-      -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+      -webkit-animation-name: elongation;
+      /* Safari 4.0 - 8.0 */
+      -webkit-animation-duration: 2s;
+      /* Safari 4.0 - 8.0 */
       animation-name: elongation;
       animation-duration: 2s;
       height: 250px;
@@ -129,13 +160,16 @@ export default {
     }
 
     .showBtn {
-      -webkit-animation-name: showBtn; /* Safari 4.0 - 8.0 */
-      -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+      -webkit-animation-name: showBtn;
+      /* Safari 4.0 - 8.0 */
+      -webkit-animation-duration: 2s;
+      /* Safari 4.0 - 8.0 */
       animation-name: showBtn;
       animation-duration: 2s;
       opacity: 1;
     }
   }
+
   .close {
     position: absolute;
     top: 8px;
@@ -146,6 +180,7 @@ export default {
     from {
       height: auto;
     }
+
     to {
       height: 250px;
     }
@@ -156,6 +191,7 @@ export default {
     from {
       height: auto;
     }
+
     to {
       height: 250px;
     }
@@ -165,6 +201,7 @@ export default {
     from {
       opacity: 0;
     }
+
     to {
       opacity: 1;
     }
@@ -175,6 +212,7 @@ export default {
     from {
       opacity: 0;
     }
+
     to {
       opacity: 1;
     }
