@@ -21,6 +21,7 @@ Vue.use(InfiniteLoading, {
   },
 });
 
+
 Vue.use(Vuelidate);
 Vue.use(Toasted, {
   position: 'bottom-right',
