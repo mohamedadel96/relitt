@@ -13,10 +13,10 @@
             v-model="form.code"
           />
           <div v-if="!$v.form.code.required" class="invalid-feedback fontMD">Code is required</div>
-        </div>
 
-        <div class="mt-4">
-          <button @click="submit" class="btn btn-primary btn-block py-3">Done</button>
+          <div class="mt-4">
+            <button @click="submit" class="btn btn-primary btn-block py-3">Done</button>
+          </div>
         </div>
       </form>
     </div>
@@ -36,13 +36,20 @@ export default {
   },
   validations: {
     form: {
-      code: { required }
+      code: {
+        required
+      }
     }
   },
 
   methods: {
     async submit() {
       try {
+        this.$v.$touch();
+        if (this.$v.$invalid) {
+          return;
+        }
+
         let res = await this.$store.dispatch("CODEVALIDATE", this.form);
 
         this.$router.push("/registration/change-password");

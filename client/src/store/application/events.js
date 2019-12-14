@@ -2,7 +2,10 @@ import appServices from '../../services/application'
 
 export default {
   state: {
-    events: []
+    events: [],
+    filter: {
+      page: 1
+    }
   },
   getters: {
     events(state) {
@@ -11,19 +14,19 @@ export default {
   },
   mutations: {
     saveEvents(state, data) {
+      state.filter.page += 1
       state.events.push(...data)
     }
   },
   actions: {
-    EVENTS({ commit }, payload ) {
+    EVENTS({ commit , state } ) {
       return new Promise((resolve, reject) => {
-        appServices.events(payload).then(res => {
+        appServices.events(state.filter).then(res => {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.errors)
           if (!res.data.data.length) return resolve('end')
-
           commit('saveEvents', res.data.data)
           resolve('done')
         })

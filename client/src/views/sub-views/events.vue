@@ -3,11 +3,12 @@
     <div class="d-flex justify-content">
       <div class="col-md-3 px-4 mt-4 overflow-hidden">
         <div>
-          <button class="btn btn-primary btn-block mb-2 py-2 fontXS">Create event</button>
-          <p class="text-secondary text-center fontXS">Your upcoming events</p>
+          <createEvent />
+          <!-- <sweet-modal ref="createEvent">This is an alert.</sweet-modal> -->
         </div>
+        <p class="text-secondary text-center fontXS">Your upcoming events</p>
         <div>
-          <myEvent/>
+          <myEvent />
         </div>
       </div>
       <div class="col-md-9">
@@ -25,18 +26,19 @@
         </div>
       </div>
     </div>
-    
   </section>
 </template>
 
 <script>
 import myEvent from "../../components/application/myEvent";
 import eventCards from "../../components/application/eventCards";
+import createEvent from "../../components/application/createEvent";
 
 export default {
   components: {
     myEvent,
-    eventCards
+    eventCards,
+    createEvent
   },
   mounted() {
     this.$store.dispatch("EVENTS");

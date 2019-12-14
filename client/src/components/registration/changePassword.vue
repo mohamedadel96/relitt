@@ -6,28 +6,25 @@
 
     <div>
       <form @submit.prevent>
-        <div>
-          <input
-            class="col-12 border-0 py-3"
-            type="password"
-            placeholder="New password"
-            v-model="form.password"
-          />
-        </div>
-        <div class="mt-3">
-          <input
-            class="col-12 border-0 py-3"
-            type="password"
-            placeholder="Confirm password"
-            v-model="form.confirmPassword"
-          />
-        </div>
-        <div class="text-center">
-          <p :class="error.state ? 'text-danger' : 'text-success'">{{ error.message }}</p>
+        <div class="form-group" >
+            <input
+              :class="['col-12 border-0 py-3  form-control' ,{'is-invalid': $v.form.password.$error}]"
+              type="password"
+              placeholder="New password"
+              v-model="form.password"
+            />
+            <input
+              :class="['col-12 border-0 py-3 mt-3 form-control',{'is-invalid': $v.form.confirmPassword.$error}]"
+              type="password"
+              placeholder="Confirm password"    
+              v-model="form.confirmPassword"
+            />
+            <div class="invalid-feedback error" v-if="!$v.form.password.required">Password is required.</div>
+            <div class="invalid-feedback error" v-if="!$v.form.password.minLength">Password must have at least {{ $v.form.password.$params.minLength.min }} letters.</div>
+            <div class="invalid-feedback error" v-if="!$v.form.confirmPassword.sameAsPassword">Passwords must be identical.</div>
         </div>
         <div class="mt-4">
           <button
-            :disabled="this.error.state"
             @click="submit"
             class="btn btn-primary btn-block py-3"
           >Done</button>
@@ -38,6 +35,8 @@
 </template>
 
 <script>
+import { required, sameAs, minLength } from 'vuelidate/lib/validators'
+
 export default {
   data() {
     return {
@@ -50,22 +49,20 @@ export default {
         message: null
       }
     };
-  },
-  watch: {
-    "form.confirmPassword"(val) {
-      if (this.form.password !== val) {
-        this.error.state = true;
-        this.error.message = "the password is not matched";
-        return;
+  },  
+  validations: {
+    form: {
+      password: { required ,  minLength: minLength(8)},
+      confirmPassword:{required ,sameAsPassword: sameAs('password')}
       }
-
-      this.error.state = false;
-      this.error.message = "password is matched";
-    }
   },
   methods: {
     async submit() {
       try {
+        this.$v.$touch();
+        if (this.$v.$invalid) {
+          return;
+        }
         let res = await this.$store.dispatch("CHANGEPASSWORD", this.form);
 
         this.$router.push("/registration/login");

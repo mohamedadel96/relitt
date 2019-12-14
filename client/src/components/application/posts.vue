@@ -75,7 +75,7 @@
               <span>{{feed.likes_count}}&nbsp;</span>
               <span>Likes</span>
             </p>
-            <p class="px-2 mb-0">-</p>
+            <p class="px-2 mb-0">-</p>ب
             <p class="mb-0 fontXS">
               <span>22&nbsp;</span>
               <span>Comments</span>

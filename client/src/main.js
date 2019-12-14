@@ -8,9 +8,11 @@ import router from './router'
 import store from './store'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'aos/dist/aos.css'
+import SweetModal from 'sweet-modal-vue/src/plugin.js'
 
+
+Vue.use(SweetModal)
 Vue.config.productionTip = false
-
 Vue.use(require('vue-moment'));
 Vue.use(InfiniteLoading, {
   props: {
@@ -20,6 +22,7 @@ Vue.use(InfiniteLoading, {
     noMore: 'No more Posts'
   },
 });
+
 
 Vue.use(Vuelidate);
 Vue.use(Toasted, {
