@@ -22,7 +22,7 @@
             <div class="invalid-feedback error" v-if="!$v.form.password.required">Password is required.</div>
             <div class="invalid-feedback error" v-if="!$v.form.password.minLength">Password must have at least {{ $v.form.password.$params.minLength.min }} letters.</div>
             <div class="invalid-feedback error" v-if="!$v.form.confirmPassword.sameAsPassword">Passwords must be identical.</div>
-          </div>
+        </div>
         <div class="mt-4">
           <button
             @click="submit"

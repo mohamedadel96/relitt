@@ -14,8 +14,8 @@ export default {
    dashboard() {
       return Api().get('dashboard')
    },
-   centerCard(payload) {
-      return Api().get(`centers?lat=29.9490403&lng=31.2916668&page=${payload.page}`)
+   centerCard(page) {
+      return Api().get(`centers?lat=29.9490403&lng=31.2916668&page=${page}`)
    },
    center(id) {
       return Api().get(`centers/${id}`)

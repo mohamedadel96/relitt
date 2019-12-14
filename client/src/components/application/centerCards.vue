@@ -61,9 +61,6 @@
 export default {
     data() {
     return {
-      filter: {
-        page: 1
-      }
     };
   },
   computed: {
@@ -73,9 +70,9 @@ export default {
   },
   methods: {
     moreFeeds(state) {
-      this.$store.dispatch("CENTERCARD", this.filter).then(res => {
+      this.$store.dispatch("CENTERCARD" ).then(res => {
         if (res !== "end") {
-          this.filter.page += 1;
+          // this.filter.page += 1;
           state.loaded();
         } else {
           state.complete();
