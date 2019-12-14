@@ -17,7 +17,15 @@
       >
         <div class="col-12 px-0 d-flex align-items-start justify-content-end pt-2">
           <span class="px-0">
-            <input ref="video" class="d-none" type="file" name="video" accept="video/*" />
+            <input
+              ref="video"
+              @change="uploadFiles('video')"
+              class="d-none"
+              type="file"
+              name="video"
+              accept="video/*"
+              multiple
+            />
             <img
               @click="$refs.video.click()"
               class="pointer"
@@ -26,7 +34,15 @@
             />
           </span>
           <span class="px-3">
-            <input ref="pic" class="d-none" type="file" name="pic" accept="image/*" />
+            <input
+              ref="pic"
+              @change="uploadFiles('pic')"
+              class="d-none"
+              type="file"
+              name="pic"
+              accept="image/*"
+              multiple
+            />
             <img
               @click="$refs.pic.click()"
               class="pointer"
@@ -51,10 +67,19 @@ export default {
   data() {
     return {
       form: {
-        body: null
+        body: null,
+        images: []
       },
       postBtn: false
     };
+  },
+  methods: {
+    uploadFiles(ref) {
+      console.log(this.$refs[ref].files);
+      
+      // let formData = new FormData();
+      // formData.append('files', files);
+    }
   }
 };
 </script>
