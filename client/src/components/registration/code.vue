@@ -6,15 +6,13 @@
     <div>
       <form @submit.prevent>
         <div class="form-group">
-          <input :class="['col-12 border-0 py-3 form-control',{'is-invalid': $v.form.code.$error}]"
-          type="text" 
-          placeholder="Code" 
-          v-model="form.code" />
-            <div
-            v-if="!$v.form.code.required"
-            class="invalid-feedback fontMD"
-          >Code is required</div>
-
+          <input
+            :class="['col-12 border-0 py-3 form-control',{'is-invalid': $v.form.code.$error}]"
+            type="text"
+            placeholder="Code"
+            v-model="form.code"
+          />
+          <div v-if="!$v.form.code.required" class="invalid-feedback fontMD">Code is required</div>
         </div>
 
         <div class="mt-4">
@@ -26,7 +24,7 @@
 </template>
 
 <script>
-import { required } from 'vuelidate/lib/validators'
+import { required } from "vuelidate/lib/validators";
 
 export default {
   data() {
@@ -35,11 +33,11 @@ export default {
         code: null
       }
     };
-  },  
+  },
   validations: {
     form: {
       code: { required }
-      }
+    }
   },
 
   methods: {

@@ -6,20 +6,33 @@
       @click="postBtn = false"
     >x</div>
     <div class="post-media" v-show="postBtn">
-      <img class="m-3" src="http://qnimate.com/wp-content/uploads/2014/03/images2.jpg" alt />
+      <!-- <img class="m-3" src="http://qnimate.com/wp-content/uploads/2014/03/images2.jpg" alt /> -->
     </div>
     <div class="post-body d-flex justify-content-between align-items-start">
       <textarea @focus="postBtn = true" class="py-2 px-4" placeholder="what's in your mind"></textarea>
 
       <div
-        :class="['d-flex flex-wrap align-items-between justify-content-end ', { 'enlargement' : postBtn}]"
+        v-show="postBtn"
+        :class="{ 'd-flex flex-wrap align-items-between justify-content-end enlargement' : postBtn}"
       >
         <div class="col-12 px-0 d-flex align-items-start justify-content-end pt-2">
           <span class="px-0">
-            <img class="pointer" src="../../assets/img/icon/path2.png" alt />
+            <input ref="video" class="d-none" type="file" name="video" accept="video/*" />
+            <img
+              @click="$refs.video.click()"
+              class="pointer"
+              src="../../assets/img/icon/path2.png"
+              alt
+            />
           </span>
           <span class="px-3">
-            <img class="pointer" src="../../assets/img/icon/path.svg" alt />
+            <input ref="pic" class="d-none" type="file" name="pic" accept="image/*" />
+            <img
+              @click="$refs.pic.click()"
+              class="pointer"
+              src="../../assets/img/icon/path.svg"
+              alt
+            />
           </span>
         </div>
         <div
@@ -37,6 +50,9 @@
 export default {
   data() {
     return {
+      form: {
+        body: null
+      },
       postBtn: false
     };
   }
@@ -98,7 +114,7 @@ export default {
   .close {
     position: absolute;
     top: 8px;
-    right: 8px;
+    right: 50%;
   }
 
   @-webkit-keyframes elongation {
