@@ -25,6 +25,12 @@ export default {
    },
    event(id) {
       return Api().get(`events/${id}`)
+   },
+   uploadFiles(payload) {
+      return Api().post('upload_multiple', payload)
+   },
+   post(payload) {
+      return Api().post('posts', payload)
    }
 
 }

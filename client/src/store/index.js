@@ -15,6 +15,7 @@ import centerCard from './application/centerCard'
 import center from './application/center'
 import myEvent from './application/myEvent'
 import event from './application/event'
+import uploadFiles from './application/uploadFiles'
 
 Vue.use(Vuex)
 
@@ -37,7 +38,7 @@ export default new Vuex.Store({
       state.user = data.data
       state.token = data.data.token
     },
-    removeAuthData(state){
+    removeAuthData(state) {
       state.user = null
       state.token = null
     }
@@ -57,7 +58,8 @@ export default new Vuex.Store({
     center,
     myEvent,
     event,
-    logout
+    logout,
+    uploadFiles
 
   }
 })

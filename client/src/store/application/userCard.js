@@ -14,8 +14,8 @@ export default {
       state.userCard = data
     }
   },
-  actions:{
-    USERCARD( { commit } ) {
+  actions: {
+    USERCARD({ commit }) {
       return new Promise((resolve, reject) => {
         appServices.userCard().then(res => {
           if (res.data.status === 401) {
