@@ -36,13 +36,9 @@ export default {
   },
   validations: {
     form: {
-<<<<<<< HEAD
       code: {
         required
       }
-=======
-      code: { required }
->>>>>>> master
     }
   },
 
