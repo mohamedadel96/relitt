@@ -5,7 +5,6 @@
         <div>
           <!-- <button class="btn btn-primary btn-block mb-2 py-2 fontXS"></button> -->
           <createEvent>
-            Create event
           </createEvent>
         </div>
           <p class="text-secondary text-center fontXS">Your upcoming events</p>
