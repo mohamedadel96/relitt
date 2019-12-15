@@ -27,8 +27,11 @@ Vue.use(InfiniteLoading, {
 Vue.use(Vuelidate);
 Vue.use(Toasted, {
   position: 'bottom-right',
+  theme: 'bubble',
   keepOnHover: true,
-  duration: 4000
+  duration: 4000,
+  className: 'toast',
+  iconPack: 'label'
 })
 
 // router Guard

@@ -65,4 +65,8 @@
 .pointer {
   cursor: pointer;
 }
+.toast {
+  font-size: 18px !important;
+  padding: 0 30px !important;
+}
 </style>

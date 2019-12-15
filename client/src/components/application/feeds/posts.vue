@@ -75,9 +75,9 @@
               <span>{{feed.likes_count}}&nbsp;</span>
               <span>Likes</span>
             </p>
-            <p class="px-2 mb-0">-</p>ب
+            <p class="px-2 mb-0">-</p>
             <p class="mb-0 fontXS">
-              <span>22&nbsp;</span>
+              <span>{{feed.comments.length}}&nbsp;</span>
               <span>Comments</span>
             </p>
           </div>
@@ -87,7 +87,10 @@
 
         <div class="d-flex col-12 px-0 text-center">
           <div class="col-6 py-2 px-0 post-options fontSM font-weight-bold">
-            <img src="../../../assets/img/icon/Icon - Thumbs Up - Dark.png" class="mr-1 mb-1" /> Like
+            <div class="pointer" @click.once="toggleLike(feed.id, feed.liked)" :key="likeBtn">
+              <img src="../../../assets/img/icon/Icon - Thumbs Up - Dark.png" class="mr-1 mb-1" />
+              <span :class="{'like': feed.liked}">Like</span>
+            </div>
           </div>
           <div class="col-6 py-2 px-0 post-options fontCS">
             <img src="../../../assets/img/icon/round-comment-24px.png" class="mr-1" />Comment
@@ -101,6 +104,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      likeBtn: 1
+    };
+  },
   computed: {
     feeds() {
       return this.$store.getters.feeds;
@@ -115,6 +123,21 @@ export default {
           state.complete();
         }
       });
+    },
+    toggleLike(id, liked) {
+      try {
+        this.$store
+          .dispatch("TOGGLELIKE", {
+            id: id,
+            liked: liked
+          })
+          .then(res => {
+            res ? this.$toasted.info("Unlike") : this.$toasted.success("Liked");
+            this.likeBtn++;
+          });
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 };
@@ -195,6 +218,10 @@ export default {
       color: $gray;
       opacity: 0.7;
     }
+  }
+  .like {
+    color: $blue;
+    font-weight: bold;
   }
 }
 </style>
