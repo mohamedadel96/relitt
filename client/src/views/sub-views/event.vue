@@ -16,7 +16,7 @@
 import eventInfo from "../../components/application/events/eventInfo";
 import attendance from "../../components/application/events/attendance";
 import comments from "../../components/application/global/comments";
-import addComment from "../../components/application/events/addComment";
+import addComment from "../../components/application/global/addComment";
 
 export default {
   components: {
