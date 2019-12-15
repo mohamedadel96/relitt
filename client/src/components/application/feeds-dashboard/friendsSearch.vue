@@ -2,7 +2,7 @@
   <section id="friendsSearch">
     <p class="title font-weight-bold fontSM">Find friends</p>
     <div class="search mb-3 d-flex align-items-center">
-      <span class="px-4"><img src="../../assets/img/icon/ic_search.png" alt=""></span>
+      <span class="px-4"><img src="../../../assets/img/icon/ic_search.png" alt=""></span>
       <input placeholder="Search people" class="py-3" type="text" />
     </div>
     <div class="friends mt-2" v-for="i in 3" :key="i">

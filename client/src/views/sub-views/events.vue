@@ -30,9 +30,9 @@
 </template>
 
 <script>
-import myEvent from "../../components/application/myEvent";
-import eventCards from "../../components/application/eventCards";
-import createEvent from "../../components/application/createEvent";
+import myEvent from "../../components/application/events/myEvent";
+import eventCards from "../../components/application/events/eventCards";
+import createEvent from "../../components/application/events/createEvent";
 
 export default {
   components: {

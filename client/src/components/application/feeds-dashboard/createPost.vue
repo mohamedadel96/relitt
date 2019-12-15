@@ -34,7 +34,7 @@
             <img
               @click="$refs.video.click()"
               class="pointer"
-              src="../../assets/img/icon/path2.png"
+              src="../../../assets/img/icon/path2.png"
               alt
             />
           </span>
@@ -51,7 +51,7 @@
             <img
               @click="$refs.pic.click()"
               class="pointer"
-              src="../../assets/img/icon/path.svg"
+              src="../../../assets/img/icon/path.svg"
               alt
             />
           </span>

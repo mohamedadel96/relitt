@@ -1,7 +1,7 @@
 <template>
   <nav class="py-3 border-bottom d-flex justify-content-between align-items-center">
     <div class="px-4 col-3">
-      <img src="../../assets/img/icon/logo.svg">
+      <img src="../../../assets/img/icon/logo.svg">
     </div> 
 
     <div class="col-6 d-flex justify-content-center">
@@ -19,7 +19,7 @@
     </div>
 
     <div class="col-3 block_3 d-flex justify-content-end px-3">
-      <img src="../../assets/img/icon/ring.svg" alt />
+      <img src="../../../assets/img/icon/ring.svg" alt />
       <div
         class="d-flex justify-content-center align-items-center border rounded-circle mx-2 overflow-hidden"
       >

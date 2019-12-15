@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import eventInfo from "../../components/application/eventInfo";
-import attendance from "../../components/application/attendance";
-import comments from "../../components/application/comments";
-import addComment from "../../components/application/addComment";
+import eventInfo from "../../components/application/events/eventInfo";
+import attendance from "../../components/application/events/attendance";
+import comments from "../../components/application/global/comments";
+import addComment from "../../components/application/events/addComment";
 
 export default {
   components: {

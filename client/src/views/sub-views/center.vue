@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import review from "../../components/application/review";
-import location from "../../components/application/location";
-import centerComment from "../../components/application/centerComment";
-import centerInfo from "../../components/application/centerInfo";
+import review from "../../components/application/centers/review";
+import location from "../../components/application/centers/location";
+import centerComment from "../../components/application/centers/centerComment";
+import centerInfo from "../../components/application/centers/centerInfo";
 
 export default {
   components: {

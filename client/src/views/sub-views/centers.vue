@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import centerCards from "../../components/application/centerCards";
+import centerCards from "../../components/application/centers/centerCards";
 export default {
   components: {
     centerCards
