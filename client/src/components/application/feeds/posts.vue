@@ -136,7 +136,7 @@ export default {
             this.likeBtn++;
           });
       } catch (error) {
-        console.log(error);
+        this.$toasted.error("we have problem, please try again later");
       }
     }
   }
