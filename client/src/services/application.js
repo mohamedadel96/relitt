@@ -31,6 +31,9 @@ export default {
    },
    post(payload) {
       return Api().post('posts', payload)
+   },
+   createEvent(form){
+      return Api().post('events' , form)
    }
 
 }

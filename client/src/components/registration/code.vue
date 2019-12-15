@@ -49,9 +49,7 @@ export default {
         if (this.$v.$invalid) {
           return;
         }
-
         let res = await this.$store.dispatch("CODEVALIDATE", this.form);
-
         this.$router.push("/registration/change-password");
       } catch (error) {
         console.log(error);

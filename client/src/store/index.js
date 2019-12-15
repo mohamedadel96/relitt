@@ -16,6 +16,7 @@ import center from './application/center'
 import myEvent from './application/myEvent'
 import event from './application/event'
 import uploadFiles from './application/uploadFiles'
+import createEvent from './application/createEvent'
 
 Vue.use(Vuex)
 
@@ -59,7 +60,8 @@ export default new Vuex.Store({
     myEvent,
     event,
     logout,
-    uploadFiles
+    uploadFiles,
+    createEvent
 
   }
 })
