@@ -18,9 +18,9 @@
           <div class="form-group">
             <input type="date" class="form-control" placeholder="End Date" v-model="form.end_date"  />
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <input type="text" class="form-control" placeholder="Location" v-model="form.location" />
-          </div>
+          </div> -->
           <div class="form-group">
             <textarea class="form-control" id="message-text" placeholder="Description" v-model="form.description"></textarea>
           </div>
@@ -47,13 +47,14 @@ export default {
         description:null,
         start_date:null,
         end_date:null,
-        images:[null]
+        images:["null"]
       }
   };
   },
   methods:{
     async create(){
             try {
+              const data = this.form
         let res = await this.$store.dispatch("CREATEEVENT", this.form);
       } catch (error) {
         console.log(error);
