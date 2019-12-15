@@ -44,9 +44,9 @@
 </template>
 
 <script>
-import userCard from "../../components/application/feeds-dashboard/userCard";
-import expCard from "../../components/application/feeds-dashboard/expCard";
-import friendsSearch from "../../components/application/feeds-dashboard/friendsSearch";
+import userCard from "../../components/application/feeds/userCard";
+import expCard from "../../components/application/dashboard/expCard";
+import friendsSearch from "../../components/application/feeds/friendsSearch";
 import myEvent from "../../components/application/events/myEvent";
 
 export default {

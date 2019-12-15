@@ -93,7 +93,7 @@ const routes = [
           {
             path: '',
             name: 'app',
-            component: () => import('../components/application/feeds-dashboard/feeds.vue'),
+            component: () => import('../components/application/feeds/feeds.vue'),
             meta: {
               requiresAuth: true
             }
@@ -101,7 +101,7 @@ const routes = [
           {
             path: 'dashboard',
             name: 'dashboard',
-            component: () => import('../components/application/feeds-dashboard/dashboard.vue'),
+            component: () => import('../components/application/dashboard/dashboard.vue'),
             meta: {
               requiresAuth: true
             }
