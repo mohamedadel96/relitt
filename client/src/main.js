@@ -64,6 +64,7 @@ new Vue({
       {
         duration: 1000,
         delay: 100,
+        once: true
       }
     )
   },
