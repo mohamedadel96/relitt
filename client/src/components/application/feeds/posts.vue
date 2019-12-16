@@ -17,7 +17,6 @@
           <div>
             <span>
               <img
-                data-aos="zoom-in"
                 class="pointer"
                 src="../../../assets/icons/shareIco.svg"
                 style="width:24px ; height:24px"
@@ -29,7 +28,6 @@
 
         <div class="post-media mb-3">
           <img
-            data-aos="zoom-in"
             class="st-pic col-12 px-0"
             v-if="feed.images.length"
             :src="feed.images[0].url"
@@ -40,7 +38,6 @@
               :class="[feed.images.length - 1 == 1 ? 'col-12' : '', feed.images.length - 1 == 2 ? 'col-6' : '', feed.images.length - 1 > 2 ? 'col-4' : '']"
             >
               <img
-                data-aos="zoom-in"
                 class="col-12 px-0"
                 v-if="feed.images[1]"
                 :src="feed.images[1].url"
@@ -50,7 +47,6 @@
 
             <div :class="[feed.images.length - 2 == 1 ? 'col-6' : 'col-4']">
               <img
-                data-aos="zoom-in"
                 class="col-12 px-0"
                 v-if="feed.images[2]"
                 :src="feed.images[2].url"
@@ -59,7 +55,6 @@
             </div>
             <div class="col-4">
               <img
-                data-aos="zoom-in"
                 class="col-12 px-0"
                 v-if="feed.images[3]"
                 :src="feed.images[3].url"
