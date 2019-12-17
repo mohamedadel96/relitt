@@ -9,9 +9,11 @@ import store from './store'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'aos/dist/aos.css'
 import SweetModal from 'sweet-modal-vue/src/plugin.js'
+import VueCollapse from 'vue2-collapse'
 
 
 Vue.use(SweetModal)
+Vue.use(VueCollapse)
 Vue.config.productionTip = false
 Vue.use(require('vue-moment'));
 Vue.use(InfiniteLoading, {
