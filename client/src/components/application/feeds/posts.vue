@@ -97,9 +97,14 @@
               <span :class="{'like': feed.liked}">Like</span>
             </div>
           </div>
-          <div class="col-6 py-2 px-0 post-options fontCS">
-            <img src="../../../assets/img/icon/round-comment-24px.png" class="mr-1" />Comment
+          <div class="col-6 py-2 px-0 post-options fontCS pointer" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <img src="../../../assets/img/icon/round-comment-24px.png" class="mr-1" />
+            <span>Comment</span>
           </div>
+        </div>
+
+        <div class="collapse" id="collapseExample">
+          hello ooooooo
         </div>
       </div>
     </div>

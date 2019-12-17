@@ -2,23 +2,23 @@
   <section id="create-post" class="rounded py-1">
     <div
       class="close border rounded py-1 px-2 pointer overlay"
-      v-show="postBtn"
-      @click="postBtn = false"
+      v-show="startPosting"
+      @click="startPosting = false"
     >x</div>
-    <div class="post-media" v-show="postBtn">
+    <div class="post-media" v-show="startPosting">
       <img v-for="(url,i) in form.images" :key="i" class="m-3" :src="url" alt />
     </div>
     <div class="post-body d-flex justify-content-between align-items-start">
       <textarea
-        @focus="postBtn = true"
+        @focus="startPosting = true"
         v-model="form.body"
         class="py-2 px-4"
         placeholder="what's in your mind"
       ></textarea>
 
       <div
-        v-show="postBtn"
-        :class="{ 'd-flex flex-wrap align-items-between justify-content-end enlargement' : postBtn}"
+        v-show="startPosting"
+        :class="{ 'd-flex flex-wrap align-items-between justify-content-end enlargement' : startPosting}"
       >
         <div class="col-12 px-0 d-flex align-items-start justify-content-end pt-2">
           <span class="px-0">
@@ -57,8 +57,8 @@
           </span>
         </div>
         <div
-          :class="['col-12 px-3 pb-2 postBtn', {'d-flex align-items-end justify-content-end showBtn' : postBtn}]"
-          v-show="postBtn"
+          :class="['col-12 px-3 pb-2 startPosting', {'d-flex align-items-end justify-content-end showBtn' : startPosting}]"
+          v-show="startPosting"
         >
           <button :disabled="disablePost" @click="post" class="btn btn-primary">post</button>
         </div>
@@ -75,7 +75,7 @@ export default {
         body: null,
         images: []
       },
-      postBtn: false,
+      startPosting: false,
       disablePost: false
     };
   },
@@ -115,7 +115,7 @@ export default {
     },
     clearPost() {
       this.disablePost = false;
-      this.postBtn = false;
+      this.startPosting = false;
       this.form.body = null;
       this.form.images = [];
     }
@@ -164,7 +164,7 @@ export default {
       height: 250px;
     }
 
-    .postBtn {
+    .startPosting {
       position: absolute;
       height: 100;
       bottom: 0;

@@ -8161,6 +8161,11 @@ vue-toasted@^1.1.27:
   resolved "https://registry.yarnpkg.com/vue-toasted/-/vue-toasted-1.1.27.tgz#ce0a74b875f90c2e4a9e163cce6d5fc37d78a07c"
   integrity sha512-GVbwInwnqkVxQ4GU/XYeQt1e0dAXL8sF5Hr1H/coCBbYUan5xP0G2mEz/HRDf1lt73rFQAN/bJcLTOKkqiM6tg==
 
+vue2-collapse@^1.0.15:
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/vue2-collapse/-/vue2-collapse-1.0.15.tgz#d80c242f7ba2f5c70515e00dfcfc298f5137cbea"
+  integrity sha512-XLzUxkYKVZqmHRSdirgqXyUYeytsAKNJSjP1dLcVtEIhgP4xUHSbzU7ycuQm/egRgjMCsDzILv5wr0uhS9cXvQ==
+
 vue@^2.6.10:
   version "2.6.10"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
