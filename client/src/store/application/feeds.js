@@ -21,10 +21,12 @@ export default {
       state.feeds.unshift(data)
     },
     saveToggleLike(state, data) {
-      let post = state.feeds.filter(feed => feed.id === data.id)
-      post[0].liked = !data.liked
-      data.liked ? post[0].likes_count-- : post[0].likes_count++
-      state.feeds.map(feed => feed.id === data.id ? post[0] : feed)
+      state.feeds.map(feed => {
+        if (feed.id === data.id) {
+          feed.liked = !data.liked
+          data.liked ? feed.likes_count-- : feed.likes_count++
+        }
+      })
     }
   },
   actions: {
