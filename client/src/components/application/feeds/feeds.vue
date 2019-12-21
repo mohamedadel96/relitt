@@ -1,7 +1,7 @@
 <template>
   <section id="feeds">
-    <create-post />
-    <posts />
+    <create-post @clearPostData="postData = null" :postData="postData" />
+    <posts @editPost="postData = $event" />
   </section>
 </template>
 
@@ -9,6 +9,11 @@
 import createPost from "./createPost";
 import posts from "./posts";
 export default {
+  data() {
+    return {
+      postData: null
+    };
+  },
   components: {
     createPost,
     posts

@@ -26,7 +26,7 @@
                   />
                 </span>
               </template>
-              <b-dropdown-item @click="editPost(feed)">Edit post</b-dropdown-item>
+              <b-dropdown-item @click="$emit('editPost', feed)">Edit post</b-dropdown-item>
               <b-dropdown-item @click="deletePost(feed.id)">Delete post</b-dropdown-item>
             </b-dropdown>
           </div>
@@ -105,7 +105,7 @@
         </div>
 
         <b-collapse :id="'comment-' + i">
-          <b-card>
+          <b-card class="border-0">
             <add-comment :postId="feed.id" />
             <comments v-for="(comment,i) in feed.comments" :key="i" :comment="comment" />
           </b-card>
@@ -143,9 +143,6 @@ export default {
           state.complete();
         }
       });
-    },
-    editPost(post) {
-      console.log(post);
     },
     deletePost(postId) {
       try {

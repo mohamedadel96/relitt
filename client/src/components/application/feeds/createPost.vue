@@ -3,7 +3,7 @@
     <div
       class="close border rounded py-1 px-2 pointer overlay"
       v-show="startPosting"
-      @click="startPosting = false"
+      @click="clearPost"
     >x</div>
     <div class="post-media" v-show="startPosting">
       <img v-for="(url,i) in form.images" :key="i" class="m-3" :src="url" alt />
@@ -60,7 +60,19 @@
           :class="['col-12 px-3 pb-2 startPosting', {'d-flex align-items-end justify-content-end showBtn' : startPosting}]"
           v-show="startPosting"
         >
-          <button :disabled="disablePost" @click="post" class="btn btn-primary">post</button>
+          <button
+            v-show="!editState"
+            :disabled="disablePost"
+            @click="post"
+            class="btn btn-primary"
+          >Post</button>
+
+          <button
+            v-show="editState"
+            :disabled="disablePost"
+            @click="editPost"
+            class="btn btn-primary"
+          >Edit</button>
         </div>
       </div>
     </div>
@@ -69,15 +81,35 @@
 
 <script>
 export default {
+  props: ["postData"],
   data() {
     return {
       form: {
+        postId: null,
         body: null,
         images: []
       },
       startPosting: false,
+      editState: false,
       disablePost: false
     };
+  },
+  watch: {
+    postData: {
+      immediate: true,
+      handler(val, oldVal) {
+        if (val) {
+          this.form.postId = val.id;
+          this.form.body = val.body;
+          this.form.images = val.images.map(img => img.url);
+          this.editState = true;
+          this.startPosting = true;
+          this.$toasted.info("you can edit post now");
+          this.$scrollTo("#app");
+          this.$emit("clearPostData");
+        }
+      }
+    }
   },
   methods: {
     uploadFiles(ref) {
@@ -113,9 +145,21 @@ export default {
         console.log("error while uploading post");
       }
     },
+    editPost() {
+      try {
+        this.disablePost = true;
+        this.$store.dispatch("EDITPOST", this.form).then(res => {
+          this.$toasted.success("your post uploaded successfully");
+          this.clearPost();
+        });
+      } catch (error) {
+        console.log("error while uploading post");
+      }
+    },
     clearPost() {
       this.disablePost = false;
       this.startPosting = false;
+      this.editState = false;
       this.form.body = null;
       this.form.images = [];
     }

@@ -32,6 +32,9 @@ export default {
    post(payload) {
       return Api().post('posts', payload)
    },
+   editPost(payload) {
+      return Api().post(`posts/update/${payload.postId}`, payload)
+   },
    deletePost(postId) {
       return Api().post(`posts/delete/${postId}`)
    },

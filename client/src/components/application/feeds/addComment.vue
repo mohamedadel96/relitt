@@ -1,5 +1,5 @@
 <template>
-  <section id="addComment" class="d-flex justify-content-center mt-1 mb-3 border-bottom pb-3">
+  <section id="addComment" class="d-flex justify-content-center mt-1 mb-3">
     <div class="body col-12 px-1 rounded">
       <textarea
         class="rounded border col-12 px-2 py-1"

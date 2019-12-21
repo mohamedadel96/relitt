@@ -2,6 +2,7 @@ import Vue from 'vue'
 import InfiniteLoading from 'vue-infinite-loading';
 import Vuelidate from 'vuelidate';
 import Toasted from 'vue-toasted';
+import VueScrollTo from 'vue-scrollto'
 import Aos from 'aos'
 import App from './App.vue'
 import router from './router'
@@ -15,6 +16,19 @@ import 'aos/dist/aos.css'
 
 Vue.use(SweetModal)
 Vue.use(BootstrapVue)
+Vue.use(VueScrollTo, {
+  container: "body",
+  duration: 1000,
+  easing: "ease-out",
+  offset: 0,
+  force: true,
+  cancelable: true,
+  onStart: false,
+  onDone: false,
+  onCancel: false,
+  x: false,
+  y: true
+})
 Vue.config.productionTip = false
 Vue.use(require('vue-moment'));
 Vue.use(InfiniteLoading, {
