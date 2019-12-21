@@ -6,12 +6,15 @@ import Aos from 'aos'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'aos/dist/aos.css'
 import SweetModal from 'sweet-modal-vue/src/plugin.js'
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'aos/dist/aos.css'
 
 
 Vue.use(SweetModal)
+Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 Vue.use(require('vue-moment'));
 Vue.use(InfiniteLoading, {
@@ -27,8 +30,11 @@ Vue.use(InfiniteLoading, {
 Vue.use(Vuelidate);
 Vue.use(Toasted, {
   position: 'bottom-right',
+  theme: 'bubble',
   keepOnHover: true,
-  duration: 4000
+  duration: 4000,
+  className: 'toast',
+  iconPack: 'label'
 })
 
 // router Guard
@@ -61,6 +67,7 @@ new Vue({
       {
         duration: 1000,
         delay: 100,
+        once: true
       }
     )
   },

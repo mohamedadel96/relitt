@@ -32,8 +32,14 @@ export default {
    post(payload) {
       return Api().post('posts', payload)
    },
-   createEvent(form){
-      return Api().post('events' , form)
+   createEvent(form) {
+      return Api().post('events', form)
+   },
+   toggleLike(form) {
+      return Api().post(`posts/${form.liked ? 'unlike' : 'like'}/${form.id}`)
+   },
+   addComment(payload) {
+      return Api().post(`posts/comments/${payload.postId}`, payload.form)
    }
 
 }
