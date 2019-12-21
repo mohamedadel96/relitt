@@ -37,6 +37,9 @@ export default {
    },
    toggleLike(form) {
       return Api().post(`posts/${form.liked ? 'unlike' : 'like'}/${form.id}`)
+   },
+   addComment(payload) {
+      return Api().post(`posts/comments/${payload.postId}`, payload.form)
    }
 
 }

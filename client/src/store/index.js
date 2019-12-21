@@ -17,6 +17,7 @@ import myEvent from './application/myEvent'
 import event from './application/event'
 import uploadFiles from './application/uploadFiles'
 import createEvent from './application/createEvent'
+import PostComment from './application/PostComments';
 
 Vue.use(Vuex)
 
@@ -61,7 +62,8 @@ export default new Vuex.Store({
     event,
     logout,
     uploadFiles,
-    createEvent
+    createEvent,
+    PostComment
 
   }
 })
