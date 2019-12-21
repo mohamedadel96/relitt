@@ -85,24 +85,20 @@
 
         <hr class="border mx-3 my-1" />
 
-        <v-collapse-wrapper>
-          <div class="d-flex col-12 px-0 text-center">
-            <div class="col-6 py-2 px-0 post-options fontSM font-weight-bold">
-              <div class="pointer" @click.once="toggleLike(feed.id, feed.liked)" :key="likeBtn">
-                <img src="../../../assets/img/icon/Icon - Thumbs Up - Dark.png" class="mr-1 mb-1" />
-                <span :class="{'like': feed.liked}">Like</span>
-              </div>
-            </div>
-            <div class="col-6 py-2 px-0 post-options fontCS pointer header"  v-collapse-toggle>
-              <img src="../../../assets/img/icon/round-comment-24px.png" class="mr-1" />
-              <span>Comment</span>
+        <div class="d-flex col-12 px-0 text-center">
+          <div class="col-6 py-2 px-0 post-options fontSM font-weight-bold">
+            <div class="pointer" @click.once="toggleLike(feed.id, feed.liked)" :key="likeBtn">
+              <img src="../../../assets/img/icon/Icon - Thumbs Up - Dark.png" class="mr-1 mb-1" />
+              <span :class="{'like': feed.liked}">Like</span>
             </div>
           </div>
+          <div class="col-6 py-2 px-0 post-options fontCS pointer">
+            <img src="../../../assets/img/icon/round-comment-24px.png" class="mr-1" />
+            <span>Comment</span>
+          </div>
+        </div>
 
-          <div class="my-content" v-collapse-content>
-            hello ooooooo
-          </div>
-        </v-collapse-wrapper>
+        <div>hello ooooooo</div>
       </div>
     </div>
     <infinite-loading @infinite="moreFeeds"></infinite-loading>
