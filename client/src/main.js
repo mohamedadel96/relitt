@@ -6,14 +6,15 @@ import Aos from 'aos'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'aos/dist/aos.css'
 import SweetModal from 'sweet-modal-vue/src/plugin.js'
-import VueCollapse from 'vue2-collapse'
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'aos/dist/aos.css'
 
 
 Vue.use(SweetModal)
-Vue.use(VueCollapse)
+Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 Vue.use(require('vue-moment'));
 Vue.use(InfiniteLoading, {

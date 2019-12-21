@@ -92,13 +92,17 @@
               <span :class="{'like': feed.liked}">Like</span>
             </div>
           </div>
-          <div class="col-6 py-2 px-0 post-options fontCS pointer">
+          <div class="col-6 py-2 px-0 post-options fontCS pointer" v-b-toggle="'comment-' + i">
             <img src="../../../assets/img/icon/round-comment-24px.png" class="mr-1" />
             <span>Comment</span>
           </div>
         </div>
 
-        <div>hello ooooooo</div>
+        <b-collapse :id="'comment-' + i">
+          <b-card>
+            <comments />
+          </b-card>
+        </b-collapse>
       </div>
     </div>
     <infinite-loading @infinite="moreFeeds"></infinite-loading>
@@ -106,7 +110,11 @@
 </template>
 
 <script>
+import comments from "../global/comments";
 export default {
+  components: {
+    comments
+  },
   data() {
     return {
       likeBtn: 1
@@ -186,6 +194,7 @@ export default {
           &:last-of-type {
             padding: 0;
             position: relative;
+
             .imagesNum {
               position: absolute;
               top: 0;
@@ -198,6 +207,7 @@ export default {
               align-items: center;
             }
           }
+
           img {
             object-fit: cover;
             max-height: 300px;
@@ -222,6 +232,7 @@ export default {
       opacity: 0.7;
     }
   }
+
   .like {
     color: $blue;
     font-weight: bold;
