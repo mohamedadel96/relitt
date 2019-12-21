@@ -32,6 +32,9 @@ export default {
    post(payload) {
       return Api().post('posts', payload)
    },
+   deletePost(postId) {
+      return Api().post(`posts/delete/${postId}`)
+   },
    createEvent(form) {
       return Api().post('events', form)
    },

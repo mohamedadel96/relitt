@@ -19,5 +19,6 @@ export default {
 <style lang="scss" scoped>
 #feeds {
   position: relative;
+  z-index: 1;
 }
 </style>

@@ -20,6 +20,9 @@ export default {
     pushPost(state, data) {
       state.feeds.unshift(data)
     },
+    DeletePost(state, postId) {
+      state.feeds.map((post, i) => post.id === postId ? state.feeds.splice(i, 1) : post)
+    },
     saveToggleLike(state, data) {
       state.feeds.map(feed => {
         if (feed.id === data.id) {
@@ -54,6 +57,18 @@ export default {
           if (res.data.code !== 200) return reject(res.data.errors)
           commit('pushPost', res.data.data)
           resolve('done')
+        })
+      })
+    },
+    DELETEPOST({ commit }, postId) {
+      return new Promise((resolve, reject) => {
+        appServices.deletePost(postId).then(res => {
+          if (res.data.status === 401) {
+            // we will handle logout option // call logout function
+          }
+          if (res.data.code !== 200) return reject(res.data.errors)
+          commit('DeletePost', postId)
+          resolve("deleted")
         })
       })
     },

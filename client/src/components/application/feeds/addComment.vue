@@ -31,6 +31,7 @@ export default {
             form: this.form
           })
           .then(res => {
+            this.form.body = null;
             this.$toasted.success(res);
           });
       } catch (error) {
