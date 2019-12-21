@@ -20,10 +20,6 @@ export default {
     pushPost(state, data) {
       state.feeds.unshift(data)
     },
-    editPost(state, data) {
-      state.feeds.map((post, i) => post.id === data.id ? state.feeds.splice(i, 1) : post)
-      state.feeds.unshift(data)
-    },
     DeletePost(state, postId) {
       state.feeds.map((post, i) => post.id === postId ? state.feeds.splice(i, 1) : post)
     },
@@ -71,7 +67,8 @@ export default {
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.errors)
-          commit('editPost', res.data.data)
+          commit('DeletePost', res.data.data.id)
+          commit('pushPost', res.data.data)
           resolve('Edited')
         })
       })
