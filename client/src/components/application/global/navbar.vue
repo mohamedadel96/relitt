@@ -1,8 +1,8 @@
 <template>
   <nav class="py-3 border-bottom d-flex justify-content-between align-items-center">
     <div class="px-4 col-3">
-      <img src="../../../assets/img/icon/logo.svg">
-    </div> 
+      <img src="../../../assets/img/icon/logo.svg" />
+    </div>
 
     <div class="col-6 d-flex justify-content-center">
       <ul class="d-flex justify-content-between col-6 my-0">
@@ -20,31 +20,32 @@
 
     <div class="col-3 block_3 d-flex justify-content-end px-3">
       <img src="../../../assets/img/icon/ring.svg" alt />
-      <div
-        class="d-flex justify-content-center align-items-center border rounded-circle mx-2 overflow-hidden"
-      >
-          <img
-          class="avatar "
-          src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80 "
-          alt="avatar"
-          @click="logout()"
-          />
-          </div>    
-            <div class="position-absolute " v-if="isOpen">
-              <ul class=" zindex-dropdown bg-white ">
-                <span class="">Dropdown item text</span>
-                <li class="" href="#">Action</li>
-                <li class="" href="#">Another action</li>
-                <li class="" href="#">Something else here</li>
-              </ul>
-            </div>  
+      <div >
+        <b-dropdown size="lg" variant="link" toggle-class="text-decoration-none" no-caret class="test">
+          <template v-slot:button-content>
+            <div class="d-flex justify-content-center align-items-center border rounded-circle mx-2 overflow-hidden">
+              <img
+                class="avatar"
+                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80 "
+                alt="avatar"
+                @click="toggle()"
+              />
+            </div>
+          </template>
+          <b-dropdown-item href="#">Personal info</b-dropdown-item>
+          <b-dropdown-item href="#">Reviews</b-dropdown-item>
+          <b-dropdown-item href="#">My Feeds</b-dropdown-item>
+          <b-dropdown-item href="#">My Events</b-dropdown-item>
+          <b-dropdown-item href="#">My Activity</b-dropdown-item>
+        </b-dropdown>
+      </div>
       <svg
         class="ml-2"
         xmlns="http://www.w3.org/2000/svg"
         width="40"
         height="40"
         viewBox="0 0 40 40"
-              >
+      >
         <g transform="translate(-1220 -1705)">
           <circle cx="20" cy="20" r="20" transform="translate(1220 1705)" fill="#f5f6f8" />
           <path
@@ -55,8 +56,6 @@
         </g>
       </svg>
     </div>
-
-
   </nav>
 </template>
 
@@ -70,18 +69,18 @@ export default {
   methods: {
     toggle() {
       this.isOpen = !this.isOpen;
-      console.log(this.isOpen)
+      console.log(this.isOpen);
     },
     async logout() {
-          try {
-            let res = await this.$store.dispatch("LOGOUT" );
-            if (res !== "done") return; //will return error in popup
-            document.location.reload(true);
-          } catch (error) {
-            console.log(error);
-          }
-        }  
+      try {
+        let res = await this.$store.dispatch("LOGOUT");
+        if (res !== "done") return; //will return error in popup
+        document.location.reload(true);
+      } catch (error) {
+        console.log(error);
+      }
     }
+  }
 };
 </script>
 
@@ -116,6 +115,9 @@ nav {
         width: 60px;
         height: 60px;
       }
+    .test{
+      left: -80px;
+    }
     }
   }
 }
