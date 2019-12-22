@@ -3,6 +3,7 @@ import InfiniteLoading from 'vue-infinite-loading';
 import Vuelidate from 'vuelidate';
 import Toasted from 'vue-toasted';
 import VueScrollTo from 'vue-scrollto'
+import TextareaAutosize from 'vue-textarea-autosize'
 import Aos from 'aos'
 import App from './App.vue'
 import router from './router'
@@ -16,6 +17,7 @@ import 'aos/dist/aos.css'
 
 Vue.use(SweetModal)
 Vue.use(BootstrapVue)
+Vue.use(TextareaAutosize)
 Vue.use(VueScrollTo, {
   container: "body",
   duration: 1000,
