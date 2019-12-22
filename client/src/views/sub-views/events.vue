@@ -4,7 +4,6 @@
       <div class="col-md-3 px-4 mt-4 overflow-hidden">
         <div>
           <createEvent />
-          <!-- <sweet-modal ref="createEvent">This is an alert.</sweet-modal> -->
         </div>
         <p class="text-secondary text-center fontXS">Your upcoming events</p>
         <div>
