@@ -69,4 +69,9 @@
   font-size: 18px !important;
   padding: 0 30px !important;
 }
+
+.dropdown-menu {
+  outline: none !important
+}
+
 </style>

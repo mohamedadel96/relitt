@@ -20,23 +20,19 @@
 
     <div class="col-3 block_3 d-flex justify-content-end px-3">
       <img src="../../../assets/img/icon/ring.svg" alt />
-      <div >
-        <b-dropdown size="lg" variant="link" toggle-class="text-decoration-none" no-caret class="test">
+      <div>
+        <b-dropdown size="lg" variant="link" right toggle-class="text-decoration-none" no-caret>
           <template v-slot:button-content>
-            <div class="d-flex justify-content-center align-items-center border rounded-circle mx-2 overflow-hidden">
+            <div class="d-flex justify-content-center align-items-center border rounded-circle mx-4 overflow-hidden">
               <img
                 class="avatar"
                 src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80 "
                 alt="avatar"
-                @click="toggle()"
               />
             </div>
           </template>
-          <b-dropdown-item href="#">Personal info</b-dropdown-item>
-          <b-dropdown-item href="#">Reviews</b-dropdown-item>
-          <b-dropdown-item href="#">My Feeds</b-dropdown-item>
-          <b-dropdown-item href="#">My Events</b-dropdown-item>
-          <b-dropdown-item href="#">My Activity</b-dropdown-item>
+          <b-dropdown-item>action</b-dropdown-item>
+          <b-dropdown-item>logout</b-dropdown-item>
         </b-dropdown>
       </div>
       <svg
@@ -84,7 +80,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 nav {
   background: $background_white;
   box-shadow: 1px 1px 2px #eee;
@@ -118,6 +114,14 @@ nav {
     .test{
       left: -80px;
     }
+    }
+  }
+
+  .dropdown {
+    display: flex;
+    justify-content: center;
+    button#__BVID__11__BV_toggle_{
+      padding: 0;
     }
   }
 }
