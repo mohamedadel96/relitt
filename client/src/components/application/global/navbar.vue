@@ -5,14 +5,14 @@
     </div>
 
     <div class="col-6 d-flex justify-content-center">
-      <ul class="d-flex justify-content-between col-6 my-0">
-        <li :class="$route.name === 'app' ? 'active' : ''">
+      <ul class="nav-list d-flex justify-content-between col-6 my-0">
+        <li :class="[$route.name === 'app' ? 'active' : '', 'fontLG']">
           <router-link to="/app">Feeds</router-link>
         </li>
-        <li :class="$route.name === 'dashboard' ? 'active' : ''">
+        <li :class="[$route.name === 'dashboard' ? 'active' : '' , 'fontLG']">
           <router-link to="/app/dashboard">Dashboard</router-link>
         </li>
-        <li :class="($route.name === 'events' || $route.name === 'centers') ? 'active' : ''">
+        <li :class="[($route.name === 'events' || $route.name === 'centers') ? 'active' : '', 'fontLG']">
           <router-link to="/app/events">Explore</router-link>
         </li>
       </ul>
@@ -85,10 +85,10 @@ nav {
   background: $background_white;
   box-shadow: 1px 1px 2px #eee;
 
+.nav-list {
   li {
     list-style: none;
     cursor: pointer;
-    font-size: $fontLG;
     opacity: 0.7;
 
     &.active {
@@ -100,6 +100,7 @@ nav {
       text-decoration: none;
       color: #000;
     }
+  }
   }
 
   .block_3 {
