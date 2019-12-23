@@ -17,17 +17,29 @@
             <div>
               <textarea-autosize
                 placeholder="Type something here..."
-                ref="myTextarea"
-                :class="['comment-body col-12 px-2', {'editable': false}]"
+                :disabled="!editState"
+                ref="commentBody"
+                :class="['comment-body col-12 px-2', {'editable': editState}]"
                 :value="comment.body"
                 :min-height="30"
                 :max-height="350"
-                @blur.native="onBlurTextarea"
+                @input="(e)=> this.form.body = e"
               />
-              <div class="d-flex justify-content-end">
-                <h5>
-                <b-badge variant="light" class="pointer px-3 mx-2 font-weight-light text-primary">Edit</b-badge>
-                <b-badge variant="light" class="pointer px-3 font-weight-light text-danger">Delete</b-badge>
+              <div class="d-flex justify-content-end" v-if="comment.canEdit">
+                <h5 v-show="!editState">
+                  <b-badge
+                    variant="light"
+                    class="pointer px-3 mx-2 font-weight-light text-primary"
+                    @click="openEditMode"
+                  >Edit</b-badge>
+                  <b-badge variant="light" class="pointer px-3 font-weight-light text-danger" @click="deleteComment">Delete</b-badge>
+                </h5>
+                <h5 v-show="editState">
+                  <b-badge
+                    variant="light"
+                    class="pointer px-3 mx-2 font-weight-light text-success"
+                    @click="editComment"
+                  >Save</b-badge>
                 </h5>
               </div>
             </div>
@@ -40,7 +52,48 @@
 
 <script>
 export default {
-  props: ["comment"]
+  props: ["comment"],
+  data() {
+    return {
+      form: {
+        body: null
+      },
+      editState: false
+    };
+  },
+  methods: {
+    editComment() {
+      try {
+        this.$store
+          .dispatch("EDITCOMMENT", {
+            comment: this.$props.comment,
+            form: this.form
+          })
+          .then(res => {
+            this.$toasted.success(res);
+          });
+      } catch (error) {
+        this.$toasted.error("error");
+      }
+    },
+    deleteComment() {
+      try {
+        this.$store
+          .dispatch("DELETECOMMENT", this.$props.comment)
+          .then(res => {
+            this.$toasted.info(res);
+          });
+      } catch (error) {
+        this.$toasted.error("error");
+      }
+    },
+    openEditMode() {
+      this.editState = true;
+      setTimeout(() => {
+        this.$refs.commentBody.$el.focus();
+      }, 100);
+    }
+  }
 };
 </script>
 
@@ -58,6 +111,7 @@ export default {
     .comment-body {
       border: none;
       outline: none;
+      background: none;
       &.editable {
         border: 1px solid #ddd;
         border-radius: 7px;
