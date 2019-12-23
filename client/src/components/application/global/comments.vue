@@ -32,7 +32,11 @@
                     class="pointer px-3 mx-2 font-weight-light text-primary"
                     @click="openEditMode"
                   >Edit</b-badge>
-                  <b-badge variant="light" class="pointer px-3 font-weight-light text-danger" @click="deleteComment">Delete</b-badge>
+                  <b-badge
+                    variant="light"
+                    class="pointer px-3 font-weight-light text-danger"
+                    @click="deleteComment"
+                  >Delete</b-badge>
                 </h5>
                 <h5 v-show="editState">
                   <b-badge
@@ -61,7 +65,7 @@ export default {
   data() {
     return {
       form: {
-        body: ''
+        body: ""
       },
       editState: false
     };
@@ -70,7 +74,7 @@ export default {
     comment: {
       immediate: true,
       handler(val) {
-        this.form.body = val.body
+        this.form.body = val.body;
       }
     }
   },
@@ -83,7 +87,7 @@ export default {
             form: this.form
           })
           .then(res => {
-            this.editState = false
+            this.editState = false;
             this.$toasted.success(res);
           });
       } catch (error) {
@@ -92,11 +96,9 @@ export default {
     },
     deleteComment() {
       try {
-        this.$store
-          .dispatch("DELETECOMMENT", this.$props.comment)
-          .then(res => {
-            this.$toasted.info(res);
-          });
+        this.$store.dispatch("DELETECOMMENT", this.$props.comment).then(res => {
+          this.$toasted.info(res);
+        });
       } catch (error) {
         this.$toasted.error("error");
       }
@@ -109,7 +111,7 @@ export default {
     },
     cancleEditMode() {
       this.editState = false;
-      this.form.body = this.$props.comment.body
+      this.form.body = this.$props.comment.body;
     }
   }
 };
