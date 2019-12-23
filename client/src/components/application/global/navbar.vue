@@ -1,5 +1,5 @@
 <template>
-  <nav class="py-3 border-bottom d-flex justify-content-between align-items-center">
+  <nav id="appNav" class="py-3 border-bottom d-flex justify-content-between align-items-center">
     <div class="px-4 col-3">
       <img src="../../../assets/img/icon/logo.svg" />
     </div>
@@ -12,7 +12,9 @@
         <li :class="[$route.name === 'dashboard' ? 'active' : '' , 'fontLG']">
           <router-link to="/app/dashboard">Dashboard</router-link>
         </li>
-        <li :class="[($route.name === 'events' || $route.name === 'centers') ? 'active' : '', 'fontLG']">
+        <li
+          :class="[($route.name === 'events' || $route.name === 'centers') ? 'active' : '', 'fontLG']"
+        >
           <router-link to="/app/events">Explore</router-link>
         </li>
       </ul>
@@ -23,7 +25,9 @@
       <div>
         <b-dropdown size="lg" variant="link" right toggle-class="text-decoration-none" no-caret>
           <template v-slot:button-content>
-            <div class="d-flex justify-content-center align-items-center border rounded-circle mx-4 overflow-hidden">
+            <div
+              class="d-flex justify-content-center align-items-center border rounded-circle mx-4 overflow-hidden"
+            >
               <img
                 class="avatar"
                 src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80 "
@@ -81,26 +85,26 @@ export default {
 </script>
 
 <style lang="scss">
-nav {
+#appNav {
   background: $background_white;
   box-shadow: 1px 1px 2px #eee;
 
-.nav-list {
-  li {
-    list-style: none;
-    cursor: pointer;
-    opacity: 0.7;
+  .nav-list {
+    li {
+      list-style: none;
+      cursor: pointer;
+      opacity: 0.7;
 
-    &.active {
-      opacity: 0.9;
-      font-weight: bold;
-    }
+      &.active {
+        opacity: 0.9;
+        font-weight: bold;
+      }
 
-    a {
-      text-decoration: none;
-      color: #000;
+      a {
+        text-decoration: none;
+        color: #000;
+      }
     }
-  }
   }
 
   .block_3 {
@@ -112,17 +116,9 @@ nav {
         width: 60px;
         height: 60px;
       }
-    .test{
-      left: -80px;
-    }
-    }
-  }
-
-  .dropdown {
-    display: flex;
-    justify-content: center;
-    button#__BVID__11__BV_toggle_{
-      padding: 0;
+      .test {
+        left: -80px;
+      }
     }
   }
 }

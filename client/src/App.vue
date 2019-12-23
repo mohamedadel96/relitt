@@ -71,7 +71,14 @@
 }
 
 .dropdown-menu {
-  outline: none !important
+  outline: none !important;
 }
 
+.dropdown {
+  display: flex;
+  justify-content: center;
+  button {
+    padding: 0 !important;
+  }
+}
 </style>
