@@ -20,7 +20,7 @@
                 :disabled="!editState"
                 ref="commentBody"
                 :class="['comment-body col-12 px-2', {'editable': editState}]"
-                :value="comment.body"
+                v-model="form.body"
                 :min-height="30"
                 :max-height="350"
                 @input="(e)=> this.form.body = e"
@@ -35,6 +35,11 @@
                   <b-badge variant="light" class="pointer px-3 font-weight-light text-danger" @click="deleteComment">Delete</b-badge>
                 </h5>
                 <h5 v-show="editState">
+                  <b-badge
+                    variant="light"
+                    class="pointer px-3 mx-2 font-weight-light text-danger"
+                    @click="cancleEditMode"
+                  >Cancle</b-badge>
                   <b-badge
                     variant="light"
                     class="pointer px-3 mx-2 font-weight-light text-success"
@@ -56,10 +61,18 @@ export default {
   data() {
     return {
       form: {
-        body: null
+        body: ''
       },
       editState: false
     };
+  },
+  watch: {
+    comment: {
+      immediate: true,
+      handler(val) {
+        this.form.body = val.body
+      }
+    }
   },
   methods: {
     editComment() {
@@ -70,6 +83,7 @@ export default {
             form: this.form
           })
           .then(res => {
+            this.editState = false
             this.$toasted.success(res);
           });
       } catch (error) {
@@ -92,6 +106,11 @@ export default {
       setTimeout(() => {
         this.$refs.commentBody.$el.focus();
       }, 100);
+    },
+    cancleEditMode() {
+      this.editState = false;
+      this.form.body = this.$props.comment.body
+
     }
   }
 };
