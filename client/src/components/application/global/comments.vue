@@ -110,7 +110,6 @@ export default {
     cancleEditMode() {
       this.editState = false;
       this.form.body = this.$props.comment.body
-
     }
   }
 };
