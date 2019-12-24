@@ -1,7 +1,7 @@
 <template>
 <div>
   <div  v-for="(event , i ) in  myEvents" :key="i">
-    <section id="myEvent" class="mt-3">
+    <section id="myEvent" class="mb-3">
       <div class="head ml-3 mt-2 mb-0">
         <p class="title fontMD font-weight-bold fontSM">{{event.title}}</p>
         <p class="desc mb-2 text-truncate text-secondary fontXS">{{event.location_name}}</p>

@@ -26,7 +26,7 @@
         <b-dropdown size="lg" variant="link" right toggle-class="text-decoration-none" no-caret>
           <template v-slot:button-content>
             <div
-              class="d-flex justify-content-center align-items-center border rounded-circle mx-4 overflow-hidden"
+              class="d-flex justify-content-center align-items-center border rounded-circle overflow-hidden"
             >
               <img
                 class="avatar"

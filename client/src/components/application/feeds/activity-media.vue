@@ -2,9 +2,8 @@
   <div class="post-media mb-3">
     <div :class="['st-pic', activity.type_id === 1 ? 'divingBG' : 'scubaBG']">
       <div class="data-container position-relative">
-        <div class="temprature text-white fontXS font-weight-bold">24 &#8451;</div>
-        <div class="time text-white fontXS font-weight-bold">24 min 12 sec</div>
-        
+        <div class="temprature text-white fontXS font-weight-bold" v-if="activity.temprature">{{activity.temprature}} &#8451;</div>
+        <div class="time text-white fontXS font-weight-bold">{{activity.duration.split(':')[0]}} min {{activity.duration.split(':')[1]}} sec</div>
         <div>
           <div class="col-12 d-flex justify-content-center flex-wrap mb-2">
             <img src="../../../assets/icons/line.svg" alt />
@@ -13,31 +12,30 @@
             <div class="position-relative">
               <img v-if="activity.type_id === 1" src="../../../assets/icons/diving.svg" alt />
               <img v-if="activity.type_id === 2" src="../../../assets/icons/scuba-diving.svg" alt />
-              <span class="text-white fontXS font-weight-bold position-absolute px-1 text-nowrap">50 m</span>
+              <span class="text-white fontXS font-weight-bold position-absolute px-1 text-nowrap pt-1">{{activity.depth}} m</span>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- <img class="st-pic col-12 px-0" v-if="activity.length" :src="activity[0].url" alt="post picture" />
-    <div class="pics d-flex" v-if="activity.length - 1 > 0">
+    <div class="pics d-flex" v-if="activity.images.length">
       <div
-        :class="[activity.length - 1 == 1 ? 'col-12' : '', activity.length - 1 == 2 ? 'col-6' : '', activity.length - 1 > 2 ? 'col-4' : '']"
+        :class="[activity.images.length == 1 ? 'col-12' : '', activity.images.length == 2 ? 'col-6' : '', activity.images.length > 2 ? 'col-4' : '']"
       >
-        <img class="col-12 px-0" v-if="activity[1]" :src="activity[1].url" alt="post picture" />
+        <img class="col-12 px-0" v-if="activity.images[0]" :src="activity.images[0].url" alt="post picture" />
       </div>
 
-      <div :class="[activity.length - 2 == 1 ? 'col-6' : 'col-4']">
-        <img class="col-12 px-0" v-if="activity[2]" :src="activity[2].url" alt="post picture" />
+      <div :class="[activity.images.length - 1 == 1 ? 'col-6' : 'col-4']">
+        <img class="col-12 px-0" v-if="activity.images[1]" :src="activity.images[1].url" alt="post picture" />
       </div>
       <div class="col-4">
-        <img class="col-12 px-0" v-if="activity[3]" :src="activity[3].url" alt="post picture" />
+        <img class="col-12 px-0" v-if="activity.images[2]" :src="activity.images[2].url" alt="post picture" />
         <div
           class="activityNum fontXXL font-weight-bold"
-          v-if="activity.length - 4"
-        >+ {{activity.length - 4}}</div>
+          v-if="activity.images.length - 3"
+        >+ {{activity.images.length - 3}}</div>
       </div>
-    </div>-->
+    </div>
   </div>
 </template>
 
