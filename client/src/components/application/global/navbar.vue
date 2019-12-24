@@ -39,13 +39,17 @@
           <b-dropdown-item>logout</b-dropdown-item>
         </b-dropdown>
       </div>
-      <img class="ml-2" src="../../../assets/icons/navPlus.svg" alt="">
+      <add-activity/>
     </div>
   </nav>
 </template>
 
 <script>
+import addActivity from './addActivity'
 export default {
+  components: {
+    addActivity
+  },
   data() {
     return {
     };
