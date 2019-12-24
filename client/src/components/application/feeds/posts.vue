@@ -32,47 +32,13 @@
           </div>
         </div>
 
-        <div class="post-media mb-3">
-          <img
-            class="st-pic col-12 px-0"
-            v-if="feed.images.length"
-            :src="feed.images[0].url"
-            alt="post picture"
-          />
-          <div class="pics d-flex" v-if="feed.images.length - 1 > 0">
-            <div
-              :class="[feed.images.length - 1 == 1 ? 'col-12' : '', feed.images.length - 1 == 2 ? 'col-6' : '', feed.images.length - 1 > 2 ? 'col-4' : '']"
-            >
-              <img
-                class="col-12 px-0"
-                v-if="feed.images[1]"
-                :src="feed.images[1].url"
-                alt="post picture"
-              />
-            </div>
+        <template v-if="!feed.activity && feed.images.length">
+          <post-media :images="feed.images"/>
+        </template>
 
-            <div :class="[feed.images.length - 2 == 1 ? 'col-6' : 'col-4']">
-              <img
-                class="col-12 px-0"
-                v-if="feed.images[2]"
-                :src="feed.images[2].url"
-                alt="post picture"
-              />
-            </div>
-            <div class="col-4">
-              <img
-                class="col-12 px-0"
-                v-if="feed.images[3]"
-                :src="feed.images[3].url"
-                alt="post picture"
-              />
-              <div
-                class="imagesNum fontXXL font-weight-bold"
-                v-if="feed.images.length - 4"
-              >+ {{feed.images.length - 4}}</div>
-            </div>
-          </div>
-        </div>
+        <template v-if="feed.activity">
+          <activity-media :activity="feed.activity"/>
+        </template>
 
         <div class="post-decription px-3">
           <p class="description fontCS">{{feed.body}}</p>
@@ -117,10 +83,14 @@
 </template>
 
 <script>
+import postMedia from './postMedia'
+import activityMedia from './activity-media'
 import comments from "../global/comments";
 import addComment from "./addComment";
 export default {
   components: {
+    activityMedia,
+    postMedia,
     comments,
     addComment
   },
@@ -194,45 +164,6 @@ export default {
       }
     }
 
-    .post-media {
-      .st-pic {
-        height: 230px;
-        object-fit: cover;
-      }
-
-      .pics {
-        padding-top: 2px;
-        overflow: hidden;
-
-        div {
-          height: 130px;
-          padding: 0 2px 0 0;
-          overflow: hidden;
-
-          &:last-of-type {
-            padding: 0;
-            position: relative;
-
-            .imagesNum {
-              position: absolute;
-              top: 0;
-              left: 0;
-              color: $fontColor_white;
-              z-index: 1;
-              display: flex;
-              justify-content: center;
-              width: 100%;
-              align-items: center;
-            }
-          }
-
-          img {
-            object-fit: cover;
-            max-height: 300px;
-          }
-        }
-      }
-    }
 
     .post-decription {
       .description {
