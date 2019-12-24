@@ -21,7 +21,7 @@
     </div>
 
     <div class="col-3 block_3 d-flex justify-content-end px-3">
-      <img src="../../../assets/img/icon/ring.svg" alt />
+      <img src="../../../assets/icons/ring.svg" alt />
       <div>
         <b-dropdown size="lg" variant="link" right toggle-class="text-decoration-none" no-caret>
           <template v-slot:button-content>
@@ -39,38 +39,21 @@
           <b-dropdown-item>logout</b-dropdown-item>
         </b-dropdown>
       </div>
-      <svg
-        class="ml-2"
-        xmlns="http://www.w3.org/2000/svg"
-        width="40"
-        height="40"
-        viewBox="0 0 40 40"
-      >
-        <g transform="translate(-1220 -1705)">
-          <circle cx="20" cy="20" r="20" transform="translate(1220 1705)" fill="#f5f6f8" />
-          <path
-            d="M7.08-6.12V-10.1H4.94v3.98H.96v2.14H4.94V0H7.08V-3.98h3.98V-6.12Z"
-            transform="translate(1234.04 1730.1)"
-            fill="#80878d"
-          />
-        </g>
-      </svg>
+      <add-activity />
     </div>
   </nav>
 </template>
 
 <script>
+import addActivity from "./addActivity";
 export default {
+  components: {
+    addActivity
+  },
   data() {
-    return {
-      isOpen: false
-    };
+    return {};
   },
   methods: {
-    toggle() {
-      this.isOpen = !this.isOpen;
-      console.log(this.isOpen);
-    },
     async logout() {
       try {
         let res = await this.$store.dispatch("LOGOUT");
