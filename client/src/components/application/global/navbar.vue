@@ -39,20 +39,19 @@
           <b-dropdown-item>logout</b-dropdown-item>
         </b-dropdown>
       </div>
-      <add-activity/>
+      <add-activity />
     </div>
   </nav>
 </template>
 
 <script>
-import addActivity from './addActivity'
+import addActivity from "./addActivity";
 export default {
   components: {
     addActivity
   },
   data() {
-    return {
-    };
+    return {};
   },
   methods: {
     async logout() {

@@ -13,15 +13,15 @@ export default {};
 
 <style lang="scss">
 #addActivity {
-    img {
-        outline: none
-    }
+  img {
+    outline: none;
+  }
 
-    .modal-dialog {
-        margin: 76px 10px 0 auto
-    }
-    .modal-content {
-        border: none
-    }
+  .modal-dialog {
+    margin: 76px 10px 0 auto;
+  }
+  .modal-content {
+    border: none;
+  }
 }
 </style>
