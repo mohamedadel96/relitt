@@ -89,7 +89,7 @@
           </div>
         </div>
 
-        <hr class="border mx-3 my-1" />
+        <hr class="border-top mx-3 my-1" />
 
         <div class="d-flex col-12 px-0 text-center">
           <div class="col-6 py-2 px-0 post-options fontSM font-weight-bold">
