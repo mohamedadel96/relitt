@@ -20,6 +20,7 @@
     "vue-chartjs": "^3.5.0",
     "vue-facebook-login-component": "^1.4.0",
     "vue-flash-message": "^0.7.2",
+    "vue-flatpickr-component": "^8.1.5",
     "vue-google-login": "^2.0.3",
     "vue-infinite-loading": "^2.4.4",
     "vue-moment": "^4.0.0",

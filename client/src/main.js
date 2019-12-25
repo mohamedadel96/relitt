@@ -9,6 +9,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import SweetModal from "sweet-modal-vue/src/plugin.js";
+import './plugins/flatPickr.js'
 import BootstrapVue from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";

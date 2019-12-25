@@ -3555,6 +3555,11 @@ find-up@^4.0.0:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
 
+flatpickr@^4.6.1:
+  version "4.6.3"
+  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.6.3.tgz#15a8b76b6e34e3a072861250503a5995b9d3bc60"
+  integrity sha512-007VucCkqNOMMb9ggRLNuJowwaJcyOh4sKAFcdGfahfGc7JQbf94zSzjdBq/wVyHWUEs5o3+idhFZ0wbZMRmVQ==
+
 flush-write-stream@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/flush-write-stream/-/flush-write-stream-1.1.1.tgz#8dd7d873a1babc207d94ead0c2e0e44276ebf2e8"
@@ -8141,6 +8146,13 @@ vue-flash-message@^0.7.2:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/vue-flash-message/-/vue-flash-message-0.7.2.tgz#0668d6fa9fc70c65fd5c6ec246a415786960c34d"
   integrity sha512-swOK9PxlWKzt1zzAMJX4YMU2O3kS0JznbwLy8burtKK2vibYc7ODRiEdAVnxRDQ09TG4tElVeO3hwwGDxQktaw==
+
+vue-flatpickr-component@^8.1.5:
+  version "8.1.5"
+  resolved "https://registry.yarnpkg.com/vue-flatpickr-component/-/vue-flatpickr-component-8.1.5.tgz#a7a7978d0034c8e44cf1527442d100c0655882fb"
+  integrity sha512-whrR+WM7fWyHW+1ZxCx7uVSuOlTeZXEMzhsgcILXGxIzQxr5uX5RlS5amLXdGGSSVf+zukrb6MvYit/uIkhk3Q==
+  dependencies:
+    flatpickr "^4.6.1"
 
 vue-functional-data-merge@^3.1.0:
   version "3.1.0"
