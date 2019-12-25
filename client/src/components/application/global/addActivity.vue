@@ -6,8 +6,8 @@
         <div class="form-group d-flex overflow-hidden">
           <div class="col-12 px-2">
             <select class="form-controls py-3 col-12" v-model="form.type_id">
-              <option :value="1">diving</option>
-              <option :value="2">scupa diving</option>
+              <option class="option" :value="1">diving</option>
+              <option class="option" :value="2">scupa diving</option>
             </select>
           </div>
         </div>
