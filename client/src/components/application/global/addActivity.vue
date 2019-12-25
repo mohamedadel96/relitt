@@ -80,6 +80,33 @@
             />
           </div>
         </div>
+        <div class="col-12 px-2 border-bottom mb-1">
+          <p class="font-weight-bold text-secondary">Visibility</p>
+          <div class="d-flex">
+            <div class="col-3 px-3">
+              <p>icon</p>
+              <p>Clear</p>
+            </div>
+            <div class="col-3 px-3">
+              <p>icon</p>
+              <p>Normal</p>
+            </div>
+            <div class="col-3 px-3">
+              <p>icon</p>
+              <p>Bad</p>
+            </div>
+          </div>
+        </div>
+        <div class="my-4">
+          <div>imgs will show here</div>
+          <div class="mt-3">
+            <input type="file" multiple class="d-none" ref="photos">
+            <button @click="$refs.photos.click()" class="btn btn-light px-5 text-secondary font-weight-bold">Add photo</button>
+          </div>
+        </div>
+        <div class="col-12 px-2">
+          <button class="btn btn-primary btn-block btn-lg py-2">Upload</button>
+        </div>
       </form>
     </b-modal>
   </div>
@@ -118,7 +145,6 @@ export default {
   .modal-dialog {
     margin: 80px 10px 0 auto;
     position: relative;
-    
   }
   .modal-content {
     border: none;
