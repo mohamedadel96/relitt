@@ -39,7 +39,9 @@
           <b-dropdown-item>logout</b-dropdown-item>
         </b-dropdown>
       </div>
-      <add-activity />
+      <add-activity>
+        <img class="ml-2 pointer" v-b-modal.addActivity src="../../../assets/icons/navPlus.svg" alt />
+      </add-activity>
     </div>
   </nav>
 </template>

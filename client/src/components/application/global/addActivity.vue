@@ -1,14 +1,26 @@
 <template>
   <div id="addActivity">
-    <img class="ml-2 pointer" v-b-modal.addActivity src="../../../assets/icons/navPlus.svg" alt />
+    <slot></slot>
     <b-modal id="addActivity" hide-backdrop content-class="shadow" hide-header hide-footer>
-      <p class="my-4">Hello from modal!</p>
+      <form @submit.prevent>
+        <div>
+          <select>
+            <option :value="true"></option>
+          </select>
+        </div>
+      </form>
     </b-modal>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+
+    }
+  }
+};
 </script>
 
 <style lang="scss">
