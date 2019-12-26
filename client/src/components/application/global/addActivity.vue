@@ -112,18 +112,21 @@
           </div>
         </div>
         <div class="my-4">
-          <div class="position-relative">
+        <div class="d-flex flex-wrap">
+          <div class="position-relative m-2 border rounded" v-for="(img, i) in form.images" :key="i">
             <div
               class="activityImg rounded"
-              :style="{ 'background-image': 'url(' + 'https://pbs.twimg.com/profile_images/823569976342773760/c2RLAG7h_400x400.jpg' + ')' }"
+              :style="{ 'background-image': 'url(' + img + ')' }"
+              @click="form.images.splice(i, 1)"
             ></div>
           </div>
-          
-          <div class="mt-3">
+        </div>
+
+          <div class="mt-3 mx-2">
             <input class="d-none" type="file" multiple ref="photos" @change="uploadFiles" />
             <button
               @click="$refs.photos.click()"
-              class="btn btn-light px-5 text-secondary font-weight-bold"
+              class="btn btn-light px-5 text-secondary font-weight-bold py-2"
             >Add photo</button>
           </div>
         </div>
@@ -192,6 +195,9 @@ export default {
 
 <style lang="scss">
 #addActivity {
+  img {
+    outline: none
+  }
   .modal-dialog {
     margin: 80px 10px 0 auto;
     position: relative;
