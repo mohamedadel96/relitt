@@ -112,9 +112,15 @@
           </div>
         </div>
         <div class="my-4">
-          <div>imgs will show here</div>
+          <div class="position-relative">
+            <div
+              class="activityImg rounded"
+              :style="{ 'background-image': 'url(' + 'https://pbs.twimg.com/profile_images/823569976342773760/c2RLAG7h_400x400.jpg' + ')' }"
+            ></div>
+          </div>
+          
           <div class="mt-3">
-            <input type="file" multiple class="d-none" ref="photos" />
+            <input class="d-none" type="file" multiple ref="photos" @change="uploadFiles" />
             <button
               @click="$refs.photos.click()"
               class="btn btn-light px-5 text-secondary font-weight-bold"
@@ -122,7 +128,11 @@
           </div>
         </div>
         <div class="col-12 px-2">
-          <button class="btn btn-primary btn-block btn-lg py-2" @click="saveActivity">Upload</button>
+          <button
+            class="btn btn-primary btn-block btn-lg py-2"
+            :disabled="disableUploading"
+            @click="saveActivity"
+          >Upload</button>
         </div>
       </form>
     </b-modal>
@@ -146,11 +156,33 @@ export default {
         spot_name: null,
         location_name: null,
         lat: null,
-        lng: null
-      }
+        lng: null,
+        images: []
+      },
+      disableUploading: false
     };
   },
   methods: {
+    uploadFiles() {
+      try {
+        this.disableUploading = true;
+        let formData = new FormData();
+
+        for (let i = 0; i < this.$refs.photos.files.length; i++) {
+          let file = this.$refs.photos.files[i];
+          formData.append("files[" + i + "]", file);
+        }
+
+        this.$store.dispatch("UPLOADFILES", formData).then(res => {
+          this.$toasted.success("uploaded successfully");
+          res.map(file => this.form.images.push(file.filePath));
+
+          this.disableUploading = false;
+        });
+      } catch (error) {
+        this.$toasted.error("error while uploading files");
+      }
+    },
     saveActivity() {
       console.log(this.form);
     }
@@ -160,17 +192,13 @@ export default {
 
 <style lang="scss">
 #addActivity {
-  img {
-    outline: none;
-  }
-
   .modal-dialog {
     margin: 80px 10px 0 auto;
     position: relative;
   }
   .modal-content {
     border: none;
-    &:after {
+    &::after {
       content: "";
       width: 15px;
       height: 15px;
@@ -185,23 +213,58 @@ export default {
   }
 
   form {
-    input {
-      outline: none !important;
-    }
-    select {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      background: url("../../../assets/icons/selectArrow.svg");
-      background-repeat: no-repeat;
-      background-position-x: 94%;
-      background-position-y: 50%;
-    }
     .form-group {
       .form-controls {
         border: none;
         border-bottom: 1px solid #ddd;
         outline: none !important;
+        input {
+          outline: none !important;
+        }
+        select {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          background: url("../../../assets/icons/selectArrow.svg");
+          background-repeat: no-repeat;
+          background-position-x: 94%;
+          background-position-y: 50%;
+        }
+      }
+    }
+    .activityImg {
+      width: 150px;
+      height: 150px;
+      background-size: contain;
+      cursor: pointer;
+      &:hover {
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          width: 150px;
+          height: 150px;
+          top: 0;
+          left: 0;
+          background: rgba(51, 51, 51, 0.384);
+          border-radius: 50%;
+          z-index: 1;
+        }
+        &::after {
+          content: "x";
+          display: block;
+          position: absolute;
+          width: 150px;
+          height: 150px;
+          top: -28px;
+          left: 0;
+          border-radius: 50%;
+          font-size: 120px;
+          color: rgba(255, 51, 0, 0.808);
+          font-weight: bold;
+          text-align: center;
+          z-index: 1;
+        }
       }
     }
   }

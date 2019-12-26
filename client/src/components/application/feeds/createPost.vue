@@ -124,9 +124,7 @@ export default {
 
         this.$store.dispatch("UPLOADFILES", formData).then(res => {
           this.$toasted.success("uploaded successfully");
-          res.map(file => {
-            this.form.images.push(file.filePath);
-          });
+          res.map(file => this.form.images.push(file.filePath));
 
           this.disablePost = false;
         });
