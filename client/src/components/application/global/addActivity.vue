@@ -5,7 +5,7 @@
       <form @submit.prevent>
         <div class="form-group d-flex overflow-hidden">
           <div class="col-12 px-2">
-            <select class="form-controls py-3 col-12" v-model="form.type_id">
+            <select class="form-controls py-3 col-12 pointer" v-model="form.type_id">
               <option class="fontLG" :value="1">diving</option>
               <option class="fontLG" :value="2">scupa diving</option>
             </select>
@@ -34,6 +34,7 @@
               min="0"
               v-model="form.duration"
               placeholder="Duration"
+              oninput="validity.valid||(value='');"
             />
           </div>
         </div>
@@ -45,6 +46,7 @@
               min="0"
               v-model="form.depth"
               placeholder="Depth"
+              oninput="validity.valid||(value='');"
             />
           </div>
         </div>
@@ -56,6 +58,7 @@
               min="0"
               v-model="form.temprature"
               placeholder="Temprature"
+              oninput="validity.valid||(value='');"
             />
           </div>
         </div>
@@ -67,6 +70,7 @@
               min="0"
               v-model="form.start_air_level"
               placeholder="Start air level"
+              oninput="validity.valid||(value='');"
             />
           </div>
 
@@ -77,6 +81,7 @@
               min="0"
               v-model="form.end_air_level"
               placeholder="End air level"
+              oninput="validity.valid||(value='');"
             />
           </div>
         </div>
@@ -84,16 +89,25 @@
           <p class="font-weight-bold text-secondary">Visibility</p>
           <div class="d-flex">
             <div class="col-3 px-3">
-              <p>icon</p>
-              <p>Clear</p>
+              <input class="d-none" ref="clear" type="radio" v-model="form.visibility" :value="1" />
+              <div class="pointer" @click="$refs.clear.click()">
+                <p>icon</p>
+                <p :class="form.visibility === 1 ? 'text-primary' : ''">Clear</p>
+              </div>
             </div>
             <div class="col-3 px-3">
-              <p>icon</p>
-              <p>Normal</p>
+              <input class="d-none" ref="normal" type="radio" v-model="form.visibility" :value="2" />
+              <div class="pointer" @click="$refs.normal.click()">
+                <p>icon</p>
+                <p :class="form.visibility === 2 ? 'text-primary' : ''">Normal</p>
+              </div>
             </div>
             <div class="col-3 px-3">
-              <p>icon</p>
-              <p>Bad</p>
+              <input class="d-none" ref="bad" type="radio" v-model="form.visibility" :value="3" />
+              <div class="pointer" @click="$refs.bad.click()">
+                <p>icon</p>
+                <p :class="form.visibility === 3 ? 'text-primary' : ''">Bad</p>
+              </div>
             </div>
           </div>
         </div>
@@ -108,7 +122,7 @@
           </div>
         </div>
         <div class="col-12 px-2">
-          <button class="btn btn-primary btn-block btn-lg py-2">Upload</button>
+          <button class="btn btn-primary btn-block btn-lg py-2" @click="saveActivity">Upload</button>
         </div>
       </form>
     </b-modal>
@@ -122,19 +136,24 @@ export default {
       form: {
         type_id: 1,
         title: null,
-        date: new Date(),
-        duration: NaN,
-        depth: NaN,
+        date: null,
+        duration: null,
+        depth: null,
         visibility: 1,
-        temprature: NaN,
-        start_air_level: NaN,
-        end_air_level: NaN,
+        temprature: null,
+        start_air_level: null,
+        end_air_level: null,
         spot_name: null,
         location_name: null,
         lat: null,
         lng: null
       }
     };
+  },
+  methods: {
+    saveActivity() {
+      console.log(this.form);
+    }
   }
 };
 </script>
@@ -168,6 +187,15 @@ export default {
   form {
     input {
       outline: none !important;
+    }
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background: url("../../../assets/icons/selectArrow.svg");
+      background-repeat: no-repeat;
+      background-position-x: 94%;
+      background-position-y: 50%;
     }
     .form-group {
       .form-controls {
