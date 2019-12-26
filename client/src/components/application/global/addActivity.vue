@@ -1,7 +1,14 @@
 <template>
   <div id="addActivity">
     <slot></slot>
-    <b-modal id="addActivity" hide-backdrop content-class="shadow" hide-header hide-footer>
+    <b-modal
+      @hide="clearData"
+      id="addActivity"
+      hide-backdrop
+      content-class="shadow"
+      hide-header
+      hide-footer
+    >
       <form @submit.prevent>
         <div class="form-group d-flex overflow-hidden">
           <div class="col-12 px-2">
@@ -112,15 +119,19 @@
           </div>
         </div>
         <div class="my-4">
-        <div class="d-flex flex-wrap">
-          <div class="position-relative m-2 border rounded" v-for="(img, i) in form.images" :key="i">
+          <div class="d-flex flex-wrap">
             <div
-              class="activityImg rounded"
-              :style="{ 'background-image': 'url(' + img + ')' }"
-              @click="form.images.splice(i, 1)"
-            ></div>
+              class="position-relative m-2 border rounded"
+              v-for="(img, i) in form.images"
+              :key="i"
+            >
+              <div
+                class="activityImg rounded"
+                :style="{ 'background-image': 'url(' + img + ')' }"
+                @click="form.images.splice(i, 1)"
+              ></div>
+            </div>
           </div>
-        </div>
 
           <div class="mt-3 mx-2">
             <input class="d-none" type="file" multiple ref="photos" @change="uploadFiles" />
@@ -188,6 +199,22 @@ export default {
     },
     saveActivity() {
       console.log(this.form);
+    },
+    clearData() {
+      this.form.type_id = 1;
+      this.form.title = null;
+      this.form.date = null;
+      this.form.duration = null;
+      this.form.depth = null;
+      this.form.visibility = 1;
+      this.form.temprature = null;
+      this.form.start_air_level = null;
+      this.form.end_air_level = null;
+      this.form.spot_name = null;
+      this.form.location_name = null;
+      this.form.lat = null;
+      this.form.lng = null;
+      this.form.images = [];
     }
   }
 };
@@ -196,7 +223,7 @@ export default {
 <style lang="scss">
 #addActivity {
   img {
-    outline: none
+    outline: none;
   }
   .modal-dialog {
     margin: 80px 10px 0 auto;
