@@ -100,8 +100,11 @@
         <div class="my-4">
           <div>imgs will show here</div>
           <div class="mt-3">
-            <input type="file" multiple class="d-none" ref="photos">
-            <button @click="$refs.photos.click()" class="btn btn-light px-5 text-secondary font-weight-bold">Add photo</button>
+            <input type="file" multiple class="d-none" ref="photos" />
+            <button
+              @click="$refs.photos.click()"
+              class="btn btn-light px-5 text-secondary font-weight-bold"
+            >Add photo</button>
           </div>
         </div>
         <div class="col-12 px-2">
