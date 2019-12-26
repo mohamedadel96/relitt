@@ -247,22 +247,22 @@ export default {
 
   form {
     .form-group {
+      input {
+        outline: none !important;
+      }
+      select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: url("../../../assets/icons/selectArrow.svg");
+        background-repeat: no-repeat;
+        background-position-x: 94%;
+        background-position-y: 50%;
+      }
       .form-controls {
         border: none;
         border-bottom: 1px solid #ddd;
         outline: none !important;
-        input {
-          outline: none !important;
-        }
-        select {
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-          background: url("../../../assets/icons/selectArrow.svg");
-          background-repeat: no-repeat;
-          background-position-x: 94%;
-          background-position-y: 50%;
-        }
       }
     }
     .activityImg {
