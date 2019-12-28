@@ -1,5 +1,5 @@
 <template>
-  <div id="addActivity">
+  <section id="addActivity">
     <slot></slot>
     <b-modal
       @hide="clearData"
@@ -57,7 +57,7 @@
             />
           </div>
         </div>
-        <div class="form-group d-flex overflow-hidden">
+        <div :class="['form-group overflow-hidden', form.type_id === 1 ? 'd-flex' : 'd-none']">
           <div class="col-12 px-2">
             <input
               class="form-controls py-3 col-12"
@@ -150,7 +150,7 @@
         </div>
       </form>
     </b-modal>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -167,10 +167,10 @@ export default {
         temprature: null,
         start_air_level: null,
         end_air_level: null,
-        spot_name: null,
-        location_name: null,
-        lat: null,
-        lng: null,
+        spot_name: "null",
+        location_name: "null",
+        lat: "null",
+        lng: "null",
         images: []
       },
       disableUploading: false
@@ -198,9 +198,17 @@ export default {
       }
     },
     saveActivity() {
-      console.log(this.form);
+      try {
+        this.$store.dispatch("ADDACTIVITY", this.form).then(res => {
+          this.clearData();
+          this.$toasted.success(res);
+        });
+      } catch (error) {
+        this.$toasted.error("error");
+      }
     },
     clearData() {
+      this.$bvModal.hide("addActivity");
       this.form.type_id = 1;
       this.form.title = null;
       this.form.date = null;

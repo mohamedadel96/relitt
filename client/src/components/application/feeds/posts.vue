@@ -33,11 +33,11 @@
         </div>
 
         <template v-if="!feed.activity && feed.images.length">
-          <post-media :images="feed.images"/>
+          <post-media :images="feed.images" />
         </template>
 
         <template v-if="feed.activity">
-          <activity-media :activity="feed.activity"/>
+          <activity-media :activity="feed.activity" />
         </template>
 
         <div class="post-decription px-3">
@@ -55,7 +55,7 @@
           </div>
         </div>
 
-        <hr class="border-top mx-3 my-1" />
+        <hr class="border-top mx-3 my-1" style="height:1px" />
 
         <div class="d-flex col-12 px-0 text-center">
           <div class="col-6 py-2 px-0 post-options fontSM font-weight-bold">
@@ -83,8 +83,8 @@
 </template>
 
 <script>
-import postMedia from './postMedia'
-import activityMedia from './activity-media'
+import postMedia from "./postMedia";
+import activityMedia from "./activity-media";
 import comments from "../global/comments";
 import addComment from "./addComment";
 export default {
@@ -163,7 +163,6 @@ export default {
         opacity: 0.7;
       }
     }
-
 
     .post-decription {
       .description {

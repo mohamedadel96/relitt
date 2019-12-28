@@ -52,6 +52,9 @@ export default {
    },
    deleteComment(commentId) {
       return Api().post(`posts/comments/delete/${commentId}`)
-   }
+   },
+   addActivity(payload) {
+      return Api().post('activities', payload)
+   },
 
 }
