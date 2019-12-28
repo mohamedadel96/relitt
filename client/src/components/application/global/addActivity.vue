@@ -95,21 +95,21 @@
         <div class="col-12 px-2 border-bottom mb-1">
           <p class="font-weight-bold text-secondary">Visibility</p>
           <div class="d-flex">
-            <div class="col-3 px-3">
+            <div class="col-4 px-3">
               <input class="d-none" ref="clear" type="radio" v-model="form.visibility" :value="1" />
               <div class="pointer" @click="$refs.clear.click()">
                 <p>icon</p>
                 <p :class="form.visibility === 1 ? 'text-primary' : ''">Clear</p>
               </div>
             </div>
-            <div class="col-3 px-3">
+            <div class="col-4 px-3">
               <input class="d-none" ref="normal" type="radio" v-model="form.visibility" :value="2" />
               <div class="pointer" @click="$refs.normal.click()">
                 <p>icon</p>
                 <p :class="form.visibility === 2 ? 'text-primary' : ''">Normal</p>
               </div>
             </div>
-            <div class="col-3 px-3">
+            <div class="col-4 px-3">
               <input class="d-none" ref="bad" type="radio" v-model="form.visibility" :value="3" />
               <div class="pointer" @click="$refs.bad.click()">
                 <p>icon</p>
@@ -299,6 +299,11 @@ export default {
           z-index: 1;
         }
       }
+    }
+  }
+  @media (min-width: 576px) {
+    .modal-dialog {
+      max-width: 365px;
     }
   }
 }
