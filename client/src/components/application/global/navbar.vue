@@ -39,18 +39,18 @@
           <b-dropdown-item>logout</b-dropdown-item>
         </b-dropdown>
       </div>
-      <add-activity>
+      <activity>
         <img class="ml-2 pointer" v-b-modal.addActivity src="../../../assets/icons/navPlus.svg" alt />
-      </add-activity>
+      </activity>
     </div>
   </nav>
 </template>
 
 <script>
-import addActivity from "./addActivity";
+import activity from "./activity";
 export default {
   components: {
-    addActivity
+    activity
   },
   data() {
     return {};
