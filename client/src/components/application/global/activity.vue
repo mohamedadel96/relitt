@@ -143,10 +143,17 @@
         </div>
         <div class="col-12 px-2">
           <button
+            v-if="!editState"
             class="btn btn-primary btn-block btn-lg py-2"
             :disabled="disableUploading"
             @click="saveActivity"
           >Upload</button>
+          <button
+          v-if="editState"
+            class="btn btn-primary btn-block btn-lg py-2"
+            :disabled="disableUploading"
+            @click="editActivity"
+          >Edit</button>
         </div>
       </form>
     </b-modal>
@@ -154,6 +161,7 @@
 </template>
 
 <script>
+import {Bus} from '../../../main'
 export default {
   data() {
     return {
@@ -173,7 +181,8 @@ export default {
         lng: "null",
         images: []
       },
-      disableUploading: false
+      disableUploading: false,
+      editState: false
     };
   },
   methods: {
@@ -207,6 +216,9 @@ export default {
         this.$toasted.error("error");
       }
     },
+    editActivity() {
+
+    },
     clearData() {
       this.$bvModal.hide("addActivity");
       this.form.type_id = 1;
@@ -223,8 +235,29 @@ export default {
       this.form.lat = null;
       this.form.lng = null;
       this.form.images = [];
+      this.editState = false
     }
-  }
+  },
+  mounted() {
+    Bus.$on('editActivity', (payload) => {
+      this.form.type_id = payload.type_id;
+      this.form.title = payload.title;
+      this.form.date = payload.date;
+      this.form.duration = payload.duration;
+      this.form.depth = payload.depth;
+      this.form.visibility = payload.visibility;
+      this.form.temprature = payload.temprature;
+      this.form.start_air_level = payload.start_air_level;
+      this.form.end_air_level = payload.end_air_level;
+      this.form.spot_name = payload.spot_name;
+      this.form.location_name = payload.location_name;
+      this.form.lat = payload.lat;
+      this.form.lng = payload.lng;
+      this.form.images = payload.images.map(img => img.url);
+      this.editState = true
+      this.$bvModal.show('addActivity')
+    })
+  },
 };
 </script>
 

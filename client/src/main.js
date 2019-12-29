@@ -19,6 +19,8 @@ import SweetModal from "sweet-modal-vue/src/plugin.js";
 Vue.use(SweetModal);
 Vue.config.productionTip = false;
 
+export const Bus = new Vue();
+
 new Vue({
   created() {
     Aos.init({
