@@ -26,8 +26,15 @@
                   />
                 </span>
               </template>
-              <b-dropdown-item @click="$emit('editPost', feed)">Edit post</b-dropdown-item>
-              <b-dropdown-item @click="deletePost(feed.id)">Delete post</b-dropdown-item>
+              <b-dropdown-item v-if="!feed.activity" @click="$emit('editPost', feed)">Edit post</b-dropdown-item>
+              <b-dropdown-item
+                v-if="feed.activity"
+                @click="emitEditActivity(feed.activity)"
+              >Edit activity</b-dropdown-item>
+              <b-dropdown-item @click="deletePost(feed.id)">
+                <template v-if="!feed.activity">Delete post</template>
+                <template v-if="feed.activity">Delete activity</template>
+              </b-dropdown-item>
             </b-dropdown>
           </div>
         </div>
@@ -56,7 +63,6 @@
         </div>
 
         <hr class="border-top mx-3 my-1" style="height:1px" />
-        <button @click="kk(feed.activity)">evtn</button>
 
         <div class="d-flex col-12 px-0 text-center">
           <div class="col-6 py-2 px-0 post-options fontSM font-weight-bold">
@@ -84,7 +90,7 @@
 </template>
 
 <script>
-import {Bus} from '../../../main'
+import { Bus } from "../../../main";
 import postMedia from "./postMedia";
 import activityMedia from "./activity-media";
 import comments from "../global/comments";
@@ -107,8 +113,8 @@ export default {
     }
   },
   methods: {
-    kk(payload) {
-      Bus.$emit('editActivity', payload)
+    emitEditActivity(payload) {
+      Bus.$emit("editActivity", payload);
     },
     moreFeeds(state) {
       this.$store.dispatch("FEEDS").then(res => {
