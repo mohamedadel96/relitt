@@ -1,7 +1,7 @@
 <template>
   <section id="create-post" class="rounded py-1">
     <div
-      class="close border rounded py-1 px-2 pointer overlay"
+      class="close border rounded-circle bg-danger text-white py-1 px-2 pointer overlay"
       v-show="startPosting"
       @click="clearPost"
     >x</div>
@@ -226,8 +226,8 @@ export default {
 
   .close {
     position: absolute;
-    top: 8px;
-    right: 50%;
+    top: -14px;
+    left: -18px;
   }
 
   @-webkit-keyframes elongation {
