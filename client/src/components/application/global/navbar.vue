@@ -23,7 +23,7 @@
     <div class="col-3 block_3 d-flex justify-content-end px-4">
       <img src="../../../assets/icons/ring.svg" alt />
       <div class="mx-3">
-        <b-dropdown size="lg" variant="link" right toggle-class="text-decoration-none" no-caret>
+        <b-dropdown size="lg" variant="link" right offset="-20" toggle-class="text-decoration-none" no-caret>
           <template v-slot:button-content>
             <div
               class="d-flex justify-content-center align-items-center border rounded-circle overflow-hidden"
