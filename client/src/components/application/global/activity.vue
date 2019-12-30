@@ -149,7 +149,7 @@
             @click="saveActivity"
           >Upload</button>
           <button
-          v-if="editState"
+            v-if="editState"
             class="btn btn-primary btn-block btn-lg py-2"
             :disabled="disableUploading"
             @click="editActivity"
@@ -161,11 +161,13 @@
 </template>
 
 <script>
-import {Bus} from '../../../main'
+import { Bus } from "../../../main";
 export default {
   data() {
     return {
       form: {
+        post_id: null,
+        activity_id: null,
         type_id: 1,
         title: null,
         date: null,
@@ -217,10 +219,18 @@ export default {
       }
     },
     editActivity() {
-
+      try {
+        this.$store.dispatch("EDITACTIVITY", this.form).then(res => {
+          this.clearData();
+          this.$toasted.success(res);
+        });
+      } catch (error) {
+        this.$toasted.error("error");
+      }
     },
     clearData() {
       this.$bvModal.hide("addActivity");
+      this.form.activity_id = null
       this.form.type_id = 1;
       this.form.title = null;
       this.form.date = null;
@@ -235,11 +245,12 @@ export default {
       this.form.lat = null;
       this.form.lng = null;
       this.form.images = [];
-      this.editState = false
+      this.editState = false;
     }
   },
   mounted() {
-    Bus.$on('editActivity', (payload) => {
+    Bus.$on("editActivity", payload => {
+      this.form.activity_id = payload.id
       this.form.type_id = payload.type_id;
       this.form.title = payload.title;
       this.form.date = payload.date;
@@ -254,10 +265,10 @@ export default {
       this.form.lat = payload.lat;
       this.form.lng = payload.lng;
       this.form.images = payload.images.map(img => img.url);
-      this.editState = true
-      this.$bvModal.show('addActivity')
-    })
-  },
+      this.editState = true;
+      this.$bvModal.show("addActivity");
+    });
+  }
 };
 </script>
 

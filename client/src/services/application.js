@@ -56,5 +56,8 @@ export default {
    addActivity(payload) {
       return Api().post('activities', payload)
    },
+   editActivity(payload) {
+      return Api().post(`activities/${payload.activity_id}`, payload)
+   }
 
 }
