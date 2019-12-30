@@ -72,6 +72,7 @@
 
 .dropdown-menu {
   outline: none !important;
+  border-radius: 8px 0 8px 8px !important;
 }
 
 .dropdown {
