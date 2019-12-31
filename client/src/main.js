@@ -12,6 +12,7 @@ import './plugins/infiniteLoading.js'
 import './plugins/toasted.js'
 import './plugins/textareaAutosize.js'
 import './plugins/vuelidation.js'
+import './plugins/vueGooglePlaces.js'
 import "aos/dist/aos.css";
 
 import SweetModal from "sweet-modal-vue/src/plugin.js";

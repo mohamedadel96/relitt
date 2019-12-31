@@ -20,7 +20,19 @@
           </p>
         </div>
         <div class="col-md-10 col-12 px-5">
-          <div class="search rounded py-3 mb-3 text-center fontSM">Alexandria, Egypt</div>
+          <div class="search rounded mb-3 text-center fontSM">
+            <place-autocomplete-field
+              v-model="place"
+              name="place"
+              api-key="AIzaSyAhSv9zWvisiTXRPRw6K8AE0DCmrRMpQcU"
+              placeholder="Enter an an address, zipcode, or location"
+              v-place-autofill.street="street"
+              v-place-autofill.city="city"
+              v-place-autofill.state="state"
+              v-place-autofill.zipcode="zip"
+              v-place-autofill.country="country"
+            ></place-autocomplete-field>
+          </div>
           <event-cards />
         </div>
       </div>
@@ -39,13 +51,18 @@ export default {
     eventCards,
     createEvent
   },
+  data() {
+    return {
+      place: ""
+    };
+  },
   mounted() {
     this.$store.dispatch("EVENTS");
   }
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #events {
   .tabs {
     p {
@@ -58,6 +75,29 @@ export default {
           border-bottom: 3px solid $blue;
           color: $blue;
           font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .autocomplete-field {
+    .autocomplete-list-item > a {
+      padding: 15px;
+    }
+    .form-group {
+      margin-bottom: 0;
+
+      input {
+        text-align: center;
+        border: none;
+        padding: 1em 0;
+        outline: none;
+        &:focus,
+        &:active {
+          outline: none;
+          border-color: inherit;
+          -webkit-box-shadow: none;
+          box-shadow: none;
         }
       }
     }
