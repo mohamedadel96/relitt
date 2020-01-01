@@ -1,5 +1,5 @@
 <template>
-  <nav id="appNav" class="py-3 border-bottom d-flex justify-content-between align-items-center">
+  <nav id="appNav" class="col-12 px-0 py-3 border-bottom position-fixed d-flex justify-content-between align-items-center">
     <div class="px-4 col-3">
       <img src="../../../assets/img/icon/logo.svg" />
     </div>
@@ -71,6 +71,8 @@ export default {
 
 <style lang="scss">
 #appNav {
+  top: 0;
+  z-index: 3;
   background: $background_white;
   box-shadow: 1px 1px 2px #eee;
 

@@ -22,5 +22,6 @@ export default {
 <style lang="scss">
 #app {
   background: #fafafa;
+  padding-top: 72px;
 }
 </style>
