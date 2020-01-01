@@ -1,5 +1,8 @@
 <template>
-  <nav id="appNav" class="col-12 px-0 py-3 border-bottom position-fixed d-flex justify-content-between align-items-center">
+  <nav
+    id="appNav"
+    class="col-12 px-0 py-3 border-bottom position-fixed d-flex justify-content-between align-items-center"
+  >
     <div class="px-4 col-3">
       <img src="../../../assets/img/icon/logo.svg" />
     </div>
@@ -23,7 +26,14 @@
     <div class="col-3 block_3 d-flex justify-content-end px-4">
       <img src="../../../assets/icons/ring.svg" alt />
       <div class="mx-3">
-        <b-dropdown size="lg" variant="link" right offset="-20" toggle-class="text-decoration-none" no-caret>
+        <b-dropdown
+          size="lg"
+          variant="link"
+          right
+          offset="-20"
+          toggle-class="text-decoration-none"
+          no-caret
+        >
           <template v-slot:button-content>
             <div
               class="d-flex justify-content-center align-items-center border rounded-circle overflow-hidden"
