@@ -85,7 +85,7 @@ const routes = [
     children: [
       {
         path: '',
-        component: () => import('../views/sub-views/feeds-dashboard.vue'),
+        component: () => import('../views/sub-views/app-layout.vue'),
         meta: {
           requiresAuth: true
         },

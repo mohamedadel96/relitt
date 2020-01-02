@@ -1,6 +1,6 @@
 <template>
-  <section id="feeds-dashboard" class="d-flex justify-content-end mt-3 position-relative">
-    <div class="left-side col-md-3 d-md-block d-none px-4 position-fixed" v-if="dashboard">
+  <section id="app-layout" class="d-flex justify-content-end mt-3 position-relative">
+    <div class="left-side col-md-3 d-md-block d-none px-4 position-fixed">
       <div class="px-1">
         <user-card />
         <side-menu/>
@@ -33,17 +33,12 @@ export default {
     expCard,
     friendsSearch,
     myEvent
-  },
-  computed: {
-    dashboard() {
-      return this.$store.getters.dashboard;
-    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-#feeds-dashboard {
+#app-layout {
   .left-side {
     left: 0
   }
