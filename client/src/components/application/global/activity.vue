@@ -230,7 +230,7 @@ export default {
     },
     clearData() {
       this.$bvModal.hide("addActivity");
-      this.form.activity_id = null
+      this.form.activity_id = null;
       this.form.type_id = 1;
       this.form.title = null;
       this.form.date = null;
@@ -250,7 +250,7 @@ export default {
   },
   mounted() {
     Bus.$on("editActivity", payload => {
-      this.form.activity_id = payload.id
+      this.form.activity_id = payload.id;
       this.form.type_id = payload.type_id;
       this.form.title = payload.title;
       this.form.date = payload.date;

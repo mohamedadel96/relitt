@@ -15,7 +15,14 @@
             </div>
           </div>
           <div v-if="feed.canEdit">
-            <b-dropdown size="lg" variant="link" right offset="-20" toggle-class="text-decoration-none" no-caret>
+            <b-dropdown
+              size="lg"
+              variant="link"
+              right
+              offset="-20"
+              toggle-class="text-decoration-none"
+              no-caret
+            >
               <template v-slot:button-content>
                 <span>
                   <img
