@@ -3,9 +3,7 @@
     <div class="left-side col-md-3 d-md-block d-none px-4 position-fixed" v-if="dashboard">
       <div class="px-1">
         <user-card />
-        <div>
-          side bar
-        </div>
+        <side-menu/>
       </div>
     </div>
     <div class="col-md-6 col-12">
@@ -22,13 +20,16 @@
 
 <script>
 import userCard from "../../components/application/feeds/userCard";
+import sideMenu from "../../components/application/feeds/sideMenu";
 import expCard from "../../components/application/dashboard/expCard";
 import friendsSearch from "../../components/application/feeds/friendsSearch";
 import myEvent from "../../components/application/events/myEvent";
 
+
 export default {
   components: {
     userCard,
+    sideMenu,
     expCard,
     friendsSearch,
     myEvent

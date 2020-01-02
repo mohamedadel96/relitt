@@ -8,7 +8,7 @@
       content-class="shadow"
       hide-header
       hide-footer
-    >
+      >
       <form @submit.prevent>
         <div class="form-group d-flex overflow-hidden">
           <div class="col-12 px-2">
