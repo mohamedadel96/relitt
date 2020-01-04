@@ -122,7 +122,7 @@ export default {
   },
   computed: {
     user() {
-      return this.$store.getters.userCard;
+      return this.$store.getters.profile;
     }
   },
   watch: {

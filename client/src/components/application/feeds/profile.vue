@@ -1,20 +1,20 @@
 <template>
   <section id="userCard" class="pb-3 rounded">
-    <div v-if="userCard">
+    <div v-if="profile">
       <div class="block_1 text-center">
-        <img class="border rounded-circle mt-5" :src="userCard.image" alt="user image" />
-        <p class="name font-weight-bold mb-0 fontMD">{{userCard.firstname}} {{userCard.lastname}}</p>
-        <p class="job fontCS">{{userCard.type}}</p>
+        <img class="border rounded-circle mt-5" :src="profile.image" alt="user image" />
+        <p class="name font-weight-bold mb-0 fontMD">{{profile.firstname}} {{profile.lastname}}</p>
+        <p class="job fontCS">{{profile.type}}</p>
       </div>
       <div class="block_2 d-flex pb-4 mt-4">
         <div class="col-6 text-center pr-5 border-right">
-          <p class="num mb-0 font-weight-bold fontSM">{{userCard.followers_count}}</p>
+          <p class="num mb-0 font-weight-bold fontSM">{{profile.followers_count}}</p>
           <p class="mb-0 opacity font-weight-bold fontXS">Followers</p>
         </div>
         <div class="col-6 text-center pl-5 border-left">
-          <p class="num mb-0 font-weight-bold fontSM">{{userCard.following_count}}</p>
+          <p class="num mb-0 font-weight-bold fontSM">{{profile.following_count}}</p>
           <p class="mb-0 opacity font-weight-bold fontXS">Following</p>
-        </div> 
+        </div>
       </div>
     </div>
   </section>
@@ -23,8 +23,8 @@
 <script>
 export default {
   computed: {
-    userCard() {
-      return this.$store.getters.userCard;
+    profile() {
+      return this.$store.getters.profile;
     }
   }
 };

@@ -2,7 +2,7 @@ import Api from './api'
 
 export default {
 
-   userCard() {
+   profile() {
       return Api().get('profile')
    },
    events(payload) {

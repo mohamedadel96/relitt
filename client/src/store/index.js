@@ -7,7 +7,7 @@ import logout from './auth/logout'
 import resetPassword from './auth/resetPassword'
 import code from './auth/code'
 import changePassowrd from './auth/changePassowrd'
-import userCard from './application/userCard'
+import profile from './application/profile'
 import events from './application/events'
 import dashboard from './application/dashboard'
 import feeds from './application/feeds'
@@ -53,7 +53,7 @@ export default new Vuex.Store({
     resetPassword,
     code,
     changePassowrd,
-    userCard,
+    profile,
     events,
     feeds,
     dashboard,

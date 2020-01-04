@@ -2,46 +2,45 @@ import appServices from '../../services/application'
 
 export default {
   state: {
-    userCard: null
+    profile: null
   },
   getters: {
-    userCard(state) {
-      return state.userCard
+    profile(state) {
+      return state.profile
     }
   },
   mutations: {
-    saveUserCard(state, data) {
-      state.userCard = data
+    saveProfile(state, data) {
+      state.profile = data
     }
   },
   actions: {
-    USERCARD({ commit }) {
+    PROFILE({ commit }) {
       return new Promise((resolve, reject) => {
-        appServices.userCard().then(res => {
+        appServices.profile().then(res => {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.errors)
-          commit('saveUserCard', res.data.data)
+          commit('saveProfile', res.data.data)
           resolve('done')
         })
       })
     },
     EDITPROFILE({ commit }, form) {
       return new Promise(async (resolve, reject) => {
-        // await appServices.editProfile(form).then(res => {
-        //   if (res.data.status === 401) {
-        //     // we will handle logout option // call logout function
-        //   }
-        //   if (res.data.code !== 200) return reject(res.data.errors)
-        //   // commit('saveUserCard', res.data.data)
-        // })
         await appServices.basicInfo(form).then(res => {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.errors)
-          commit('saveUserCard', res.data.data)
+        })
+        await appServices.editProfile(form).then(res => {
+          if (res.data.status === 401) {
+            // we will handle logout option // call logout function
+          }
+          if (res.data.code !== 200) return reject(res.data.errors)
+          commit('saveProfile', res.data.data)
           resolve('done')
         })
       })
