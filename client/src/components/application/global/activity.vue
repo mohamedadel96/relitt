@@ -268,6 +268,10 @@ export default {
       this.editState = true;
       this.$bvModal.show("addActivity");
     });
+    Bus.$on("addActivity", () => {
+      this.clearData();
+      this.$bvModal.show("addActivity");
+    });
   }
 };
 </script>

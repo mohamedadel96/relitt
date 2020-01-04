@@ -1,12 +1,17 @@
 <template>
   <section id="feeds">
     <create-post v-show="!myActivity" @clearPostData="postData = null" :postData="postData" />
-    <button v-show="myActivity" class="btn btn-primary btn-block">Create activity</button>
+    <button
+      v-show="myActivity"
+      class="btn btn-primary btn-block"
+      @click="createActivity"
+    >Create activity</button>
     <posts @editPost="postData = $event" />
   </section>
 </template>
 
 <script>
+import { Bus } from "../../../main";
 import createPost from "./createPost";
 import posts from "./posts";
 export default {
@@ -22,6 +27,11 @@ export default {
   computed: {
     myActivity() {
       return this.$store.getters.myActivity;
+    }
+  },
+  methods: {
+    createActivity() {
+      Bus.$emit("addActivity");
     }
   }
 };
