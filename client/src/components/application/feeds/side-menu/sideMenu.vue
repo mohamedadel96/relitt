@@ -18,7 +18,6 @@
       <span v-if="!myActivity">My activity</span>
       <span v-if="myActivity">all activity</span>
     </p>
-    <!-- <p class="border-top py-3 mb-0 fontSM pointer">My events</p> -->
   </section>
 </template>
 
