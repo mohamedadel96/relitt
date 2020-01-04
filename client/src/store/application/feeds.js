@@ -5,7 +5,8 @@ export default {
     feeds: [],
     filter: {
       page: 1,
-      myFeeds: false
+      myFeeds: false,
+      myActivity: false
     }
   },
   getters: {
@@ -14,6 +15,9 @@ export default {
     },
     myFeeds(state) {
       return state.filter.myFeeds
+    },
+    myActivity(state) {
+      return state.filter.myActivity
     }
   },
   mutations: {
@@ -37,6 +41,9 @@ export default {
     },
     filterFeeds(state) {
       state.filter.myFeeds = !state.filter.myFeeds
+    },
+    filterActivity(state) {
+      state.filter.myActivity = !state.filter.myActivity
     }
   },
   actions: {
@@ -106,6 +113,9 @@ export default {
     },
     FILTERFEEDS({ commit }) {
       commit('filterFeeds')
+    },
+    FILTERACTIVITY({ commit }) {
+      commit('filterActivity')
     }
   }
 }

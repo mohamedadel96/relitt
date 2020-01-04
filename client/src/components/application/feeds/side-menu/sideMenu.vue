@@ -14,8 +14,11 @@
       <span v-if="!myFeeds">my feeds</span>
       <span v-if="myFeeds">all feeds</span>
     </p>
-    <p class="border-top py-3 mb-0 fontSM pointer">My activity</p>
-    <p class="border-top py-3 mb-0 fontSM pointer">My events</p>
+    <p class="border-top py-3 mb-0 fontSM pointer" @click="filterActivity">
+      <span v-if="!myActivity">My activity</span>
+      <span v-if="myActivity">all activity</span>
+    </p>
+    <!-- <p class="border-top py-3 mb-0 fontSM pointer">My events</p> -->
   </section>
 </template>
 
@@ -30,11 +33,18 @@ export default {
   computed: {
     myFeeds() {
       return this.$store.getters.myFeeds;
+    },
+    myActivity() {
+      return this.$store.getters.myActivity;
     }
   },
   methods: {
     filterFeeds() {
       this.$store.dispatch("FILTERFEEDS");
+      this.$toasted.success("done");
+    },
+    filterActivity() {
+      this.$store.dispatch("FILTERACTIVITY");
       this.$toasted.success("done");
     }
   }
