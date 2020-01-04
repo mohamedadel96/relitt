@@ -80,7 +80,7 @@
               <label class="fontXS text-secondary">Interests</label>
               <div class="position-relative" v-for="(interest, i) in form.interests" :key="i">
                 <input
-                  class="form-controls py-3 px-1 col-12"
+                  class="form-controls py-2 px-1 col-12"
                   type="text"
                   v-model="form.interests[i]"
                   placeholder="Position"
@@ -108,7 +108,8 @@ export default {
       form: {
         firstname: null,
         lastname: null,
-        image: null,
+        image:
+          "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
         type: null,
         bio: null,
         birthdate: null,
@@ -147,7 +148,7 @@ export default {
     editProfile() {
       try {
         this.$store.dispatch("EDITPROFILE", this.form).then(res => {
-          this.$toasted.success(res);
+          location.reload();
         });
       } catch (error) {
         this.$toasted.error("error");
@@ -164,6 +165,7 @@ export default {
       img {
         width: 70px;
         height: 70px;
+        border-radius: 50%;
       }
     }
     input {
@@ -176,8 +178,8 @@ export default {
     }
     .delete-inerests {
       position: absolute;
-      bottom: 0;
-      right: 2px;
+      bottom: 7px;
+      right: 6px;
     }
     .autocomplete-field {
       .autocomplete-list-item > a {

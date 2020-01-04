@@ -60,7 +60,7 @@ export default {
       return Api().post(`activities/${payload.activity_id}`, payload)
    },
    editProfile(payload) {
-      return Api().post('profile/update/', payload)
+      return Api().post('profile/update', payload)
    },
    basicInfo(payload) {
       return Api().post('profile/update_basic', payload)
