@@ -18,16 +18,11 @@ export default {};
 <style lang="scss">
 #reviews {
   .modal-dialog {
-    margin: 80px auto 0 10px;
+    margin: 80px auto;
     position: relative;
   }
   .modal-content {
     border: none;
-  }
-  @media (min-width: 576px) {
-    .modal-dialog {
-      max-width: 365px;
-    }
   }
 }
 </style>
