@@ -1,6 +1,7 @@
 <template>
   <section id="feeds">
-    <create-post @clearPostData="postData = null" :postData="postData" />
+    <create-post v-show="!myActivity" @clearPostData="postData = null" :postData="postData" />
+    <button v-show="myActivity" class="btn btn-primary btn-block">Create activity</button>
     <posts @editPost="postData = $event" />
   </section>
 </template>
@@ -17,6 +18,11 @@ export default {
   components: {
     createPost,
     posts
+  },
+  computed: {
+    myActivity() {
+      return this.$store.getters.myActivity;
+    }
   }
 };
 </script>

@@ -41,10 +41,12 @@ export default {
   methods: {
     filterFeeds() {
       this.$store.dispatch("FILTERFEEDS");
+      this.$scrollTo("#app");
       this.$toasted.success("done");
     },
     filterActivity() {
       this.$store.dispatch("FILTERACTIVITY");
+      this.$scrollTo("#app");
       this.$toasted.success("done");
     }
   }
