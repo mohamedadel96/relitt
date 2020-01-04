@@ -5,7 +5,15 @@
       <p class="text-center font-weight-bold fontMD">Edit personal info</p>
       <form @submit.prevent>
         <div class="avatar d-flex justify-content-center mb-4">
-          <input class="d-none" type="file" ref="avatar" />
+          <input
+            class="form-control-file d-none"
+            type="file"
+            id="exampleFormControlFile1"
+            placeholder="Add Photo"
+            ref="avatar"
+            @change="uploadFiles('avatar')"
+            accept="image/*"
+          />
           <img class="pointer" @click="$refs.avatar.click()" :src="user.image" alt="personal image" />
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
@@ -94,7 +102,11 @@
           </div>
         </div>
         <div class="col-12 px-2 my-3">
-          <button class="btn btn-primary btn-block btn-lg py-2" @click="editProfile">Update</button>
+          <button
+            class="btn btn-primary btn-block btn-lg py-2"
+            :disabled="disableEdit"
+            @click="editProfile"
+          >Update</button>
         </div>
       </form>
     </b-modal>
@@ -108,8 +120,7 @@ export default {
       form: {
         firstname: null,
         lastname: null,
-        image:
-          "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+        image: null,
         type: null,
         bio: null,
         birthdate: null,
@@ -117,7 +128,8 @@ export default {
         location_name: null,
         lat: "",
         lng: ""
-      }
+      },
+      disableEdit: false
     };
   },
   computed: {
@@ -126,25 +138,43 @@ export default {
     }
   },
   watch: {
-    user: {
-      immediate: true,
-      handler(val) {
-        if (val) {
-          this.form.firstname = val.firstname;
-          this.form.lastname = val.lastname;
-          this.form.image = val.image;
-          this.form.type = val.type;
-          this.form.bio = val.bio;
-          this.form.birthdate = val.birthdate;
-          this.form.interests = val.interests;
-          this.form.location_name = val.location_name;
-          this.form.lat = val.lat;
-          this.form.lng = val.lng;
-        }
+    user(val) {
+      if (val) {
+        this.form.firstname = val.firstname;
+        this.form.lastname = val.lastname;
+        this.form.image = val.image;
+        this.form.type = val.type;
+        this.form.bio = val.bio;
+        this.form.birthdate = val.birthdate;
+        this.form.interests = val.interests;
+        this.form.location_name = val.location_name;
+        this.form.lat = val.lat;
+        this.form.lng = val.lng;
       }
     }
   },
   methods: {
+    uploadFiles(ref) {
+      try {
+        this.disableEdit = true;
+        let formData = new FormData();
+
+        for (let i = 0; i < this.$refs[ref].files.length; i++) {
+          let file = this.$refs[ref].files[i];
+          formData.append("files[" + i + "]", file);
+        }
+
+        this.$store.dispatch("UPLOADFILES", formData).then(res => {
+          this.$toasted.success("uploaded successfully");
+          console.log(res);
+          this.form.image = res[0].filePath;
+
+          this.disableEdit = false;
+        });
+      } catch (error) {
+        this.$toasted.error("error while uploading files");
+      }
+    },
     editProfile() {
       try {
         this.$store.dispatch("EDITPROFILE", this.form).then(res => {
