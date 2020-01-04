@@ -28,10 +28,10 @@ export default new Vuex.Store({
     token: JSON.parse(localStorage.getItem('user')) ? (JSON.parse(localStorage.getItem('user'))).token : null
   },
   getters: {
-    getUser(state) {
+    user(state) {
       return state.user
     },
-    getToken(state) {
+    token(state) {
       return state.token
     }
   },

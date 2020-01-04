@@ -8,7 +8,7 @@
       content-class="shadow"
       hide-header
       hide-footer
-      >
+    >
       <form @submit.prevent>
         <div class="form-group d-flex overflow-hidden">
           <div class="col-12 px-2">
@@ -177,10 +177,10 @@ export default {
         temprature: null,
         start_air_level: null,
         end_air_level: null,
-        spot_name: "null",
-        location_name: "null",
-        lat: "null",
-        lng: "null",
+        spot_name: "egypt",
+        location_name: "dd",
+        lat: "32",
+        lng: "12",
         images: []
       },
       disableUploading: false,

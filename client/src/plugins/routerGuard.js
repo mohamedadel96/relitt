@@ -4,7 +4,7 @@ import store from "../store";
 // router Guard
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!store.getters.getToken) {
+    if (!store.getters.token) {
       next({
         name: "login"
       });
@@ -12,7 +12,7 @@ router.beforeEach((to, from, next) => {
       next();
     }
   } else if (to.matched.some(record => record.meta.requiresVisitor)) {
-    if (store.getters.getToken) {
+    if (store.getters.token) {
       next({
         name: "app"
       });

@@ -1,18 +1,23 @@
 <template>
   <section id="editPersonalInfo">
     <slot></slot>
-    <b-modal
-      id="editPersonalInfo"
-      hide-backdrop
-      content-class="shadow"
-      hide-header
-      hide-footer
-    >edit personal</b-modal>
+    <b-modal id="editPersonalInfo" hide-backdrop content-class="shadow" hide-header hide-footer>
+      <p>Edit personal info</p>
+      <div class="">
+        <img :src="user.image" alt="personal image" />
+      </div>
+    </b-modal>
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    user() {
+      return this.$store.getters.userCard;
+    }
+  }
+};
 </script>
 
 <style lang="scss">
