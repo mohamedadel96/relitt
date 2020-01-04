@@ -4,12 +4,16 @@ export default {
   state: {
     feeds: [],
     filter: {
-      page: 1
+      page: 1,
+      myFeeds: false
     }
   },
   getters: {
     feeds(state) {
       return state.feeds
+    },
+    myFeeds(state) {
+      return state.filter.myFeeds
     }
   },
   mutations: {
@@ -30,6 +34,9 @@ export default {
           data.liked ? feed.likes_count-- : feed.likes_count++
         }
       })
+    },
+    filterFeeds(state) {
+      state.filter.myFeeds = !state.filter.myFeeds
     }
   },
   actions: {
@@ -96,6 +103,9 @@ export default {
           resolve(form.liked)
         })
       })
+    },
+    FILTERFEEDS({ commit }) {
+      commit('filterFeeds')
     }
   }
 }

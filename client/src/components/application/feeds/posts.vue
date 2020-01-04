@@ -2,94 +2,100 @@
   <section id="posts">
     <div v-if="feeds.length" data-aos="fade-left">
       <div class="post rounded" v-for="(feed,i) in feeds" :key="i">
-        <div class="post-info px-3 mt-3 d-flex justify-content-between align-items-center">
-          <div class="d-flex align-items-center py-2">
-            <img
-              class="border rounded-circle mr-3"
-              :src="feed.user.image"
-              alt="friend profile picture"
-            />
-            <div>
-              <p class="name font-weight-bold fontSM">{{feed.user.firstname}} {{feed.user.lastname}}</p>
-              <p class="mb-0 job fontCS">{{feed.created_at | moment("from", "now")}}</p>
+        <template v-if="!myFeeds || profile.id === feed.user_id">
+          <div>
+            <div class="post-info px-3 mt-3 d-flex justify-content-between align-items-center">
+              <div class="d-flex align-items-center py-2">
+                <img
+                  class="border rounded-circle mr-3"
+                  :src="feed.user.image"
+                  alt="friend profile picture"
+                />
+                <div>
+                  <p
+                    class="mb-0 font-weight-bold fontSM"
+                  >{{feed.user.firstname}} {{feed.user.lastname}}</p>
+                  <p class="mb-0 job fontCS">{{feed.created_at | moment("from", "now")}}</p>
+                </div>
+              </div>
+              <div v-if="feed.canEdit">
+                <b-dropdown
+                  size="lg"
+                  variant="link"
+                  right
+                  offset="-20"
+                  toggle-class="text-decoration-none"
+                  no-caret
+                >
+                  <template v-slot:button-content>
+                    <span>
+                      <img
+                        class="pointer"
+                        src="../../../assets/icons/shareIco.svg"
+                        style="width:24px ; height:24px"
+                        alt
+                      />
+                    </span>
+                  </template>
+                  <b-dropdown-item v-if="!feed.activity" @click="$emit('editPost', feed)">Edit post</b-dropdown-item>
+                  <b-dropdown-item
+                    v-if="feed.activity"
+                    @click="emitEditActivity(feed.activity)"
+                  >Edit activity</b-dropdown-item>
+                  <b-dropdown-item @click="deletePost(feed.id)">
+                    <template v-if="!feed.activity">Delete post</template>
+                    <template v-if="feed.activity">Delete activity</template>
+                  </b-dropdown-item>
+                </b-dropdown>
+              </div>
             </div>
-          </div>
-          <div v-if="feed.canEdit">
-            <b-dropdown
-              size="lg"
-              variant="link"
-              right
-              offset="-20"
-              toggle-class="text-decoration-none"
-              no-caret
-            >
-              <template v-slot:button-content>
-                <span>
-                  <img
-                    class="pointer"
-                    src="../../../assets/icons/shareIco.svg"
-                    style="width:24px ; height:24px"
-                    alt
-                  />
-                </span>
-              </template>
-              <b-dropdown-item v-if="!feed.activity" @click="$emit('editPost', feed)">Edit post</b-dropdown-item>
-              <b-dropdown-item
-                v-if="feed.activity"
-                @click="emitEditActivity(feed.activity)"
-              >Edit activity</b-dropdown-item>
-              <b-dropdown-item @click="deletePost(feed.id)">
-                <template v-if="!feed.activity">Delete post</template>
-                <template v-if="feed.activity">Delete activity</template>
-              </b-dropdown-item>
-            </b-dropdown>
-          </div>
-        </div>
 
-        <template v-if="!feed.activity && feed.images.length">
-          <post-media :images="feed.images" />
-        </template>
+            <template v-if="!feed.activity && feed.images.length">
+              <post-media :images="feed.images" />
+            </template>
 
-        <template v-if="feed.activity">
-          <activity-media :activity="feed.activity" />
-        </template>
+            <template v-if="feed.activity">
+              <activity-media :activity="feed.activity" />
+            </template>
 
-        <div class="post-decription px-3">
-          <p class="description fontCS">{{feed.body}}</p>
-          <div class="details d-flex">
-            <p class="mb-0 fontXS">
-              <span>{{feed.likes_count}}&nbsp;</span>
-              <span>Likes</span>
-            </p>
-            <p class="px-2 mb-0">-</p>
-            <p class="mb-0 fontXS">
-              <span>{{feed.comments.length}}&nbsp;</span>
-              <span>Comments</span>
-            </p>
-          </div>
-        </div>
-
-        <hr class="border-top mx-3 my-1" style="height:1px" />
-
-        <div class="d-flex col-12 px-0 text-center">
-          <div class="col-6 py-2 px-0 post-options fontSM font-weight-bold">
-            <div class="pointer" @click.once="toggleLike(feed.id, feed.liked)" :key="likeBtn">
-              <img src="../../../assets/img/icon/Icon - Thumbs Up - Dark.png" class="mr-1 mb-1" />
-              <span :class="{'like': feed.liked}">Like</span>
+            <div class="post-decription px-3">
+              <p class="description fontCS">{{feed.body}}</p>
+              <div class="details d-flex">
+                <p class="mb-0 fontXS">
+                  <span>{{feed.likes_count}}&nbsp;</span>
+                  <span>Likes</span>
+                </p>
+                <p class="px-2 mb-0">-</p>
+                <p class="mb-0 fontXS">
+                  <span>{{feed.comments.length}}&nbsp;</span>
+                  <span>Comments</span>
+                </p>
+              </div>
             </div>
-          </div>
-          <div class="col-6 py-2 px-0 post-options fontCS pointer" v-b-toggle="'comment-' + i">
-            <img src="../../../assets/img/icon/round-comment-24px.png" class="mr-1" />
-            <span>Comment</span>
-          </div>
-        </div>
 
-        <b-collapse :id="'comment-' + i">
-          <b-card class="border-0">
-            <add-comment :postId="feed.id" />
-            <comments v-for="(comment,i) in feed.comments" :key="i" :comment="comment" />
-          </b-card>
-        </b-collapse>
+            <hr class="border-top mx-3 my-1" style="height:1px" />
+
+            <div class="d-flex col-12 px-0 text-center">
+              <div class="col-6 py-2 px-0 post-options fontSM font-weight-bold">
+                <div class="pointer" @click.once="toggleLike(feed.id, feed.liked)" :key="likeBtn">
+                  <img src="../../../assets/img/icon/Icon - Thumbs Up - Dark.png" class="mr-1 mb-1" />
+                  <span :class="{'like': feed.liked}">Like</span>
+                </div>
+              </div>
+              <div class="col-6 py-2 px-0 post-options fontCS pointer" v-b-toggle="'comment-' + i">
+                <img src="../../../assets/img/icon/round-comment-24px.png" class="mr-1" />
+                <span>Comment</span>
+              </div>
+            </div>
+
+            <b-collapse :id="'comment-' + i">
+              <b-card class="border-0">
+                <add-comment :postId="feed.id" />
+                <comments v-for="(comment,i) in feed.comments" :key="i" :comment="comment" />
+              </b-card>
+            </b-collapse>
+          </div>
+        </template>
       </div>
     </div>
     <infinite-loading @infinite="moreFeeds"></infinite-loading>
@@ -117,6 +123,12 @@ export default {
   computed: {
     feeds() {
       return this.$store.getters.feeds;
+    },
+    myFeeds() {
+      return this.$store.getters.myFeeds;
+    },
+    profile() {
+      return this.$store.getters.profile;
     }
   },
   methods: {
@@ -170,10 +182,6 @@ export default {
       img {
         width: 60px;
         height: 60px;
-      }
-
-      .name {
-        margin-bottom: -5px;
       }
 
       .job {

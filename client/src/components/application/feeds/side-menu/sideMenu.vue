@@ -10,9 +10,12 @@
     <reviews>
       <p class="menu-item border-top py-3 mb-0 fontSM pointer" slot v-b-modal.reviews>Reviews</p>
     </reviews>
-    <p class="border-top py-3 mb-0 fontSM">My feeds</p>
-    <p class="border-top py-3 mb-0 fontSM">My activity</p>
-    <p class="border-top py-3 mb-0 fontSM">My events</p>
+    <p class="border-top py-3 mb-0 fontSM pointer" @click="filterFeeds">
+      <span v-if="!myFeeds">my feeds</span>
+      <span v-if="myFeeds">all feeds</span>
+    </p>
+    <p class="border-top py-3 mb-0 fontSM pointer">My activity</p>
+    <p class="border-top py-3 mb-0 fontSM pointer">My events</p>
   </section>
 </template>
 
@@ -23,6 +26,17 @@ export default {
   components: {
     editPersonalInfo,
     reviews
+  },
+  computed: {
+    myFeeds() {
+      return this.$store.getters.myFeeds;
+    }
+  },
+  methods: {
+    filterFeeds() {
+      this.$store.dispatch("FILTERFEEDS");
+      this.$toasted.success("done");
+    }
   }
 };
 </script>
