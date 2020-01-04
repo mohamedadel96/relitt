@@ -1,6 +1,6 @@
 <template>
   <section id="app-layout" class="d-flex justify-content-end mt-3 position-relative">
-    <div class="left-side col-md-3 d-md-block d-none px-4 position-fixed">
+    <div class="col-md-3 d-md-block d-none px-4">
       <div class="px-1">
         <profile />
         <side-menu />

@@ -1,7 +1,11 @@
 <template>
   <section id="sideMenu" class="mt-3">
     <edit-personal-info>
-      <p class="menu-item mb-0 fontSM py-3 pointer" slot v-b-modal.editPersonalInfo>Edit personal info</p>
+      <p
+        class="menu-item mb-0 fontSM py-3 pointer"
+        slot
+        v-b-modal.editPersonalInfo
+      >Edit personal info</p>
     </edit-personal-info>
     <reviews>
       <p class="menu-item border-top py-3 mb-0 fontSM pointer" slot v-b-modal.reviews>Reviews</p>
@@ -25,8 +29,8 @@ export default {
 
 <style lang="scss" scoped>
 #sideMenu {
-    .menu-item{
-        outline: none
-    }
+  .menu-item {
+    outline: none;
+  }
 }
 </style>
