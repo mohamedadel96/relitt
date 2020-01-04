@@ -74,7 +74,9 @@ export default {
     comment: {
       immediate: true,
       handler(val) {
-        this.form.body = val.body;
+        if (val) {
+          this.form.body = val.body;
+        }
       }
     }
   },

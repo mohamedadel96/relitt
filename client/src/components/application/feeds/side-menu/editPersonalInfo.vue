@@ -3,7 +3,7 @@
     <slot></slot>
     <b-modal id="editPersonalInfo" hide-backdrop content-class="shadow" hide-header hide-footer>
       <p class="text-center font-weight-bold fontMD">Edit personal info</p>
-      <form>
+      <form @submit.prevent>
         <div class="avatar d-flex justify-content-center mb-4">
           <input class="d-none" type="file" ref="avatar" />
           <img class="pointer" @click="$refs.avatar.click()" :src="user.image" alt="personal image" />
@@ -65,6 +65,15 @@
             ></flat-pickr>
           </div>
         </div>
+        <div class="px-2">
+          <label class="fontXS text-secondary">Location</label>
+          <place-autocomplete-field
+            v-model="form.location_name"
+            name="place"
+            api-key="AIzaSyAhSv9zWvisiTXRPRw6K8AE0DCmrRMpQcU"
+            placeholder="Location"
+          ></place-autocomplete-field>
+        </div>
         <div class="mt-5">
           <div class="form-group d-flex overflow-hidden">
             <div class="col-12 px-2">
@@ -85,7 +94,7 @@
           </div>
         </div>
         <div class="col-12 px-2 my-3">
-          <button class="btn btn-primary btn-block btn-lg py-2">Update</button>
+          <button class="btn btn-primary btn-block btn-lg py-2" @click="editProfile">Update</button>
         </div>
       </form>
     </b-modal>
@@ -104,7 +113,7 @@ export default {
         bio: null,
         birthdate: null,
         interests: [""],
-        location_name: "",
+        location_name: null,
         lat: "",
         lng: ""
       }
@@ -116,17 +125,33 @@ export default {
     }
   },
   watch: {
-    user(val) {
-      this.form.firstname = val.firstname;
-      this.form.lastname = val.lastname;
-      this.form.image = val.image;
-      this.form.type = val.type;
-      this.form.bio = val.bio;
-      this.form.birthdate = val.birthdate;
-      this.form.interests = val.interests;
-      this.form.location_name = val.location_name;
-      this.form.lat = val.lat;
-      this.form.lng = val.lng;
+    user: {
+      immediate: true,
+      handler(val) {
+        if (val) {
+          this.form.firstname = val.firstname;
+          this.form.lastname = val.lastname;
+          this.form.image = val.image;
+          this.form.type = val.type;
+          this.form.bio = val.bio;
+          this.form.birthdate = val.birthdate;
+          this.form.interests = val.interests;
+          this.form.location_name = val.location_name;
+          this.form.lat = val.lat;
+          this.form.lng = val.lng;
+        }
+      }
+    }
+  },
+  methods: {
+    editProfile() {
+      try {
+        this.$store.dispatch("EDITPROFILE", this.form).then(res => {
+          this.$toasted.success(res);
+        });
+      } catch (error) {
+        this.$toasted.error("error");
+      }
     }
   }
 };
@@ -153,6 +178,30 @@ export default {
       position: absolute;
       bottom: 0;
       right: 2px;
+    }
+    .autocomplete-field {
+      .autocomplete-list-item > a {
+        padding: 15px;
+      }
+      .form-group {
+        margin-bottom: 0;
+
+        input {
+          border: none;
+          border-bottom: 1px solid #ddd;
+          padding: 1em 0;
+          outline: none;
+          border-radius: 0 !important;
+          &:focus,
+          &:active {
+            outline: none !important;
+            border-radius: 0 !important;
+            border-bottom: 1px solid #ddd;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+          }
+        }
+      }
     }
   }
   .modal-dialog {
