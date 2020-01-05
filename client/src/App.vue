@@ -9,7 +9,6 @@
 * {
   font-family: "Open Sans", sans-serif;
 }
-
 .fontXXS {
   font-size: $fontXXS;
 }

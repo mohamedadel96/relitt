@@ -25,7 +25,7 @@
 
     <div class="col-3 block_3 d-flex justify-content-end px-4">
       <img src="../../../assets/icons/ring.svg" alt />
-      <div class="mx-3">
+      <!-- <div class="mx-3">
         <b-dropdown
           size="lg"
           variant="link"
@@ -48,7 +48,14 @@
           <b-dropdown-item>action</b-dropdown-item>
           <b-dropdown-item>logout</b-dropdown-item>
         </b-dropdown>
-      </div>
+      </div>-->
+      <profile-settings v-if="profile">
+        <div
+          class="d-flex justify-content-center align-items-center border rounded-circle overflow-hidden"
+        >
+          <img class="avatar" v-b-modal.profileSettings :src="profile.image" alt="avatar" />
+        </div>
+      </profile-settings>
       <activity>
         <img class="ml-2 pointer" v-b-modal.addActivity src="../../../assets/icons/navPlus.svg" alt />
       </activity>
@@ -58,12 +65,19 @@
 
 <script>
 import activity from "./activity";
+import profileSettings from "./profileSettings";
 export default {
   components: {
-    activity
+    activity,
+    profileSettings
   },
   data() {
     return {};
+  },
+  computed: {
+    profile() {
+      return this.$store.getters.profile;
+    }
   },
   methods: {
     async logout() {
