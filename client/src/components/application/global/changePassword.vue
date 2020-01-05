@@ -43,7 +43,7 @@
             />
           </div>
         </div>
-        <div class="col-12 px-2 my-3">
+        <div class="col-12 px-2 mt-3 mb-2">
           <button
             class="btn btn-primary btn-block btn-lg py-1"
             :disabled="disableEdit"
