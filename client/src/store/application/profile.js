@@ -44,6 +44,15 @@ export default {
           resolve('done')
         })
       })
+    },
+    PROFILECHANGEPASSWORD({ commit }, form) {
+      return new Promise((resolve, reject) => {
+        appServices.profileChangePassword(form).then(res => {
+          if (res.data.code !== 200) return reject(res.data.message)
+          resolve(res.message)
+        })
+
+      })
     }
   }
 }

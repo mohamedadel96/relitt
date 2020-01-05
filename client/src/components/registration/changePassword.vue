@@ -6,28 +6,34 @@
 
     <div>
       <form @submit.prevent>
-        <div class="form-group" >
-            <input
-              :class="['col-12 border-0 py-3  form-control' ,{'is-invalid': $v.form.password.$error}]"
-              type="password"
-              placeholder="New password"
-              v-model="form.password"
-            />
-            <input
-              :class="['col-12 border-0 py-3 mt-3 form-control',{'is-invalid': $v.form.confirmPassword.$error}]"
-              type="password"
-              placeholder="Confirm password"    
-              v-model="form.confirmPassword"
-            />
-            <div class="invalid-feedback error" v-if="!$v.form.password.required">Password is required.</div>
-            <div class="invalid-feedback error" v-if="!$v.form.password.minLength">Password must have at least {{ $v.form.password.$params.minLength.min }} letters.</div>
-            <div class="invalid-feedback error" v-if="!$v.form.confirmPassword.sameAsPassword">Passwords must be identical.</div>
+        <div class="form-group">
+          <input
+            :class="['col-12 border-0 py-3  form-control' ,{'is-invalid': $v.form.password.$error}]"
+            type="password"
+            placeholder="New password"
+            v-model="form.password"
+          />
+          <input
+            :class="['col-12 border-0 py-3 mt-3 form-control',{'is-invalid': $v.form.confirmPassword.$error}]"
+            type="password"
+            placeholder="Confirm password"
+            v-model="form.confirmPassword"
+          />
+          <div
+            class="invalid-feedback error"
+            v-if="!$v.form.password.required"
+          >Password is required.</div>
+          <div
+            class="invalid-feedback error"
+            v-if="!$v.form.password.minLength"
+          >Password must have at least {{ $v.form.password.$params.minLength.min }} letters.</div>
+          <!-- <div
+            class="invalid-feedback error"
+            v-if="!$v.form.confirmPassword.sameAsPassword"
+          >Passwords must be identical.</div>-->
         </div>
         <div class="mt-4">
-          <button
-            @click="submit"
-            class="btn btn-primary btn-block py-3"
-          >Done</button>
+          <button @click="submit" class="btn btn-primary btn-block py-3">Done</button>
         </div>
       </form>
     </div>
@@ -35,7 +41,7 @@
 </template>
 
 <script>
-import { required, sameAs, minLength } from 'vuelidate/lib/validators'
+import { required, sameAs, minLength } from "vuelidate/lib/validators";
 
 export default {
   data() {
@@ -49,12 +55,12 @@ export default {
         message: null
       }
     };
-  },  
+  },
   validations: {
     form: {
-      password: { required ,  minLength: minLength(8)},
-      confirmPassword:{required ,sameAsPassword: sameAs('password')}
-      }
+      password: { required, minLength: minLength(8) },
+      confirmPassword: { required }
+    }
   },
   methods: {
     async submit() {

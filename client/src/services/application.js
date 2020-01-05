@@ -64,6 +64,9 @@ export default {
    },
    basicInfo(payload) {
       return Api().post('profile/update_basic', payload)
+   },
+   profileChangePassword(payload) {
+      return Api().post('profile/change_password', payload)
    }
 
 }
