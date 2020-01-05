@@ -1,18 +1,24 @@
 <template>
   <section id="profileSettings">
     <slot></slot>
-    <b-modal
-      id="profileSettings"
-      hide-backdrop
-      content-class="shadow"
-      hide-header
-      hide-footer
-    >profile setting</b-modal>
+    <b-modal id="profileSettings" hide-backdrop content-class="shadow" hide-header hide-footer>
+      <p class="py-3 mb-0 fontSM pointer" @click="openPersonalInfo">Edit personal Info</p>
+      <p class="border-top py-3 mb-0 fontSM pointer">Manage notification</p>
+      <p class="border-top py-3 mb-0 fontSM pointer">Change password</p>
+      <p class="border-top pt-3 pb-2 mb-0 fontSM pointer text-danger">LOGOUT</p>
+    </b-modal>
   </section>
 </template>
 
 <script>
-export default {};
+import { Bus } from "../../../main";
+export default {
+  methods: {
+    openPersonalInfo() {
+      Bus.$emit("openPersonalInfo");
+    }
+  }
+};
 </script>
 
 <style lang="scss">
@@ -21,6 +27,10 @@ export default {};
     .modal-dialog {
       margin: 80px 10px 0 auto;
       position: relative;
+      outline: none;
+    }
+    .menu-item {
+      outline: none;
     }
     .modal-content {
       border: none;

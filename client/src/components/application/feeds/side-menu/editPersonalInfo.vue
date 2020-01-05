@@ -114,6 +114,7 @@
 </template>
 
 <script>
+import { Bus } from "../../../../main";
 export default {
   data() {
     return {
@@ -184,6 +185,11 @@ export default {
         this.$toasted.error("error");
       }
     }
+  },
+  mounted() {
+    Bus.$on("openPersonalInfo", () => {
+      this.$bvModal.show("editPersonalInfo");
+    });
   }
 };
 </script>

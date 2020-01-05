@@ -51,7 +51,7 @@
       </div>-->
       <profile-settings v-if="profile">
         <div
-          class="d-flex justify-content-center align-items-center border rounded-circle overflow-hidden"
+          class="d-flex justify-content-center align-items-center border rounded-circle overflow-hidden pointer"
         >
           <img class="avatar" v-b-modal.profileSettings :src="profile.image" alt="avatar" />
         </div>
