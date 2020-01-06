@@ -54,7 +54,7 @@ export default {
         display: block;
         position: absolute;
         top: -7.5px;
-        right: 74px;
+        right: 21.7%;
         background: white;
         transform: rotate(45deg);
         z-index: 1;

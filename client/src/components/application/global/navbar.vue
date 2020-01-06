@@ -24,34 +24,12 @@
     </div>
 
     <div class="col-3 block_3 d-flex justify-content-end px-4">
-      <img src="../../../assets/icons/ring.svg" alt />
-      <!-- <div class="mx-3">
-        <b-dropdown
-          size="lg"
-          variant="link"
-          right
-          offset="-20"
-          toggle-class="text-decoration-none"
-          no-caret
-        >
-          <template v-slot:button-content>
-            <div
-              class="d-flex justify-content-center align-items-center border rounded-circle overflow-hidden"
-            >
-              <img
-                class="avatar"
-                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80 "
-                alt="avatar"
-              />
-            </div>
-          </template>
-          <b-dropdown-item>action</b-dropdown-item>
-          <b-dropdown-item>logout</b-dropdown-item>
-        </b-dropdown>
-      </div>-->
+      <notifications>
+        <img class="pointer" v-b-modal.notifications src="../../../assets/icons/ring.svg" alt />
+      </notifications>
       <profile-settings v-if="profile">
         <div
-          class="d-flex justify-content-center align-items-center border rounded-circle overflow-hidden pointer"
+          class="d-flex justify-content-center align-items-center border rounded-circle overflow-hidden pointer mx-1"
         >
           <img class="avatar" v-b-modal.profileSettings :src="profile.image" alt="avatar" />
         </div>
@@ -66,10 +44,12 @@
 <script>
 import activity from "./activity";
 import profileSettings from "./profileSettings";
+import notifications from "./notifications";
 export default {
   components: {
     activity,
-    profileSettings
+    profileSettings,
+    notifications
   },
   data() {
     return {};
