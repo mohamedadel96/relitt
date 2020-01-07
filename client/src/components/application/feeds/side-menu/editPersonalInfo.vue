@@ -139,18 +139,21 @@ export default {
     }
   },
   watch: {
-    user(val) {
-      if (val) {
-        this.form.firstname = val.firstname;
-        this.form.lastname = val.lastname;
-        this.form.image = val.image;
-        this.form.type = val.type;
-        this.form.bio = val.bio;
-        this.form.birthdate = val.birthdate;
-        this.form.interests = val.interests;
-        this.form.location_name = val.location_name;
-        this.form.lat = val.lat;
-        this.form.lng = val.lng;
+    user: {
+      immediate: true,
+      handler(val) {
+        if (val) {
+          this.form.firstname = val.firstname;
+          this.form.lastname = val.lastname;
+          this.form.image = val.image;
+          this.form.type = val.type;
+          this.form.bio = val.bio;
+          this.form.birthdate = val.birthdate;
+          this.form.interests = val.interests;
+          this.form.location_name = val.location_name;
+          this.form.lat = val.lat;
+          this.form.lng = val.lng;
+        }
       }
     }
   },

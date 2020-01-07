@@ -3,17 +3,17 @@ import store from "./store";
 import router from './router'
 import App from "./App.vue";
 import Aos from "aos";
-import './plugins/routerGuard.js'
-import './plugins/bootstrap.js'
-import './plugins/moment.js'
-import './plugins/flatPickr.js'
-import './plugins/vueScrollTo.js'
-import './plugins/infiniteLoading.js'
-import './plugins/toasted.js'
-import './plugins/textareaAutosize.js'
-import './plugins/vuelidation.js'
-import './plugins/vueGooglePlaces.js'
-import './plugins/vueStar'
+import './plugins/routerGuard'
+import './plugins/bootstrap'
+import './plugins/moment'
+import './plugins/flatPickr'
+import './plugins/vueScrollTo'
+import './plugins/infiniteLoading'
+import './plugins/toasted'
+import './plugins/textareaAutosize'
+import './plugins/vuelidation'
+import './plugins/vueGooglePlaces'
+import './plugins/starRating'
 import "aos/dist/aos.css";
 
 Vue.config.productionTip = false;
