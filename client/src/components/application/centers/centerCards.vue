@@ -1,6 +1,5 @@
 <template>
   <section id="centerCard">
-    <div class="search rounded py-3 mb-3 text-center fontSM">Alexandria, Egypt</div>
     <div class="cards" v-for="( card, i ) in centercards" :key="i">
       <div class="card border-0 rounded d-flex flex-nowrap flex-row mb-3">
         <div class="image col-4 px-0">
@@ -37,15 +36,25 @@
               </div>
             </div>
           </div>
-          <div class="col-12 px-0 pb-3 d-flex justify-content-between  align-items-end">
-            <div class=" row col-6">
-              <div class="service col-3 justify-content-start" v-for="(service ,i) in card.services" :key="i" >
-                <p class=" mb-0 text-secondary">
-                  <img :src="service.image" alt="" data-toggle="tooltip" data-placement="top" :title="service.name">
+          <div class="col-12 px-0 pb-3 d-flex justify-content-between align-items-end">
+            <div class="row col-6">
+              <div
+                class="service col-3 justify-content-start"
+                v-for="(service ,i) in card.services"
+                :key="i"
+              >
+                <p class="mb-0 text-secondary">
+                  <img
+                    :src="service.image"
+                    alt
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    :title="service.name"
+                  />
                 </p>
               </div>
             </div>
-            <router-link 
+            <router-link
               class="mr-3 btn btn-primary btn-block py-2 col-4"
               :to="'/app/centers/' + card.id"
             >Contact</router-link>
@@ -59,10 +68,6 @@
 
 <script>
 export default {
-    data() {
-    return {
-    };
-  },
   computed: {
     centercards() {
       return this.$store.getters.getCenterCard;
@@ -70,7 +75,7 @@ export default {
   },
   methods: {
     moreFeeds(state) {
-      this.$store.dispatch("CENTERCARD" ).then(res => {
+      this.$store.dispatch("CENTERCARD").then(res => {
         if (res !== "end") {
           state.loaded();
         } else {
@@ -84,10 +89,6 @@ export default {
 
 <style lang="scss" scoped>
 #centerCard {
-  .search {
-    background: $background_white;
-    box-shadow: 3px 3px 4px #ddd;
-  }
   .cards {
     .card {
       box-shadow: 3px 3px 4px #ddd;
@@ -122,13 +123,12 @@ export default {
           }
         }
       }
-      .service{
-          img {
-            width:25px;
-            height:25px;
-            border-radius: 50% 
-
-          }
+      .service {
+        img {
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+        }
       }
     }
   }

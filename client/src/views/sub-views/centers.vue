@@ -14,6 +14,14 @@
           </p>
         </div>
         <div class="col-md-11 col-12 px-2">
+          <div class="search rounded mb-3 text-center fontSM">
+            <place-autocomplete-field
+              v-model="place"
+              name="place"
+              api-key="AIzaSyAhSv9zWvisiTXRPRw6K8AE0DCmrRMpQcU"
+              placeholder="Enter an an address, zipcode, or location"
+            ></place-autocomplete-field>
+          </div>
           <center-cards />
         </div>
       </div>
@@ -25,6 +33,11 @@
 import centerCards from "../../components/application/centers/centerCards";
 import filterSection from "../../components/application/centers/filterSection";
 export default {
+  data() {
+    return {
+      place: null
+    };
+  },
   components: {
     centerCards,
     filterSection
@@ -35,7 +48,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #centers {
   .tabs {
     p {
@@ -51,6 +64,34 @@ export default {
         }
       }
     }
+  }
+
+  .autocomplete-field {
+    .autocomplete-list-item > a {
+      padding: 15px;
+    }
+    .form-group {
+      margin-bottom: 0;
+
+      input {
+        text-align: center;
+        border: none;
+        padding: 1em 0;
+        outline: none;
+        &:focus,
+        &:active {
+          outline: none;
+          border-color: inherit;
+          -webkit-box-shadow: none;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+  .search {
+    background: $background_white;
+    box-shadow: 3px 3px 4px #ddd;
   }
 }
 </style>
