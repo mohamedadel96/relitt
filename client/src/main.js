@@ -15,9 +15,6 @@ import './plugins/vuelidation.js'
 import './plugins/vueGooglePlaces.js'
 import "aos/dist/aos.css";
 
-import SweetModal from "sweet-modal-vue/src/plugin.js";
-
-Vue.use(SweetModal);
 Vue.config.productionTip = false;
 
 export const Bus = new Vue();
