@@ -1,7 +1,7 @@
 <template>
   <section id="centers">
     <div class="d-flex justify-content">
-      <div class="col-md-3 px-4 mt-4 overflow-hidden">
+      <div class="col-md-3 px-4 mt-3 overflow-hidden">
         <filter-section />
       </div>
       <div class="col-md-9">
