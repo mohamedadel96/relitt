@@ -13,6 +13,7 @@ import './plugins/toasted.js'
 import './plugins/textareaAutosize.js'
 import './plugins/vuelidation.js'
 import './plugins/vueGooglePlaces.js'
+import './plugins/vueStar'
 import "aos/dist/aos.css";
 
 Vue.config.productionTip = false;
