@@ -2,7 +2,7 @@
   <section id="centers">
     <div class="d-flex justify-content">
       <div class="col-md-3 px-4 mt-4 overflow-hidden">
-        <div>here filter</div>
+        <filter-section />
       </div>
       <div class="col-md-9">
         <div class="tabs d-flex mt-4 justify-content-center mr-5">
@@ -23,9 +23,11 @@
 
 <script>
 import centerCards from "../../components/application/centers/centerCards";
+import filterSection from "../../components/application/centers/filterSection";
 export default {
   components: {
-    centerCards
+    centerCards,
+    filterSection
   },
   mounted() {
     this.$store.dispatch("CENTERCARD");
