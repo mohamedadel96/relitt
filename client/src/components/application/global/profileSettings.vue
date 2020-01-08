@@ -9,7 +9,7 @@
           @click="openChangePassword"
           class="menu-item border-top py-3 mb-0 fontSM pointer"
         >Change password</p>
-        <p class="border-top pt-3 pb-2 mb-0 fontSM pointer text-danger">LOGOUT</p>
+        <p class="border-top pt-3 pb-2 mb-0 fontSM pointer text-danger" @click="logout">LOGOUT</p>
       </div>
     </b-modal>
     <change-password></change-password>
@@ -24,6 +24,9 @@ export default {
     changePassword
   },
   methods: {
+    logout() {
+      this.$store.dispatch('LOGOUT')
+    },
     openPersonalInfo() {
       Bus.$emit("openPersonalInfo");
     },

@@ -40,10 +40,6 @@ export default new Vuex.Store({
       localStorage.setItem('user', JSON.stringify(data.data))
       state.user = data.data
       state.token = data.data.token
-    },
-    removeAuthData(state) {
-      state.user = null
-      state.token = null
     }
   },
   modules: {
