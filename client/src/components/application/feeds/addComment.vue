@@ -1,12 +1,13 @@
 <template>
   <section id="addComment" class="d-flex justify-content-center mt-1 mb-3">
     <div class="body col-12 px-1 rounded">
-      <textarea
+      <textarea-autosize
+        placeholder="type your comment here..."
         class="rounded border col-12 px-2 py-1"
-        placeholder="type your comment here"
-        rows="3"
         v-model="form.body"
-      ></textarea>
+        :min-height="85"
+        :max-height="400"
+      />
       <button class="btn btn-primary btn-block" @click="addComment">comment</button>
     </div>
   </section>
