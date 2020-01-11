@@ -54,6 +54,10 @@
                 </div>
               </div>
 
+              <div class="post-decription px-3">
+                <p class="description font-14">{{feed.body}}</p>
+              </div>
+
               <template v-if="!feed.activity && feed.images.length">
                 <post-media :images="feed.images" />
               </template>
@@ -63,7 +67,6 @@
               </template>
 
               <div class="post-decription px-3">
-                <p class="description font-14">{{feed.body}}</p>
                 <div class="details d-flex">
                   <p class="mb-0 fontXS">
                     <span>{{feed.likes_count}}&nbsp;</span>

@@ -63,7 +63,7 @@ export default {
 
       img {
         object-fit: cover;
-        max-height: 300px;
+        height: 300px;
       }
     }
   }
