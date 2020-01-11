@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="main">
     <router-view />
   </div>
 </template>
@@ -9,8 +9,11 @@
 * {
   font-family: "Open Sans", sans-serif;
 }
-.fontXXS {
-  font-size: $fontXXS;
+#main {
+  overflow: hidden;
+}
+.font-10 {
+  font-size: $font-10;
 }
 .fontXS {
   font-size: $fontXS;
@@ -18,8 +21,8 @@
 .fontSM {
   font-size: $fontSM;
 }
-.fontCS {
-  font-size: $fontCS;
+.font-14 {
+  font-size: $font-14;
 }
 .fontMD {
   font-size: $fontMD;
@@ -82,9 +85,9 @@
   }
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 </style>

@@ -16,7 +16,7 @@
                     <p
                       class="mb-0 font-weight-bold fontSM"
                     >{{feed.user.firstname}} {{feed.user.lastname}}</p>
-                    <p class="mb-0 job fontCS">{{feed.created_at | moment("from", "now")}}</p>
+                    <p class="mb-0 job font-14">{{feed.created_at | moment("from", "now")}}</p>
                   </div>
                 </div>
                 <div v-if="feed.canEdit">
@@ -63,7 +63,7 @@
               </template>
 
               <div class="post-decription px-3">
-                <p class="description fontCS">{{feed.body}}</p>
+                <p class="description font-14">{{feed.body}}</p>
                 <div class="details d-flex">
                   <p class="mb-0 fontXS">
                     <span>{{feed.likes_count}}&nbsp;</span>
@@ -90,7 +90,7 @@
                   </div>
                 </div>
                 <div
-                  class="col-6 py-2 px-0 post-options fontCS pointer"
+                  class="col-6 py-2 px-0 post-options font-14 pointer"
                   v-b-toggle="'comment-' + i"
                 >
                   <img src="../../../assets/img/icon/round-comment-24px.png" class="mr-1" />

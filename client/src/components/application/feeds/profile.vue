@@ -1,19 +1,21 @@
 <template>
-  <section id="userCard" class="pb-3 rounded">
+  <section id="userCard" class="pb-2 rounded">
     <div v-if="profile">
       <div class="block_1 text-center">
-        <img class="border rounded-circle mt-5" :src="profile.image" alt="user image" />
-        <p class="name font-weight-bold mb-0 fontMD">{{profile.firstname}} {{profile.lastname}}</p>
-        <p class="job fontCS">{{profile.type}}</p>
+        <img class="border rounded-circle mt-4" :src="profile.image" alt="user image" />
+        <p
+          class="name font-weight-bold mb-0 font-14 px-2"
+        >{{profile.firstname}} {{profile.lastname}}</p>
+        <p class="job font-10">{{profile.type}}</p>
       </div>
       <div class="block_2 d-flex pb-4 mt-4">
-        <div class="col-6 text-center pr-5 border-right">
-          <p class="num mb-0 font-weight-bold fontSM">{{profile.followers_count}}</p>
-          <p class="mb-0 opacity font-weight-bold fontXS">Followers</p>
+        <div class="col-6 text-center pr-4 border-right">
+          <p class="num mb-0 font-weight-bold font-14">{{profile.followers_count}}</p>
+          <p class="mb-0 opacity font-weight-bold font-10">Followers</p>
         </div>
-        <div class="col-6 text-center pl-5 border-left">
-          <p class="num mb-0 font-weight-bold fontSM">{{profile.following_count}}</p>
-          <p class="mb-0 opacity font-weight-bold fontXS">Following</p>
+        <div class="col-6 text-center pl-4 border-left">
+          <p class="num mb-0 font-weight-bold font-14">{{profile.following_count}}</p>
+          <p class="mb-0 opacity font-weight-bold font-10">Following</p>
         </div>
       </div>
     </div>
@@ -36,8 +38,8 @@ export default {
   box-shadow: 1px 1px 4px #ddd;
   .block_1 {
     img {
-      width: 70px;
-      height: 70px;
+      width: 60px;
+      height: 60px;
     }
     p.job {
       opacity: 0.7;

@@ -2,19 +2,19 @@
   <section id="sideMenu" class="mt-3">
     <edit-personal-info>
       <p
-        class="menu-item mb-0 fontSM py-3 pointer"
+        class="menu-item mb-0 font-14 py-3 pointer"
         slot
         v-b-modal.editPersonalInfo
       >Edit personal info</p>
     </edit-personal-info>
     <reviews>
-      <p class="menu-item border-top py-3 mb-0 fontSM pointer" slot v-b-modal.reviews>Reviews</p>
+      <p class="menu-item border-top py-3 mb-0 font-14 pointer" slot v-b-modal.reviews>Reviews</p>
     </reviews>
-    <p class="border-top py-3 mb-0 fontSM pointer" @click="filterFeeds">
+    <p class="border-top py-3 mb-0 font-14 pointer" @click="filterFeeds">
       <span v-if="!myFeeds">my feeds</span>
       <span v-if="myFeeds">all feeds</span>
     </p>
-    <p class="border-top py-3 mb-0 fontSM pointer" @click="filterActivity">
+    <p class="border-top py-3 mb-0 font-14 pointer" @click="filterActivity">
       <span v-if="!myActivity">My activity</span>
       <span v-if="myActivity">all activity</span>
     </p>

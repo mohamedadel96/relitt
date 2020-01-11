@@ -26,9 +26,9 @@
               <div>
                 <p class="fontMD font-weight-bold num">{{event.start_date | moment('D')}}</p>
                 <p
-                  class="fontCS font-weight-bold mb-0 text-uppercase"
+                  class="font-14 font-weight-bold mb-0 text-uppercase"
                 >{{event.start_date | moment('MMM')}}</p>
-                <p class="fontXXS text-secondary">{{event.start_date | moment('h a')}}</p>
+                <p class="font-10 text-secondary">{{event.start_date | moment('h a')}}</p>
               </div>
             </div>
           </div>
@@ -51,9 +51,7 @@
 <script>
 export default {
   data() {
-    return {
-      
-    };
+    return {};
   },
   computed: {
     events() {

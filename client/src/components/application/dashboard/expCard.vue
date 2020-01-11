@@ -5,20 +5,20 @@
         <p class="title font-weight-bold mb-0 col-9 px-0 fontSM">{{title}}</p>
         <div class="time text-center pl-4 mr-5">
           <p class="font-weight-bold fontXXL">{{parseInt(value)}}</p>
-          <p class="mb-0 text-right fontXXS">{{measure}}</p>
+          <p class="mb-0 text-right font-10">{{measure}}</p>
         </div>
       </div>
       <div class="block_2 d-flex justify-content-end pb-2 mt-4">
         <div class="border-right">
           <p class="mb-0 px-2 font-weight-bold">
-            <span class="px-1 fontXXS">{{parseInt(minValue)}}</span>
-            <span class="fontXXS">{{measure}}</span>
+            <span class="px-1 font-10">{{parseInt(minValue)}}</span>
+            <span class="font-10">{{measure}}</span>
           </p>
         </div>
         <div class="border-left">
           <p class="mb-0 px-2 font-weight-bold">
-            <span class="px-1 fontXXS">{{parseInt(maxValue)}}</span>
-            <span class="fontXXS">{{measure}}</span>
+            <span class="px-1 font-10">{{parseInt(maxValue)}}</span>
+            <span class="font-10">{{measure}}</span>
           </p>
         </div>
       </div>

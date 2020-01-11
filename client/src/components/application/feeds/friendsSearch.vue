@@ -18,7 +18,7 @@
             />
             <div>
               <p class="name font-weight-bold fontSM">Ahmed reda</p>
-              <p class="mb-0 job fontCS">Senior diver</p>
+              <p class="mb-0 job font-14">Senior diver</p>
             </div>
           </div>
           <div>

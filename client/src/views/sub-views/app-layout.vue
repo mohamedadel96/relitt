@@ -1,15 +1,15 @@
 <template>
-  <section id="app-layout" class="d-flex justify-content-end mt-3 position-relative">
-    <div class="col-md-3 d-md-block d-none px-4">
-      <div class="px-1">
+  <section id="app-layout" class="d-flex justify-content-between mt-3 position-relative">
+    <div class="col-lg-3 col-md-4 d-md-block d-none px-4">
+      <div class="sec-l pr-lg-4">
         <profile />
         <side-menu />
       </div>
     </div>
-    <div class="col-md-6 col-12">
+    <div class="col-lg-6 col-md-8 col-12 px-md-2 px-sm-4 px-2">
       <router-view />
     </div>
-    <div class="col-md-3 d-md-block d-none px-3">
+    <div class="col-lg-3 d-lg-block d-none px-3">
       <friends-search />
       <myEvent />
     </div>
@@ -36,8 +36,10 @@ export default {
 
 <style lang="scss" scoped>
 #app-layout {
-  .left-side {
-    left: 0;
+  .sec-l {
+    @media screen and (max-width: 1170px) {
+      padding-right: 0 !important;
+    }
   }
 }
 </style>
