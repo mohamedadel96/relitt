@@ -1,21 +1,21 @@
 import authServices from '../../services/auth'
 
 export default {
-  mutation: {
+  mutations: {
     removeAuthData() {
       localStorage.clear();
-      location.reload
+      location.reload()
     }
   },
   actions: {
-    LOGOUT({ commit } ) {
+    LOGOUT({ commit }) {
       return new Promise((resolve, reject) => {
-        authServices.logout().then(res => {
-          if (res.data.code !== 200) return reject(res.data.errors)
-          commit('removeAuthData')
-          resolve('done')
-        })
-        
+        // authServices.logout().then(res => {
+        //   if (res.data.code !== 200) return reject(res.data.errors)
+        // })
+        commit('removeAuthData')
+        resolve('done')
+
       })
     }
   }
