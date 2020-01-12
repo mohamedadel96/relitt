@@ -18,6 +18,7 @@
         </div>
       </div>
     </div>
+    <viewer :activity="activity">
     <div class="pics d-flex" v-if="activity.images.length">
       <div
         :class="[activity.images.length == 1 ? 'col-12' : '', activity.images.length == 2 ? 'col-6' : '', activity.images.length > 2 ? 'col-4' : '']"
@@ -36,6 +37,8 @@
         >+ {{activity.images.length - 3}}</div>
       </div>
     </div>
+    <img v-show="false" v-for="src in activity.images.slice(4, activity.images.length-1)" :src="src.url" :key="src">  
+  </viewer>
   </div>
 </template>
 

@@ -41,5 +41,6 @@ export default {
 #feeds {
   position: relative;
   z-index: 1;
+
 }
 </style>

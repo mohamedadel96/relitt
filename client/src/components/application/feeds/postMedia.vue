@@ -1,5 +1,6 @@
 <template>
   <div class="post-media mb-3">
+  <viewer :images="images">
     <img class="st-pic col-12 px-0" v-if="images.length" :src="images[0].url" alt="post picture" />
     <div class="pics d-flex" v-if="images.length - 1 > 0">
       <div
@@ -19,6 +20,9 @@
         >+ {{images.length - 4}}</div>
       </div>
     </div>
+
+    <img v-show="false" v-for="src in images.slice(4, images.length-1)" :src="src.url" :key="src">      
+    </viewer>
   </div>
 </template>
 

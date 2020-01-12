@@ -14,6 +14,7 @@ import './plugins/textareaAutosize'
 import './plugins/vuelidation'
 import './plugins/vueGooglePlaces'
 import './plugins/starRating'
+import './plugins/vViewer'
 import "aos/dist/aos.css";
 
 Vue.config.productionTip = false;
