@@ -248,7 +248,7 @@ export default {
       this.editState = false;
     }
   },
-  mounted() {
+  created() {
     Bus.$on("editActivity", payload => {
       this.form.activity_id = payload.id;
       this.form.type_id = payload.type_id;

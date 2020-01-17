@@ -42,7 +42,7 @@ export default {
     centerCards,
     filterSection
   },
-  mounted() {
+  created() {
     this.$store.dispatch("CENTERCARD");
   }
 };

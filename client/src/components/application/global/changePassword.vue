@@ -64,9 +64,9 @@ export default {
     return {
       form: {
         email: null,
-        old_password: "null",
-        password: "null",
-        confirm_password: "null"
+        old_password: null,
+        password: null,
+        confirm_password: null
       },
       disableEdit: false
     };
@@ -107,7 +107,7 @@ export default {
       }
     }
   },
-  mounted() {
+  created() {
     Bus.$on("openChangePassword", () => {
       this.$bvModal.show("changePassword");
     });

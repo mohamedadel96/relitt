@@ -51,7 +51,7 @@ export default {
       place: ""
     };
   },
-  mounted() {
+  created() {
     this.$store.dispatch("EVENTS");
   }
 };

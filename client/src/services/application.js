@@ -70,6 +70,9 @@ export default {
    },
    myReviews() {
       return Api().get('centers/my_reviews')
+   },
+   notifications() {
+      return Api().get('notifications')
    }
 
 }

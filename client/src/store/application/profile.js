@@ -2,16 +2,23 @@ import appServices from '../../services/application'
 
 export default {
   state: {
-    profile: null
+    profile: null,
+    notifications: null
   },
   getters: {
     profile(state) {
       return state.profile
-    }
+    },
+    notifications(state) {
+      return state.notifications
+    },
   },
   mutations: {
     saveProfile(state, data) {
       state.profile = data
+    },
+    saveNotifications(state, data) {
+      state.notifications = data
     }
   },
   actions: {
@@ -50,6 +57,19 @@ export default {
         appServices.profileChangePassword(form).then(res => {
           if (res.data.code !== 200) return reject(res.data.message)
           resolve(res.message)
+        })
+
+      })
+    },
+    NOTIFICATIONS({ commit }) {
+      return new Promise((resolve, reject) => {
+        appServices.notifications().then(res => {
+          if (res.data.status === 401) {
+            // we will handle logout option // call logout function
+          }
+          if (res.data.code !== 200) return reject(res.data.errors)
+          commit('saveNotifications', res.data.data)
+          resolve('done')
         })
 
       })

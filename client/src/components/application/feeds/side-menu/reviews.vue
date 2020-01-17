@@ -34,7 +34,7 @@ export default {
       return this.$store.getters.myReviews;
     }
   },
-  mounted() {
+  created() {
     this.$store.dispatch("MYREVIEWS");
   }
 };

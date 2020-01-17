@@ -1,23 +1,23 @@
 <template>
-  <section id="notifications">
+  <section id="notifications" v-if="notifications">
     <slot></slot>
     <b-modal id="notifications" hide-backdrop content-class="shadow" hide-header hide-footer>
-      <div>
-        <div class="d-flex justify-content-between align-content-center">
-          <div class="d-flex align-items-center">
+      <div v-for="(notification, i) in notifications" :key="i">
+        <div class="d-flex justify-content-between align-content-center border-bottom py-2 mt-2">
+          <div class="d-flex align-items-top">
             <img
               class="user-img rounded-circle"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Facebook_icon.svg/1024px-Facebook_icon.svg.png"
+              src="../../../assets/icons/notification.gif"
               alt="user image"
             />
           </div>
           <div class="col-10 px-0">
             <div class="col-12 px-0 d-flex justify-content-between align-items-center">
-              <h5>title goes here</h5>
-              <div class="mx-2">ico</div>
+              <p class="font-16 font-weight-bold mb-1">{{notification.title}}</p>
+              <!-- <div class="mx-2">ico</div> -->
             </div>
             <div>
-              <p>notification body goes here notification body goes here</p>
+              <p class="font-14 text-secondary col-10 px-0">{{notification.body}}</p>
             </div>
           </div>
         </div>
@@ -26,7 +26,16 @@
   </section>
 </template>
 <script>
-export default {};
+export default {
+  computed: {
+    notifications() {
+      return this.$store.getters.notifications;
+    }
+  },
+  created() {
+    this.$store.dispatch("NOTIFICATIONS");
+  }
+};
 </script>
 
 <style lang="scss">
@@ -57,7 +66,7 @@ export default {};
         display: block;
         position: absolute;
         top: -7.5px;
-        right: 33.4%;
+        right: 31%;
         background: white;
         transform: rotate(45deg);
         z-index: 1;

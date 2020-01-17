@@ -25,7 +25,7 @@ export default {
     comments,
     addComment
   },
-  mounted() {
+  created() {
     this.$store.dispatch("EVENT", this.$route.params.id);
   }
 };

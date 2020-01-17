@@ -4,7 +4,7 @@ import { Line } from "vue-chartjs";
 export default {
   extends: Line,
   props: ['timeline'],
-  mounted() {
+  created() {
     this.renderChart(
       {
         labels: this.$props.timeline.map(item => item.date),

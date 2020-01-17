@@ -62,7 +62,7 @@ export default {
       hideNavItems: false
     };
   },
-  mounted() {
+  created() {
     if (window.innerWidth < 767) this.hideNavItems = true;
   }
 };

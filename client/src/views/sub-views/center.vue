@@ -30,7 +30,7 @@ export default {
       return this.$store.getters.center;
     }
   },
-  mounted() {
+  created() {
     this.$store.dispatch("CENTER", this.$route.params.id);
   }
 };

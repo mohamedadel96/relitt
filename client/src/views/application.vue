@@ -11,7 +11,7 @@ export default {
   components: {
     navBar
   },
-  mounted() {
+  created() {
     this.$store.dispatch("PROFILE");
     this.$store.dispatch("DASHBOARD");
     this.$store.dispatch("MYEVENT");

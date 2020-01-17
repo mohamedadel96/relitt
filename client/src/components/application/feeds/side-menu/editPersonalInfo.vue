@@ -189,7 +189,7 @@ export default {
       }
     }
   },
-  mounted() {
+  created() {
     Bus.$on("openPersonalInfo", () => {
       this.$bvModal.show("editPersonalInfo");
     });
