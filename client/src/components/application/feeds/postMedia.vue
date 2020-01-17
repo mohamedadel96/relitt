@@ -1,27 +1,44 @@
 <template>
   <div class="post-media mb-3">
-  <viewer :images="images">
-    <img class="st-pic col-12 px-0" v-if="images.length" :src="images[0].url" alt="post picture" />
-    <div class="pics d-flex" v-if="images.length - 1 > 0">
-      <div
-        :class="[images.length - 1 == 1 ? 'col-12' : '', images.length - 1 == 2 ? 'col-6' : '', images.length - 1 > 2 ? 'col-4' : '']"
-      >
-        <img class="col-12 px-0" v-if="images[1]" :src="images[1].url" alt="post picture" />
-      </div>
-
-      <div :class="[images.length - 2 == 1 ? 'col-6' : 'col-4']">
-        <img class="col-12 px-0" v-if="images[2]" :src="images[2].url" alt="post picture" />
-      </div>
-      <div class="col-4">
-        <img class="col-12 px-0" v-if="images[3]" :src="images[3].url" alt="post picture" />
+    <viewer :images="images">
+      <img
+        class="st-pic col-12 px-0 pointer"
+        v-if="images.length"
+        :src="images[0].url"
+        alt="post picture"
+      />
+      <div class="pics d-flex" v-if="images.length - 1 > 0">
         <div
-          class="imagesNum fontXXL font-weight-bold"
-          v-if="images.length - 4"
-        >+ {{images.length - 4}}</div>
-      </div>
-    </div>
+          :class="[images.length - 1 == 1 ? 'col-12' : '', images.length - 1 == 2 ? 'col-6' : '', images.length - 1 > 2 ? 'col-4' : '']"
+        >
+          <img class="col-12 px-0 pointer" v-if="images[1]" :src="images[1].url" alt="post picture" />
+        </div>
 
-    <img v-show="false" v-for="src in images.slice(4, images.length-1)" :src="src.url" :key="src">      
+        <div :class="[images.length - 2 == 1 ? 'col-6' : 'col-4']">
+          <img class="col-12 px-0 pointer" v-if="images[2]" :src="images[2].url" alt="post picture" />
+        </div>
+        <div class="col-4">
+          <img
+            ref="lastImg"
+            class="col-12 px-0 pointer"
+            v-if="images[3]"
+            :src="images[3].url"
+            alt="post picture"
+          />
+          <div
+            @click="$refs.lastImg.click()"
+            class="imagesNum fontXXL font-weight-bold pointer"
+            v-if="images.length - 4"
+          >+ {{images.length - 4}}</div>
+        </div>
+      </div>
+
+      <img
+        v-show="false"
+        v-for="(src, i) in images.slice(4, images.length-1)"
+        :src="src.url"
+        :key="i"
+      />
     </viewer>
   </div>
 </template>
@@ -54,6 +71,7 @@ export default {
 
         .imagesNum {
           position: absolute;
+          background: rgba(0, 0, 0, 0.712);
           top: 0;
           left: 0;
           color: $fontColor_white;
