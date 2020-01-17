@@ -54,8 +54,14 @@
                 </div>
               </div>
 
-              <div class="post-decription px-3">
-                <p class="description font-14">{{feed.body}}</p>
+              <div class="post-decription px-4 py-2">
+                <read-more
+                  more-str="read more..."
+                  :text="feed.body"
+                  less-str="read less"
+                  :max-chars="500"
+                  class="description font-14"
+                ></read-more>
               </div>
 
               <template v-if="!feed.activity && feed.images.length">

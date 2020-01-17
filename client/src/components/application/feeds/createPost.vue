@@ -1,6 +1,17 @@
 <template>
   <section id="create-post" class="rounded py-1">
     <div class="post-body">
+      <div
+        v-if="profile"
+        :class="['post-info px-3 justify-content-between align-items-center' , startPosting ? 'd-flex' : 'd-none']"
+      >
+        <div class="d-flex align-items-center py-2">
+          <img class="border rounded-circle mr-3" :src="profile.image" alt="friend profile picture" />
+          <div>
+            <p class="mb-0 font-weight-bold fontSM">{{profile.firstname}} {{profile.lastname}}</p>
+          </div>
+        </div>
+      </div>
       <div :class="['col-12 px-0', startPosting ? '' : 'smallHeight']" @click="startPosting = true">
         <textarea-autosize
           placeholder="what's in your mind"
@@ -15,7 +26,7 @@
           <div class="d-inline-block position-relative" v-for="(url,i) in form.images" :key="i">
             <img class="m-3 rounded pointer border" :src="url" alt />
             <div
-              class="dlt-img border-rounded text-white font-weight-bold pointer"
+              class="dlt-img rounded-circle text-white font-weight-bold pointer"
               @click="form.images.splice(i, 1)"
             >x</div>
           </div>
@@ -94,6 +105,11 @@ export default {
       disablePost: false
     };
   },
+  computed: {
+    profile() {
+      return this.$store.getters.profile;
+    }
+  },
   watch: {
     postData: {
       immediate: true,
@@ -146,7 +162,7 @@ export default {
         this.disablePost = true;
         this.$store.dispatch("POST", this.form).then(res => {
           this.$toasted.success("your post uploaded successfully");
-          this.clearPost();
+          this.startPosting = false;
         });
       } catch (error) {
         console.log("error while uploading post");
@@ -157,7 +173,7 @@ export default {
         this.disablePost = true;
         this.$store.dispatch("EDITPOST", this.form).then(res => {
           this.$toasted.success("your post uploaded successfully");
-          this.clearPost();
+          this.startPosting = false;
         });
       } catch (error) {
         console.log("error while uploading post");
@@ -184,6 +200,12 @@ export default {
   }
 
   .post-body {
+    .post-info {
+      img {
+        width: 60px;
+        height: 60px;
+      }
+    }
     .smallHeight {
       height: 40px;
       overflow: hidden;
