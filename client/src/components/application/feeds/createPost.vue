@@ -1,10 +1,5 @@
 <template>
   <section id="create-post" class="rounded py-1">
-    <div
-      class="close border rounded-circle bg-danger text-white py-1 px-2 pointer overlay"
-      v-show="startPosting"
-      @click="startPosting = !startPosting"
-    >x</div>
     <div class="post-body">
       <div :class="['col-12 px-0', startPosting ? '' : 'smallHeight']" @click="startPosting = true">
         <textarea-autosize
@@ -19,16 +14,19 @@
         <viewer :images="form.images">
           <div class="d-inline-block position-relative" v-for="(url,i) in form.images" :key="i">
             <img class="m-3 rounded pointer border" :src="url" alt />
-            <div class="dlt-img pointer" @click="form.images.splice(i, 1)">x</div>
+            <div
+              class="dlt-img border-rounded text-white font-weight-bold pointer"
+              @click="form.images.splice(i, 1)"
+            >x</div>
           </div>
         </viewer>
       </div>
       <div
-        :class="['col-12 px-3 pb-2', {'d-flex align-items-end justify-content-between showBtn' : startPosting}]"
+        :class="['col-12 px-3 pb-2', {'d-flex flex-wrap align-items-end justify-content-between showBtn' : startPosting}]"
         v-show="startPosting"
       >
-        <div>
-          <button :disabled="disablePost" @click="$refs.pic.click()" class="btn btn-light px-4">
+        <div class="d-flex">
+          <button :disabled="disablePost" @click="$refs.pic.click()" class="btn btn-light">
             <input
               ref="pic"
               @change="uploadFiles('pic')"
@@ -39,13 +37,9 @@
               multiple
             />
             <img class="pointer" src="../../../assets/img/icon/path.svg" alt />
-            <span class="px-2">Picture</span>
+            <span class="px-2 d-none d-lg-inline">Picture</span>
           </button>
-          <button
-            :disabled="disablePost"
-            @click="$refs.video.click()"
-            class="btn btn-light px-4 mx-3"
-          >
+          <button :disabled="disablePost" @click="$refs.video.click()" class="btn btn-light mx-3">
             <input
               ref="video"
               @change="uploadFiles('video')"
@@ -56,85 +50,31 @@
               multiple
             />
             <img class="pointer" src="../../../assets/img/icon/path2.png" alt />
-            <span class="px-2">Video</span>
+            <span class="px-2 d-none d-lg-inline">Video</span>
           </button>
         </div>
-        <div>
+        <div class="d-flex">
+          <button
+            :disabled="disablePost"
+            @click="startPosting = !startPosting"
+            class="btn btn-danger mx-3"
+          >Cancle</button>
+
           <button
             v-show="!editState"
             :disabled="disablePost"
             @click="post"
-            class="btn btn-primary px-5"
+            class="btn btn-primary px-4"
           >Post</button>
 
           <button
             v-show="editState"
             :disabled="disablePost"
             @click="editPost"
-            class="btn btn-primary px-5"
+            class="btn btn-primary px-4"
           >Edit</button>
         </div>
       </div>
-
-      <!-- <div
-        v-show="startPosting"
-        :class="{ 'd-flex flex-wrap align-items-between justify-content-end enlargement' : startPosting}"
-        >
-        <div class="col-12 px-0 d-flex align-items-start justify-content-end pt-2">
-          <span class="px-0">
-            <input
-              ref="video"
-              @change="uploadFiles('video')"
-              class="d-none"
-              type="file"
-              name="video"
-              accept="video/*"
-              multiple
-            />
-            <img
-              @click="$refs.video.click()"
-              class="pointer"
-              src="../../../assets/img/icon/path2.png"
-              alt
-            />
-          </span>
-          <span class="px-3">
-            <input
-              ref="pic"
-              @change="uploadFiles('pic')"
-              class="d-none"
-              type="file"
-              name="pic"
-              accept="image/*"
-              multiple
-            />
-            <img
-              @click="$refs.pic.click()"
-              class="pointer"
-              src="../../../assets/img/icon/path.svg"
-              alt
-            />
-          </span>
-        </div>
-        <div
-          :class="['col-12 px-3 pb-2 startPosting', {'d-flex align-items-end justify-content-end showBtn' : startPosting}]"
-          v-show="startPosting"
-        >
-          <button
-            v-show="!editState"
-            :disabled="disablePost"
-            @click="post"
-            class="btn btn-primary"
-          >Post</button>
-
-          <button
-            v-show="editState"
-            :disabled="disablePost"
-            @click="editPost"
-            class="btn btn-primary"
-          >Edit</button>
-        </div>
-      </div>-->
     </div>
   </section>
 </template>
@@ -169,9 +109,7 @@ export default {
           this.$emit("clearPostData");
         }
       }
-    }
-  },
-  watch: {
+    },
     startPosting(val) {
       if (!val) {
         this.disablePost = false;
@@ -258,9 +196,7 @@ export default {
 
     .showBtn {
       -webkit-animation-name: showBtn;
-      /* Safari 4.0 - 8.0 */
       -webkit-animation-duration: 2s;
-      /* Safari 4.0 - 8.0 */
       animation-name: showBtn;
       animation-duration: 2s;
       opacity: 1;
@@ -274,17 +210,9 @@ export default {
     font-size: 22px;
     text-align: center;
     background: #000000c2;
-    border-radius: 50%;
     width: 35px;
     height: 35px;
     z-index: 2;
-    color: white;
-    font-weight: bold;
-  }
-  .close {
-    position: absolute;
-    top: -14px;
-    left: -18px;
   }
 
   @-webkit-keyframes showBtn {
