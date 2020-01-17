@@ -3,23 +3,83 @@
     <div
       class="close border rounded-circle bg-danger text-white py-1 px-2 pointer overlay"
       v-show="startPosting"
-      @click="clearPost"
+      @click="startPosting = !startPosting"
     >x</div>
-    <div class="post-media" v-show="startPosting">
-      <img v-for="(url,i) in form.images" :key="i" class="m-3" :src="url" alt />
-    </div>
-    <div class="post-body d-flex justify-content-between align-items-start">
-      <textarea
-        @focus="startPosting = true"
-        v-model="form.body"
-        class="py-2 px-4"
-        placeholder="what's in your mind"
-      ></textarea>
-
+    <div class="post-body">
+      <div :class="['col-12 px-0', startPosting ? '' : 'smallHeight']" @click="startPosting = true">
+        <textarea-autosize
+          placeholder="what's in your mind"
+          class="col-12 py-2 px-4"
+          v-model="form.body"
+          :min-height="40"
+          :max-height="350"
+        />
+      </div>
+      <div class="post-media" v-show="startPosting">
+        <viewer :images="form.images">
+          <div class="d-inline-block position-relative" v-for="(url,i) in form.images" :key="i">
+            <img class="m-3 rounded pointer border" :src="url" alt />
+            <div class="dlt-img pointer" @click="form.images.splice(i, 1)">x</div>
+          </div>
+        </viewer>
+      </div>
       <div
+        :class="['col-12 px-3 pb-2', {'d-flex align-items-end justify-content-between showBtn' : startPosting}]"
+        v-show="startPosting"
+      >
+        <div>
+          <button :disabled="disablePost" @click="$refs.pic.click()" class="btn btn-light px-4">
+            <input
+              ref="pic"
+              @change="uploadFiles('pic')"
+              class="d-none"
+              type="file"
+              name="pic"
+              accept="image/*"
+              multiple
+            />
+            <img class="pointer" src="../../../assets/img/icon/path.svg" alt />
+            <span class="px-2">Picture</span>
+          </button>
+          <button
+            :disabled="disablePost"
+            @click="$refs.video.click()"
+            class="btn btn-light px-4 mx-3"
+          >
+            <input
+              ref="video"
+              @change="uploadFiles('video')"
+              class="d-none"
+              type="file"
+              name="video"
+              accept="video/*"
+              multiple
+            />
+            <img class="pointer" src="../../../assets/img/icon/path2.png" alt />
+            <span class="px-2">Video</span>
+          </button>
+        </div>
+        <div>
+          <button
+            v-show="!editState"
+            :disabled="disablePost"
+            @click="post"
+            class="btn btn-primary px-5"
+          >Post</button>
+
+          <button
+            v-show="editState"
+            :disabled="disablePost"
+            @click="editPost"
+            class="btn btn-primary px-5"
+          >Edit</button>
+        </div>
+      </div>
+
+      <!-- <div
         v-show="startPosting"
         :class="{ 'd-flex flex-wrap align-items-between justify-content-end enlargement' : startPosting}"
-      >
+        >
         <div class="col-12 px-0 d-flex align-items-start justify-content-end pt-2">
           <span class="px-0">
             <input
@@ -74,7 +134,7 @@
             class="btn btn-primary"
           >Edit</button>
         </div>
-      </div>
+      </div>-->
     </div>
   </section>
 </template>
@@ -108,6 +168,17 @@ export default {
           this.$scrollTo("#app");
           this.$emit("clearPostData");
         }
+      }
+    }
+  },
+  watch: {
+    startPosting(val) {
+      if (!val) {
+        this.disablePost = false;
+        this.startPosting = false;
+        this.editState = false;
+        this.form.body = null;
+        this.form.images = [];
       }
     }
   },
@@ -153,13 +224,6 @@ export default {
       } catch (error) {
         console.log("error while uploading post");
       }
-    },
-    clearPost() {
-      this.disablePost = false;
-      this.startPosting = false;
-      this.editState = false;
-      this.form.body = null;
-      this.form.images = [];
     }
   }
 };
@@ -182,35 +246,14 @@ export default {
   }
 
   .post-body {
+    .smallHeight {
+      height: 40px;
+      overflow: hidden;
+    }
     textarea {
       background: none;
       border: none;
       outline: none;
-      height: 40px;
-      width: 98%;
-      resize: none;
-      transition: 0.4s;
-
-      &:focus {
-        height: 250px;
-      }
-    }
-
-    .enlargement {
-      -webkit-animation-name: elongation;
-      /* Safari 4.0 - 8.0 */
-      -webkit-animation-duration: 2s;
-      /* Safari 4.0 - 8.0 */
-      animation-name: elongation;
-      animation-duration: 2s;
-      height: 250px;
-    }
-
-    .startPosting {
-      position: absolute;
-      height: 100;
-      bottom: 0;
-      opacity: 0;
     }
 
     .showBtn {
@@ -224,31 +267,24 @@ export default {
     }
   }
 
+  .dlt-img {
+    position: absolute;
+    top: 21px;
+    left: 24px;
+    font-size: 22px;
+    text-align: center;
+    background: #000000c2;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    z-index: 2;
+    color: white;
+    font-weight: bold;
+  }
   .close {
     position: absolute;
     top: -14px;
     left: -18px;
-  }
-
-  @-webkit-keyframes elongation {
-    from {
-      height: auto;
-    }
-
-    to {
-      height: 250px;
-    }
-  }
-
-  /* Standard syntax */
-  @keyframes elongation {
-    from {
-      height: auto;
-    }
-
-    to {
-      height: 250px;
-    }
   }
 
   @-webkit-keyframes showBtn {
