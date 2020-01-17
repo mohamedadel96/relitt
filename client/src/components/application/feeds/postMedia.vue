@@ -71,7 +71,7 @@ export default {
 
         .imagesNum {
           position: absolute;
-          background: rgba(0, 0, 0, 0.712);
+          background: rgba(0, 0, 0, 0.612);
           top: 0;
           left: 0;
           color: $fontColor_white;
@@ -80,6 +80,10 @@ export default {
           justify-content: center;
           width: 100%;
           align-items: center;
+          transition: 0.4s;
+          &:hover {
+            background: rgba(0, 0, 0, 0.812);
+          }
         }
       }
 
