@@ -1,20 +1,13 @@
 <template>
   <section id="changePassword">
-    <b-modal
-      id="changePassword"
-      hide-backdrop
-      content-class="shadow"
-      hide-header
-      hide-footer
-      size="lg"
-    >
+    <b-modal id="changePassword" hide-backdrop content-class="shadow" hide-header hide-footer>
       <p class="text-center font-weight-bold fontMD">Change password</p>
       <form @submit.prevent>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
             <label class="font-12 text-secondary">Old password</label>
             <input
-              :class="['form-control py-2 px-1 col-12',{'is-invalid': $v.form.password.$error}]"
+              :class="['form-control px-1 col-12',{'is-invalid': $v.form.password.$error}]"
               type="password"
               v-model="form.old_password"
               placeholder="Old password"
@@ -25,7 +18,7 @@
           <div class="col-12 px-2">
             <label class="font-12 text-secondary">Password</label>
             <input
-              :class="['form-control py-2 px-1 col-12',{'is-invalid': $v.form.password.$error}]"
+              :class="['form-control px-1 col-12',{'is-invalid': $v.form.password.$error}]"
               type="password"
               v-model="form.password"
               placeholder="Password"
@@ -40,7 +33,7 @@
           <div class="col-12 px-2">
             <label class="font-12 text-secondary">Confirm password</label>
             <input
-              :class="['form-control py-2 px-1 col-12',{'is-invalid': $v.form.confirm_password.$error}]"
+              :class="['form-control px-1 col-12',{'is-invalid': $v.form.confirm_password.$error}]"
               type="password"
               v-model="form.confirm_password"
               placeholder="Confirm password"
