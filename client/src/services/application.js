@@ -67,6 +67,9 @@ export default {
    },
    profileChangePassword(payload) {
       return Api().post('profile/change_password', payload)
+   },
+   myReviews() {
+      return Api().get('centers/my_reviews')
    }
 
 }

@@ -1,25 +1,26 @@
 <template>
-  <section id="reviews">
+  <section id="reviews" v-if="myReviews">
     <slot></slot>
-    <b-modal id="reviews" hide-backdrop content-class="shadow" hide-header hide-footer>
+    <b-modal id="reviews" hide-backdrop content-class="shadow" size="lg" hide-header hide-footer>
       <p class="font-18 mb-4 font-weight-bold text-center">My reviews</p>
-      <div>
-        <p class="mb-0">center name</p>
+      <div v-for="(review, i) in myReviews" :key="i">
+        <p class="mb-0">{{review.center.name}}</p>
         <star-rating
+          class="mb-1"
           active-color="#ffd700"
           :star-size="16"
           :show-rating="false"
           read-only
-          :rating="5"
+          :rating="review.general_rate"
         />
         <read-more
           more-str="read more..."
-          text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex veritatis, harum pariatur laudantium labore nostrum deleniti, consequuntur magnam quas facere provident officia odit doloremque vel animi totam nihil. Laboriosam, tenetur?"
+          :text="review.comment"
           less-str="read less"
-          :max-chars="100"
-          class="description font-14"
+          :max-chars="200"
+          class="description font-14 ة"
         ></read-more>
-        <p>date</p>
+        <p class="font-12 text-secondary">{{review.updated_at | moment("from", "now") }}</p>
         <hr class="col-8 mx-0 my-1" />
       </div>
     </b-modal>
@@ -27,7 +28,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    myReviews() {
+      return this.$store.getters.myReviews;
+    }
+  },
+  mounted() {
+    this.$store.dispatch("MYREVIEWS");
+  }
+};
 </script>
 
 <style lang="scss">
