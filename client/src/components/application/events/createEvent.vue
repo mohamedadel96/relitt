@@ -9,7 +9,7 @@
       hide-header
       hide-footer
     >
-      <p class="text-center font-weight-bold fontMD">Create event</p>
+      <p class="text-center font-weight-bold font-18">Create event</p>
       <form @submit.prevent>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">

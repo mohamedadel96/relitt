@@ -1,7 +1,7 @@
 <template>
   <section id="changePassword">
     <b-modal id="changePassword" hide-backdrop content-class="shadow" hide-header hide-footer>
-      <p class="text-center font-weight-bold fontMD">Change password</p>
+      <p class="text-center font-weight-bold font-18">Change password</p>
       <form @submit.prevent>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">

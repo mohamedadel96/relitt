@@ -17,7 +17,7 @@
             />
             <div
               v-if="!$v.form.firstname.required"
-              class="invalid-feedback fontMD"
+              class="invalid-feedback font-18"
             >firstname is required</div>
           </div>
           <div class="form-group col-6 pl-2 pr-0">
@@ -30,7 +30,7 @@
             />
             <div
               v-if="!$v.form.lastname.required"
-              class="invalid-feedback fontMD"
+              class="invalid-feedback font-18"
             >lastname is required</div>
           </div>
         </div>
@@ -44,7 +44,7 @@
           />
           <div
             v-if="!$v.form.birthdate.required"
-            class="invalid-feedback fontMD"
+            class="invalid-feedback font-18"
           >birthdate is required</div>
         </div>
 

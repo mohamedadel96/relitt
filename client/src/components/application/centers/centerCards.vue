@@ -18,7 +18,7 @@
             </div>
             <div class="col-5 px-0 text-center">
               <div>
-                <p class="fontXL font-weight-bold text-right">icon stars</p>
+                <p class="font-22 font-weight-bold text-right">icon stars</p>
               </div>
               <div class="props d-flex justify-content-between">
                 <div class="prop col-4 px-0">
@@ -118,7 +118,7 @@ export default {
           &:last-of-type {
             border: none;
           }
-          .fontMD {
+          .font-18 {
             color: $blue;
           }
         }

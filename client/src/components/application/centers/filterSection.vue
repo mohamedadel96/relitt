@@ -1,7 +1,7 @@
 <template>
   <section id="filterSection">
     <div class="filter-sec pl-4 pr-5 py-3 mt-5 col-12 px-0 rounded">
-      <p class="title font-weight-bold text-center fontMD">Filter</p>
+      <p class="title font-weight-bold text-center font-18">Filter</p>
       <div class="mb-2">
         <p class="text-secondary font-16 mb-1">Rate</p>
         <div class="px-2">

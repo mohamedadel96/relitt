@@ -24,17 +24,17 @@
 .font-14 {
   font-size: $font-14;
 }
-.fontMD {
-  font-size: $fontMD;
+.font-18 {
+  font-size: $font-18;
 }
-.fontLG {
-  font-size: $fontLG;
+.font-20 {
+  font-size: $font-20;
 }
-.fontXL {
-  font-size: $fontXL;
+.font-22 {
+  font-size: $font-22;
 }
-.fontXXL {
-  font-size: $fontXXL;
+.font-24 {
+  font-size: $font-24;
 }
 .my-3 {
   margin-top: 0.7rem !important;

@@ -24,7 +24,7 @@
             </div>
             <div class="mr-3 text-center">
               <div>
-                <p class="fontMD font-weight-bold num">{{event.start_date | moment('D')}}</p>
+                <p class="font-18 font-weight-bold num">{{event.start_date | moment('D')}}</p>
                 <p
                   class="font-14 font-weight-bold mb-0 text-uppercase"
                 >{{event.start_date | moment('MMM')}}</p>

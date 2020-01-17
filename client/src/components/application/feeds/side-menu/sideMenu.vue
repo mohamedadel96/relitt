@@ -8,7 +8,7 @@
       >Edit personal info</p>
     </edit-personal-info>
     <reviews>
-      <p class="menu-item border-top py-3 mb-0 font-14 pointer" slot v-b-modal.reviews>Reviews</p>
+      <p class="menu-item border-top py-3 mb-0 font-14 pointer" slot v-b-modal.reviews>My reviews</p>
     </reviews>
     <p class="border-top py-3 mb-0 font-14 pointer" @click="filterFeeds">
       <span v-if="!myFeeds">my feeds</span>

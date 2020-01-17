@@ -27,7 +27,7 @@
           />
           <div
             @click="$refs.lastImg.click()"
-            class="imagesNum fontXXL font-weight-bold pointer"
+            class="imagesNum font-24 font-weight-bold pointer"
             v-if="images.length - 4"
           >+ {{images.length - 4}}</div>
         </div>

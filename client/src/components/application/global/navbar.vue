@@ -9,14 +9,14 @@
 
     <div class="col-6 d-flex justify-content-center">
       <ul class="nav-list d-flex justify-content-between col-6 my-0">
-        <li :class="[$route.name === 'app' ? 'active' : '', 'fontLG']">
+        <li :class="[$route.name === 'app' ? 'active' : '', 'font-20']">
           <router-link to="/app">Feeds</router-link>
         </li>
-        <li :class="[$route.name === 'dashboard' ? 'active' : '' , 'fontLG']">
+        <li :class="[$route.name === 'dashboard' ? 'active' : '' , 'font-20']">
           <router-link to="/app/dashboard">Dashboard</router-link>
         </li>
         <li
-          :class="[($route.name === 'events' || $route.name === 'centers') ? 'active' : '', 'fontLG']"
+          :class="[($route.name === 'events' || $route.name === 'centers') ? 'active' : '', 'font-20']"
         >
           <router-link to="/app/events">Explore</router-link>
         </li>

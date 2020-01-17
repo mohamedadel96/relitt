@@ -16,7 +16,7 @@
             autocomplete="off"
             v-model="form.email"
           />
-          <div v-if="$v.form.email.$error" class="invalid-feedback fontMD">
+          <div v-if="$v.form.email.$error" class="invalid-feedback font-18">
             <span v-if="!$v.form.email.required">Email is required</span>
             <span v-if="!$v.form.email.email">Email is invalid</span>
           </div>

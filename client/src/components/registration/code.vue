@@ -12,7 +12,7 @@
             placeholder="Code"
             v-model="form.code"
           />
-          <div v-if="!$v.form.code.required" class="invalid-feedback fontMD">Code is required</div>
+          <div v-if="!$v.form.code.required" class="invalid-feedback font-18">Code is required</div>
 
           <div class="mt-4">
             <button @click="submit" class="btn btn-primary btn-block py-3">Done</button>

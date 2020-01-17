@@ -56,7 +56,7 @@
           />
           <div
             @click="$refs.lastImg.click()"
-            class="fontXXL font-weight-bold pointer"
+            class="font-24 font-weight-bold pointer"
             v-if="activity.images.length - 3"
           >+ {{activity.images.length - 3}}</div>
         </div>

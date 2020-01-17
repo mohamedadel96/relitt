@@ -15,12 +15,9 @@
             placeholder="Email"
             autocomplete="off"
             v-model="form.email"
-          />    
-        <div
-            v-if="!$v.form.email.required"
-            class="invalid-feedback fontMD"
-          >Email is required</div>
-          </div>
+          />
+          <div v-if="!$v.form.email.required" class="invalid-feedback font-18">Email is required</div>
+        </div>
 
         <div class="mt-3">
           <button @click="submit" class="btn btn-primary btn-block py-3">Reset Password</button>
@@ -31,7 +28,7 @@
 </template>
 
 <script>
-import { required ,email } from 'vuelidate/lib/validators'
+import { required, email } from "vuelidate/lib/validators";
 
 export default {
   data() {
@@ -44,7 +41,7 @@ export default {
   validations: {
     form: {
       email: { required }
-      }
+    }
   },
   methods: {
     async submit() {

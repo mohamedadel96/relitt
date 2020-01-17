@@ -14,7 +14,7 @@
         </div>
         <div class="timing d-flex align-items-center">
           <div class="col-3 px-0 pt-3 text-center">
-            <p class="fontMD font-weight-bold num">{{event.start_date | moment('D')}}</p>
+            <p class="font-18 font-weight-bold num">{{event.start_date | moment('D')}}</p>
             <p class="font-14 font-weight-bold mb-0">{{event.start_date | moment('MMM')}}</p>
             <p class="font-12 text-secondary font-weight-bold">{{event.start_date | moment('h a')}}</p>
           </div>

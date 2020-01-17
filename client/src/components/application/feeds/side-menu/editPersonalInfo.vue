@@ -2,7 +2,7 @@
   <section id="editPersonalInfo" v-if="user">
     <slot></slot>
     <b-modal id="editPersonalInfo" hide-backdrop content-class="shadow" hide-header hide-footer>
-      <p class="text-center font-weight-bold fontMD">Edit personal info</p>
+      <p class="text-center font-weight-bold font-18">Edit personal info</p>
       <form @submit.prevent>
         <div class="avatar d-flex justify-content-center mb-4">
           <input
