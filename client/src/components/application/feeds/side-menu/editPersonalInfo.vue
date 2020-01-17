@@ -18,7 +18,7 @@
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
-            <label class="fontXS text-secondary">Firstname</label>
+            <label class="font-12 text-secondary">Firstname</label>
             <input
               class="form-controls py-2 px-1 col-12"
               type="text"
@@ -29,7 +29,7 @@
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
-            <label class="fontXS text-secondary">Lastname</label>
+            <label class="font-12 text-secondary">Lastname</label>
             <input
               class="form-controls py-2 px-1 col-12"
               type="text"
@@ -40,7 +40,7 @@
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
-            <label class="fontXS text-secondary">Position</label>
+            <label class="font-12 text-secondary">Position</label>
             <input
               class="form-controls py-2 px-1 col-12"
               type="text"
@@ -51,7 +51,7 @@
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
-            <label class="fontXS text-secondary">Bio</label>
+            <label class="font-12 text-secondary">Bio</label>
             <textarea-autosize
               placeholder="Bio..."
               ref="Bio"
@@ -65,7 +65,7 @@
         </div>
         <div class="form-group d-flex overflow-hidden">
           <div class="col-12 px-2">
-            <label class="fontXS text-secondary">Birthdate</label>
+            <label class="font-12 text-secondary">Birthdate</label>
             <flat-pickr
               class="form-controls py-2 px-1 col-12"
               v-model="form.birthdate"
@@ -74,7 +74,7 @@
           </div>
         </div>
         <div class="px-2">
-          <label class="fontXS text-secondary">Location</label>
+          <label class="font-12 text-secondary">Location</label>
           <place-autocomplete-field
             v-model="form.location_name"
             name="place"
@@ -85,7 +85,7 @@
         <div class="mt-5">
           <div class="form-group d-flex overflow-hidden">
             <div class="col-12 px-2">
-              <label class="fontXS text-secondary">Interests</label>
+              <label class="font-12 text-secondary">Interests</label>
               <div class="position-relative" v-for="(interest, i) in form.interests" :key="i">
                 <input
                   class="form-controls py-2 px-1 col-12"

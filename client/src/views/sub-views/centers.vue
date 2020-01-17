@@ -14,7 +14,7 @@
           </p>
         </div>
         <div class="col-md-11 col-12 px-2">
-          <div class="search rounded mb-3 text-center fontSM">
+          <div class="search rounded mb-3 text-center font-16">
             <place-autocomplete-field
               v-model="place"
               name="place"

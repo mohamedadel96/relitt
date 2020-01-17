@@ -1,6 +1,6 @@
 <template>
   <section id="createEvent">
-    <button class="btn btn-primary btn-block mb-2 py-2 fontXS" v-b-modal.createEvent>create Event</button>
+    <button class="btn btn-primary btn-block mb-2 py-2 font-12" v-b-modal.createEvent>create Event</button>
     <b-modal
       @hide="clearData"
       id="createEvent"
@@ -13,7 +13,7 @@
       <form @submit.prevent>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
-            <label class="fontXS text-secondary">Title</label>
+            <label class="font-12 text-secondary">Title</label>
             <input
               class="form-controls py-2 px-1 col-12"
               type="text"
@@ -25,7 +25,7 @@
         <div class="col-12 px-0 d-flex">
           <div class="col-6 px-1 form-group d-flex overflow-hidden">
             <div class="col-12 px-1">
-              <label class="fontXS text-secondary">Start date</label>
+              <label class="font-12 text-secondary">Start date</label>
               <flat-pickr
                 class="form-controls py-2 px-1 col-12"
                 v-model="form.start_date"
@@ -35,7 +35,7 @@
           </div>
           <div class="col-6 px-1 form-group d-flex overflow-hidden">
             <div class="col-12 px-1">
-              <label class="fontXS text-secondary">End date</label>
+              <label class="font-12 text-secondary">End date</label>
               <flat-pickr
                 class="form-controls py-2 px-1 col-12"
                 v-model="form.end_date"
@@ -46,7 +46,7 @@
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
-            <label class="fontXS text-secondary">Description</label>
+            <label class="font-12 text-secondary">Description</label>
             <textarea-autosize
               placeholder="Type description here..."
               class="description form-controls col-12 px-1"

@@ -8,7 +8,7 @@
         <div class="d-flex align-items-center py-2">
           <img class="border rounded-circle mr-3" :src="profile.image" alt="friend profile picture" />
           <div>
-            <p class="mb-0 font-weight-bold fontSM">{{profile.firstname}} {{profile.lastname}}</p>
+            <p class="mb-0 font-weight-bold font-16">{{profile.firstname}} {{profile.lastname}}</p>
           </div>
         </div>
       </div>

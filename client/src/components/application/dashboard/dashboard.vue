@@ -2,7 +2,7 @@
   <section id="dashboard">
     <div v-if="dashboard">
       <div class="search rounded py-1 d-flex justify-content-between align-items-center">
-        <select class="py-2 px-4 mr-4 fontSM" v-model="hide">
+        <select class="py-2 px-4 mr-4 font-16" v-model="hide">
           <option value="free" selected>free diving</option>
           <option value="all">all</option>
         </select>

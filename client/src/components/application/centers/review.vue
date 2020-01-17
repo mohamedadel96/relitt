@@ -7,15 +7,15 @@
       <div class="props d-flex justify-content-between">
         <div class="prop col-4 px-0">
           <p class="fontMD font-weight-bold mb-0 head">High</p>
-          <p class="fontXS text-secondary mb-0">price</p>
+          <p class="font-12 text-secondary mb-0">price</p>
         </div>
         <div class="prop col-4 px-0">
           <p class="fontMD font-weight-bold mb-0 head">Good</p>
-          <p class="fontXS text-secondary mb-0">Quality</p>
+          <p class="font-12 text-secondary mb-0">Quality</p>
         </div>
         <div class="prop col-4 px-0">
           <p class="fontMD font-weight-bold mb-0 head">Perfect</p>
-          <p class="fontXS text-secondary mb-0">price</p>
+          <p class="font-12 text-secondary mb-0">price</p>
         </div>
       </div>
     </div>

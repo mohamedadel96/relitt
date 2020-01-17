@@ -16,10 +16,10 @@
         <div class="col-8 px-0 mt-3 d-flex flex-wrap align-items-between">
           <div class="desc d-flex justify-content-between">
             <div class="col-10">
-              <p class="mb-0 font-weight-bold fontSM">{{event.title}}</p>
-              <p class="mb-2 text-secondary fontXS">Bedforeshine</p>
+              <p class="mb-0 font-weight-bold font-16">{{event.title}}</p>
+              <p class="mb-2 text-secondary font-12">Bedforeshine</p>
               <p
-                class="mb-0 text-secondary fontXS"
+                class="mb-0 text-secondary font-12"
               >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati dolor eaque tempore earum placeat voluptatum at, aspernatur animi quibusdam id,</p>
             </div>
             <div class="mr-3 text-center">
@@ -33,7 +33,7 @@
             </div>
           </div>
           <div class="col-12 px-0 pb-3 d-flex justify-content-between align-items-end">
-            <p class="col-5 mb-0 text-secondary fontXS">
+            <p class="col-5 mb-0 text-secondary font-12">
               <span>13</span> attendance
             </p>
             <router-link

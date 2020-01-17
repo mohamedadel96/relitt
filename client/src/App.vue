@@ -15,11 +15,11 @@
 .font-10 {
   font-size: $font-10;
 }
-.fontXS {
-  font-size: $fontXS;
+.font-12 {
+  font-size: $font-12;
 }
-.fontSM {
-  font-size: $fontSM;
+.font-16 {
+  font-size: $font-16;
 }
 .font-14 {
   font-size: $font-14;
@@ -60,7 +60,7 @@
   height: auto !important;
 }
 .invalid-feedback {
-  font-size: $fontSM !important;
+  font-size: $font-16 !important;
   font-weight: bold !important;
   text-align: center !important;
 }

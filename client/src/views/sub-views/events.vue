@@ -5,13 +5,13 @@
         <div>
           <createEvent />
         </div>
-        <p class="text-secondary text-center fontXS">Your upcoming events</p>
+        <p class="text-secondary text-center font-12">Your upcoming events</p>
         <div>
           <myEvent />
         </div>
       </div>
       <div class="col-md-9">
-        <div class="tabs d-flex mt-4 justify-content-center mr-5 fontSM">
+        <div class="tabs d-flex mt-4 justify-content-center mr-5 font-16">
           <p class="mr-5">
             <router-link class="active" to="/app/events">Events</router-link>
           </p>
@@ -20,7 +20,7 @@
           </p>
         </div>
         <div class="col-md-10 col-12 px-5">
-          <div class="search rounded mb-3 text-center fontSM">
+          <div class="search rounded mb-3 text-center font-16">
             <place-autocomplete-field
               v-model="place"
               name="place"

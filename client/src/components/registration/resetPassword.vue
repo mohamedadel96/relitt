@@ -2,7 +2,7 @@
   <section id="resetPassword">
     <div class="mt-4 mb-5 pt-5 mx-md-3 mx-1">
       <p
-        class="title font-weight-bold px-lg-5 px-0 fontSM"
+        class="title font-weight-bold px-lg-5 px-0 font-16"
       >Enter your email, we will send you a password</p>
     </div>
 
@@ -10,7 +10,7 @@
       <form @submit.prevent>
         <div class="form-group">
           <input
-            :class="['col-12 border-0 py-3 fontSM form-control',{'is-invalid': $v.form.email.$error}]"
+            :class="['col-12 border-0 py-3 font-16 form-control',{'is-invalid': $v.form.email.$error}]"
             type="text"
             placeholder="Email"
             autocomplete="off"

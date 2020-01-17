@@ -3,13 +3,13 @@
     <slot></slot>
     <b-modal id="profileSettings" hide-backdrop content-class="shadow" hide-header hide-footer>
       <div @click="$bvModal.hide('profileSettings')">
-        <p class="py-3 mb-0 fontSM pointer" @click="openPersonalInfo">Edit personal Info</p>
-        <p class="border-top py-3 mb-0 fontSM pointer">Manage notification</p>
+        <p class="py-3 mb-0 font-16 pointer" @click="openPersonalInfo">Edit personal Info</p>
+        <p class="border-top py-3 mb-0 font-16 pointer">Manage notification</p>
         <p
           @click="openChangePassword"
-          class="menu-item border-top py-3 mb-0 fontSM pointer"
+          class="menu-item border-top py-3 mb-0 font-16 pointer"
         >Change password</p>
-        <p class="border-top pt-3 pb-2 mb-0 fontSM pointer text-danger" @click="logout">LOGOUT</p>
+        <p class="border-top pt-3 pb-2 mb-0 font-16 pointer text-danger" @click="logout">LOGOUT</p>
       </div>
     </b-modal>
     <change-password></change-password>

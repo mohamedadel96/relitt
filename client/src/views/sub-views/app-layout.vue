@@ -10,7 +10,7 @@
       <router-view />
     </div>
     <div class="col-lg-3 d-lg-block d-none px-3">
-      <friends-search />
+      <!-- <friends-search /> -->
       <myEvent />
     </div>
   </section>

@@ -3,7 +3,7 @@
     <div class="filter-sec pl-4 pr-5 py-3 mt-5 col-12 px-0 rounded">
       <p class="title font-weight-bold text-center fontMD">Filter</p>
       <div class="mb-2">
-        <p class="text-secondary fontSM mb-1">Rate</p>
+        <p class="text-secondary font-16 mb-1">Rate</p>
         <div class="px-2">
           <div class="my-1 pointer d-flex justify-content-between">
             <div @click="filterRate.push(5)">
@@ -88,7 +88,7 @@
         </div>
       </div>
       <div>
-        <p class="text-secondary fontSM mt-4 mb-1">Service</p>
+        <p class="text-secondary font-16 mt-4 mb-1">Service</p>
         <div class="px-2">
           <div>
             <div>

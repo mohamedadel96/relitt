@@ -3,11 +3,11 @@
     <div :class="['st-pic', activity.type_id === 1 ? 'divingBG' : 'scubaBG']">
       <div class="data-container position-relative">
         <div
-          class="temprature text-white fontXS font-weight-bold"
+          class="temprature text-white font-12 font-weight-bold"
           v-if="activity.temprature"
         >{{activity.temprature}} &#8451;</div>
         <div
-          class="time text-white fontXS font-weight-bold"
+          class="time text-white font-12 font-weight-bold"
         >{{activity.duration.split(':')[0]}} min {{activity.duration.split(':')[1]}} sec</div>
         <div>
           <div class="col-12 d-flex justify-content-center flex-wrap mb-2">
@@ -18,7 +18,7 @@
               <img v-if="activity.type_id === 1" src="../../../assets/icons/diving.svg" alt />
               <img v-if="activity.type_id === 2" src="../../../assets/icons/scuba-diving.svg" alt />
               <span
-                class="text-white fontXS font-weight-bold position-absolute px-1 text-nowrap pt-1"
+                class="text-white font-12 font-weight-bold position-absolute px-1 text-nowrap pt-1"
               >{{activity.depth}} m</span>
             </div>
           </div>

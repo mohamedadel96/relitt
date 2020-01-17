@@ -12,9 +12,9 @@
         <div class="col-8 px-0 mt-3 d-flex flex-wrap align-items-between">
           <div class="col-12 d-flex justify-content-between">
             <div class="details col-7 px-2">
-              <p class="mb-0 font-weight-bold fontSM">{{card.name}}</p>
-              <p class="mb-2 text-secondary fontXS">{{card.location_name}}</p>
-              <p class="mb-0 text-secondary fontXS desc">{{card.description}}</p>
+              <p class="mb-0 font-weight-bold font-16">{{card.name}}</p>
+              <p class="mb-2 text-secondary font-12">{{card.location_name}}</p>
+              <p class="mb-0 text-secondary font-12 desc">{{card.description}}</p>
             </div>
             <div class="col-5 px-0 text-center">
               <div>
@@ -22,16 +22,16 @@
               </div>
               <div class="props d-flex justify-content-between">
                 <div class="prop col-4 px-0">
-                  <p class="fontSM font-weight-bold mb-0">High</p>
-                  <p class="fontXS text-secondary mb-0">price</p>
+                  <p class="font-16 font-weight-bold mb-0">High</p>
+                  <p class="font-12 text-secondary mb-0">price</p>
                 </div>
                 <div class="prop col-4 px-0">
-                  <p class="fontSM font-weight-bold mb-0">Good</p>
-                  <p class="fontXS text-secondary mb-0">price</p>
+                  <p class="font-16 font-weight-bold mb-0">Good</p>
+                  <p class="font-12 text-secondary mb-0">price</p>
                 </div>
                 <div class="prop col-4 px-0">
-                  <p class="fontSM font-weight-bold mb-0">Perfect</p>
-                  <p class="fontXS text-secondary mb-0">price</p>
+                  <p class="font-16 font-weight-bold mb-0">Perfect</p>
+                  <p class="font-12 text-secondary mb-0">price</p>
                 </div>
               </div>
             </div>

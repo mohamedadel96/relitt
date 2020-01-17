@@ -12,7 +12,7 @@
       <form @submit.prevent>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
-            <label class="fontXS text-secondary">Old password</label>
+            <label class="font-12 text-secondary">Old password</label>
             <input
               :class="['form-control py-2 px-1 col-12',{'is-invalid': $v.form.password.$error}]"
               type="password"
@@ -23,7 +23,7 @@
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
-            <label class="fontXS text-secondary">Password</label>
+            <label class="font-12 text-secondary">Password</label>
             <input
               :class="['form-control py-2 px-1 col-12',{'is-invalid': $v.form.password.$error}]"
               type="password"
@@ -38,7 +38,7 @@
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
-            <label class="fontXS text-secondary">Confirm password</label>
+            <label class="font-12 text-secondary">Confirm password</label>
             <input
               :class="['form-control py-2 px-1 col-12',{'is-invalid': $v.form.confirm_password.$error}]"
               type="password"

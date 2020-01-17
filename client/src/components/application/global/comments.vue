@@ -11,9 +11,9 @@
               <p
                 class="card-title m-0 d-inline-block"
               >{{comment.user.firstname}} {{comment.user.lastname}}</p>
-              <!-- <p class="card-text m-0 fontXS">stars</p> -->
+              <!-- <p class="card-text m-0 font-12">stars</p> -->
             </div>
-            <p class="card-text fontXS px-1 mb-1">{{comment.updated_at | moment("from", "now")}}</p>
+            <p class="card-text font-12 px-1 mb-1">{{comment.updated_at | moment("from", "now")}}</p>
             <div>
               <textarea-autosize
                 placeholder="Type something here..."

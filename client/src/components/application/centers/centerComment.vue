@@ -12,9 +12,9 @@
                 <h5
                   class="card-title m-0 d-inline-block"
                 >{{center.user.firstname}} {{center.user.lastname}}</h5>
-                <p class="card-text m-0 d-lg-inline-flex justify-content-end fontXS">stars</p>
+                <p class="card-text m-0 d-lg-inline-flex justify-content-end font-12">stars</p>
               </div>
-              <p class="card-text fontXS">{{center.created_at | moment("from", "now") }}</p>
+              <p class="card-text font-12">{{center.created_at | moment("from", "now") }}</p>
               <p class="card-text">{{ center.comment}}</p>
             </div>
           </div>

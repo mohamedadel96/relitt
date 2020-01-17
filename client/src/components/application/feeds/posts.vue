@@ -14,7 +14,7 @@
                   />
                   <div>
                     <p
-                      class="mb-0 font-weight-bold fontSM"
+                      class="mb-0 font-weight-bold font-16"
                     >{{feed.user.firstname}} {{feed.user.lastname}}</p>
                     <p class="mb-0 job font-14">{{feed.created_at | moment("from", "now")}}</p>
                   </div>
@@ -74,12 +74,12 @@
 
               <div class="post-decription px-3">
                 <div class="details d-flex">
-                  <p class="mb-0 fontXS">
+                  <p class="mb-0 font-12">
                     <span>{{feed.likes_count}}&nbsp;</span>
                     <span>Likes</span>
                   </p>
                   <p class="px-2 mb-0">-</p>
-                  <p class="mb-0 fontXS">
+                  <p class="mb-0 font-12">
                     <span>{{feed.comments.length}}&nbsp;</span>
                     <span>Comments</span>
                   </p>
@@ -89,7 +89,7 @@
               <hr class="border-top mx-3 my-1" style="height:1px" />
 
               <div class="d-flex col-12 px-0 text-center">
-                <div class="col-6 py-2 px-0 post-options fontSM font-weight-bold">
+                <div class="col-6 py-2 px-0 post-options font-16 font-weight-bold">
                   <div class="pointer" @click.once="toggleLike(feed.id, feed.liked)" :key="likeBtn">
                     <img
                       src="../../../assets/img/icon/Icon - Thumbs Up - Dark.png"

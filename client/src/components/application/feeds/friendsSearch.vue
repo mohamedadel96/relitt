@@ -1,7 +1,7 @@
 <template>
   <section id="friendsSearch">
     <div class="search-sec pl-4 pr-5 pt-4 col-12 px-0 rounded">
-      <p class="title font-weight-bold fontSM">Find friends</p>
+      <p class="title font-weight-bold font-16">Find friends</p>
       <div class="search mb-3 d-flex align-items-center">
         <span class="px-4">
           <img src="../../../assets/img/icon/ic_search.png" alt />
@@ -17,12 +17,12 @@
               alt="friend profile picture"
             />
             <div>
-              <p class="name font-weight-bold fontSM">Ahmed reda</p>
+              <p class="name font-weight-bold font-16">Ahmed reda</p>
               <p class="mb-0 job font-14">Senior diver</p>
             </div>
           </div>
           <div>
-            <button class="btn btn-outline-primary btn-block fontXS">Follow</button>
+            <button class="btn btn-outline-primary btn-block font-12">Follow</button>
           </div>
           <hr class="border" />
         </div>

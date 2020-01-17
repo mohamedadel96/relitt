@@ -12,14 +12,14 @@
             to="/registration/signup"
             v-if="$route.name === 'login' || $route.name === 'changePassword'"
           >
-            <button class="btn btn-custom rounded mx-3 px-5 fontSM font-weight-bold">signup</button>
+            <button class="btn btn-custom rounded mx-3 px-5 font-16 font-weight-bold">signup</button>
           </router-link>
 
           <router-link
             to="/registration/login"
             v-if="$route.name === 'signup' || $route.name === 'resetPassword' || $route.name === 'code'"
           >
-            <button class="btn btn-custom rounded mx-3 px-5 fontSM font-weight-bold">login</button>
+            <button class="btn btn-custom rounded mx-3 px-5 font-16 font-weight-bold">login</button>
           </router-link>
         </div>
       </div>

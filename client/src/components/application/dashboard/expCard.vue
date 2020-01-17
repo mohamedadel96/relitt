@@ -2,7 +2,7 @@
   <section id="expCard" class="pt-2 pb-3 px-3 rounded">
     <div>
       <div class="block_1 d-flex pt-4 justify-content-between">
-        <p class="title font-weight-bold mb-0 col-9 px-0 fontSM">{{title}}</p>
+        <p class="title font-weight-bold mb-0 col-9 px-0 font-16">{{title}}</p>
         <div class="time text-center pl-4 mr-5">
           <p class="font-weight-bold fontXXL">{{parseInt(value)}}</p>
           <p class="mb-0 text-right font-10">{{measure}}</p>
