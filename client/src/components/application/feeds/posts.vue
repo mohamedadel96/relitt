@@ -10,7 +10,7 @@
     >
       <p>
         Are you sure you want to continue in
-        <span class="text-danger">deleting</span> post?
+        <span class="text-danger">Deleting</span> post?
       </p>
     </b-modal>
     <div v-if="feeds.length" data-aos="fade-left">
