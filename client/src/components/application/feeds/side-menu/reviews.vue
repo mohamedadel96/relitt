@@ -21,7 +21,7 @@
           class="description font-14 ة"
         ></read-more>
         <p class="font-12 text-secondary">{{review.updated_at | moment("from", "now") }}</p>
-        <hr class="col-8 mx-0 my-1" />
+        <hr class="col-8 mx-0 my-1" v-if="myReviews.length -1 !== i" />
       </div>
     </b-modal>
   </section>
