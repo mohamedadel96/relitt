@@ -11,6 +11,7 @@
             <toggle-button
               class="mb-0"
               v-model="form.friends"
+              :sync="true"
               :width="41"
               color="#007bff50"
               :switch-color="{checked: '#007bff', unchecked: '#fafafa'}"
@@ -27,6 +28,7 @@
             <toggle-button
               class="mb-0"
               v-model="form[option.key]"
+              :sync="true"
               :width="41"
               color="#007bff50"
               :switch-color="{checked: '#007bff', unchecked: '#fafafa'}"
@@ -42,6 +44,7 @@
             <toggle-button
               class="mb-0"
               v-model="form.relitt"
+              :sync="true"
               :width="41"
               color="#007bff50"
               :switch-color="{checked: '#007bff', unchecked: '#fafafa'}"
@@ -58,6 +61,7 @@
             <toggle-button
               class="mb-0"
               v-model="form[option.key]"
+              :sync="true"
               :width="41"
               color="#007bff50"
               :switch-color="{checked: '#007bff', unchecked: '#fafafa'}"
@@ -110,6 +114,33 @@ export default {
         ]
       }
     };
+  },
+  computed: {
+    friendsData() {
+      return [
+        this.form.notification_followed,
+        this.form.notification_comments,
+        this.form.notification_likes,
+        this.form.notification_friend_activity
+      ].join();
+    }
+  },
+  watch: {
+    "form.friends"(val) {
+      if (val) {
+        this.options.friends.map(item => {
+          this.form[item.key] = val;
+        });
+      }
+    },
+    friendsData(val) {
+      let check = val.split(",").filter(item => item === "false");
+      if (check.length) {
+        this.form.friends = false;
+      } else {
+        this.form.friends = true;
+      }
+    }
   },
   mounted() {
     Bus.$on("openManageNotifications", () => {
