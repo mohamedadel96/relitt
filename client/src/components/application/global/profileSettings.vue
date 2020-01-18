@@ -3,35 +3,41 @@
     <slot></slot>
     <b-modal id="profileSettings" hide-backdrop content-class="shadow" hide-header hide-footer>
       <div @click="$bvModal.hide('profileSettings')">
-        <p class="py-3 mb-0 font-16 pointer" @click="openPersonalInfo">Edit personal Info</p>
-        <p class="border-top py-3 mb-0 font-16 pointer">Manage notification</p>
         <p
-          @click="openChangePassword"
+          class="py-3 mb-0 font-16 pointer"
+          @click="openModal('openPersonalInfo')"
+        >Edit personal Info</p>
+        <p
+          class="border-top py-3 mb-0 font-16 pointer"
+          @click="openModal('openManageNotifications')"
+        >Manage notification</p>
+        <p
+          @click="openModal('openChangePassword')"
           class="menu-item border-top py-3 mb-0 font-16 pointer"
         >Change password</p>
         <p class="border-top pt-3 pb-2 mb-0 font-16 pointer text-danger" @click="logout">LOGOUT</p>
       </div>
     </b-modal>
-    <change-password></change-password>
+    <change-password />
+    <manage-notifications />
   </section>
 </template>
 
 <script>
 import { Bus } from "../../../main";
 import changePassword from "./changePassword";
+import manageNotifications from "./manageNotifications";
 export default {
   components: {
-    changePassword
+    changePassword,
+    manageNotifications
   },
   methods: {
     logout() {
-      this.$store.dispatch('LOGOUT')
+      this.$store.dispatch("LOGOUT");
     },
-    openPersonalInfo() {
-      Bus.$emit("openPersonalInfo");
-    },
-    openChangePassword() {
-      Bus.$emit("openChangePassword");
+    openModal(name) {
+      Bus.$emit(name);
     }
   }
 };

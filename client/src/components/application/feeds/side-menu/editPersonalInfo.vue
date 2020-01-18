@@ -170,7 +170,6 @@ export default {
 
         this.$store.dispatch("UPLOADFILES", formData).then(res => {
           this.$toasted.success("uploaded successfully");
-          console.log(res);
           this.form.image = res[0].filePath;
 
           this.disableEdit = false;
@@ -189,7 +188,7 @@ export default {
       }
     }
   },
-  created() {
+  mounted() {
     Bus.$on("openPersonalInfo", () => {
       this.$bvModal.show("editPersonalInfo");
     });

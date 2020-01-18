@@ -1,7 +1,7 @@
 <template>
-  <section id="notifications" v-if="notifications">
+  <section id="ManageNotifications" v-if="notifications">
     <slot></slot>
-    <b-modal id="notifications" hide-backdrop content-class="shadow" hide-header hide-footer>
+    <b-modal id="ManageNotifications" hide-backdrop content-class="shadow" hide-header hide-footer>
       <div v-for="(notification, i) in notifications" :key="i">
         <div class="d-flex justify-content-between align-content-center border-bottom py-2 mt-2">
           <div class="d-flex align-items-top">
@@ -26,6 +26,7 @@
   </section>
 </template>
 <script>
+import { Bus } from "../../../main";
 export default {
   computed: {
     notifications() {
@@ -34,12 +35,17 @@ export default {
   },
   created() {
     this.$store.dispatch("NOTIFICATIONS");
+  },
+  mounted() {
+    Bus.$on("openManageNotifications", () => {
+      this.$bvModal.show("ManageNotifications");
+    });
   }
 };
 </script>
 
 <style lang="scss">
-#notifications {
+#ManageNotifications {
   img {
     outline: none;
   }
