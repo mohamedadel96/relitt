@@ -231,7 +231,7 @@ export default {
         display: block;
         position: absolute;
         top: -7.5px;
-        right: 31%;
+        right: 33.5%;
         background: white;
         transform: rotate(45deg);
         z-index: 1;
