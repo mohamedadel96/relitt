@@ -16,6 +16,7 @@ import './plugins/vueGooglePlaces'
 import './plugins/starRating'
 import './plugins/vViewer'
 import './plugins/vueReadMore'
+import './plugins/vueToggleButton'
 import "aos/dist/aos.css";
 
 Vue.config.productionTip = false;
