@@ -10,7 +10,7 @@
             <p class="mb-0">Friends</p>
             <toggle-button
               class="mb-0"
-              v-model="form.friends"
+              v-model="friends"
               :sync="true"
               :width="41"
               color="#007bff50"
@@ -43,7 +43,7 @@
             <p class="mb-0">Relitt</p>
             <toggle-button
               class="mb-0"
-              v-model="form.relitt"
+              v-model="relitt"
               :sync="true"
               :width="41"
               color="#007bff50"
@@ -78,14 +78,14 @@ import { Bus } from "../../../main";
 export default {
   data() {
     return {
+      friends: false,
+      relitt: false,
       form: {
-        friends: false,
-        relitt: false,
-        notification_followed: false,
-        notification_comments: false,
-        notification_likes: false,
-        notification_friend_activity: false,
-        notification_relitt_updates: false
+        notification_followed: 0,
+        notification_comments: 0,
+        notification_likes: 0,
+        notification_friend_activity: 0,
+        notification_relitt_updates: 0
       },
       options: {
         friends: [
@@ -116,6 +116,9 @@ export default {
     };
   },
   computed: {
+    profile() {
+      return this.$store.getters.profile;
+    },
     friendsData() {
       return [
         this.form.notification_followed,
@@ -123,22 +126,67 @@ export default {
         this.form.notification_likes,
         this.form.notification_friend_activity
       ].join();
+    },
+    relittData() {
+      return [this.form.notification_relitt_updates].join();
     }
   },
   watch: {
-    "form.friends"(val) {
+    profile: {
+      immediate: true,
+      handler(val) {
+        this.form.notification_followed =
+          val.settings.notification_followed === 1 ? true : false;
+        this.form.notification_comments =
+          val.settings.notification_comments === 1 ? true : false;
+        this.form.notification_likes =
+          val.settings.notification_likes === 1 ? true : false;
+        this.form.notification_friend_activity =
+          val.settings.notification_friend_activity === 1 ? true : false;
+        this.form.notification_relitt_updates =
+          val.settings.notification_relitt_updates === 1 ? true : false;
+      }
+    },
+    form: {
+      deep: true,
+      handler(val) {
+        this.$store.dispatch("NOTIFICATIONSETTINGS", val);
+      }
+    },
+    friends(val) {
       if (val) {
         this.options.friends.map(item => {
           this.form[item.key] = val;
         });
       }
     },
-    friendsData(val) {
-      let check = val.split(",").filter(item => item === "false");
-      if (check.length) {
-        this.form.friends = false;
-      } else {
-        this.form.friends = true;
+    relitt(val) {
+      if (val) {
+        this.options.relitt.map(item => {
+          this.form[item.key] = val;
+        });
+      }
+    },
+    friendsData: {
+      immediate: true,
+      handler(val) {
+        let check = val.split(",").filter(item => item === "false");
+        if (check.length) {
+          this.friends = false;
+        } else {
+          this.friends = true;
+        }
+      }
+    },
+    relittData: {
+      immediate: true,
+      handler(val) {
+        let check = val.split(",").filter(item => item === "false");
+        if (check.length) {
+          this.relitt = false;
+        } else {
+          this.relitt = true;
+        }
       }
     }
   },
