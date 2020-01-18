@@ -1,5 +1,18 @@
 <template>
   <section id="posts">
+    <b-modal
+      id="deletePost"
+      hide-header
+      ok-title="delete"
+      ok-variant="danger"
+      footer-class="border-0 pt-0"
+      @ok="deletePost"
+    >
+      <p>
+        Are you sure you want to continue in
+        <span class="text-danger">deleting</span> post?
+      </p>
+    </b-modal>
     <div v-if="feeds.length" data-aos="fade-left">
       <div class="post rounded" v-for="(feed,i) in feeds" :key="i">
         <template v-if="!myFeeds || profile.id === feed.user_id">
@@ -46,7 +59,7 @@
                       v-if="feed.activity"
                       @click="emitEditActivity(feed.activity)"
                     >Edit activity</b-dropdown-item>
-                    <b-dropdown-item @click="deletePost(feed.id)">
+                    <b-dropdown-item @click="openDeleteModal(feed.id)">
                       <template v-if="!feed.activity">Delete post</template>
                       <template v-if="feed.activity">Delete activity</template>
                     </b-dropdown-item>
@@ -137,7 +150,8 @@ export default {
   },
   data() {
     return {
-      likeBtn: 1
+      likeBtn: 1,
+      postId: null
     };
   },
   computed: {
@@ -167,9 +181,13 @@ export default {
         }
       });
     },
-    deletePost(postId) {
+    openDeleteModal(postId) {
+      this.postId = postId;
+      this.$bvModal.show("deletePost");
+    },
+    deletePost() {
       try {
-        this.$store.dispatch("DELETEPOST", postId).then(res => {
+        this.$store.dispatch("DELETEPOST", this.postId).then(res => {
           this.$toasted.info(res);
         });
       } catch (error) {
