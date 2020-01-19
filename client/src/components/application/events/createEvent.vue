@@ -91,6 +91,7 @@
   </section>
 </template> 
 <script>
+import {Bus} from '../../../main'
 export default {
   data() {
     return {
@@ -143,7 +144,12 @@ export default {
         this.$toasted.error("error while uploading files");
       }
     }
-  }
+  },
+  mounted() {
+    Bus.$on('openCreateEvent', () =>{
+      this.$bvModal.show('createEvent')
+    })
+  },
 };
 </script>
 
@@ -233,6 +239,19 @@ export default {
     .modal-dialog {
       max-width: 380px;
     }
+
+  }
+  @media (max-width: 767px) {
+  .modal-dialog {
+    margin: 150px 10px 0 auto;
+    position: relative;
+  }
+  .modal-content {
+    border: none;
+    &::after {
+      left: 85%;
+    }
+  }
   }
 }
 </style>
