@@ -6,7 +6,7 @@
         <side-menu />
       </div>
     </div>
-    <div class="col-lg-6 col-md-8 col-12 px-md-2 px-sm-4 px-2">
+    <div class="col-lg-6 col-md-8 col-12 px-2">
       <router-view />
     </div>
     <div class="col-lg-3 d-lg-block d-none px-3">
