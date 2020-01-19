@@ -1,7 +1,7 @@
 <template>
   <section id="events">
     <div class="d-flex justify-content">
-      <div class="col-md-3 px-4 mt-4 overflow-hidden">
+      <div class="col-xl-3 col-lg-4 d-md-block d-none px-lg-4 px-3 mt-4 overflow-hidden">
         <div>
           <createEvent />
         </div>
@@ -10,16 +10,16 @@
           <myEvent />
         </div>
       </div>
-      <div class="col-md-9">
-        <div class="tabs d-flex mt-4 justify-content-center mr-5 font-16">
-          <p class="mr-5">
+      <div class="col-md-8 col-12 px-0">
+        <div class="tabs d-flex mt-4 px-3 justify-content-md-center justify-content-start mr-5 font-16">
+          <p class="mr-4">
             <router-link class="active" to="/app/events">Events</router-link>
           </p>
-          <p class="mr-5">
+          <p class="mr-4">
             <router-link to="/app/centers">Centers</router-link>
           </p>
         </div>
-        <div class="col-md-10 col-12 px-5">
+        <div class="col-xl-11 col-12 px-xl-4 px-lg-3 px-2">
           <div class="search rounded mb-3 text-center font-16">
             <place-autocomplete-field
               v-model="place"
