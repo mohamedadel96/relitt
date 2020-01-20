@@ -1,13 +1,15 @@
 <template>
   <section id="event">
-    <div class="backgroundimg">
-      <img src="../../assets/img/Layer1.png" />
-    </div>
-    <div class="container-fluid col-10 p-5">
-      <event-info />
-      <attendance />
-      <comments />
-      <add-comment />
+    <div v-if="event">
+      <div class="backgroundimg">
+        <img :src="event.image ? event.image : '../../assets/img/Layer1.png'" />
+      </div>
+      <div class="container-fluid col-10 p-5">
+        <event-info />
+        <attendance />
+        <comments />
+        <add-comment />
+      </div>
     </div>
   </section>
 </template>
@@ -25,6 +27,11 @@ export default {
     comments,
     addComment
   },
+  computed: {
+    event() {
+      return this.$store.getters.event;
+    }
+  },
   created() {
     this.$store.dispatch("EVENT", this.$route.params.id);
   }
@@ -35,7 +42,7 @@ export default {
 #event {
   img {
     width: 100%;
-    height: 370px;
+    height: 400px;
     object-fit: cover;
   }
 

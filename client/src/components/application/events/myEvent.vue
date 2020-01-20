@@ -8,7 +8,7 @@
         </div>
         <div class="image">
           <img
-            src="https://www.scubadiving.com/sites/scubadiving.com/files/styles/500_1x_/public/scuba-myths-shutterstock_208265431.jpg?itok=ivjB_LLa"
+            :src="event.image ? event.image : '../../assets/img/Layer1.png'"
             alt="event image"
           />
         </div>

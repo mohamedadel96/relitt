@@ -9,7 +9,7 @@
         <div class="image col-sm-4 col-12 px-0">
           <img
             class="p-3"
-            src="https://www.scubadiving.com/sites/scubadiving.com/files/styles/500_1x_/public/scuba-myths-shutterstock_208265431.jpg?itok=ivjB_LLa"
+            :src="event.image ? event.image : '../../assets/img/Layer1.png'"
             alt="card image"
           />
         </div>
@@ -37,7 +37,7 @@
               <span>13</span> attendance
             </p>
             <router-link
-              class="mr-3 btn btn-primary btn-block py-1"
+              class="mr-3 btn btn-outline-primary btn-block py-1"
               :to="'/app/events/' + event.id"
             >Join</router-link>
           </div>
