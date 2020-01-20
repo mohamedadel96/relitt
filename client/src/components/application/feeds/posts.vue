@@ -123,7 +123,7 @@
               <b-collapse :id="'comment-' + i">
                 <b-card class="border-0">
                   <add-comment :postId="feed.id" />
-                  <comments v-for="(comment,i) in feed.comments" :key="i" :comment="comment" />
+                  <comments :comments="feed.comments" />
                 </b-card>
               </b-collapse>
             </div>
@@ -139,7 +139,7 @@
 import { Bus } from "../../../main";
 import postMedia from "./postMedia";
 import activityMedia from "./activity-media";
-import comments from "../global/comments";
+import comments from "./comments";
 import addComment from "./addComment";
 export default {
   components: {

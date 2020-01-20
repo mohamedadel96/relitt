@@ -48,7 +48,7 @@ export default {
       return Api().post(`posts/comments/${payload.postId}`, payload.form)
    },
    editComment(payload) {
-      return Api().post(`posts/comments/update/${payload.comment.id}`, payload.form)
+      return Api().post(`posts/comments/update/${payload.id}`, payload.form)
    },
    deleteComment(commentId) {
       return Api().post(`posts/comments/delete/${commentId}`)
