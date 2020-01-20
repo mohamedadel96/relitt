@@ -76,6 +76,9 @@ export default {
    },
    notificationSettings(payload) {
       return Api().post('profile/settings', payload)
-   }
+   },
+   addEventComment(payload) {
+      return Api().post(`events/comments/${payload.eventId}`, payload.form)
+   },
 
 }

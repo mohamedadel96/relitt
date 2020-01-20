@@ -7,8 +7,8 @@
       <div class="container-fluid col-10 p-5">
         <event-info />
         <attendance />
-        <comments />
-        <add-comment />
+        <comments :comments="event.comments" />
+        <add-comment :eventId="event.id" />
       </div>
     </div>
   </section>
@@ -17,8 +17,8 @@
 <script>
 import eventInfo from "../../components/application/events/eventInfo";
 import attendance from "../../components/application/events/attendance";
-import comments from "../../components/application/global/comments";
-import addComment from "../../components/application/global/addComment";
+import comments from "../../components/application/events/comments";
+import addComment from "../../components/application/events/addComment";
 
 export default {
   components: {

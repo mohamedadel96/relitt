@@ -1,6 +1,6 @@
 <template>
-  <section id="comments" v-if="comment">
-    <div class="card">
+  <section id="comments">
+    <div class="card" v-for="(comment , i) in comments" :key="i">
       <div class="d-flex">
         <div>
           <img :src="comment.user.image" class="card-img" alt="user image" />
@@ -17,38 +17,38 @@
             <div>
               <textarea-autosize
                 placeholder="Type something here..."
-                :disabled="!editState"
-                ref="commentBody"
-                :class="['comment-body col-12 px-2', {'editable': editState}]"
-                v-model="form.body"
+                :disabled="editState !== i"
+                :ref="'commentBody_' + i"
+                :class="['comment-body col-12 px-2', {'editable': editState === i}]"
+                :value="comment.body"
                 :min-height="30"
                 :max-height="350"
-                @input="(e)=> this.form.body = e"
+                @input="(e)=> form.body = e"
               />
               <div class="d-flex justify-content-end" v-if="comment.canEdit">
-                <h5 v-show="!editState">
+                <h5 v-show="editState !== i">
                   <b-badge
                     variant="light"
                     class="pointer px-3 mx-2 font-weight-light text-primary"
-                    @click="openEditMode"
+                    @click="editState = i"
                   >Edit</b-badge>
                   <b-badge
                     variant="light"
                     class="pointer px-3 font-weight-light text-danger"
-                    @click="deleteComment"
+                    @click="deleteComment(comment)"
                   >Delete</b-badge>
                 </h5>
-                <h5 v-show="editState">
+                <h5 v-show="editState === i">
                   <b-badge
                     variant="light"
                     class="pointer px-3 mx-2 font-weight-light text-danger"
-                    @click="cancleEditMode"
+                    @click="cancleEditMode(comment)"
                   >Cancle</b-badge>
                   <b-badge
                     variant="light"
                     class="pointer px-3 mx-2 font-weight-light text-success"
-                    @click="editComment"
-                  >Save</b-badge>
+                    @click="editComment(comment.id)"
+                  >Edit</b-badge>
                 </h5>
               </div>
             </div>
@@ -61,31 +61,21 @@
 
 <script>
 export default {
-  props: ["comment"],
+  props: ["comments"],
   data() {
     return {
       form: {
         body: ""
       },
-      editState: false
+      editState: null
     };
   },
-  watch: {
-    comment: {
-      immediate: true,
-      handler(val) {
-        if (val) {
-          this.form.body = val.body;
-        }
-      }
-    }
-  },
   methods: {
-    editComment() {
+    editComment(id) {
       try {
         this.$store
           .dispatch("EDITCOMMENT", {
-            comment: this.$props.comment,
+            id: id,
             form: this.form
           })
           .then(res => {
@@ -96,24 +86,18 @@ export default {
         this.$toasted.error("error");
       }
     },
-    deleteComment() {
+    deleteComment(comment) {
       try {
-        this.$store.dispatch("DELETECOMMENT", this.$props.comment).then(res => {
+        this.$store.dispatch("DELETECOMMENT", comment).then(res => {
           this.$toasted.info(res);
         });
       } catch (error) {
         this.$toasted.error("error");
       }
     },
-    openEditMode() {
-      this.editState = true;
-      setTimeout(() => {
-        this.$refs.commentBody.$el.focus();
-      }, 100);
-    },
-    cancleEditMode() {
-      this.editState = false;
-      this.form.body = this.$props.comment.body;
+    cancleEditMode(comment) {
+      this.editState = null;
+      this.form.body = comment;
     }
   }
 };

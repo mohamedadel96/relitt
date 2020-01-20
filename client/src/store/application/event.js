@@ -15,7 +15,10 @@ export default {
         },
         removeEvent(state, data) {
             state.event = null
-        }
+        },
+        saveComment(state, comment) {
+            state.event.comments.push(comment)
+        },
     },
     actions: {
         EVENT({ commit, state }, id) {
@@ -30,6 +33,18 @@ export default {
                     resolve('done')
                 })
             })
-        }
+        },
+        ADDEVENTCOMMENT({ commit }, payload) {
+            return new Promise((resolve, reject) => {
+                appServices.addEventComment(payload).then(res => {
+                    if (res.data.status === 401) {
+                        // we will handle logout option // call logout function
+                    }
+                    if (res.data.code !== 200) return reject(res.data.errors)
+                    commit('saveComment', res.data.data)
+                    resolve('commented')
+                })
+            })
+        },
     }
 }
