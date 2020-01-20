@@ -188,7 +188,7 @@ export default {
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-        background: url("../../../assets/icons/selectArrow.svg");
+        background: url("../../../assets/icons/select-arrow.svg");
         background-repeat: no-repeat;
         background-position-x: 94%;
         background-position-y: 50%;

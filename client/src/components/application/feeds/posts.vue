@@ -45,7 +45,7 @@
                       <span>
                         <img
                           class="pointer"
-                          src="../../../assets/icons/shareIco.svg"
+                          src="../../../assets/icons/share-ico.svg"
                           style="width:24px ; height:24px"
                           alt
                         />

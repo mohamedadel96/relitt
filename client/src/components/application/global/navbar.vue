@@ -35,7 +35,7 @@
         </div>
       </profile-settings>
       <activity>
-        <img class="ml-2 pointer" v-b-modal.addActivity src="../../../assets/icons/navPlus.svg" alt />
+        <img class="ml-2 pointer" v-b-modal.addActivity src="../../../assets/icons/nav-plus.svg" alt />
       </activity>
     </div>
   </nav>
