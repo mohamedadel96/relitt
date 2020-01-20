@@ -73,7 +73,7 @@ export default {
       padding: 0 1.5px;
     }
     .modal-dialog {
-    margin: 150px auto 0 10px;
+    margin: 160px auto 0 10px;
     position: relative;
   }
   .modal-content {
@@ -85,7 +85,7 @@ export default {
       display: block;
       position: absolute;
       top: -7.5px;
-      left: 45%;
+      right: 45px;
       background: white;
       transform: rotate(45deg);
       z-index: 1;
@@ -98,15 +98,15 @@ export default {
   }
   @media (max-width: 767px) {
   .modal-dialog {
-    margin: 150px 10px 0 auto;
+    margin: 160px 10px 0 auto;
     position: relative;
   }
-  .modal-content {
-    border: none;
-    &::after {
-      left: 85%;
-    }
+
   }
+        @media (max-width: 576px) {
+    .modal-dialog {
+     margin: 160px 10px 0 10px !important; 
+    }
   }
 }
 </style>
