@@ -11,7 +11,6 @@ export default {
     },
     mutations: {
         saveEvent(state, data) {
-            state.history.push(data)
             state.event = data
         },
         removeEvent(state, data) {
