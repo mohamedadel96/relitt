@@ -27,7 +27,7 @@
                   :rating="card.avg_rate"
                 />
               </div>
-              <div class="props d-flex justify-content-between my-lg-0 my-3">
+              <div class="props d-flex justify-content-between my-lg-1 my-3">
                 <div class="prop col-4 px-0">
                   <p class="font-14 font-weight-bold mb-0">High</p>
                   <p class="font-12 text-secondary mb-0">price</p>

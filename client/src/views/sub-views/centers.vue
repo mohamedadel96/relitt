@@ -5,13 +5,18 @@
         <filter-section />
       </div>
       <div class="col-md-8 col-12">
-        <div class="tabs d-flex mt-4 justify-content-center mr-5">
+        <div class="tabs d-flex mt-4 px-3 justify-content-md-center justify-content-between align-items-baseline font-16">
+        <div class="d-flex px-3">
           <p class="mr-5">
             <router-link to="/app/events">Events</router-link>
           </p>
           <p class="mr-5">
             <router-link class="active" to="/app/centers">Centers</router-link>
           </p>
+        </div>
+          <div class="d-md-none d-block">
+            <filter-modal/>
+          </div>
         </div>
         <div class="col-xl-11 col-12 px-2">
           <div class="search rounded mb-3 text-center font-16">
@@ -32,6 +37,7 @@
 <script>
 import centerCards from "../../components/application/centers/centerCards";
 import filterSection from "../../components/application/centers/filterSection";
+import filterModal from "../../components/application/centers/filterModal";
 export default {
   data() {
     return {
@@ -40,7 +46,8 @@ export default {
   },
   components: {
     centerCards,
-    filterSection
+    filterSection,
+    filterModal
   },
   created() {
     this.$store.dispatch("CENTERCARD");

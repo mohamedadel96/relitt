@@ -21,7 +21,7 @@
             </p>
           </div>
           <div class="d-md-none d-block">
-            <button class="btn btn-primary my-3" @click="openModal('openCreateEvent')">Create event</button>
+            <button class="btn btn-outline-primary my-3" @click="openModal('openCreateEvent')">Create event</button>
           </div>
         </div>
         <div class="col-xl-11 col-12 px-xl-4 px-lg-3 px-2">
