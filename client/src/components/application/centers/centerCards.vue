@@ -2,14 +2,14 @@
   <section id="centerCard">
     <div class="cards" v-for="( card, i ) in centercards" :key="i">
       <div class="card border-0 rounded d-flex flex-wrap flex-row mb-3">
-        <div class="image col-md-4 col-12 px-0">
+        <div class="image col-sm-4 col-12 px-0">
           <img
             class="p-3"
             src="https://www.scubadiving.com/sites/scubadiving.com/files/styles/500_1x_/public/scuba-myths-shutterstock_208265431.jpg?itok=ivjB_LLa"
             alt="card image"
           />
         </div>
-        <div class="col-md-8 col-12 px-0 mt-3 d-flex flex-wrap align-items-between">
+        <div class="col-sm-8 col-12 px-0 mt-3 d-flex flex-wrap align-items-between">
           <div class="col-12 d-flex flex-wrap justify-content-between">
             <div class="details col-lg-7 col-12 px-2">
               <p class="mb-0 font-weight-bold font-16">{{card.name}}</p>
