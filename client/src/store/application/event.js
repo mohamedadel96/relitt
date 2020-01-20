@@ -23,9 +23,6 @@ export default {
         EVENT({ commit, state }, id) {
             return new Promise((resolve, reject) => {
                 commit('removeEvent')
-                let check = state.history.filter(event => event.id === Number(id))
-                if (check.length) return commit('saveEvent', check[0])
-
                 appServices.event(id).then(res => {
                     if (res.data.status === 401) {
                         // we will handle logout option // call logout function
