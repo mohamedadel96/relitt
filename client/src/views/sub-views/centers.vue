@@ -4,7 +4,7 @@
       <div class="col-xl-3 col-md-4 d-md-block d-none px-lg-4 px-3 mt-4 overflow-hidden">
         <filter-section />
       </div>
-      <div class="col-lg-8 col-md-7 col-12">
+      <div class="col-md-8 col-12">
         <div class="tabs d-flex mt-4 justify-content-center mr-5">
           <p class="mr-5">
             <router-link to="/app/events">Events</router-link>
@@ -13,7 +13,7 @@
             <router-link class="active" to="/app/centers">Centers</router-link>
           </p>
         </div>
-        <div class="col-md-11 col-12 px-2">
+        <div class="col-xl-11 col-12 px-2">
           <div class="search rounded mb-3 text-center font-16">
             <place-autocomplete-field
               v-model="place"
