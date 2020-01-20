@@ -17,7 +17,7 @@
           <div v-for="i in 5" :key="i" class="my-1 pointer d-flex justify-content-between">
             <div @click="filterRate.push((6-i))">
               <star-rating
-                :active-color="filterRate.includes((6-i)) ? '#0062cc' : '#ffd700'"
+                :active-color="filterRate.includes((6-i)) ? '#3E82F7' : '#FFB900'"
                 :star-size="20"
                 :show-rating="false"
                 read-only

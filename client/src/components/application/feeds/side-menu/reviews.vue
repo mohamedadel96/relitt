@@ -7,7 +7,7 @@
         <p class="mb-0">{{review.center.name}}</p>
         <star-rating
           class="mb-1"
-          active-color="#ffd700"
+          active-color="#FFB900"
           :star-size="16"
           :show-rating="false"
           read-only

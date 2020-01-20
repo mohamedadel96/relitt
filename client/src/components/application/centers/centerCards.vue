@@ -21,7 +21,7 @@
                 <star-rating
                   class="mb-1"
                   :increment="0.01"
-                  active-color="#ffd700"
+                  active-color="#FFB900"
                   :star-size="16"
                   read-only
                   :rating="card.avg_rate"
@@ -106,7 +106,7 @@ export default {
       .image {
         img {
           width: 100%;
-          height: 100% ;
+          height: 100%;
           object-fit: cover;
         }
       }
