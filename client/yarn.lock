@@ -8328,6 +8328,11 @@ vue-toasted@^1.1.27:
   resolved "https://registry.yarnpkg.com/vue-toasted/-/vue-toasted-1.1.27.tgz#ce0a74b875f90c2e4a9e163cce6d5fc37d78a07c"
   integrity sha512-GVbwInwnqkVxQ4GU/XYeQt1e0dAXL8sF5Hr1H/coCBbYUan5xP0G2mEz/HRDf1lt73rFQAN/bJcLTOKkqiM6tg==
 
+vue2-location-picker@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/vue2-location-picker/-/vue2-location-picker-1.2.0.tgz#ce38affdefd1d7011713f7d792c803dedddae4cb"
+  integrity sha512-NMnr4CqOFpk4U5XJHXbplE9Ex3Ifhm2uhhaYifv3W27YkHCSrXZu3zDn6SkAW7eejZ9+wJYV6AxvJX6qI1HDXQ==
+
 vue@^2.6.10, vue@^2.6.11:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"

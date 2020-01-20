@@ -33,6 +33,7 @@
     "vue-star-rating": "^1.6.1",
     "vue-textarea-autosize": "^1.1.1",
     "vue-toasted": "^1.1.27",
+    "vue2-location-picker": "^1.2.0",
     "vuelidate": "^0.7.4",
     "vuex": "^3.0.1",
     "vulidate": "^0.2.3"
