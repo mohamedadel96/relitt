@@ -2,7 +2,6 @@ import appServices from '../../services/application'
 
 export default {
     state: {
-        history: [],
         event: null
     },
     getters: {
