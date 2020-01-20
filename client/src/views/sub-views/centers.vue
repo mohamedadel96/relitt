@@ -1,10 +1,10 @@
 <template>
   <section id="centers">
     <div class="d-flex justify-content">
-      <div class="col-md-3 px-4 mt-3 overflow-hidden">
+      <div class="col-xl-3 col-md-4 d-md-block d-none px-lg-4 px-3 mt-4 overflow-hidden">
         <filter-section />
       </div>
-      <div class="col-md-9">
+      <div class="col-lg-8 col-md-7 col-12">
         <div class="tabs d-flex mt-4 justify-content-center mr-5">
           <p class="mr-5">
             <router-link to="/app/events">Events</router-link>

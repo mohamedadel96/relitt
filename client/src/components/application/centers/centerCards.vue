@@ -17,8 +17,15 @@
               <p class="mb-0 text-secondary font-12 desc">{{card.description}}</p>
             </div>
             <div class="col-5 px-0 text-center">
-              <div>
-                <p class="font-22 font-weight-bold text-right">icon stars</p>
+              <div class="d-flex justify-content-end">
+                <star-rating
+                  class="mb-1"
+                  :increment="0.01"
+                  active-color="#ffd700"
+                  :star-size="16"
+                  read-only
+                  :rating="card.avg_rate"
+                />
               </div>
               <div class="props d-flex justify-content-between">
                 <div class="prop col-4 px-0">
@@ -55,7 +62,7 @@
               </div>
             </div>
             <router-link
-              class="mr-3 btn btn-primary btn-block py-2 col-4"
+              class="mr-3 btn btn-primary btn-block py-1 col-4"
               :to="'/app/centers/' + card.id"
             >Contact</router-link>
           </div>
@@ -106,7 +113,7 @@ export default {
 
       .details {
         .desc {
-          height: 120px;
+          height: 54px;
           overflow: hidden;
           white-space: pre-line;
           text-overflow: ellipsis;

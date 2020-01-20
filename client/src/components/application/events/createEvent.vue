@@ -1,6 +1,6 @@
 <template>
   <section id="createEvent">
-    <button class="btn btn-primary btn-block mb-2 py-2 font-12" v-b-modal.createEvent>create Event</button>
+    <button class="btn btn-primary btn-block mb-2 py-2 font-12 pointer" v-b-modal.createEvent>create Event</button>
     <b-modal
       @hide="clearData"
       id="createEvent"
