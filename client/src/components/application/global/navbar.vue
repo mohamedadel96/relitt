@@ -3,12 +3,12 @@
     id="appNav"
     class="col-12 px-0 py-3 border-bottom position-fixed d-flex justify-content-between align-items-center"
   >
-    <div class="px-md-4 px-2 col-3">
+    <div class="px-md-4 px-2 col-md-3 col-5">
       <img src="../../../assets/img/icon/logo.svg" />
     </div>
 
-    <div class="col-6 d-flex justify-content-center">
-      <ul class="nav-list d-md-flex d-none justify-content-between col-lg-6 col-12 my-0">
+    <div class="col-6 d-md-flex d-none justify-content-center">
+      <ul class="nav-list d-flex justify-content-between col-lg-6 col-12 my-0">
         <li :class="[$route.name === 'app' ? 'active' : '', 'font-20']">
           <router-link to="/app">Feeds</router-link>
         </li>
@@ -23,7 +23,7 @@
       </ul>
     </div>
 
-    <div class="col-3 block_3 d-flex justify-content-end px-4">
+    <div class="col-md-3 col-7 block_3 d-flex justify-content-end px-4">
       <notifications>
         <img class="pointer" v-b-modal.notifications src="../../../assets/icons/ring.svg" alt />
       </notifications>

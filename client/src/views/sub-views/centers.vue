@@ -4,9 +4,9 @@
       <div class="col-xl-3 col-md-4 d-md-block d-none px-lg-4 px-3 mt-4 overflow-hidden">
         <filter-section />
       </div>
-      <div class="col-md-8 col-12">
-        <div class="tabs d-flex mt-4 px-3 justify-content-md-center justify-content-between align-items-baseline font-16">
-        <div class="d-flex px-3">
+      <div class="col-md-8 col-12 px-0">
+        <div class="tabs d-flex mt-4 px-2 justify-content-md-center justify-content-between align-items-baseline font-16">
+        <div class="d-flex">
           <p class="mr-5">
             <router-link to="/app/events">Events</router-link>
           </p>

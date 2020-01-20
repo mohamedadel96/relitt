@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="col-md-8 col-12 px-0">
-        <div class="tabs d-flex mt-4 px-3 justify-content-md-center justify-content-between align-items-baseline font-16">
+        <div class="tabs d-flex mt-4 px-2 justify-content-md-center justify-content-between align-items-baseline font-16">
           <div class="d-flex">
             <p class="mr-4">
               <router-link class="active" to="/app/events">Events</router-link>
