@@ -221,7 +221,6 @@ export default {
   .menu-item {
     outline: none;
   }
-  @media (min-width: 576px) {
     .modal-content {
       border: none;
       &::after {
@@ -231,14 +230,20 @@ export default {
         display: block;
         position: absolute;
         top: -7.5px;
-        right: 33.5%;
+        right: 120px;
         background: white;
         transform: rotate(45deg);
         z-index: 1;
       }
     }
+  @media (min-width: 576px) {
     .modal-dialog {
       max-width: 365px;
+    }
+  }
+    @media (max-width: 576px) {
+    .modal-dialog {
+     margin: 80px 10px 0 10px !important; 
     }
   }
 }

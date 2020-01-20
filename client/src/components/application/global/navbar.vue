@@ -3,16 +3,16 @@
     id="appNav"
     class="col-12 px-0 py-3 border-bottom position-fixed d-flex justify-content-between align-items-center"
   >
-    <div class="px-4 col-3">
+    <div class="px-md-4 px-2 col-3">
       <img src="../../../assets/img/icon/logo.svg" />
     </div>
 
     <div class="col-6 d-flex justify-content-center">
-      <ul class="nav-list d-flex justify-content-between col-6 my-0">
+      <ul class="nav-list d-md-flex d-none justify-content-between col-lg-6 col-12 my-0">
         <li :class="[$route.name === 'app' ? 'active' : '', 'font-20']">
           <router-link to="/app">Feeds</router-link>
         </li>
-        <li :class="[$route.name === 'dashboard' ? 'active' : '' , 'font-20']">
+        <li :class="['mx-4',$route.name === 'dashboard' ? 'active' : '' , 'font-20']">
           <router-link to="/app/dashboard">Dashboard</router-link>
         </li>
         <li

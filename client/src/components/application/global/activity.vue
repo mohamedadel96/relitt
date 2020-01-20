@@ -362,5 +362,11 @@ export default {
       max-width: 365px;
     }
   }
+
+      @media (max-width: 576px) {
+    .modal-dialog {
+     margin: 80px 10px 0 10px !important; 
+    }
+  }
 }
 </style>

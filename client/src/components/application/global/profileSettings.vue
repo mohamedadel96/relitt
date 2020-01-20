@@ -53,24 +53,30 @@ export default {
   .menu-item {
     outline: none;
   }
-  @media (min-width: 576px) {
-    .modal-content {
-      border: none;
-      &::after {
-        content: "";
-        width: 15px;
-        height: 15px;
-        display: block;
-        position: absolute;
-        top: -7.5px;
-        right: 21.7%;
-        background: white;
-        transform: rotate(45deg);
-        z-index: 1;
-      }
+  .modal-content {
+    border: none;
+    &::after {
+      content: "";
+      width: 15px;
+      height: 15px;
+      display: block;
+      position: absolute;
+      top: -7.5px;
+      right: 78px;
+      background: white;
+      transform: rotate(45deg);
+      z-index: 1;
     }
+  }
+  @media (min-width: 576px) {
     .modal-dialog {
       max-width: 365px;
+    }
+  }
+
+      @media (max-width: 576px) {
+    .modal-dialog {
+     margin: 80px 10px 0 10px !important; 
     }
   }
 }
