@@ -54,7 +54,6 @@ export default {
                     }
                     if (res.data.code !== 200) return reject(res.data.errors)
                     dispatch('EVENT', payload.eventId)
-                    // commit('saveAttendingStatus')
                     resolve(payload.is_attending ? 'Cancled' : 'Joined')
                 })
             })
