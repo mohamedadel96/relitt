@@ -80,5 +80,7 @@ export default {
    addEventComment(payload) {
       return Api().post(`events/comments/${payload.eventId}`, payload.form)
    },
-
+   toggleJoinMeeting(payload) {
+      return Api().post(`events/${payload.is_attending ? 'unrsvp' : 'rsvp'}/${payload.eventId}`)
+   },
 }

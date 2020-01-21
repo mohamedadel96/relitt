@@ -1,7 +1,7 @@
 <template>
-  <section id="comments">
-    <div class="card" v-for="(comment , i) in comments" :key="i">
-      <div class="d-flex">
+  <section id="eventComments" class="d-flex flex-wrap" v-if="comments">
+    <div class="card col-lg-6 col-12 px-0" v-for="(comment , i) in comments" :key="i">
+      <div class="d-flex border-bottom m-3">
         <div>
           <img :src="comment.user.image" class="card-img" alt="user image" />
         </div>
@@ -48,7 +48,7 @@
                     variant="light"
                     class="pointer px-3 mx-2 font-weight-light text-success"
                     @click="editComment(comment.id)"
-                  >Edit</b-badge>
+                  >Save</b-badge>
                 </h5>
               </div>
             </div>
@@ -104,7 +104,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#comments {
+#eventComments {
+  max-height: 405px;
+  overflow-y: auto;
+  overflow-x: hidden;
   .card {
     border: none;
 

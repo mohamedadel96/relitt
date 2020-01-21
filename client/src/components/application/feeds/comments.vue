@@ -48,7 +48,7 @@
                     variant="light"
                     class="pointer px-3 mx-2 font-weight-light text-success"
                     @click="editComment(comment.id)"
-                  >Edit</b-badge>
+                  >Save</b-badge>
                 </h5>
               </div>
             </div>
@@ -105,6 +105,9 @@ export default {
 
 <style lang="scss" scoped>
 #comments {
+  max-height: 465px;
+  overflow-y: auto;
+  overflow-x: hidden;
   .card {
     border: none;
 

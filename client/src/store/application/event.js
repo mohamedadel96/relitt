@@ -16,9 +16,12 @@ export default {
         removeEvent(state, data) {
             state.event = null
         },
-        saveComment(state, comment) {
+        saveEventComment(state, comment) {
             state.event.comments.push(comment)
         },
+        saveAttendingStatus(state) {
+            state.event.is_attending = !state.event.is_attending
+        }
     },
     actions: {
         EVENT({ commit, state }, id) {
@@ -41,8 +44,21 @@ export default {
                         // we will handle logout option // call logout function
                     }
                     if (res.data.code !== 200) return reject(res.data.errors)
-                    commit('saveComment', res.data.data)
+                    commit('saveEventComment', res.data.data)
                     resolve('commented')
+                })
+            })
+        },
+        TOGGLEJOINMEETING({ commit }, payload) {
+            return new Promise((resolve, reject) => {
+                appServices.toggleJoinMeeting(payload).then(res => {
+                    console.log(res.data)
+                    if (res.data.status === 401) {
+                        // we will handle logout option // call logout function
+                    }
+                    if (res.data.code !== 200) return reject(res.data.errors)
+                    commit('saveAttendingStatus')
+                    resolve(payload.is_attending ? 'Cancled' : 'Joined')
                 })
             })
         },

@@ -4,10 +4,10 @@
       <div class="backgroundimg">
         <img :src="event.image ? event.image : '../../assets/img/Layer1.png'" />
       </div>
-      <div class="container-fluid col-10 p-5">
+      <div class="container-fluid col-lg-10 col-12 py-5 px-md-5 px-3">
         <event-info />
         <attendance />
-        <comments :comments="event.comments" />
+        <comments :comments="feeds[0].comments" />
         <add-comment :eventId="event.id" />
       </div>
     </div>
@@ -28,6 +28,11 @@ export default {
     addComment
   },
   computed: {
+    // comments for test
+        feeds() {
+      return this.$store.getters.feeds;
+    },
+    // ======= ========
     event() {
       return this.$store.getters.event;
     }

@@ -5,8 +5,8 @@
       <div>
         <h3 class="font-22 font-weight-bold">{{event.title}}</h3>
         <div class="d-flex justify-conent-between mt-4 mb-5">
-          <div class="col-12 pl-0">
-            <button class="btn btn-primary btn-block">Joined</button>
+          <div class="col-12 px-0">
+            <button :class="['btn btn-block', event.is_attending ? 'btn-danger' : 'btn-primary']" @click="toggleJoinMeeting(event.id,event.is_attending)">{{event.is_attending ? 'Cancle' : 'Join'}}</button>
           </div>
         </div>
       </div>
@@ -45,6 +45,16 @@ export default {
   computed: {
     event() {
       return this.$store.getters.event;
+    }
+  },
+  methods: {
+    toggleJoinMeeting(eventId, is_attending) {
+      this.$store.dispatch('TOGGLEJOINMEETING', {
+        eventId: eventId,
+        is_attending: is_attending
+      }).then(res => {
+        this.$toasted.info(res)
+      })
     }
   }
 };
