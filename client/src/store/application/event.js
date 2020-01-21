@@ -13,14 +13,11 @@ export default {
         saveEvent(state, data) {
             state.event = data
         },
-        removeEvent(state, data) {
+        removeEvent(state) {
             state.event = null
         },
         saveEventComment(state, comment) {
             state.event.comments.push(comment)
-        },
-        saveAttendingStatus(state) {
-            state.event.is_attending = !state.event.is_attending
         }
     },
     actions: {
