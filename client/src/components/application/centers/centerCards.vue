@@ -1,20 +1,20 @@
 <template>
   <section id="centerCard">
-    <div class="cards" v-for="( card, i ) in centercards" :key="i">
+    <div class="cards" v-for="( center, i ) in centers" :key="i">
       <div class="card border-0 rounded d-flex flex-wrap flex-row mb-3">
         <div class="image col-sm-4 col-12 px-0">
           <img
             class="p-3"
-            src="https://www.scubadiving.com/sites/scubadiving.com/files/styles/500_1x_/public/scuba-myths-shutterstock_208265431.jpg?itok=ivjB_LLa"
+            :src="center.images.length ? center.images[0].url : '../../assets/img/Layer1.png'"
             alt="card image"
           />
         </div>
         <div class="col-sm-8 col-12 px-0 mt-3 d-flex flex-wrap align-items-between">
           <div class="col-12 d-flex flex-wrap justify-content-between">
             <div class="details col-lg-7 col-12 px-2">
-              <p class="mb-0 font-weight-bold font-16">{{card.name}}</p>
-              <p class="mb-2 text-secondary font-12">{{card.location_name}}</p>
-              <p class="mb-0 text-secondary font-12 desc">{{card.description}}</p>
+              <p class="mb-0 font-weight-bold font-16">{{center.name}}</p>
+              <p class="mb-2 text-secondary font-12">{{center.location_name}}</p>
+              <p class="mb-0 text-secondary font-12 desc">{{center.description}}</p>
             </div>
             <div class="col-lg-5 col-12 px-0 my-lg-0 my-3 text-center">
               <div class="d-flex justify-content-end my-lg-0 my-3">
@@ -24,7 +24,7 @@
                   active-color="#FFB900"
                   :star-size="16"
                   read-only
-                  :rating="card.avg_rate"
+                  :rating="center.avg_rate"
                 />
               </div>
               <div class="props d-flex justify-content-between my-lg-1 my-3">
@@ -47,7 +47,7 @@
             <div class="row col-6">
               <div
                 class="service col-3 justify-content-start"
-                v-for="(service ,i) in card.services"
+                v-for="(service ,i) in center.services"
                 :key="i"
               >
                 <p class="mb-0 text-secondary">
@@ -63,7 +63,7 @@
             </div>
             <router-link
               class="mr-3 btn btn-primary btn-block py-1 col-4 font-12"
-              :to="'/app/centers/' + card.id"
+              :to="'/app/centers/' + center.id"
             >Contact</router-link>
           </div>
         </div>
@@ -76,7 +76,7 @@
 <script>
 export default {
   computed: {
-    centercards() {
+    centers() {
       return this.$store.getters.getCenterCard;
     }
   },

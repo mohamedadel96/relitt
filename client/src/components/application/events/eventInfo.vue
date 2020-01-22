@@ -1,12 +1,14 @@
 <template>
   <section id="eventInfo">
-  <div v-if="event">
-
+    <div v-if="event">
       <div>
         <h3 class="font-22 font-weight-bold">{{event.title}}</h3>
         <div class="d-flex justify-conent-between mt-4 mb-5">
           <div class="col-12 px-0">
-            <button :class="['btn btn-block', event.is_attending ? 'btn-danger' : 'btn-primary']" @click="toggleJoinMeeting(event.id,event.is_attending)">{{event.is_attending ? 'Cancle' : 'Join'}}</button>
+            <button
+              :class="['btn btn-block', event.is_attending ? 'btn-danger' : 'btn-primary']"
+              @click="toggleJoinMeeting(event.id,event.is_attending)"
+            >{{event.is_attending ? 'Cancle' : 'Join'}}</button>
           </div>
         </div>
       </div>
@@ -36,7 +38,7 @@
           <p class="mb-0 font-14 text-secondary">{{event.description}}</p>
         </div>
       </div>
-        </div>
+    </div>
   </section>
 </template>
 
@@ -49,12 +51,14 @@ export default {
   },
   methods: {
     toggleJoinMeeting(eventId, is_attending) {
-      this.$store.dispatch('TOGGLEJOINMEETING', {
-        eventId: eventId,
-        is_attending: is_attending
-      }).then(res => {
-        this.$toasted.info(res)
-      })
+      this.$store
+        .dispatch("TOGGLEJOINMEETING", {
+          eventId: eventId,
+          is_attending: is_attending
+        })
+        .then(res => {
+          this.$toasted.info(res);
+        });
     }
   }
 };

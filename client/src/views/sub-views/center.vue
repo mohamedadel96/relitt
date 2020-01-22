@@ -3,8 +3,8 @@
     <div class="backgroundimg">
       <img src="../../assets/img/Layer1.png" />
     </div>
-    <div class="container-fluid">
-      <centerInfo :data="center"></centerInfo>
+    <div class="container-fluid col-lg-10 col-12 py-3 px-md-5 px-3">
+      <centerInfo :center="center"></centerInfo>
       <review></review>
       <centerComment ></centerComment>
       <location></location>
@@ -47,8 +47,6 @@ export default {
   }
 
   .container-fluid {
-    width: 80%;
-    padding: 60px 65px;
     background-color: #fff;
     -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.05);
     -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.05);
