@@ -10,7 +10,7 @@
           />
         </div>
         <div class="col-sm-8 col-12 px-0 mt-3 d-flex flex-wrap align-items-between">
-          <div class="col-12 d-flex flex-wrap justify-content-between">
+          <div class="col-12 d-flex flex-wrap justify-content-between mb-3">
             <div class="details col-lg-7 col-12 px-2">
               <p class="mb-0 font-weight-bold font-16">{{center.name}}</p>
               <p class="mb-2 text-secondary font-12">{{center.location_name}}</p>
@@ -107,6 +107,7 @@ export default {
         img {
           width: 100%;
           height: 100%;
+          min-height: 250px;
           object-fit: cover;
         }
       }
