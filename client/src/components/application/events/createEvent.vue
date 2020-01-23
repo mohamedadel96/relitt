@@ -1,6 +1,9 @@
 <template>
   <section id="createEvent">
-    <button class="btn btn-primary btn-block mb-2 py-2 font-12 pointer" v-b-modal.createEvent>create Event</button>
+    <button
+      class="btn btn-primary btn-block mb-2 py-2 font-12 pointer"
+      v-b-modal.createEvent
+    >create Event</button>
     <b-modal
       @hide="clearData"
       id="createEvent"
@@ -91,7 +94,7 @@
   </section>
 </template> 
 <script>
-import {Bus} from '../../../main'
+import { Bus } from "../../../main";
 export default {
   data() {
     return {
@@ -146,10 +149,10 @@ export default {
     }
   },
   mounted() {
-    Bus.$on('openCreateEvent', () =>{
-      this.$bvModal.show('createEvent')
-    })
-  },
+    Bus.$on("openCreateEvent", () => {
+      this.$bvModal.show("createEvent");
+    });
+  }
 };
 </script>
 
@@ -164,18 +167,6 @@ export default {
   }
   .modal-content {
     border: none;
-    &::after {
-      content: "";
-      width: 15px;
-      height: 15px;
-      display: block;
-      position: absolute;
-      top: -7.5px;
-      left: 45%;
-      background: white;
-      transform: rotate(45deg);
-      z-index: 1;
-    }
   }
 
   form {
@@ -239,19 +230,15 @@ export default {
     .modal-dialog {
       max-width: 380px;
     }
-
   }
   @media (max-width: 767px) {
-  .modal-dialog {
-    margin: 150px 10px 0 auto;
-    position: relative;
-  }
-  .modal-content {
-    border: none;
-    &::after {
-      left: 85%;
+    .modal-dialog {
+      margin: 150px 10px 0 auto;
+      position: relative;
     }
-  }
+    .modal-content {
+      border: none;
+    }
   }
 }
 </style>

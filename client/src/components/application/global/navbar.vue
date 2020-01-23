@@ -3,7 +3,7 @@
     id="appNav"
     class="col-12 px-0 py-3 border-bottom position-fixed d-flex justify-content-between align-items-center"
   >
-    <div class="px-md-4 px-2 col-md-3 col-5">
+    <div class="px-md-4 col-md-3 col-5">
       <img src="../../../assets/img/icon/logo.svg" />
     </div>
 
@@ -35,8 +35,14 @@
         </div>
       </profile-settings>
       <activity>
-        <img class="ml-2 pointer" v-b-modal.addActivity src="../../../assets/icons/nav-plus.svg" alt />
+        <img
+          class="mx-2 pointer"
+          v-b-modal.addActivity
+          src="../../../assets/icons/nav-plus.svg"
+          alt
+        />
       </activity>
+      <nav-items class="d-md-none d-block" />
     </div>
   </nav>
 </template>
@@ -45,11 +51,13 @@
 import activity from "./activity";
 import profileSettings from "./profileSettings";
 import notifications from "./notifications";
+import navItems from "./navItems";
 export default {
   components: {
     activity,
     profileSettings,
-    notifications
+    notifications,
+    navItems
   },
   data() {
     return {};

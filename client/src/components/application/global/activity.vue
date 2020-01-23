@@ -293,18 +293,6 @@ export default {
   }
   .modal-content {
     border: none;
-    &::after {
-      content: "";
-      width: 15px;
-      height: 15px;
-      display: block;
-      position: absolute;
-      top: -7.5px;
-      right: 20px;
-      background: white;
-      transform: rotate(45deg);
-      z-index: 1;
-    }
   }
 
   form {
