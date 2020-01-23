@@ -45,7 +45,7 @@
                       <span>
                         <img
                           class="pointer"
-                          src="../../../assets/icons/share-ico.svg"
+                          src="../../../assets/icons/3dots.svg"
                           style="width:24px ; height:24px"
                           alt
                         />
@@ -105,7 +105,13 @@
                 <div class="col-6 py-2 px-0 post-options font-16 font-weight-bold">
                   <div class="pointer" @click.once="toggleLike(feed.id, feed.liked)" :key="likeBtn">
                     <img
-                      src="../../../assets/img/icon/Icon - Thumbs Up - Dark.png"
+                      v-show="feed.liked"
+                      src="../../../assets/icons/like.svg"
+                      class="mr-1 mb-1"
+                    />
+                    <img
+                      v-show="!feed.liked"
+                      src="../../../assets/icons/unlike.svg"
                       class="mr-1 mb-1"
                     />
                     <span :class="{'like': feed.liked}">Like</span>

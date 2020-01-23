@@ -28,12 +28,15 @@
             />
           </div>
         </div>
-        <div class="form-group d-flex overflow-hidden">
+        <div class="form-group d-flex overflow-hidden position-relative">
           <div class="col-12 px-2">
             <flat-pickr class="form-controls py-3 col-12" v-model="form.date" placeholder="Date"></flat-pickr>
           </div>
+          <div class="position-absolute">
+            <img src="../../../assets/icons/calender-icon.svg" />
+          </div>
         </div>
-        <div class="form-group d-flex overflow-hidden">
+        <div class="form-group d-flex overflow-hidden position-relative">
           <div class="col-12 px-2">
             <input
               class="form-controls py-3 col-12"
@@ -44,8 +47,9 @@
               oninput="validity.valid||(value='');"
             />
           </div>
+          <div class="position-absolute text-secondary">min</div>
         </div>
-        <div class="form-group d-flex overflow-hidden">
+        <div class="form-group d-flex overflow-hidden position-relative">
           <div class="col-12 px-2">
             <input
               class="form-controls py-3 col-12"
@@ -56,6 +60,7 @@
               oninput="validity.valid||(value='');"
             />
           </div>
+          <div class="position-absolute text-secondary text-center" style="right:7%">m</div>
         </div>
         <div :class="['form-group overflow-hidden', form.type_id === 1 ? 'd-flex' : 'd-none']">
           <div class="col-12 px-2">
@@ -68,6 +73,7 @@
               oninput="validity.valid||(value='');"
             />
           </div>
+          <div class="position-absolute text-secondary text-center" style="right:7%">&#8451;</div>
         </div>
         <div class="form-group d-flex">
           <div class="col-6 px-2">
@@ -302,6 +308,16 @@ export default {
   }
 
   form {
+    .position-absolute {
+      top: 27%;
+      right: 8%;
+      width: 20px;
+      height: 20px;
+      &img {
+        width: 100%;
+        height: 100%;
+      }
+    }
     .form-group {
       input {
         outline: none !important;
@@ -363,9 +379,9 @@ export default {
     }
   }
 
-      @media (max-width: 576px) {
+  @media (max-width: 576px) {
     .modal-dialog {
-     margin: 80px 10px 0 10px !important; 
+      margin: 80px 10px 0 10px !important;
     }
   }
 }
