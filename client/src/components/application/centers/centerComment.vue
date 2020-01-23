@@ -4,7 +4,7 @@
       <div class="card col-md-5" v-for="(center , i ) in data.reviews" :key="i">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img :src="center.user.image" class="card-img" alt="..." />
+            <img :src="center.user.image" alt="..." />
           </div>
           <div class="col-md-8">
             <div class="card-body">

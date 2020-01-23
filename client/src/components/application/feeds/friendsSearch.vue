@@ -12,7 +12,7 @@
         <div class="mb-4">
           <div class="d-flex align-items-center mb-2">
             <img
-              class="border rounded-circle mr-3"
+              class="rounded-circle mr-3"
               src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
               alt="friend profile picture"
             />

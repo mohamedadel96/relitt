@@ -21,7 +21,7 @@
               <div class="post-info px-3 mt-3 d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center py-2">
                   <img
-                    class="border rounded-circle mr-3"
+                    class="rounded-circle mr-3"
                     :src="feed.user.image"
                     alt="friend profile picture"
                   />

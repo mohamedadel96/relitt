@@ -6,7 +6,7 @@
         :class="['post-info px-3 justify-content-between align-items-center' , startPosting ? 'd-flex' : 'd-none']"
       >
         <div class="d-flex align-items-center py-2">
-          <img class="border rounded-circle mr-3" :src="profile.image" alt="friend profile picture" />
+          <img class="rounded-circle mr-3" :src="profile.image" alt="friend profile picture" />
           <div>
             <p class="mb-0 font-weight-bold font-16">{{profile.firstname}} {{profile.lastname}}</p>
           </div>

@@ -29,7 +29,7 @@
       </notifications>
       <profile-settings v-if="profile">
         <div
-          class="d-flex justify-content-center align-items-center border rounded-circle overflow-hidden pointer mx-1"
+          class="d-flex justify-content-center align-items-center rounded-circle overflow-hidden pointer mx-1"
         >
           <img class="avatar" v-b-modal.profileSettings :src="profile.image" alt="avatar" />
         </div>

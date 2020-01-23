@@ -10,7 +10,7 @@
     <div class="d-flex justify-content-between flex-wrap py-2">
       <div class="block col-md-4 col-12 py-3 text-center">
         <img
-          class="border rounded-circle"
+          class="rounded-circle"
           src="../../assets/img/icon/Group 686.png"
           alt="human"
         />
@@ -19,7 +19,7 @@
       </div>
       <div class="block col-md-4 col-12 py-3 text-center">
         <img
-          class="border rounded-circle"
+          class="rounded-circle"
           src="../../assets/img/icon/Group 689.png"
           alt="human"
         />
@@ -28,7 +28,7 @@
       </div>
       <div class="block col-md-4 col-12 py-3 text-center">
         <img
-          class="border rounded-circle"
+          class="rounded-circle"
           src="../../assets/img/icon/round-explore-24px@2x.png"
           alt="human"
         />
