@@ -126,10 +126,10 @@
                 </div>
               </div>
 
-              <b-collapse :id="'comment-' + i">
+              <b-collapse :id="'comment-' + i" accordion="comments">
                 <b-card class="border-0">
-                  <add-comment :postId="feed.id" />
                   <comments :comments="feed.comments" />
+                  <add-comment :postId="feed.id" :i="i"/>
                 </b-card>
               </b-collapse>
             </div>

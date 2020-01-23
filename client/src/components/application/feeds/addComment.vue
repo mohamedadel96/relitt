@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  props: ["postId"],
+  props: ["postId","i"],
   data() {
     return {
       form: {
@@ -33,6 +33,7 @@ export default {
           })
           .then(res => {
             this.form.body = null;
+            this.$root.$emit('bv::toggle::collapse', `comment-${this.$props.i}`)
             this.$toasted.success(res);
           });
       } catch (error) {
