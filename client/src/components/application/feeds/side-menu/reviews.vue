@@ -8,8 +8,8 @@
         <star-rating
           class="mb-1"
           active-color="#FFB900"
+          :increment="0.1"
           :star-size="16"
-          :show-rating="false"
           read-only
           :rating="review.general_rate"
         />

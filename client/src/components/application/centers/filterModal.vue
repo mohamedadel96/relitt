@@ -19,7 +19,7 @@
               <star-rating
                 :active-color="filterRate.includes((6-i)) ? '#3E82F7' : '#FFB900'"
                 :star-size="20"
-                :show-rating="false"
+                :increment="0.1"
                 read-only
                 :rating="(6-i)"
               />

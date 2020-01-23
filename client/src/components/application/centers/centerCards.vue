@@ -20,7 +20,7 @@
               <div class="d-flex justify-content-end my-lg-0 my-3">
                 <star-rating
                   class="mb-1"
-                  :increment="0.01"
+                  :increment="0.1"
                   active-color="#FFB900"
                   :star-size="16"
                   read-only
