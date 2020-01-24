@@ -28,30 +28,7 @@
               <img class="icon" :src="service.image" :alt="service.name" />
               <p class="px-md-5 px-2 mb-0">{{service.name}}</p>
             </div>
-            <div
-              class="col-6 d-flex align-items-center px-0 my-2"
-              v-for="(service , i) in center.services"
-              :key="i"
-            >
-              <img class="icon" :src="service.image" :alt="service.name" />
-              <p class="px-md-5 px-2 mb-0">{{service.name}}</p>
-            </div>
-            <div
-              class="col-6 d-flex align-items-center px-0 my-2"
-              v-for="(service , i) in center.services"
-              :key="i"
-            >
-              <img class="icon" :src="service.image" :alt="service.name" />
-              <p class="px-md-5 px-2 mb-0">{{service.name}}</p>
-            </div>
-            <div
-              class="col-6 d-flex align-items-center px-0 my-2"
-              v-for="(service , i) in center.services"
-              :key="i"
-            >
-              <img class="icon" :src="service.image" :alt="service.name" />
-              <p class="px-md-5 px-2 mb-0">{{service.name}}</p>
-            </div>
+
           </div>
         </div>
       </div>
