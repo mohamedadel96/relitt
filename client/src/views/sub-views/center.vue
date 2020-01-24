@@ -1,12 +1,15 @@
 <template>
   <div id="center" v-if="center">
-    <div class="backgroundimg">
+    <!-- <div class="backgroundimg">
       <img src="../../assets/img/Layer1.png" />
+    </div>-->
+    <div class="container-fluid col-lg-10 col-12 px-0">
+      <center-carsoule :images="center.images" />
     </div>
     <div class="container-fluid col-lg-10 col-12 py-3 px-md-5 px-3">
       <centerInfo :center="center"></centerInfo>
       <review></review>
-      <centerComment ></centerComment>
+      <centerComment></centerComment>
       <location></location>
     </div>
   </div>
@@ -17,9 +20,11 @@ import review from "../../components/application/centers/review";
 import location from "../../components/application/centers/location";
 import centerComment from "../../components/application/centers/centerComment";
 import centerInfo from "../../components/application/centers/centerInfo";
+import centerCarsoule from "../../components/application/centers/centerCarsoule";
 
 export default {
   components: {
+    centerCarsoule,
     review,
     location,
     centerComment,
@@ -63,7 +68,7 @@ export default {
     p {
       margin: 10px 20px;
     }
-    .service img{
+    .service img {
       width: 50px;
       height: 50px;
     }
