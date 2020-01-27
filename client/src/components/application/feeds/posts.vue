@@ -78,7 +78,7 @@
               </div>
 
               <template v-if="!feed.activity && feed.images.length">
-                <post-media :images="feed.images" />
+                <post-media :images="feed.images" :videos="feed.videos" />
               </template>
 
               <template v-if="feed.activity">
