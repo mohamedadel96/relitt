@@ -23,6 +23,21 @@
       </div>
       <div class="post-media" v-show="startPosting">
         <viewer :images="form.images">
+          <div  v-for="(url,i) in form.videos" :key="i">
+            <video
+              controlslist="nodownload"
+              disablepictureinpicture
+              class="m-3 rounded pointer border"
+              controls
+            >
+              <source :src="url" type="video/mp4" />
+              <source :src="url" type="video/ogg" />Your browser does not support the video tag.
+            </video>
+            <div
+              class="dlt-img rounded-circle text-white font-weight-bold pointer"
+              @click="form.videos.splice(i, 1)"
+            >x</div>
+          </div>
           <div class="d-inline-block position-relative" v-for="(url,i) in form.images" :key="i">
             <img class="m-3 rounded pointer border" :src="url" alt />
             <div
@@ -70,7 +85,7 @@
             @click="startPosting = !startPosting"
             class="btn btn-danger mx-3"
           >Cancle</button>
-          
+
           <button
             v-show="!editState"
             :disabled="disablePost"
@@ -152,7 +167,9 @@ export default {
 
         this.$store.dispatch("UPLOADFILES", formData).then(res => {
           this.$toasted.success("uploaded successfully");
-          ref == 'pic' ? res.map(file => this.form.images.push(file.filePath)) : res.map(file => this.form.videos.push(file.filePath));
+          ref == "pic"
+            ? res.map(file => this.form.images.push(file.filePath))
+            : res.map(file => this.form.videos.push(file.filePath));
 
           this.disablePost = false;
         });
@@ -196,6 +213,11 @@ export default {
     overflow: hidden;
 
     img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+    video {
       width: 200px;
       height: 200px;
       object-fit: cover;
