@@ -1,6 +1,6 @@
 <template>
   <div class="post-media mb-3">
-    <viewer :media="media">
+    <viewer>
       <div>
         <img
           class="st-pic col-12 px-0 pointer"
@@ -9,6 +9,8 @@
           alt="post picture"
         />
         <video
+        controlslist="nodownload"
+        disablepictureinpicture
           v-if="media.length && media[0].type == 'video'"
           class="st-pic col-12 px-0 pointer"
           controls
@@ -29,6 +31,8 @@
           />
 
           <video
+          controlslist="nodownload"
+          disablepictureinpicture
             v-if="media[1] && media[1].type == 'video'"
             class="st-pic col-12 px-0 pointer"
             controls
@@ -46,6 +50,8 @@
             alt="post picture"
           />
           <video
+          controlslist="nodownload"
+          disablepictureinpicture
             v-if="media[2] && media[2].type == 'video'"
             class="st-pic col-12 px-0 pointer"
             controls
@@ -73,7 +79,7 @@
 
       <img
         v-show="false"
-        v-for="(src, i) in media.slice(4, images.length-1)"
+        v-for="(src, i) in media.slice(4, media.length)"
         :src="src.value.url"
         :key="i"
       />

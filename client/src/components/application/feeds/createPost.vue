@@ -70,7 +70,7 @@
             @click="startPosting = !startPosting"
             class="btn btn-danger mx-3"
           >Cancle</button>
-
+          
           <button
             v-show="!editState"
             :disabled="disablePost"
@@ -98,7 +98,8 @@ export default {
       form: {
         postId: null,
         body: null,
-        images: []
+        images: [],
+        videos: []
       },
       startPosting: false,
       editState: false,
@@ -118,6 +119,7 @@ export default {
           this.form.postId = val.id;
           this.form.body = val.body;
           this.form.images = val.images.map(img => img.url);
+          this.form.videos = val.videos.map(video => video.url);
           this.editState = true;
           this.startPosting = true;
           this.$toasted.info("you can edit post now");
@@ -133,6 +135,7 @@ export default {
         this.editState = false;
         this.form.body = null;
         this.form.images = [];
+        this.form.videos = [];
       }
     }
   },
@@ -149,7 +152,7 @@ export default {
 
         this.$store.dispatch("UPLOADFILES", formData).then(res => {
           this.$toasted.success("uploaded successfully");
-          res.map(file => this.form.images.push(file.filePath));
+          ref == 'pic' ? res.map(file => this.form.images.push(file.filePath)) : res.map(file => this.form.videos.push(file.filePath));
 
           this.disablePost = false;
         });
