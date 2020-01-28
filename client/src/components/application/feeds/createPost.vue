@@ -84,7 +84,7 @@
             :disabled="disablePost"
             @click="startPosting = !startPosting"
             class="btn btn-danger mx-3"
-          >Cancle</button>
+          >Cancel</button>
 
           <button
             v-show="!editState"

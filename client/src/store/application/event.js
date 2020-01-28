@@ -54,7 +54,7 @@ export default {
                     }
                     if (res.data.code !== 200) return reject(res.data.errors)
                     dispatch('EVENT', payload.eventId)
-                    resolve(payload.is_attending ? 'Cancled' : 'Joined')
+                    resolve(payload.is_attending ? 'Canceled' : 'Joined')
                 })
             })
         },

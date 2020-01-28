@@ -8,7 +8,7 @@
             <button
               :class="['btn btn-block', event.is_attending ? 'btn-danger' : 'btn-primary']"
               @click="toggleJoinMeeting(event.id,event.is_attending)"
-            >{{event.is_attending ? 'Cancle' : 'Join'}}</button>
+            >{{event.is_attending ? 'Cancel' : 'Join'}}</button>
           </div>
         </div>
       </div>

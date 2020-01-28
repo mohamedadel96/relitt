@@ -42,8 +42,8 @@
                   <b-badge
                     variant="light"
                     class="pointer px-3 mx-2 font-weight-light text-danger"
-                    @click="cancleEditMode(comment)"
-                  >Cancle</b-badge>
+                    @click="cancelEditMode(comment)"
+                  >Cancel</b-badge>
                   <b-badge
                     variant="light"
                     class="pointer px-3 mx-2 font-weight-light text-success"
@@ -95,7 +95,7 @@ export default {
         this.$toasted.error("error");
       }
     },
-    cancleEditMode(comment) {
+    cancelEditMode(comment) {
       this.editState = null;
       this.form.body = comment;
     }
