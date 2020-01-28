@@ -1,7 +1,11 @@
 <template>
   <section id="editPersonalInfo" v-if="user">
-    <slot></slot>
-    <b-modal id="editPersonalInfo" hide-backdrop content-class="shadow" hide-header hide-footer>
+    <p
+      class="menu-item mb-0 font-14 py-3 pointer"
+      slot
+      v-b-modal.editPersonalInfo
+    >Edit personal info</p>
+    <b-modal id="editPersonalInfo" @hide="form.image = user.imageavatar"  hide-backdrop content-class="shadow" hide-header hide-footer>
       <p class="text-center font-weight-bold font-18">Edit personal info</p>
       <form @submit.prevent>
         <div class="avatar d-flex justify-content-center mb-4">
@@ -14,7 +18,19 @@
             @change="uploadFiles('avatar')"
             accept="image/*"
           />
-          <img class="pointer" @click="$refs.avatar.click()" :src="user.image" alt="personal image" />
+          <div class="d-inline-block position-relative">
+            <img
+              class="pointer"
+              @click="$refs.avatar.click()"
+              :src="form.image ? form.image : require('../../../../assets/img/default-avatar.jpg')"
+              alt="profile image"
+            />
+            <div
+              v-if="form.image"
+              class="dlt-img rounded-circle text-white font-weight-bold pointer"
+              @click="removeAvatar"
+            >x</div>
+          </div>
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
@@ -186,6 +202,9 @@ export default {
       } catch (error) {
         this.$toasted.error("error");
       }
+    },
+    removeAvatar() {
+      this.form.image = null;
     }
   },
   mounted() {
@@ -198,6 +217,20 @@ export default {
 
 <style lang="scss">
 #editPersonalInfo {
+  .menu-item {
+    outline: none;
+  }
+  .dlt-img {
+    position: absolute;
+    top: -5px;
+    left: -7px;
+    font-size: 15px;
+    text-align: center;
+    background: #000000c2;
+    width: 25px;
+    height: 25px;
+    z-index: 2;
+  }
   form {
     .avatar {
       img {

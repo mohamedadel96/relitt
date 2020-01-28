@@ -1,7 +1,7 @@
 <template>
   <section id="notifications" v-if="notifications">
     <slot></slot>
-    <b-modal id="notifications" hide-backdrop content-class="shadow" hide-header hide-footer>
+    <b-modal id="notifications" @show="getNotification" hide-backdrop content-class="shadow" hide-header hide-footer>
       <div v-for="(notification, i) in notifications" :key="i">
         <div class="d-flex justify-content-between align-content-center border-bottom py-2 mt-2">
           <div class="d-flex align-items-top">
@@ -18,6 +18,9 @@
             </div>
             <div>
               <p class="desc font-14 text-secondary col-10 px-0">{{notification.body}}</p>
+              <p
+                class="font-12 text-secondary col-10 px-0 mb-0"
+              >{{notification.created_at | moment("from", "now")}}</p>
             </div>
           </div>
         </div>
@@ -32,8 +35,13 @@ export default {
       return this.$store.getters.notifications;
     }
   },
+  methods: {
+    getNotification() {
+      this.$store.dispatch("NOTIFICATIONS");
+    }
+  },
   created() {
-    this.$store.dispatch("NOTIFICATIONS");
+    this.getNotification();
   }
 };
 </script>
@@ -49,7 +57,7 @@ export default {
   }
 
   .desc {
-    height: 36px;
+    height: 44px;
     overflow: hidden;
     text-overflow: ellipsis;
   }

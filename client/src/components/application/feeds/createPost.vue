@@ -6,7 +6,7 @@
         :class="['post-info px-3 justify-content-between align-items-center' , startPosting ? 'd-flex' : 'd-none']"
       >
         <div class="d-flex align-items-center py-2">
-          <img class="rounded-circle mr-3" :src="profile.image" alt="friend profile picture" />
+          <img class="rounded-circle mr-3" :src="profile.image ? profile.image : require('../../../assets/img/default-avatar.jpg')" alt="friend profile picture" />
           <div>
             <p class="mb-0 font-weight-bold font-16">{{profile.firstname}} {{profile.lastname}}</p>
           </div>
@@ -23,6 +23,21 @@
       </div>
       <div class="post-media" v-show="startPosting">
         <viewer :images="form.images">
+          <div  v-for="(url,i) in form.videos" :key="i">
+            <video
+              controlslist="nodownload"
+              disablepictureinpicture
+              class="m-3 rounded pointer border"
+              controls
+            >
+              <source :src="url" type="video/mp4" />
+              <source :src="url" type="video/ogg" />Your browser does not support the video tag.
+            </video>
+            <div
+              class="dlt-img rounded-circle text-white font-weight-bold pointer"
+              @click="form.videos.splice(i, 1)"
+            >x</div>
+          </div>
           <div class="d-inline-block position-relative" v-for="(url,i) in form.images" :key="i">
             <img class="m-3 rounded pointer border" :src="url" alt />
             <div
@@ -69,7 +84,7 @@
             :disabled="disablePost"
             @click="startPosting = !startPosting"
             class="btn btn-danger mx-3"
-          >Cancle</button>
+          >Cancel</button>
 
           <button
             v-show="!editState"
@@ -98,7 +113,8 @@ export default {
       form: {
         postId: null,
         body: null,
-        images: []
+        images: [],
+        videos: []
       },
       startPosting: false,
       editState: false,
@@ -118,6 +134,7 @@ export default {
           this.form.postId = val.id;
           this.form.body = val.body;
           this.form.images = val.images.map(img => img.url);
+          this.form.videos = val.videos.map(video => video.url);
           this.editState = true;
           this.startPosting = true;
           this.$toasted.info("you can edit post now");
@@ -133,6 +150,7 @@ export default {
         this.editState = false;
         this.form.body = null;
         this.form.images = [];
+        this.form.videos = [];
       }
     }
   },
@@ -149,7 +167,9 @@ export default {
 
         this.$store.dispatch("UPLOADFILES", formData).then(res => {
           this.$toasted.success("uploaded successfully");
-          res.map(file => this.form.images.push(file.filePath));
+          ref == "pic"
+            ? res.map(file => this.form.images.push(file.filePath))
+            : res.map(file => this.form.videos.push(file.filePath));
 
           this.disablePost = false;
         });
@@ -193,6 +213,11 @@ export default {
     overflow: hidden;
 
     img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+    video {
       width: 200px;
       height: 200px;
       object-fit: cover;

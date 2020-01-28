@@ -3,7 +3,7 @@
     <div class="card col-lg-6 col-12 px-0" v-for="(comment , i) in comments" :key="i">
       <div class="d-flex border-bottom m-3">
         <div>
-          <img :src="comment.user.image" alt="user image" />
+          <img :src="comment.user.image ? comment.user.image : require('../../../assets/img/default-avatar.jpg')" alt="user image" />
         </div>
         <div class="col-11 px-1">
           <div class="card-body px-2">
@@ -42,8 +42,8 @@
                   <b-badge
                     variant="light"
                     class="pointer px-3 mx-2 font-weight-light text-danger"
-                    @click="cancleEditMode(comment)"
-                  >Cancle</b-badge>
+                    @click="cancelEditMode(comment)"
+                  >Cancel</b-badge>
                   <b-badge
                     variant="light"
                     class="pointer px-3 mx-2 font-weight-light text-success"
@@ -95,7 +95,7 @@ export default {
         this.$toasted.error("error");
       }
     },
-    cancleEditMode(comment) {
+    cancelEditMode(comment) {
       this.editState = null;
       this.form.body = comment;
     }

@@ -1,42 +1,86 @@
 <template>
   <div class="post-media mb-3">
-    <viewer :images="images">
-      <img
-        class="st-pic col-12 px-0 pointer"
-        v-if="images.length"
-        :src="images[0].url"
-        alt="post picture"
-      />
-      <div class="pics d-flex" v-if="images.length - 1 > 0">
-        <div
-          :class="[images.length - 1 == 1 ? 'col-12' : '', images.length - 1 == 2 ? 'col-6' : '', images.length - 1 > 2 ? 'col-4' : '']"
+    <viewer>
+      <div>
+        <img
+          class="st-pic col-12 px-0 pointer"
+          v-if="media.length && media[0].type == 'image'"
+          :src="media[0].value.url"
+          alt="post picture"
+        />
+        <video
+        controlslist="nodownload"
+        disablepictureinpicture
+          v-if="media.length && media[0].type == 'video'"
+          class="st-pic col-12 px-0 pointer"
+          controls
         >
-          <img class="col-12 px-0 pointer" v-if="images[1]" :src="images[1].url" alt="post picture" />
+          <source :src="media[0].value.url" type="video/mp4" />
+          <source :src="media[0].value.url" type="video/ogg" />Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="pics d-flex" v-if="media.length - 1 > 0">
+        <div
+          :class="[media.length - 1 == 1 ? 'col-12' : '', media.length - 1 == 2 ? 'col-6' : '', media.length - 1 > 2 ? 'col-4' : '']"
+        >
+          <img
+            class="col-12 px-0 pointer"
+            v-if="media[1] && media[1].type == 'image'"
+            :src="media[1].value.url"
+            alt="post picture"
+          />
+
+          <video
+          controlslist="nodownload"
+          disablepictureinpicture
+            v-if="media[1] && media[1].type == 'video'"
+            class="st-pic col-12 px-0 pointer"
+            controls
+          >
+            <source :src="media[1].value.url" type="video/mp4" />
+            <source :src="media[1].value.url" type="video/ogg" />Your browser does not support the video tag.
+          </video>
         </div>
 
-        <div :class="[images.length - 2 == 1 ? 'col-6' : 'col-4']">
-          <img class="col-12 px-0 pointer" v-if="images[2]" :src="images[2].url" alt="post picture" />
+        <div :class="[media.length - 2 == 1 ? 'col-6' : 'col-4']">
+          <img
+            class="col-12 px-0 pointer"
+            v-if="media[2] && media[2].type == 'image'"
+            :src="media[2].value.url"
+            alt="post picture"
+          />
+          <video
+          controlslist="nodownload"
+          disablepictureinpicture
+            v-if="media[2] && media[2].type == 'video'"
+            class="st-pic col-12 px-0 pointer"
+            controls
+          >
+            <source :src="media[2].value.url" type="video/mp4" />
+            <source :src="media[2].value.url" type="video/ogg" />Your browser does not support the video tag.
+          </video>
         </div>
+        
         <div class="col-4">
           <img
             ref="lastImg"
             class="col-12 px-0 pointer"
-            v-if="images[3]"
-            :src="images[3].url"
+            v-if="media[3]"
+            :src="media[3].value.url"
             alt="post picture"
           />
           <div
             @click="$refs.lastImg.click()"
             class="imagesNum font-24 font-weight-bold pointer"
-            v-if="images.length - 4"
-          >+ {{images.length - 4}}</div>
+            v-if="media.length - 4"
+          >+ {{media.length - 4}}</div>
         </div>
       </div>
 
       <img
         v-show="false"
-        v-for="(src, i) in images.slice(4, images.length-1)"
-        :src="src.url"
+        v-for="(src, i) in media.slice(4, media.length)"
+        :src="src.value.url"
         :key="i"
       />
     </viewer>
@@ -45,7 +89,44 @@
 
 <script>
 export default {
-  props: ["images"]
+  props: ["images", "videos"],
+  data() {
+    return {
+      media: []
+    };
+  },
+  watch: {
+    images: {
+      immediate: true,
+      handler(val) {
+        this.fillMedia();
+      }
+    },
+    videos: {
+      immediate: true,
+      handler(val) {
+        this.fillMedia();
+      }
+    }
+  },
+  methods: {
+    fillMedia() {
+      this.media = [];
+      this.$props.videos.map(video => {
+        this.media.push({
+          type: "video",
+          value: video
+        });
+      });
+      this.$props.images.map(image => {
+        this.media.push({
+          type: "image",
+          value: image
+        });
+      });
+
+    }
+  }
 };
 </script>
 

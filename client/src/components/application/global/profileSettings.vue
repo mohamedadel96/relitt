@@ -1,6 +1,15 @@
 <template>
   <section id="profileSettings">
-    <slot></slot>
+    <div
+      class="d-flex justify-content-center align-items-center rounded-circle overflow-hidden pointer mx-1"
+    >
+      <img
+        class="avatar"
+        v-b-modal.profileSettings
+        :src="image ? image : require('../../../assets/img/default-avatar.jpg')"
+        alt="avatar"
+      />
+    </div>
     <b-modal id="profileSettings" hide-backdrop content-class="shadow" hide-header hide-footer>
       <div @click="$bvModal.hide('profileSettings')">
         <p
@@ -28,6 +37,7 @@ import { Bus } from "../../../main";
 import changePassword from "./changePassword";
 import manageNotifications from "./manageNotifications";
 export default {
+  props: ["image"],
   components: {
     changePassword,
     manageNotifications
@@ -45,6 +55,11 @@ export default {
 
 <style lang="scss">
 #profileSettings {
+  .avatar {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  }
   .modal-dialog {
     margin: 80px 10px 0 auto;
     position: relative;

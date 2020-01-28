@@ -125,19 +125,19 @@
           </div>
         </div>
         <div class="my-4">
-          <div class="d-flex flex-wrap">
-            <div
-              class="position-relative m-2 border rounded"
-              v-for="(img, i) in form.images"
-              :key="i"
-            >
+            <div class="d-flex flex-wrap">
               <div
-                class="activityImg rounded"
-                :style="{ 'background-image': 'url(' + img + ')' }"
-                @click="form.images.splice(i, 1)"
-              ></div>
+                class="d-inline-block position-relative"
+                v-for="(img, i) in form.images"
+                :key="i"
+              >
+                <img class="activity-img m-2 rounded pointer border" :src="img" alt />
+                <div
+                  class="dlt-img rounded-circle text-white font-weight-bold pointer"
+                  @click="form.images.splice(i, 1)"
+                >x</div>
+              </div>
             </div>
-          </div>
 
           <div class="mt-3 mx-2">
             <input class="d-none" type="file" multiple ref="photos" @change="uploadFiles" />
@@ -361,6 +361,25 @@ export default {
       }
     }
   }
+
+  .activity-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .dlt-img {
+    position: absolute;
+    top: 21px;
+    left: 24px;
+    font-size: 22px;
+    text-align: center;
+    background: #000000c2;
+    width: 35px;
+    height: 35px;
+    z-index: 2;
+  }
+
   @media (min-width: 576px) {
     .modal-dialog {
       max-width: 365px;
