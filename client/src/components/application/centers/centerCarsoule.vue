@@ -1,13 +1,11 @@
 <template>
-  <section id="centerCarsoule">
+  <section id="centerCarsoule" v-if="images.length">
     <b-carousel
       id="carousel-no-animation"
       style="text-shadow: 0px 0px 2px #000"
       :controls="images.length > 1"
       fade
       background="#ababab"
-      img-width="950"
-      img-height="300"
     >
       <b-carousel-slide v-for="(img, i) in images" :key="i" :img-src="img.url"></b-carousel-slide>
     </b-carousel>
