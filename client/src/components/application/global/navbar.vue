@@ -34,6 +34,7 @@
           <img class="avatar" v-b-modal.profileSettings :src="profile.image" alt="avatar" />
         </div>
       </profile-settings>
+
       <activity>
         <img
           class="mx-2 pointer"
@@ -42,6 +43,7 @@
           alt
         />
       </activity>
+
       <nav-items class="d-md-none d-block" />
     </div>
   </nav>
