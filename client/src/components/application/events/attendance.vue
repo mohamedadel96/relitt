@@ -18,7 +18,7 @@
                 variant="secondary"
                 placement="right"
               >{{ attendee.firstname + ' ' + attendee.lastname}}</b-tooltip>
-              <img :id="'attendee_' + i" class="mb-2" :src="attendee.image" alt="attendee" />
+              <img :id="'attendee_' + i" class="mb-2" :src="attendee.image ? attendee.image : require('../../../assets/img/default-avatar.jpg')" alt="attendee" />
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@
                 variant="secondary"
                 placement="right"
               >{{ event.organizer.firstname + ' ' + event.organizer.lastname }}</b-tooltip>
-              <img id="organizer" class="mb-2" :src="event.organizer.image" alt="attendee" />
+              <img id="organizer" class="mb-2" :src="event.organizer.image ? event.organizer.image : require('../../../assets/img/default-avatar.jpg')" alt="attendee" />
             </div>
           </div>
         </div>

@@ -27,13 +27,7 @@
       <notifications>
         <img class="pointer" v-b-modal.notifications src="../../../assets/icons/ring.svg" alt />
       </notifications>
-      <profile-settings v-if="profile">
-        <div
-          class="d-flex justify-content-center align-items-center rounded-circle overflow-hidden pointer mx-1"
-        >
-          <img class="avatar" v-b-modal.profileSettings :src="profile.image" alt="avatar" />
-        </div>
-      </profile-settings>
+      <profile-settings v-if="profile" :image="profile.image" />
 
       <activity>
         <img

@@ -22,7 +22,7 @@
                 <div class="d-flex align-items-center py-2">
                   <img
                     class="rounded-circle mr-3"
-                    :src="feed.user.image"
+                    :src="feed.user.image ? feed.user.image : require('../../../assets/img/default-avatar.jpg')"
                     alt="friend profile picture"
                   />
                   <div>

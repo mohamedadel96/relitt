@@ -1,12 +1,6 @@
 <template>
   <section id="sideMenu" class="mt-3">
-    <edit-personal-info>
-      <p
-        class="menu-item mb-0 font-14 py-3 pointer"
-        slot
-        v-b-modal.editPersonalInfo
-      >Edit personal info</p>
-    </edit-personal-info>
+    <edit-personal-info />
     <reviews>
       <p class="menu-item border-top py-3 mb-0 font-14 pointer" slot v-b-modal.reviews>My reviews</p>
     </reviews>
@@ -35,6 +29,9 @@ export default {
     },
     myActivity() {
       return this.$store.getters.myActivity;
+    },
+    user() {
+      return this.$store.getters.profile;
     }
   },
   methods: {

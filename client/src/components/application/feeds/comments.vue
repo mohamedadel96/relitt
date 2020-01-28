@@ -3,7 +3,7 @@
     <div class="card" v-for="(comment , i) in comments" :key="i">
       <div class="d-flex">
         <div>
-          <img :src="comment.user.image" class="card-img" alt="user image" />
+          <img :src="comment.user.image ? comment.user.image : require('../../../assets/img/default-avatar.jpg')" class="card-img" alt="user image" />
         </div>
         <div class="col-11 px-1">
           <div class="card-body px-2">
