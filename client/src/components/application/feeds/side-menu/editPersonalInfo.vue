@@ -5,7 +5,7 @@
       slot
       v-b-modal.editPersonalInfo
     >Edit personal info</p>
-    <b-modal id="editPersonalInfo" @hide="form.image = user.imageavatar"  hide-backdrop content-class="shadow" hide-header hide-footer>
+    <b-modal id="editPersonalInfo" @hide="form.image = user.image"  hide-backdrop content-class="shadow" hide-header hide-footer>
       <p class="text-center font-weight-bold font-18">Edit personal info</p>
       <form @submit.prevent>
         <div class="avatar d-flex justify-content-center mb-4">
