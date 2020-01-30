@@ -1,5 +1,18 @@
 <template>
   <section id="eventCards">
+    <b-modal
+      id="deleteEvent"
+      hide-header
+      ok-title="delete"
+      ok-variant="danger"
+      footer-class="border-0 pt-0"
+      @ok="deleteEvent"
+    >
+      <p>
+        Are you sure you want to continue in
+        <span class="text-danger">Deleting</span> Event?
+      </p>
+    </b-modal>
     <div class="cards" v-if="events">
       <div
         class="card border-0 rounded d-flex flex-wrap flex-row mb-3"
@@ -18,17 +31,39 @@
             <div class="col-10">
               <p class="mb-0 font-weight-bold font-16">{{event.title}}</p>
               <p class="mb-2 text-secondary font-12">Bedforeshine</p>
-              <p
-                class="description mb-0 text-secondary font-12"
-              >{{event.description}}</p>
+              <p class="description mb-0 text-secondary font-12">{{event.description}}</p>
             </div>
-            <div class="mr-3 text-center">
+            <div class="text-center d-flex justify-content-between">
               <div>
                 <p class="font-18 font-weight-bold num">{{event.start_date | moment('D')}}</p>
                 <p
                   class="font-14 font-weight-bold mb-0 text-uppercase"
                 >{{event.start_date | moment('MMM')}}</p>
                 <p class="font-10 text-secondary">{{event.start_date | moment('h a')}}</p>
+              </div>
+              <div class="mr-2 ml-1" style="min-width:25px">
+                <b-dropdown
+                  v-if="event.can_edit"
+                  size="lg"
+                  variant="link"
+                  right
+                  offset="-20"
+                  toggle-class="text-decoration-none"
+                  no-caret
+                >
+                  <template v-slot:button-content>
+                    <span>
+                      <img
+                        class="pointer mb-0"
+                        src="../../../assets/icons/3dots.svg"
+                        style="width:24px ; height:24px"
+                        alt="options"
+                      />
+                    </span>
+                  </template>
+                  <b-dropdown-item @click="editState = i">Edit Event</b-dropdown-item>
+                  <b-dropdown-item @click="openDeleteModal(event.id)">Delete Event</b-dropdown-item>
+                </b-dropdown>
               </div>
             </div>
           </div>
@@ -44,14 +79,16 @@
         </div>
       </div>
     </div>
-    <infinite-loading @infinite="moreFeeds"></infinite-loading>
+    <infinite-loading @infinite="moreEvents"></infinite-loading>
   </section>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      eventId: null
+    };
   },
   computed: {
     events() {
@@ -59,7 +96,7 @@ export default {
     }
   },
   methods: {
-    moreFeeds(state) {
+    moreEvents(state) {
       this.$store.dispatch("EVENTS").then(res => {
         if (res !== "end") {
           state.loaded();
@@ -67,6 +104,19 @@ export default {
           state.complete();
         }
       });
+    },
+    openDeleteModal(eventId) {
+      this.eventId = eventId;
+      this.$bvModal.show("deleteEvent");
+    },
+    deleteEvent() {
+      try {
+        this.$store.dispatch("DELETEEVENT", this.eventId).then(res => {
+          this.$toasted.info(res);
+        });
+      } catch (error) {
+        this.$toasted.error("error, please try again later");
+      }
     }
   }
 };
@@ -91,7 +141,7 @@ export default {
       }
 
       .desc {
-        .description{
+        .description {
           height: 54px;
           overflow: hidden;
         }

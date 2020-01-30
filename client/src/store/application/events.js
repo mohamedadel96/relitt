@@ -16,7 +16,10 @@ export default {
     saveEvents(state, data) {
       state.filter.page += 1
       state.events.push(...data)
-    }
+    },
+    deleteEvent(state, eventId) {
+      state.events.map((event, i) => event.id === eventId ? state.events.splice(i, 1) : event)
+    },
   },
   actions: {
     EVENTS({ commit , state } ) {
@@ -31,6 +34,18 @@ export default {
           resolve('done')
         })
       })
-    }
+    },
+    DELETEEVENT({ commit }, eventId) {
+      return new Promise((resolve, reject) => {
+        appServices.deleteEvent(eventId).then(res => {
+          if (res.data.status === 401) {
+            // we will handle logout option // call logout function
+          }
+          if (res.data.code !== 200) return reject(res.data.errors)
+          commit('deleteEvent', eventId)
+          resolve("deleted")
+        })
+      })
+    },
   }
 }

@@ -83,4 +83,7 @@ export default {
    toggleJoinMeeting(payload) {
       return Api().post(`events/${payload.is_attending ? 'unrsvp' : 'rsvp'}/${payload.eventId}`)
    },
+   deleteEvent(eventId) {
+      return Api().post(`events/delete/${eventId}`)
+   }
 }
