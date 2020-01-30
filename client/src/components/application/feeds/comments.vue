@@ -135,6 +135,7 @@ export default {
       border: none;
       outline: none;
       background: none;
+      min-height: 50px;
       &.editable {
         border: 1px solid #ddd;
         border-radius: 7px;
