@@ -18,6 +18,7 @@ import './plugins/vViewer'
 import './plugins/vueReadMore'
 import './plugins/vueToggleButton'
 import './plugins/locationPicker'
+import './plugins/loadingOverlay'
 import "aos/dist/aos.css";
 
 Vue.config.productionTip = false;

@@ -1,12 +1,16 @@
 <template>
-  <section id="create-post" class="rounded py-1">
+  <section id="create-post" ref="createPost" class="rounded py-1">
     <div class="post-body">
       <div
         v-if="profile"
         :class="['post-info px-3 justify-content-between align-items-center' , startPosting ? 'd-flex' : 'd-none']"
       >
         <div class="d-flex align-items-center py-2">
-          <img class="rounded-circle mr-3" :src="profile.image ? profile.image : require('../../../assets/img/default-avatar.jpg')" alt="friend profile picture" />
+          <img
+            class="rounded-circle mr-3"
+            :src="profile.image ? profile.image : require('../../../assets/img/default-avatar.jpg')"
+            alt="friend profile picture"
+          />
           <div>
             <p class="mb-0 font-weight-bold font-16">{{profile.firstname}} {{profile.lastname}}</p>
           </div>
@@ -23,7 +27,7 @@
       </div>
       <div class="post-media" v-show="startPosting">
         <viewer :images="form.images">
-          <div  v-for="(url,i) in form.videos" :key="i">
+          <div v-for="(url,i) in form.videos" :key="i">
             <video
               controlslist="nodownload"
               disablepictureinpicture
@@ -158,6 +162,11 @@ export default {
     uploadFiles(ref) {
       try {
         this.disablePost = true;
+        let loader = this.$loading.show({
+          container: this.$refs.createPost
+        });
+        this.$toasted.info("Please wait until uploading files");
+
         let formData = new FormData();
 
         for (let i = 0; i < this.$refs[ref].files.length; i++) {
@@ -172,6 +181,8 @@ export default {
             : res.map(file => this.form.videos.push(file.filePath));
 
           this.disablePost = false;
+
+          loader.hide();
         });
       } catch (error) {
         this.$toasted.error("error while uploading files");
@@ -180,9 +191,13 @@ export default {
     post() {
       try {
         this.disablePost = true;
+        let loader = this.$loading.show({
+          container: this.$refs.createPost
+        });
         this.$store.dispatch("POST", this.form).then(res => {
           this.$toasted.success("your post uploaded successfully");
           this.startPosting = false;
+          loader.hide();
         });
       } catch (error) {
         console.log("error while uploading post");
@@ -191,9 +206,13 @@ export default {
     editPost() {
       try {
         this.disablePost = true;
+        let loader = this.$loading.show({
+          container: this.$refs.createPost
+        });
         this.$store.dispatch("EDITPOST", this.form).then(res => {
           this.$toasted.success("your post uploaded successfully");
           this.startPosting = false;
+          loader.hide();
         });
       } catch (error) {
         console.log("error while uploading post");
