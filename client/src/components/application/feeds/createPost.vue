@@ -1,5 +1,5 @@
 <template>
-  <section id="create-post" ref="createPost" class="rounded py-1">
+  <section id="createPost" ref="createPost" class="rounded py-1">
     <div class="post-body">
       <div
         v-if="profile"
@@ -185,6 +185,7 @@ export default {
           loader.hide();
         });
       } catch (error) {
+        loader.hide();
         this.$toasted.error("error while uploading files");
       }
     },
@@ -200,6 +201,7 @@ export default {
           loader.hide();
         });
       } catch (error) {
+        loader.hide();
         console.log("error while uploading post");
       }
     },
@@ -215,6 +217,7 @@ export default {
           loader.hide();
         });
       } catch (error) {
+        loader.hide();
         console.log("error while uploading post");
       }
     }
@@ -223,7 +226,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#create-post {
+#createPost {
   background: $background_white;
   box-shadow: 1px 1px 4px #ddd;
   position: relative;

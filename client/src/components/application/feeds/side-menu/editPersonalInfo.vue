@@ -1,11 +1,18 @@
 <template>
-  <section id="editPersonalInfo" v-if="user">
+  <section id="editPersonalInfo" ref="editPersonalInfo" v-if="user">
     <p
       class="menu-item mb-0 font-14 py-3 pointer"
       slot
       v-b-modal.editPersonalInfo
     >Edit personal info</p>
-    <b-modal id="editPersonalInfo" @hide="form.image = user.image"  hide-backdrop content-class="shadow" hide-header hide-footer>
+    <b-modal
+      id="editPersonalInfo"
+      @hide="form.image = user.image"
+      hide-backdrop
+      content-class="shadow"
+      hide-header
+      hide-footer
+    >
       <p class="text-center font-weight-bold font-18">Edit personal info</p>
       <form @submit.prevent>
         <div class="avatar d-flex justify-content-center mb-4">
@@ -177,6 +184,9 @@ export default {
     uploadFiles(ref) {
       try {
         this.disableEdit = true;
+        let loader = this.$loading.show();
+        this.$toasted.info("Please wait until uploading files");
+
         let formData = new FormData();
 
         for (let i = 0; i < this.$refs[ref].files.length; i++) {
@@ -189,17 +199,22 @@ export default {
           this.form.image = res[0].filePath;
 
           this.disableEdit = false;
+          loader.hide();
         });
       } catch (error) {
+        loader.hide();
         this.$toasted.error("error while uploading files");
       }
     },
     editProfile() {
       try {
+        let loader = this.$loading.show();
         this.$store.dispatch("EDITPROFILE", this.form).then(res => {
+          loader.hide();
           location.reload();
         });
       } catch (error) {
+        loader.hide();
         this.$toasted.error("error");
       }
     },
