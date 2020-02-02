@@ -27,27 +27,31 @@
       </div>
       <div class="post-media" v-show="startPosting">
         <viewer :images="form.images">
-          <div v-for="(url,i) in form.videos" :key="i">
-            <video
-              controlslist="nodownload"
-              disablepictureinpicture
-              class="m-3 rounded pointer border"
-              controls
-            >
-              <source :src="url" type="video/mp4" />
-              <source :src="url" type="video/ogg" />Your browser does not support the video tag.
-            </video>
-            <div
-              class="dlt-img rounded-circle text-white font-weight-bold pointer"
-              @click="form.videos.splice(i, 1)"
-            >x</div>
+          <div class="col-12 px-0">
+            <div class="d-inline-block position-relative" v-for="(url,i) in form.videos" :key="i">
+              <video
+                controlslist="nodownload"
+                disablepictureinpicture
+                class="m-3 rounded pointer border"
+                controls
+              >
+                <source :src="url" type="video/mp4" />
+                <source :src="url" type="video/ogg" />Your browser does not support the video tag.
+              </video>
+              <div
+                class="dlt-img rounded-circle text-white font-weight-bold pointer"
+                @click="form.videos.splice(i, 1)"
+              >x</div>
+            </div>
           </div>
-          <div class="d-inline-block position-relative" v-for="(url,i) in form.images" :key="i">
-            <img class="m-3 rounded pointer border" :src="url" alt />
-            <div
-              class="dlt-img rounded-circle text-white font-weight-bold pointer"
-              @click="form.images.splice(i, 1)"
-            >x</div>
+          <div class="col-12 px-0">
+            <div class="d-inline-block position-relative" v-for="(url,i) in form.images" :key="i">
+              <img class="m-3 rounded pointer border" :src="url" alt />
+              <div
+                class="dlt-img rounded-circle text-white font-weight-bold pointer"
+                @click="form.images.splice(i, 1)"
+              >x</div>
+            </div>
           </div>
         </viewer>
       </div>

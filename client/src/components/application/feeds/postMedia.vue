@@ -1,22 +1,22 @@
 <template>
-  <div class="post-media mb-3" v-if="media.length">
+  <div class="post-media mb-3">
     <viewer>
       <div>
         <img
           class="st-pic col-12 px-0 pointer"
-          v-if="media[0].type == 'image'"
+          v-if="media.length && media[0].type == 'image'"
           :src="media[0].value.url"
           alt="post picture"
         />
         <video
           controlslist="nodownload"
           disablepictureinpicture
-          v-if="media[0].type == 'video'"
+          v-if="media.length &&  media[0].type == 'video'"
           class="st-pic col-12 px-0 pointer"
           controls
         >
-          <source :src="media[0].value.url" type="video/mp4" />
-          <source :src="media[0].value.url" type="video/ogg" />Your browser does not support the video tag.
+          <source :src="media.length &&  media[0].value.url" type="video/mp4" />
+          <source :src="media.length &&  media[0].value.url" type="video/ogg" />Your browser does not support the video tag.
         </video>
       </div>
       <div class="pics d-flex" v-if="media.length - 1 > 0">
