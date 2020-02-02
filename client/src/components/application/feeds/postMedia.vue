@@ -1,17 +1,17 @@
 <template>
-  <div class="post-media mb-3">
+  <div class="post-media mb-3" v-if="media.length">
     <viewer>
       <div>
         <img
           class="st-pic col-12 px-0 pointer"
-          v-if="media.length && media[0].type == 'image'"
+          v-if="media[0].type == 'image'"
           :src="media[0].value.url"
           alt="post picture"
         />
         <video
-        controlslist="nodownload"
-        disablepictureinpicture
-          v-if="media.length && media[0].type == 'video'"
+          controlslist="nodownload"
+          disablepictureinpicture
+          v-if="media[0].type == 'video'"
           class="st-pic col-12 px-0 pointer"
           controls
         >
@@ -31,8 +31,8 @@
           />
 
           <video
-          controlslist="nodownload"
-          disablepictureinpicture
+            controlslist="nodownload"
+            disablepictureinpicture
             v-if="media[1] && media[1].type == 'video'"
             class="st-pic col-12 px-0 pointer"
             controls
@@ -50,8 +50,8 @@
             alt="post picture"
           />
           <video
-          controlslist="nodownload"
-          disablepictureinpicture
+            controlslist="nodownload"
+            disablepictureinpicture
             v-if="media[2] && media[2].type == 'video'"
             class="st-pic col-12 px-0 pointer"
             controls
@@ -60,7 +60,7 @@
             <source :src="media[2].value.url" type="video/ogg" />Your browser does not support the video tag.
           </video>
         </div>
-        
+
         <div class="col-4">
           <img
             ref="lastImg"
@@ -124,7 +124,6 @@ export default {
           value: image
         });
       });
-
     }
   }
 };
@@ -133,7 +132,7 @@ export default {
 <style lang="scss" scoped>
 .post-media {
   .st-pic {
-    height: 230px;
+    height: 240px;
     object-fit: cover;
   }
 
@@ -142,7 +141,7 @@ export default {
     overflow: hidden;
 
     div {
-      height: 130px;
+      height: 240px;
       padding: 0 2px 0 0;
       overflow: hidden;
 

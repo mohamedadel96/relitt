@@ -80,7 +80,7 @@ export default {
 <style lang="scss" scoped>
 .post-media {
   .st-pic {
-    height: 230px;
+    height: 240px;
     .data-container {
       height: 100%;
       .time,
@@ -110,7 +110,7 @@ export default {
     overflow: hidden;
 
     div {
-      height: 130px;
+      height: 240px;
       padding: 0 2px 0 0;
       overflow: hidden;
 

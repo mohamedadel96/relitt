@@ -77,7 +77,7 @@
                 ></read-more>
               </div>
 
-              <template v-if="!feed.activity && feed.images.length">
+              <template v-if="!feed.activity">
                 <post-media :images="feed.images" :videos="feed.videos" />
               </template>
 
@@ -104,11 +104,7 @@
               <div class="d-flex col-12 px-0 text-center">
                 <div class="col-6 py-2 px-0 post-options font-16 font-weight-bold">
                   <div class="pointer" @click.once="toggleLike(feed.id, feed.liked)" :key="likeBtn">
-                    <img
-                      v-show="feed.liked"
-                      src="../../../assets/icons/like.svg"
-                      class="mr-1 mb-1"
-                    />
+                    <img v-show="feed.liked" src="../../../assets/icons/like.svg" class="mr-1 mb-1" />
                     <img
                       v-show="!feed.liked"
                       src="../../../assets/icons/unlike.svg"
@@ -129,7 +125,7 @@
               <b-collapse :id="'comment-' + i" accordion="comments">
                 <b-card class="border-0">
                   <comments :comments="feed.comments" />
-                  <add-comment :postId="feed.id" :i="i"/>
+                  <add-comment :postId="feed.id" :i="i" />
                 </b-card>
               </b-collapse>
             </div>
