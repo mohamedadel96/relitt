@@ -144,16 +144,18 @@ export default {
       }
     },
     createEvent() {
-      try {
-        let loader = this.$loading.show();
-        this.$store.dispatch("CREATEEVENT", this.form).then(res => {
+      let loader = this.$loading.show();
+      this.$store
+        .dispatch("CREATEEVENT", this.form)
+        .then(res => {
           this.$toasted.success(res);
+        })
+        .catch(message => {
+          this.$toasted.error(message);
+        })
+        .finally(() => {
           loader.hide();
         });
-      } catch (error) {
-        console.log(error);
-        loader.hide();
-      }
     },
     editEvent() {
       try {

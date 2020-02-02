@@ -41,7 +41,7 @@ export default {
     CREATEEVENT({ commit }, form) {
       return new Promise((resolve, reject) => {
         appServices.createEvent(form).then(res => {
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
           commit('pushEvent', res.data.data)
           resolve(res.message)
         })
