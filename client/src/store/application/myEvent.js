@@ -14,14 +14,14 @@ export default {
       state.myevent = data
     }
   },
-  actions:{
-    MYEVENT( {commit} ) {
+  actions: {
+    MYEVENT({ commit }) {
       return new Promise((resolve, reject) => {
         appServices.myEvent().then(res => {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
           commit('saveMyEvent', res.data.data)
           resolve('done')
         })

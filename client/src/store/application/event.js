@@ -28,7 +28,7 @@ export default {
                     if (res.data.status === 401) {
                         // we will handle logout option // call logout function
                     }
-                    if (res.data.code !== 200) return reject(res.data.errors)
+                    if (res.data.code !== 200) return reject(res.data.message)
                     commit('saveEvent', res.data.data)
                     resolve('done')
                 })
@@ -40,7 +40,7 @@ export default {
                     if (res.data.status === 401) {
                         // we will handle logout option // call logout function
                     }
-                    if (res.data.code !== 200) return reject(res.data.errors)
+                    if (res.data.code !== 200) return reject(res.data.message)
                     commit('saveEventComment', res.data.data)
                     resolve('commented')
                 })
@@ -52,7 +52,7 @@ export default {
                     if (res.data.status === 401) {
                         // we will handle logout option // call logout function
                     }
-                    if (res.data.code !== 200) return reject(res.data.errors)
+                    if (res.data.code !== 200) return reject(res.data.message)
                     dispatch('EVENT', payload.eventId)
                     resolve(payload.is_attending ? 'Canceled' : 'Joined')
                 })

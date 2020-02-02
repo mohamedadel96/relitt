@@ -53,7 +53,7 @@ export default {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
           if (!res.data.data.length) {
             return resolve('end')
           }
@@ -68,7 +68,7 @@ export default {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
           commit('pushPost', res.data.data)
           resolve('done')
         })
@@ -80,7 +80,7 @@ export default {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
           commit('DeletePost', res.data.data.id)
           commit('pushPost', res.data.data)
           resolve('Edited')
@@ -93,7 +93,7 @@ export default {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
           commit('DeletePost', postId)
           resolve("deleted")
         })
@@ -105,7 +105,7 @@ export default {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
           commit('saveToggleLike', form)
           resolve(form.liked)
         })

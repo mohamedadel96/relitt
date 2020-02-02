@@ -21,7 +21,7 @@ export default {
                     if (res.data.status === 401) {
                         // we will handle logout option // call logout function
                     }
-                    if (res.data.code !== 200) return reject(res.data.errors)
+                    if (res.data.code !== 200) return reject(res.data.message)
                     commit('saveCenter', res.data.data)
                     resolve('done')
                 })

@@ -10,7 +10,7 @@ export default {
           ...rootState.code,
           ...rootState.resetPassword
         }).then(res => {
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
           resolve(res.message)
         })
 

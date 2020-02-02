@@ -28,7 +28,7 @@ export default {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
           commit('saveProfile', res.data.data)
           resolve('done')
         })
@@ -40,13 +40,13 @@ export default {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
         })
         await appServices.editProfile(form).then(res => {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
           commit('saveProfile', res.data.data)
           resolve('done')
         })
@@ -67,7 +67,7 @@ export default {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
           commit('saveNotifications', res.data.data)
           resolve('done')
         })
@@ -80,7 +80,7 @@ export default {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
           commit('saveProfile', res.data.data)
           resolve('done')
         })

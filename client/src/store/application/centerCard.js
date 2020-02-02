@@ -33,7 +33,7 @@ export default {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
           if (!res.data.data.length) { return resolve('end') }
 
           commit('saveCenterCard', res.data.data)
@@ -47,7 +47,7 @@ export default {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
 
           commit('saveMyReviews', res.data.data)
           resolve('done')

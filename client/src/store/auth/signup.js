@@ -12,7 +12,7 @@ export default {
 
         commit('saveAuthData', form)
         authServices.validateEmail(form).then(res => {
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
           resolve(res.data.message)
         })
 

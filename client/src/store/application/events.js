@@ -31,7 +31,7 @@ export default {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
           if (!res.data.data.length) return resolve('end')
           commit('saveEvents', res.data.data)
           resolve('done')
@@ -41,6 +41,9 @@ export default {
     CREATEEVENT({ commit }, form) {
       return new Promise((resolve, reject) => {
         appServices.createEvent(form).then(res => {
+          if (res.data.status === 401) {
+            // we will handle logout option // call logout function
+          }
           if (res.data.code !== 200) return reject(res.data.message)
           commit('pushEvent', res.data.data)
           resolve(res.message)
@@ -50,7 +53,10 @@ export default {
     EDITEVENT({ commit }, form) {
       return new Promise((resolve, reject) => {
         appServices.editEvent(form).then(res => {
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.status === 401) {
+            // we will handle logout option // call logout function
+          }
+          if (res.data.code !== 200) return reject(res.data.message)
           commit('deleteEvent', res.data.data.id)
           commit('pushEvent', res.data.data)
           resolve(res.message)
@@ -63,7 +69,7 @@ export default {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
           commit('deleteEvent', eventId)
           resolve("deleted")
         })

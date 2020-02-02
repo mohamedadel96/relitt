@@ -16,7 +16,7 @@ export default {
       return new Promise((resolve, reject) => {
 
         authServices.resetPassword(form).then(res => {
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
           commit("saveEmail", form.email)
 
           resolve(res.message)

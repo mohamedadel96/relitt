@@ -158,16 +158,19 @@ export default {
         });
     },
     editEvent() {
-      try {
-        let loader = this.$loading.show();
-        this.$store.dispatch("EDITEVENT", this.form).then(res => {
+      let loader = this.$loading.show();
+      this.$store
+        .dispatch("EDITEVENT", this.form)
+        .then(res => {
           this.$toasted.success(res);
           loader.hide();
+        })
+        .catch(message => {
+          this.$toasted.error(message);
+        })
+        .finally(() => {
+          loader.hide();
         });
-      } catch (error) {
-        loader.hide();
-        console.log(error);
-      }
     },
     clearData() {
       Object.assign(this.$data, this.$options.data.apply(this));
