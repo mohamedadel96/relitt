@@ -82,13 +82,18 @@ export default {
   },
   methods: {
     moreFeeds(state) {
-      this.$store.dispatch("CENTERCARD").then(res => {
-        if (res !== "end") {
-          state.loaded();
-        } else {
-          state.complete();
-        }
-      });
+      this.$store
+        .dispatch("CENTERCARD")
+        .then(res => {
+          if (res !== "end") {
+            state.loaded();
+          } else {
+            state.complete();
+          }
+        })
+        .catch(message => {
+          this.$toasted.error(message);
+        });
     }
   }
 };
