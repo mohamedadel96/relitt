@@ -1,13 +1,13 @@
 <template>
   <section id="event">
     <div v-if="event">
-      <div class="backgroundimg">
+      <div class="col-10 px-0 container-fluid">
         <img :src="event.image ? event.image : '../../assets/img/Layer1.png'" />
       </div>
       <div class="container-fluid col-lg-10 col-12 py-5 px-md-5 px-3">
         <event-info />
         <attendance />
-        <comments :comments="feeds[0].comments" />
+        <comments :comments="event.comments" />
         <add-comment :eventId="event.id" />
       </div>
     </div>
@@ -28,11 +28,6 @@ export default {
     addComment
   },
   computed: {
-    // comments for test
-        feeds() {
-      return this.$store.getters.feeds;
-    },
-    // ======= ========
     event() {
       return this.$store.getters.event;
     }

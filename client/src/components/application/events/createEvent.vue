@@ -111,11 +111,14 @@ export default {
   methods: {
     createEvent() {
       try {
+        let loader = this.$loading.show();
         this.$store.dispatch("CREATEEVENT", this.form).then(res => {
           this.$toasted.success(res);
+          loader.hide()
         });
       } catch (error) {
         console.log(error);
+        loader.hide()
       }
     },
     clearData() {
@@ -127,6 +130,7 @@ export default {
     },
     uploadFiles() {
       try {
+        let loader = this.$loading.show();
         this.disableUploading = true;
         let formData = new FormData();
 
@@ -142,9 +146,11 @@ export default {
           });
 
           this.disableUploading = false;
+          loader.hide()
         });
       } catch (error) {
         this.$toasted.error("error while uploading files");
+        loader.hide()
       }
     }
   },

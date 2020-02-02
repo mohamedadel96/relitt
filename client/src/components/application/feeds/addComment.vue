@@ -1,5 +1,5 @@
 <template>
-  <section id="addComment" class="d-flex justify-content-center mt-1 mb-3">
+  <section id="addComment" ref="addComment" class="d-flex justify-content-center mt-1 mb-3">
     <div class="body col-12 px-1 rounded">
       <textarea-autosize
         placeholder="type your comment here..."
@@ -26,6 +26,9 @@ export default {
   methods: {
     addComment() {
       try {
+        let loader = this.$loading.show({
+          container: this.$refs.addComment
+        });
         this.$store
           .dispatch("ADDCOMMENT", {
             postId: this.$props.postId,
@@ -35,9 +38,11 @@ export default {
             this.form.body = null;
             this.$root.$emit('bv::toggle::collapse', `comment-${this.$props.i}`)
             this.$toasted.success(res);
+            loader.hide()
           });
       } catch (error) {
         this.$toasted.error("error, please try again");
+        loader.hide()
       }
     }
   }

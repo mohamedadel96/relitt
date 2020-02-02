@@ -1,5 +1,5 @@
 <template>
-  <section id="comments" v-if="comments">
+  <section id="comments" ref="comments" v-if="comments">
     <div class="card" v-for="(comment , i) in comments" :key="i">
       <div class="d-flex">
         <div>
@@ -50,7 +50,7 @@
                 :max-height="350"
                 @input="(e)=> form.body = e"
               />
-              <div class="d-flex justify-content-end" v-if="comment.canEdit">
+              <div class="d-flex justify-content-end col-11 px-0" v-if="comment.canEdit">
                 <p v-show="editState === i">
                   <b-badge
                     variant="light"
@@ -65,7 +65,9 @@
                 </p>
               </div>
             </div>
-            <p class="card-text col-11 font-12 px-1 mb-1 text-right">{{comment.updated_at | moment("from", "now")}}</p>
+            <p
+              class="card-text col-11 font-12 px-1 mb-1 text-right"
+            >{{comment.updated_at | moment("from", "now")}}</p>
           </div>
         </div>
       </div>
@@ -87,6 +89,9 @@ export default {
   methods: {
     editComment(id) {
       try {
+        let loader = this.$loading.show({
+          container: this.$refs.comments
+        });
         this.$store
           .dispatch("EDITCOMMENT", {
             id: id,
@@ -95,18 +100,25 @@ export default {
           .then(res => {
             this.editState = false;
             this.$toasted.success(res);
+            loader.hide();
           });
       } catch (error) {
         this.$toasted.error("error");
+        loader.hide();
       }
     },
     deleteComment(comment) {
       try {
+        let loader = this.$loading.show({
+          container: this.$refs.comments
+        });
         this.$store.dispatch("DELETECOMMENT", comment).then(res => {
           this.$toasted.info(res);
+          loader.hide()
         });
       } catch (error) {
         this.$toasted.error("error");
+        loader.hide()
       }
     },
     cancelEditMode(comment) {

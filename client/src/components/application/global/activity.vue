@@ -125,19 +125,15 @@
           </div>
         </div>
         <div class="my-4">
-            <div class="d-flex flex-wrap">
+          <div class="d-flex flex-wrap">
+            <div class="d-inline-block position-relative" v-for="(img, i) in form.images" :key="i">
+              <img class="activity-img m-2 rounded pointer border" :src="img" alt />
               <div
-                class="d-inline-block position-relative"
-                v-for="(img, i) in form.images"
-                :key="i"
-              >
-                <img class="activity-img m-2 rounded pointer border" :src="img" alt />
-                <div
-                  class="dlt-img rounded-circle text-white font-weight-bold pointer"
-                  @click="form.images.splice(i, 1)"
-                >x</div>
-              </div>
+                class="dlt-img rounded-circle text-white font-weight-bold pointer"
+                @click="form.images.splice(i, 1)"
+              >x</div>
             </div>
+          </div>
 
           <div class="mt-3 mx-2">
             <input class="d-none" type="file" multiple ref="photos" @change="uploadFiles" />
@@ -197,6 +193,8 @@ export default {
     uploadFiles() {
       try {
         this.disableUploading = true;
+        let loader = this.$loading.show();
+
         let formData = new FormData();
 
         for (let i = 0; i < this.$refs.photos.files.length; i++) {
@@ -209,29 +207,38 @@ export default {
           res.map(file => this.form.images.push(file.filePath));
 
           this.disableUploading = false;
+          loader.hide();
         });
       } catch (error) {
         this.$toasted.error("error while uploading files");
+        loader.hide();
       }
     },
     saveActivity() {
       try {
+        let loader = this.$loading.show();
+
         this.$store.dispatch("ADDACTIVITY", this.form).then(res => {
           this.clearData();
           this.$toasted.success(res);
+          loader.hide();
         });
       } catch (error) {
         this.$toasted.error("error");
+        loader.hide();
       }
     },
     editActivity() {
       try {
+        let loader = this.$loading.show();
         this.$store.dispatch("EDITACTIVITY", this.form).then(res => {
           this.clearData();
           this.$toasted.success(res);
+          loader.hide();
         });
       } catch (error) {
         this.$toasted.error("error");
+        loader.hide();
       }
     },
     clearData() {
