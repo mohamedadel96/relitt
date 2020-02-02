@@ -1,6 +1,13 @@
 <template>
   <section id="changePassword">
-    <b-modal id="changePassword" hide-backdrop content-class="shadow" hide-header hide-footer>
+    <b-modal
+      id="changePassword"
+      @hide="clearData"
+      hide-backdrop
+      content-class="shadow"
+      hide-header
+      hide-footer
+    >
       <p class="text-center font-weight-bold font-18">Change password</p>
       <form @submit.prevent>
         <div class="form-group d-flex overflow-hidden mt-2">
@@ -105,6 +112,11 @@ export default {
       } catch (error) {
         console.error(error);
       }
+    },
+    clearData() {
+      this.form.old_password = null;
+      this.form.password = null;
+      this.form.confirm_password = null;
     }
   },
   created() {
@@ -148,9 +160,9 @@ export default {
       outline: none;
     }
   }
-        @media (max-width: 576px) {
+  @media (max-width: 576px) {
     .modal-dialog {
-     margin: 80px 10px 0 10px !important; 
+      margin: 80px 10px 0 10px !important;
     }
   }
 }
