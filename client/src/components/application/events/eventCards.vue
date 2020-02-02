@@ -61,7 +61,7 @@
                       />
                     </span>
                   </template>
-                  <b-dropdown-item @click="editState = i">Edit Event</b-dropdown-item>
+                  <b-dropdown-item @click="editEvent(event)">Edit Event</b-dropdown-item>
                   <b-dropdown-item @click="openDeleteModal(event.id)">Delete Event</b-dropdown-item>
                 </b-dropdown>
               </div>
@@ -84,6 +84,7 @@
 </template>
 
 <script>
+import {Bus} from '../../../main'
 export default {
   data() {
     return {
@@ -108,6 +109,9 @@ export default {
     openDeleteModal(eventId) {
       this.eventId = eventId;
       this.$bvModal.show("deleteEvent");
+    },
+    editEvent(event) {
+      Bus.$emit('EditEvent', event)
     },
     deleteEvent() {
       try {

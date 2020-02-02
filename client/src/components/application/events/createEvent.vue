@@ -99,12 +99,14 @@ export default {
   data() {
     return {
       form: {
+        id: null,
         title: null,
         description: null,
         start_date: null,
         end_date: null,
         images: []
       },
+      editState: false,
       disableUploading: false
     };
   },
@@ -114,11 +116,11 @@ export default {
         let loader = this.$loading.show();
         this.$store.dispatch("CREATEEVENT", this.form).then(res => {
           this.$toasted.success(res);
-          loader.hide()
+          loader.hide();
         });
       } catch (error) {
         console.log(error);
-        loader.hide()
+        loader.hide();
       }
     },
     clearData() {
@@ -146,16 +148,25 @@ export default {
           });
 
           this.disableUploading = false;
-          loader.hide()
+          loader.hide();
         });
       } catch (error) {
         this.$toasted.error("error while uploading files");
-        loader.hide()
+        loader.hide();
       }
     }
   },
   mounted() {
     Bus.$on("openCreateEvent", () => {
+      this.$bvModal.show("createEvent");
+    });
+    Bus.$on("EditEvent", event => {
+      this.form.title = event.title;
+      this.form.description = event.description;
+      this.form.start_date = event.start_date;
+      this.form.end_date = event.end_date;
+      this.form.images.push(event.image);
+      this.editState = true
       this.$bvModal.show("createEvent");
     });
   }
