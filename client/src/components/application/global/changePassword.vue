@@ -114,9 +114,7 @@ export default {
       }
     },
     clearData() {
-      this.form.old_password = null;
-      this.form.password = null;
-      this.form.confirm_password = null;
+      Object.assign(this.$data, this.$options.data.apply(this));
     }
   },
   created() {

@@ -243,22 +243,7 @@ export default {
     },
     clearData() {
       this.$bvModal.hide("addActivity");
-      this.form.activity_id = null;
-      this.form.type_id = 1;
-      this.form.title = null;
-      this.form.date = null;
-      this.form.duration = null;
-      this.form.depth = null;
-      this.form.visibility = 1;
-      this.form.temprature = null;
-      this.form.start_air_level = null;
-      this.form.end_air_level = null;
-      this.form.spot_name = null;
-      this.form.location_name = null;
-      this.form.lat = null;
-      this.form.lng = null;
-      this.form.images = [];
-      this.editState = false;
+      Object.assign(this.$data, this.$options.data.apply(this));
     }
   },
   created() {

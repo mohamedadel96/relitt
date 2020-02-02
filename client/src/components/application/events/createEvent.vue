@@ -12,7 +12,10 @@
       hide-header
       hide-footer
     >
-      <p class="text-center font-weight-bold font-18">Create event</p>
+      <p class="text-center font-weight-bold font-18">
+        <span v-show="!editState">Create</span>
+        <span v-show="editState">Edit</span> event
+      </p>
       <form @submit.prevent>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
@@ -84,10 +87,17 @@
         </div>
         <div class="col-12 px-2">
           <button
+            v-if="!editState"
             class="btn btn-primary btn-block btn-lg py-2"
             :disabled="disableUploading"
             @click="createEvent"
-          >Upload</button>
+          >Save</button>
+          <button
+            v-if="editState"
+            class="btn btn-primary btn-block btn-lg py-2"
+            :disabled="disableUploading"
+            @click="editEvent"
+          >Update</button>
         </div>
       </form>
     </b-modal>
@@ -123,12 +133,20 @@ export default {
         loader.hide();
       }
     },
+    editEvent() {
+      try {
+        let loader = this.$loading.show();
+        this.$store.dispatch("EDITEVENT", this.form).then(res => {
+          this.$toasted.success(res);
+          loader.hide();
+        });
+      } catch (error) {
+        console.log(error);
+        loader.hide();
+      }
+    },
     clearData() {
-      this.form.title = null;
-      this.form.description = null;
-      this.form.start_date = null;
-      this.form.end_date = null;
-      this.form.images = [];
+      Object.assign(this.$data, this.$options.data.apply(this));
     },
     uploadFiles() {
       try {
@@ -161,12 +179,13 @@ export default {
       this.$bvModal.show("createEvent");
     });
     Bus.$on("EditEvent", event => {
+      this.form.id = event.id;
       this.form.title = event.title;
       this.form.description = event.description;
       this.form.start_date = event.start_date;
       this.form.end_date = event.end_date;
       this.form.images.push(event.image);
-      this.editState = true
+      this.editState = true;
       this.$bvModal.show("createEvent");
     });
   }
