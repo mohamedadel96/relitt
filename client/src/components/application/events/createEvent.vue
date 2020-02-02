@@ -1,7 +1,7 @@
 <template>
   <section id="createEvent">
     <button
-      class="btn btn-primary btn-block mb-2 py-2 font-12 pointer"
+      class="btn btn-primary btn-block mb-2 py-2 font-16 pointer"
       v-b-modal.createEvent
     >create Event</button>
     <b-modal
@@ -64,21 +64,17 @@
         </div>
         <div class="my-4">
           <div class="d-flex flex-wrap">
-            <div
-              class="position-relative m-2 border rounded"
-              v-for="(img, i) in form.images"
-              :key="i"
-            >
+            <div class="d-inline-block position-relative" v-for="(img, i) in form.images" :key="i">
+              <img class="activity-img m-2 rounded pointer border" :src="img" alt />
               <div
-                class="activityImg rounded"
-                :style="{ 'background-image': 'url(' + img + ')' }"
+                class="dlt-img rounded-circle text-white font-weight-bold pointer"
                 @click="form.images.splice(i, 1)"
-              ></div>
+              >x</div>
             </div>
           </div>
 
           <div class="mt-3 mx-2">
-            <input class="d-none" type="file" multiple ref="photos" @change="uploadFiles" />
+            <input class="d-none" type="file" ref="photos" @change="uploadFiles" />
             <button
               @click="$refs.photos.click()"
               class="btn btn-light px-5 text-secondary font-weight-bold py-2"
@@ -121,6 +117,32 @@ export default {
     };
   },
   methods: {
+    uploadFiles() {
+      try {
+        let loader = this.$loading.show();
+        this.disableUploading = true;
+        let formData = new FormData();
+
+        for (let i = 0; i < this.$refs.photos.files.length; i++) {
+          let file = this.$refs.photos.files[i];
+          formData.append("files[" + i + "]", file);
+        }
+
+        this.$store.dispatch("UPLOADFILES", formData).then(res => {
+          this.$toasted.success("uploaded successfully");
+          this.form.images = [];
+          res.map(file => {
+            this.form.images.push(file.filePath);
+          });
+
+          this.disableUploading = false;
+          loader.hide();
+        });
+      } catch (error) {
+        this.$toasted.error("error while uploading files");
+        loader.hide();
+      }
+    },
     createEvent() {
       try {
         let loader = this.$loading.show();
@@ -141,37 +163,12 @@ export default {
           loader.hide();
         });
       } catch (error) {
-        console.log(error);
         loader.hide();
+        console.log(error);
       }
     },
     clearData() {
       Object.assign(this.$data, this.$options.data.apply(this));
-    },
-    uploadFiles() {
-      try {
-        let loader = this.$loading.show();
-        this.disableUploading = true;
-        let formData = new FormData();
-
-        for (let i = 0; i < this.$refs.photos.files.length; i++) {
-          let file = this.$refs.photos.files[i];
-          formData.append("files[" + i + "]", file);
-        }
-
-        this.$store.dispatch("UPLOADFILES", formData).then(res => {
-          this.$toasted.success("uploaded successfully");
-          res.map(file => {
-            this.form.images.push(file.filePath);
-          });
-
-          this.disableUploading = false;
-          loader.hide();
-        });
-      } catch (error) {
-        this.$toasted.error("error while uploading files");
-        loader.hide();
-      }
     }
   },
   mounted() {
@@ -226,40 +223,21 @@ export default {
         outline: none !important;
       }
     }
-    .activityImg {
+    .activity-img {
       width: 150px;
       height: 150px;
-      background-size: contain;
-      cursor: pointer;
-      &:hover {
-        &::before {
-          content: "";
-          display: block;
-          position: absolute;
-          width: 150px;
-          height: 150px;
-          top: 0;
-          left: 0;
-          background: rgba(51, 51, 51, 0.384);
-          border-radius: 50%;
-          z-index: 1;
-        }
-        &::after {
-          content: "x";
-          display: block;
-          position: absolute;
-          width: 150px;
-          height: 150px;
-          top: -28px;
-          left: 0;
-          border-radius: 50%;
-          font-size: 120px;
-          color: rgba(255, 51, 0, 0.808);
-          font-weight: bold;
-          text-align: center;
-          z-index: 1;
-        }
-      }
+      object-fit: cover;
+    }
+    .dlt-img {
+      position: absolute;
+      top: 21px;
+      left: 24px;
+      font-size: 22px;
+      text-align: center;
+      background: #000000c2;
+      width: 35px;
+      height: 35px;
+      z-index: 2;
     }
   }
   @media (min-width: 576px) {

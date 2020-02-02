@@ -38,11 +38,14 @@ export default {
    deletePost(postId) {
       return Api().post(`posts/delete/${postId}`)
    },
-   createEvent(form) {
-      return Api().post('events', form)
+   createEvent(payload) {
+      return Api().post('events', payload)
    },
-   toggleLike(form) {
-      return Api().post(`posts/${form.liked ? 'unlike' : 'like'}/${form.id}`)
+   editEvent(payload) {
+      return Api().post(`events/${payload.id}`, payload)
+   },
+   toggleLike(payload) {
+      return Api().post(`posts/${payload.liked ? 'unlike' : 'like'}/${payload.id}`)
    },
    addComment(payload) {
       return Api().post(`posts/comments/${payload.postId}`, payload.form)
