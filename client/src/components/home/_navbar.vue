@@ -48,7 +48,7 @@
           <router-link class="text-white" to="/registration">Register</router-link>
         </li>
         <li>
-          <router-link class="text-white" to="/registration/signup">Login</router-link>
+          <router-link class="text-white" to="/registration/login">Login</router-link>
         </li>
       </ul>
     </div>
