@@ -10,7 +10,7 @@
       <centerInfo :center="center"></centerInfo>
       <review></review>
       <centerComment></centerComment>
-      <location></location>
+      <location :lat="center.lat" :lng="center.lng"></location>
     </div>
   </div>
 </template>

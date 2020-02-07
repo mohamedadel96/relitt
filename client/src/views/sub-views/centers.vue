@@ -5,17 +5,19 @@
         <filter-section />
       </div>
       <div class="col-md-8 col-12 px-0">
-        <div class="tabs d-flex mt-4 px-2 justify-content-md-center justify-content-between align-items-baseline font-16">
-        <div class="d-flex">
-          <p class="mr-5">
-            <router-link to="/app/events">Events</router-link>
-          </p>
-          <p class="mr-5">
-            <router-link class="active" to="/app/centers">Centers</router-link>
-          </p>
-        </div>
+        <div
+          class="tabs d-flex mt-4 px-2 justify-content-md-center justify-content-between align-items-baseline font-16"
+        >
+          <div class="d-flex">
+            <p class="mr-5">
+              <router-link to="/app/events">Events</router-link>
+            </p>
+            <p class="mr-5">
+              <router-link class="active" to="/app/centers">Centers</router-link>
+            </p>
+          </div>
           <div class="d-md-none d-block">
-            <filter-modal/>
+            <filter-modal />
           </div>
         </div>
         <div class="col-xl-11 col-12 px-2">
@@ -24,7 +26,7 @@
               v-model="place"
               name="place"
               api-key="AIzaSyAhSv9zWvisiTXRPRw6K8AE0DCmrRMpQcU"
-              placeholder="Enter an an address, zipcode, or location"
+              placeholder="Enter an address, zipcode, or location"
             ></place-autocomplete-field>
           </div>
           <center-cards />

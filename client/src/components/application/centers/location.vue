@@ -13,16 +13,28 @@
 </template>
 
 <script>
-import * as LocationPicker from "vue2-location-picker";
+import { LocationPicker } from "vue2-location-picker";
 export default {
   components: { LocationPicker },
+  props: ["lat", "lng"],
   data() {
     return {
       location: {
-        lat: 41.0082376,
-        lng: 28.97835889999999
+        lat: null,
+        lng: null
       }
     };
+  },
+  watch: {
+    lat: {
+      immediate: true,
+      handler(val) {
+        if (this.$props.lat && this.$props.lng) {
+          this.location.lat = Number(this.$props.lat);
+          this.location.lng = Number(this.$props.lng);
+        }
+      }
+    }
   }
 };
 </script>

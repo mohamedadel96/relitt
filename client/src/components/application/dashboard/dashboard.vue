@@ -8,7 +8,7 @@
         </select>
       </div>
 
-      <div class="chartSec mt-3 p-2" v-show="hide=='all'">
+      <div class="chartSec mt-3 p-2">
         <chart class="chart" :timeline="dashboard.timeline" />
       </div>
 
