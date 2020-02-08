@@ -88,5 +88,8 @@ export default {
    },
    deleteEvent(eventId) {
       return Api().post(`events/delete/${eventId}`)
+   },
+   interestsList() {
+      return Api().get('interests')
    }
 }

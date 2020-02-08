@@ -35,7 +35,7 @@
             <div
               v-if="form.image"
               class="dlt-img rounded-circle text-white font-weight-bold pointer"
-              @click="removeAvatar"
+              @click="form.image = null"
             >x</div>
           </div>
         </div>
@@ -105,24 +105,27 @@
             placeholder="Location"
           ></place-autocomplete-field>
         </div>
-        <div class="mt-5">
+        <div class="my-4">
           <div class="form-group d-flex overflow-hidden">
             <div class="col-12 px-2">
               <label class="font-12 text-secondary">Interests</label>
-              <div class="position-relative" v-for="(interest, i) in form.interests" :key="i">
-                <input
-                  class="form-controls py-2 px-1 col-12"
-                  type="text"
-                  v-model="form.interests[i]"
-                  placeholder="Position"
-                />
-                <span class="delete-inerests pointer" @click="form.interests.splice(i, 1)">del</span>
+              <div class="d-flex flex-wrap">
+                <h5 class="px-1" v-for="(item,i) in interestsList" :key="i">
+                  <b-badge
+                    class="p-2"
+                    :variant="form.interests.includes(item.id) ? 'primary' : 'secondary'"
+                    @click="toggleInterests(item.id)"
+                  >
+                    {{item.name}}
+                    <span>dll</span>
+                  </b-badge>
+                </h5>
               </div>
             </div>
           </div>
-          <div class="border-bottom pt-2 px-2">
-            <p class="text-primary pointer" @click="form.interests.push('')">+ Add new interest</p>
-          </div>
+          <!-- <div class="border-bottom pt-2 px-2">
+            <p class="text-primary pointer" @click="showInterestList = true">+ Add new interest</p>
+          </div>-->
         </div>
         <div class="col-12 px-2 my-3">
           <button
@@ -148,17 +151,21 @@ export default {
         type: null,
         bio: null,
         birthdate: null,
-        interests: [""],
+        interests: [],
         location_name: null,
         lat: "",
         lng: ""
       },
+      showInterestList: false,
       disableEdit: false
     };
   },
   computed: {
     user() {
       return this.$store.getters.profile;
+    },
+    interestsList() {
+      return this.$store.getters.interestsList;
     }
   },
   watch: {
@@ -172,7 +179,7 @@ export default {
           this.form.type = val.type;
           this.form.bio = val.bio;
           this.form.birthdate = val.birthdate;
-          this.form.interests = val.interests;
+          this.form.interests = val.interests.map(item => item.id);
           this.form.location_name = val.location_name;
           this.form.lat = val.lat;
           this.form.lng = val.lng;
@@ -218,9 +225,17 @@ export default {
         this.$toasted.error("error");
       }
     },
-    removeAvatar() {
-      this.form.image = null;
+    toggleInterests(id) {
+      let check = this.form.interests.filter(item => item == id);
+      if (check.length) {
+        this.form.interests = this.form.interests.filter(item => item != id);
+        return;
+      }
+      this.form.interests.push(id);
     }
+  },
+  created() {
+    this.$store.dispatch("INTERESTSLIST");
   },
   mounted() {
     Bus.$on("openPersonalInfo", () => {

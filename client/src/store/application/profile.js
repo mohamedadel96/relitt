@@ -3,7 +3,8 @@ import appServices from '../../services/application'
 export default {
   state: {
     profile: null,
-    notifications: null
+    notifications: null,
+    interestsList: null
   },
   getters: {
     profile(state) {
@@ -12,6 +13,9 @@ export default {
     notifications(state) {
       return state.notifications
     },
+    interestsList(state) {
+      return state.interestsList
+    },
   },
   mutations: {
     saveProfile(state, data) {
@@ -19,6 +23,9 @@ export default {
     },
     saveNotifications(state, data) {
       state.notifications = data
+    },
+    saveInterestsList(state, data) {
+      state.interestsList = data
     }
   },
   actions: {
@@ -82,6 +89,19 @@ export default {
           }
           if (res.data.code !== 200) return reject(res.data.message)
           commit('saveProfile', res.data.data)
+          resolve('done')
+        })
+
+      })
+    },
+    INTERESTSLIST({ commit }) {
+      return new Promise((resolve, reject) => {
+        appServices.interestsList().then(res => {
+          if (res.data.status === 401) {
+            // we will handle logout option // call logout function
+          }
+          if (res.data.code !== 200) return reject(res.data.message)
+          commit('saveInterestsList', res.data.data)
           resolve('done')
         })
 

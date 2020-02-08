@@ -63,9 +63,9 @@
       </div>
       <img
         v-show="false"
-        v-for="src in activity.images.slice(4, activity.images.length-1)"
+        v-for="(src, i) in activity.images.slice(4, activity.images.length-1)"
         :src="src.url"
-        :key="src"
+        :key="i"
       />
     </viewer>
   </div>
