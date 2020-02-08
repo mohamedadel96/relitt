@@ -16,7 +16,7 @@
       </div>
       <div ref="result">
         <b-tabs v-model="tabIndex" content-class="mt-3">
-          <b-tab title="Suggested">
+          <b-tab class="font-12" title="Suggested">
             <div
               class="friends border-bottom mt-3 px-lg-3 py-2"
               v-for="(follower,i) in suggestedFollowers"
@@ -132,7 +132,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #friendsSearch {
   .search-sec {
     background: $background_white;
@@ -160,6 +160,11 @@ export default {
       color: #777;
       opacity: 0.7;
     }
+  }
+
+  .nav-item a {
+    font-size: 14px !important;
+    padding: 0.5rem 0.5rem !important;
   }
 }
 </style>
