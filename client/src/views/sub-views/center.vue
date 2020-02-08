@@ -12,6 +12,7 @@
       <centerComment></centerComment>
       <location :lat="center.lat" :lng="center.lng"></location>
     </div>
+    <app-footer />
   </div>
 </template>
 
@@ -21,6 +22,7 @@ import location from "../../components/application/centers/location";
 import centerComment from "../../components/application/centers/centerComment";
 import centerInfo from "../../components/application/centers/centerInfo";
 import centerCarsoule from "../../components/application/centers/centerCarsoule";
+import appFooter from "../../components/application/global/footer";
 
 export default {
   components: {
@@ -28,7 +30,8 @@ export default {
     review,
     location,
     centerComment,
-    centerInfo
+    centerInfo,
+    appFooter
   },
   computed: {
     center() {

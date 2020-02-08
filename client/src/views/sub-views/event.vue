@@ -11,6 +11,7 @@
         <add-comment :eventId="event.id" />
       </div>
     </div>
+    <app-footer />
   </section>
 </template>
 
@@ -19,13 +20,15 @@ import eventInfo from "../../components/application/events/eventInfo";
 import attendance from "../../components/application/events/attendance";
 import comments from "../../components/application/events/comments";
 import addComment from "../../components/application/events/addComment";
+import appFooter from "../../components/application/global/footer";
 
 export default {
   components: {
     eventInfo,
     attendance,
     comments,
-    addComment
+    addComment,
+    appFooter
   },
   computed: {
     event() {
