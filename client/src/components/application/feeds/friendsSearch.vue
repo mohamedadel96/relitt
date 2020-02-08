@@ -14,11 +14,11 @@
           type="text"
         />
       </div>
-      <div>
+      <div ref="result">
         <b-tabs v-model="tabIndex" content-class="mt-3">
           <b-tab title="Suggested">
             <div
-              class="friends mt-2 px-lg-3 py-2"
+              class="friends border-bottom mt-3 px-lg-3 py-2"
               v-for="(follower,i) in suggestedFollowers"
               :key="i"
             >
@@ -37,7 +37,13 @@
                   </div>
                 </div>
                 <div>
-                  <button class="btn btn-outline-primary btn-block font-12 py-2">Follow</button>
+                  <button
+                    class="btn btn-outline-primary btn-block font-14"
+                    @click="toggleFollowing(follower.is_following, follower.id)"
+                  >
+                    <span v-if="!follower.is_following">Follow</span>
+                    <span v-if="follower.is_following">Unfollow</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -50,7 +56,7 @@
             <p>Facebook</p>
           </b-tab>
           <b-tab title="Search">
-            <div class="friends mt-2" v-for="(friend,i) in friends" :key="i">
+            <div class="friends mt-3 border-bottom" v-for="(friend,i) in friends" :key="i">
               <div class="mb-4">
                 <div class="d-flex align-items-center mb-2">
                   <img
@@ -66,7 +72,13 @@
                   </div>
                 </div>
                 <div>
-                  <button class="btn btn-outline-primary btn-block font-12 py-2">Follow</button>
+                  <button
+                    class="btn btn-outline-primary btn-block font-14"
+                    @click="toggleFollowing(friend.is_following, friend.id)"
+                  >
+                    <span v-if="!friend.is_following">Follow</span>
+                    <span v-if="friend.is_following">Unfollow</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -92,6 +104,21 @@ export default {
   watch: {
     search(val) {
       this.$store.dispatch("FRIENDS", this.search);
+    }
+  },
+  methods: {
+    toggleFollowing(isFollowing, id) {
+      let loader = this.$loading.show({
+        container: this.$refs.result
+      });
+      this.$store
+        .dispatch("TOGGLEFOLLOWING", {
+          id: id,
+          isFollowing: isFollowing
+        })
+        .finally(() => {
+          loader.hide();
+        });
     }
   },
   computed: {
@@ -123,8 +150,8 @@ export default {
 
   .friends {
     img {
-      width: 60px;
-      height: 60px;
+      width: 45px;
+      height: 45px;
     }
     .name {
       margin-bottom: -5px;

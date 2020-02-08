@@ -20,6 +20,17 @@ export default {
         saveFriends(state, data) {
             state.friends = data
         },
+        removeFriends(state, data) {
+            state.friends = []
+        },
+        toggleFollowing(state, payload) {
+            state.friends.map(friend => {
+                if (friend.id == payload.id) {
+                    friend.is_following = !friend.is_following
+                }
+                return friend
+            })
+        }
     },
     actions: {
         SUGESTEDFOLLWERS({ commit }) {
@@ -36,12 +47,30 @@ export default {
         },
         FRIENDS({ commit }, query) {
             return new Promise((resolve, reject) => {
+                if (query == null || query == '') {
+                    commit('removeFriends')
+                    return resolve('done')
+                }
                 appServices.friends(query).then(res => {
                     if (res.data.status === 401) {
                         // we will handle logout option // call logout function
                     }
                     if (res.data.code !== 200) return reject(res.data.message)
                     commit('saveFriends', res.data.data)
+                    resolve('done')
+                })
+            })
+        },
+        TOGGLEFOLLOWING({ commit, dispatch }, payload) {
+            return new Promise((resolve, reject) => {
+                appServices.toggleFollowing(payload).then(res => {
+                    if (res.data.status === 401) {
+                        // we will handle logout option // call logout function
+                    }
+                    if (res.data.code !== 200) return reject(res.data.message)
+                    commit('toggleFollowing', payload)
+                    dispatch('PROFILE')
+                    dispatch('SUGESTEDFOLLWERS')
                     resolve('done')
                 })
             })

@@ -97,5 +97,8 @@ export default {
    },
    friends(query) {
       return Api().get(`social/search?q=${query}`)
+   },
+   toggleFollowing(payload) {
+      return Api().post(`${payload.isFollowing ? 'unfollow' : 'follow'}/${payload.id}`)
    }
 }
