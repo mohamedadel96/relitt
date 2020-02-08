@@ -1,21 +1,42 @@
 <template>
   <div id="review">
-    <div class="col-12 px-4 text-center mb-lg-3 rate">
-      <div>
-        <p class="font-22 font-weight-bold text-center">icon stars</p>
+    <div class="col-12 px-0 py-3 text-center mb-lg-3 rate">
+      <div class="mb-3">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex align-items-center">
+            <img class="mt-1 mr-3" src="../../../assets/icons/list.svg" alt />
+            <p class="mb-0 font-weight-bold font-14">Review</p>
+          </div>
+          <div>
+            <star-rating
+              class="mb-1"
+              active-color="#FFB900"
+              :increment="0.1"
+              :star-size="16"
+              read-only
+              :rating="center.avg_rate"
+            />
+          </div>
+        </div>
       </div>
       <div class="props d-flex justify-content-between">
         <div class="prop col-4 px-0">
-          <p class="font-18 font-weight-bold mb-0 head">High</p>
-          <p class="font-12 text-secondary mb-0">price</p>
+          <p
+            class="font-18 font-weight-bold mb-0 head"
+          >{{center.avg_price < 2 ? 'Low' : center.avg_price < 4 ? 'Medium' : 'High'}}</p>
+          <p class="font-14 font-weight-bold text-secondary mb-0">price</p>
         </div>
         <div class="prop col-4 px-0">
-          <p class="font-18 font-weight-bold mb-0 head">Good</p>
-          <p class="font-12 text-secondary mb-0">Quality</p>
+          <p
+            class="font-18 font-weight-bold mb-0 head"
+          >{{center.avg_quality < 2 ? 'Low' : center.avg_quality < 4 ? 'Medium' : 'High'}}</p>
+          <p class="font-14 font-weight-bold text-secondary mb-0">Quality</p>
         </div>
         <div class="prop col-4 px-0">
-          <p class="font-18 font-weight-bold mb-0 head">Perfect</p>
-          <p class="font-12 text-secondary mb-0">price</p>
+          <p
+            class="font-18 font-weight-bold mb-0 head"
+          >{{center.avg_rate < 2 ? 'Low' : center.avg_rate < 4 ? 'Medium' : 'High'}}</p>
+          <p class="font-14 font-weight-bold text-secondary mb-0">General</p>
         </div>
       </div>
     </div>

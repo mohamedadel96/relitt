@@ -38,15 +38,15 @@
             <div>
               <div>
                 <span class="pr-2">ico</span>
-                <span>scupa diving</span>
+                <span>scuba diving</span>
               </div>
               <div>
                 <span class="pr-2">ico</span>
-                <span>scupa diving</span>
+                <span>scuba diving</span>
               </div>
               <div>
                 <span class="pr-2">ico</span>
-                <span>scupa diving</span>
+                <span>scuba diving</span>
               </div>
             </div>
           </div>

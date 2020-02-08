@@ -21,15 +21,19 @@
       >
         <div class="image col-sm-4 col-12 px-0">
           <img
-            class="p-3"
+            class="p-3 pointer"
             :src="event.image ? event.image : '../../assets/img/Layer1.png'"
+            @click="$router.push('/app/events/' + event.id)"
             alt="card image"
           />
         </div>
         <div class="col-sm-8 col-12 px-0 mt-3 d-flex flex-wrap align-items-between">
           <div class="desc d-flex justify-content-between mb-3">
             <div class="col-10">
-              <p class="mb-0 font-weight-bold font-16">{{event.title}}</p>
+              <p
+                class="mb-0 font-weight-bold font-16 pointer"
+                @click="$router.push('/app/events/' + event.id)"
+              >{{event.title}}</p>
               <p class="mb-2 text-secondary font-12">Bedforeshine</p>
               <p class="description mb-0 text-secondary font-12">{{event.description}}</p>
             </div>
@@ -69,12 +73,12 @@
           </div>
           <div class="col-12 px-0 pb-3 d-flex justify-content-between align-items-end">
             <p class="col-6 mb-0 text-secondary font-12">
-              <span>13</span> attendance
+              <span>{{event.rsvp_count}}</span> attendance
             </p>
             <router-link
-              class="mr-3 btn btn-outline-primary btn-block py-1"
+              class="mr-3 btn btn-primary btn-block py-2"
               :to="'/app/events/' + event.id"
-            >Join</router-link>
+            >Details...</router-link>
           </div>
         </div>
       </div>
@@ -84,7 +88,7 @@
 </template>
 
 <script>
-import {Bus} from '../../../main'
+import { Bus } from "../../../main";
 export default {
   data() {
     return {
@@ -111,7 +115,7 @@ export default {
       this.$bvModal.show("deleteEvent");
     },
     editEvent(event) {
-      Bus.$emit('EditEvent', event)
+      Bus.$emit("EditEvent", event);
     },
     deleteEvent() {
       try {

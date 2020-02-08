@@ -1,21 +1,30 @@
 <template>
   <div id="comment">
     <div class="d-flex flex-wrap justify-content-between ml-2">
-      <div class="card col-md-5" v-for="(center , i ) in data.reviews" :key="i">
+      <div class="card col-md-5" v-for="(review , i ) in data.reviews" :key="i">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img :src="center.user.image" alt="..." />
+            <img :src="review.user.image" alt="..." />
           </div>
           <div class="col-md-8">
             <div class="card-body">
               <div class="d-flex justify-content-between">
                 <h5
                   class="card-title m-0 d-inline-block"
-                >{{center.user.firstname}} {{center.user.lastname}}</h5>
-                <p class="card-text m-0 d-lg-inline-flex justify-content-end font-12">stars</p>
+                >{{review.user.firstname}} {{review.user.lastname}}</h5>
+                <p class="card-text m-0 d-lg-inline-flex justify-content-end font-12">
+                  <star-rating
+                    class="mb-1"
+                    active-color="#FFB900"
+                    :increment="0.1"
+                    :star-size="16"
+                    read-only
+                    :rating="review.general_rate"
+                  />
+                </p>
               </div>
-              <p class="card-text font-12">{{center.created_at | moment("from", "now") }}</p>
-              <p class="card-text">{{ center.comment}}</p>
+              <p class="card-text font-12">{{review.created_at | moment("from", "now") }}</p>
+              <p class="card-text">{{ review.comment}}</p>
             </div>
           </div>
         </div>
@@ -50,7 +59,6 @@ export default {
 
   .card {
     border: none;
-    border-top: 1px solid #ddd;
   }
 
   .head {

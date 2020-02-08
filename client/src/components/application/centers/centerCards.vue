@@ -4,15 +4,19 @@
       <div class="card border-0 rounded d-flex flex-wrap flex-row mb-3">
         <div class="image col-sm-4 col-12 px-0">
           <img
-            class="p-3"
+            class="p-3 pointer"
             :src="center.images.length ? center.images[0].url : '../../assets/img/Layer1.png'"
+            @click="$router.push('/app/centers/' + center.id)"
             alt="card image"
           />
         </div>
         <div class="col-sm-8 col-12 px-0 mt-3 d-flex flex-wrap align-items-between">
           <div class="col-12 d-flex flex-wrap justify-content-between mb-3">
             <div class="details col-lg-7 col-12 px-2">
-              <p class="mb-0 font-weight-bold font-16">{{center.name}}</p>
+              <p
+                class="mb-0 font-weight-bold font-16 pointer"
+                @click="$router.push('/app/centers/' + center.id)"
+              >{{center.name}}</p>
               <p class="mb-2 text-secondary font-12">{{center.location_name}}</p>
               <p class="mb-0 text-secondary font-12 desc">{{center.description}}</p>
             </div>
@@ -62,9 +66,9 @@
               </div>
             </div>
             <router-link
-              class="mr-3 btn btn-primary btn-block py-1 col-4 font-12"
+              class="mr-3 btn btn-primary btn-block py-2 col-4 font-14"
               :to="'/app/centers/' + center.id"
-            >Contact</router-link>
+            >Details...</router-link>
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@
           <div class="col-12 px-2">
             <select class="form-controls py-3 col-12 pointer" v-model="form.type_id">
               <option class="font-20" :value="1">diving</option>
-              <option class="font-20" :value="2">scupa diving</option>
+              <option class="font-20" :value="2">scuba diving</option>
             </select>
           </div>
         </div>

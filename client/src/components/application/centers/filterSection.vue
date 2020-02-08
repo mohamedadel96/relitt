@@ -21,7 +21,6 @@
               @click="filterRate = filterRate.filter(num => num !== (6-i))"
             >x</div>
           </div>
-      
         </div>
       </div>
       <div>
@@ -30,15 +29,15 @@
           <div>
             <div>
               <span class="pr-2">ico</span>
-              <span>scupa diving</span>
+              <span>scuba diving</span>
             </div>
             <div>
               <span class="pr-2">ico</span>
-              <span>scupa diving</span>
+              <span>scuba diving</span>
             </div>
             <div>
               <span class="pr-2">ico</span>
-              <span>scupa diving</span>
+              <span>scuba diving</span>
             </div>
           </div>
         </div>
