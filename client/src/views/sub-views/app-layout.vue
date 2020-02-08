@@ -11,6 +11,7 @@
     </div>
     <div class="col-lg-3 d-lg-block d-none px-2">
       <friends-search />
+      <friends-modal />
       <myEvent />
     </div>
   </section>
@@ -21,6 +22,7 @@ import profile from "../../components/application/feeds/profile";
 import sideMenu from "../../components/application/feeds/side-menu/sideMenu";
 import expCard from "../../components/application/dashboard/expCard";
 import friendsSearch from "../../components/application/feeds/friendsSearch";
+import friendsModal from "../../components/application/feeds/friendsModal";
 import myEvent from "../../components/application/events/myEvent";
 
 export default {
@@ -29,7 +31,8 @@ export default {
     sideMenu,
     expCard,
     friendsSearch,
-    myEvent
+    myEvent,
+    friendsModal
   }
 };
 </script>

@@ -13,6 +13,10 @@
     <b-modal id="profileSettings" hide-backdrop content-class="shadow" hide-header hide-footer>
       <div @click="$bvModal.hide('profileSettings')">
         <p
+          class="border-bottom py-3 mb-0 font-16 pointer"
+          @click="$bvModal.show('friendsModal')"
+        >Find Friends</p>
+        <p
           class="py-3 mb-0 font-16 pointer"
           @click="openModal('openPersonalInfo')"
         >Edit personal Info</p>
