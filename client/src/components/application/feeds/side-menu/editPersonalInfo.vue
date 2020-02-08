@@ -91,6 +91,7 @@
             <label class="font-12 text-secondary">Birthdate</label>
             <flat-pickr
               class="form-controls py-2 px-1 col-12"
+              :config="config"
               v-model="form.birthdate"
               placeholder="Birthdate"
             ></flat-pickr>
@@ -161,6 +162,9 @@ export default {
         location_name: null,
         lat: "",
         lng: ""
+      },
+      config: {
+        maxDate: new Date()
       },
       showInterestList: false,
       disableEdit: false

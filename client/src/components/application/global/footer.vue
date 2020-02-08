@@ -5,7 +5,7 @@
         <div class="block_1 col-md-3 col-12">
           <div class="col-12 px-0">
             <img src="../../../assets/icons/dark-logo.svg" alt />
-            <p class="opacity col-12 pt-2">&#64;2019 relitte inc</p>
+            <p class="text-secondary text-overlay pointer col-12 pt-2">&#64;2019 relitte inc</p>
           </div>
         </div>
 
@@ -13,11 +13,13 @@
           <p class="font-weight-bold">About</p>
           <div class="d-flex justify-content-between text-left">
             <div class="list col-12 px-0">
-              <p class="opacity">Support</p>
-              <p class="opacity">Summit</p>
-              <p class="opacity">Work</p>
-              <p class="opacity">Policy</p>
-              <p class="opacity">Terms</p>
+              <p class="text-secondary text-overlay pointer">Support</p>
+              <p class="text-secondary text-overlay pointer">Summit</p>
+              <p class="text-secondary text-overlay pointer">Work</p>
+              <p class="text-secondary text-overlay pointer">Policy</p>
+              <router-link to="/app/terms">
+                <p class="text-secondary text-overlay pointer">Terms</p>
+              </router-link>
             </div>
           </div>
         </div>
@@ -26,10 +28,10 @@
           <p class="font-weight-bold">Follow</p>
           <div class="d-flex justify-content-between text-left">
             <div class="list col-6 px-0">
-              <p class="opacity">Facebook</p>
-              <p class="opacity">Telegram</p>
-              <p class="opacity">Inestegram</p>
-              <p class="opacity">Medium</p>
+              <p class="text-secondary text-overlay pointer">Facebook</p>
+              <p class="text-secondary text-overlay pointer">Telegram</p>
+              <p class="text-secondary text-overlay pointer">Inestegram</p>
+              <p class="text-secondary text-overlay pointer">Medium</p>
             </div>
           </div>
         </div>
@@ -37,8 +39,8 @@
         <div class="block_3 col-md-3 col-12">
           <p class="font-weight-bold">Mobile versions</p>
           <div class="list col-12 px-0">
-            <p class="opacity">Download apple store</p>
-            <p class="opacity">Download play store</p>
+            <p class="text-secondary text-overlay pointer">Download apple store</p>
+            <p class="text-secondary text-overlay pointer">Download play store</p>
           </div>
         </div>
       </div>
@@ -52,8 +54,11 @@ export default {};
 
 <style lang="scss" scoped>
 footer {
-  .opacity {
-    opacity: 0.7;
+  .text-overlay {
+    transition: 0.4s;
+    &:hover {
+      color: #333 !important;
+    }
   }
 }
 </style>

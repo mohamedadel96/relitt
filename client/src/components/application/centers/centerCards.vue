@@ -34,19 +34,19 @@
               <div class="props d-flex justify-content-between my-lg-1 my-3">
                 <div class="prop col-4 px-0">
                   <p
-                    class="font-14 font-weight-bold mb-0"
+                    class="font-14 font-weight-bold mb-0 text-primary"
                   >{{center.avg_price < 2 ? 'Low' : center.avg_price < 4 ? 'Medium' : 'High'}}</p>
                   <p class="font-12 text-secondary mb-0">price</p>
                 </div>
                 <div class="prop col-4 px-0">
                   <p
-                    class="font-14 font-weight-bold mb-0"
+                    class="font-14 font-weight-bold mb-0 text-primary"
                   >{{center.avg_quality < 2 ? 'Low' : center.avg_quality < 4 ? 'Medium' : 'High'}}</p>
                   <p class="font-12 text-secondary mb-0">price</p>
                 </div>
                 <div class="prop col-4 px-0">
                   <p
-                    class="font-14 font-weight-bold mb-0"
+                    class="font-14 font-weight-bold mb-0 text-primary"
                   >{{center.avg_rate < 2 ? 'Low' : center.avg_rate < 4 ? 'Medium' : 'High'}}</p>
                   <p class="font-12 text-secondary mb-0">General</p>
                 </div>

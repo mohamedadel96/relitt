@@ -33,7 +33,12 @@
         <div class="form-group d-flex overflow-hidden position-relative">
           <div class="col-12 px-2">
             <label class="font-12 text-secondary">Date</label>
-            <flat-pickr class="form-controls py-2 col-12" v-model="form.date" placeholder="Date"></flat-pickr>
+            <flat-pickr
+              class="form-controls py-2 col-12"
+              v-model="form.date"
+              :config="config"
+              placeholder="Date"
+            ></flat-pickr>
           </div>
           <div class="position-absolute">
             <img src="../../../assets/icons/calender-icon.svg" />
@@ -195,6 +200,9 @@ export default {
         lat: "32",
         lng: "12",
         images: []
+      },
+      config: {
+        maxDate: new Date()
       },
       disableUploading: false,
       editState: false
