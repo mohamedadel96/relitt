@@ -1,5 +1,5 @@
 <template>
-  <section id="app-layout" class="d-flex justify-content-between mt-3 position-relative">
+  <section id="app-layout" class="d-flex justify-content-between my-3 position-relative">
     <div class="col-lg-3 col-md-4 d-md-block d-none px-4">
       <div class="sec-l pr-lg-4">
         <profile />

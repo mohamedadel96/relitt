@@ -5,7 +5,9 @@
       <p class="text-secondary col-4 px-0 font-16 pointer">Summit</p>
       <p class="text-secondary col-4 px-0 font-16 pointer">work</p>
       <p class="text-secondary col-4 px-0 font-16 pointer">Policy</p>
-      <p class="text-secondary col-4 px-0 font-16 pointer">Terms</p>
+      <router-link to="/app/terms">
+        <p class="text-secondary col-4 px-0 font-16 pointer">Terms</p>
+      </router-link>
     </div>
     <div>
       <p class="text-secondary px-4 font-16 pointer">@Rellit</p>

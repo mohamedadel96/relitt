@@ -139,6 +139,14 @@ const routes = [
         meta: {
           requiresAuth: true
         }
+      },
+      {
+        path: 'terms',
+        name: 'terms',
+        component: () => import('../views/terms.vue'),
+        meta: {
+          requiresAuth: true
+        }
       }
     ]
   }

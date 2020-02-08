@@ -9,6 +9,9 @@
 * {
   font-family: "Open Sans", sans-serif;
 }
+a {
+  text-decoration: none !important;
+}
 #main {
   overflow: hidden;
 }
