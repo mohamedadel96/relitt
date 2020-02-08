@@ -13,7 +13,7 @@ export default {
   },
   created() {
     this.$store.dispatch("PROFILE");
-    this.$store.dispatch("DASHBOARD");
+    this.$store.dispatch("SUGESTEDFOLLWERS");
     this.$store.dispatch("MYEVENT");
   }
 };

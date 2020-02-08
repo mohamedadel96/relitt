@@ -7,10 +7,7 @@
           <p class="mb-2 text-secondary font-12 font-weight-bold">{{event.location_name}}</p>
         </div>
         <div class="image">
-          <img
-            :src="event.image ? event.image : '../../assets/img/Layer1.png'"
-            alt="event image"
-          />
+          <img :src="event.image ? event.image : '../../assets/img/Layer1.png'" alt="event image" />
         </div>
         <div class="timing d-flex align-items-center">
           <div class="col-3 px-0 pt-3 text-center">
@@ -20,7 +17,7 @@
           </div>
           <div class="col-9 d-flex align-items-between flex-wrap justify-content-around">
             <p class="col-12 desc px-0 my-2 text-secondary font-12">{{event.description}}</p>
-            <p class="col-12 px-0 text-secondary font-weight-bold font-12 mb-2">13 attendance !!</p>
+            <!-- <p class="col-12 px-0 text-secondary font-weight-bold font-12 mb-2">13 attendance !!</p> -->
           </div>
         </div>
       </section>

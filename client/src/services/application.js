@@ -91,5 +91,11 @@ export default {
    },
    interestsList() {
       return Api().get('interests')
+   },
+   suggestedFollowers() {
+      return Api().get('social/suggested_follows')
+   },
+   friends(query) {
+      return Api().get(`social/search?q=${query}`)
    }
 }

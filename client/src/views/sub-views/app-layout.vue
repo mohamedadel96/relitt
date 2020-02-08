@@ -9,8 +9,8 @@
     <div class="col-lg-6 col-md-8 col-12 px-3">
       <router-view />
     </div>
-    <div class="col-lg-3 d-lg-block d-none px-3">
-      <!-- <friends-search /> -->
+    <div class="col-lg-3 d-lg-block d-none px-2">
+      <friends-search />
       <myEvent />
     </div>
   </section>

@@ -60,6 +60,9 @@ export default {
     dashboard() {
       return this.$store.getters.dashboard;
     }
+  },
+  created() {
+    this.$store.dispatch("DASHBOARD");
   }
 };
 </script>

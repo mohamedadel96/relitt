@@ -18,6 +18,7 @@ import event from './application/event'
 import uploadFiles from './application/uploadFiles'
 import postComment from './application/postComments'
 import activity from './application/activity';
+import followers from './application/followers';
 
 Vue.use(Vuex)
 
@@ -59,7 +60,8 @@ export default new Vuex.Store({
     logout,
     uploadFiles,
     postComment,
-    activity
+    activity,
+    followers
 
   }
 })

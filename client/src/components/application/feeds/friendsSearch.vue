@@ -1,38 +1,108 @@
 <template>
   <section id="friendsSearch">
-    <div class="search-sec pl-4 pr-5 pt-4 col-12 px-0 rounded">
+    <div class="search-sec px-3 py-4 mb-4 col-12 px-0 rounded">
       <p class="title font-weight-bold font-16">Find friends</p>
       <div class="search mb-3 d-flex align-items-center">
         <span class="px-4">
-          <img src="../../../assets/img/icon/ic_search.png" alt />
+          <img src="../../../assets/icons/search.svg" style="width:20px;height:20px" alt />
         </span>
-        <input placeholder="Search people" class="py-3" type="text" />
+        <input
+          placeholder="Search people"
+          v-model="search"
+          @focus="tabIndex = 2"
+          class="py-3"
+          type="text"
+        />
       </div>
-      <div class="friends mt-2" v-for="i in 3" :key="i">
-        <div class="mb-4">
-          <div class="d-flex align-items-center mb-2">
-            <img
-              class="rounded-circle mr-3"
-              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-              alt="friend profile picture"
-            />
-            <div>
-              <p class="name font-weight-bold font-16">Ahmed reda</p>
-              <p class="mb-0 job font-14">Senior diver</p>
+      <div>
+        <b-tabs v-model="tabIndex" content-class="mt-3">
+          <b-tab title="Suggested">
+            <div
+              class="friends mt-2 px-lg-3 py-2"
+              v-for="(follower,i) in suggestedFollowers"
+              :key="i"
+            >
+              <div :class="['mb-4', i != suggestedFollowers.length ? 'border-bottom' : '']">
+                <div class="d-flex align-items-center mb-3">
+                  <img
+                    class="rounded-circle mr-3"
+                    :src="follower.image ? follower.image : require('../../../assets/img/default-avatar.jpg')"
+                    alt="friend picture"
+                  />
+                  <div>
+                    <p
+                      class="name font-weight-bold font-16"
+                    >{{follower.firstname}} {{follower.lastname}}</p>
+                    <p class="mb-0 job font-14">{{follower.type}}</p>
+                  </div>
+                </div>
+                <div>
+                  <button class="btn btn-outline-primary btn-block font-12 py-2">Follow</button>
+                </div>
+              </div>
             </div>
-          </div>
-          <div>
-            <button class="btn btn-outline-primary btn-block font-12">Follow</button>
-          </div>
-          <hr class="border" />
-        </div>
+            <div
+              v-if="!suggestedFollowers.length"
+              class="bg-light rounded text-center text-secondary py-2"
+            >there is no suggested</div>
+          </b-tab>
+          <b-tab title="Facebook">
+            <p>Facebook</p>
+          </b-tab>
+          <b-tab title="Search">
+            <div class="friends mt-2" v-for="(friend,i) in friends" :key="i">
+              <div class="mb-4">
+                <div class="d-flex align-items-center mb-2">
+                  <img
+                    class="rounded-circle mr-3"
+                    :src="friend.image ? friend.image : require('../../../assets/img/default-avatar.jpg')"
+                    alt="friend profile picture"
+                  />
+                  <div>
+                    <p
+                      class="name font-weight-bold font-16"
+                    >{{friend.firstname}} {{friend.lastname}}</p>
+                    <p class="mb-0 job font-14">{{friend.type}}</p>
+                  </div>
+                </div>
+                <div>
+                  <button class="btn btn-outline-primary btn-block font-12 py-2">Follow</button>
+                </div>
+              </div>
+            </div>
+            <div
+              v-if="!friends.length"
+              class="bg-light rounded text-center text-secondary py-2"
+            >there is no result</div>
+          </b-tab>
+        </b-tabs>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      search: null,
+      tabIndex: 0
+    };
+  },
+  watch: {
+    search(val) {
+      this.$store.dispatch("FRIENDS", this.search);
+    }
+  },
+  computed: {
+    suggestedFollowers() {
+      return this.$store.getters.suggestedFollowers;
+    },
+    friends() {
+      return this.$store.getters.friends;
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
