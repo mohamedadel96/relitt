@@ -139,8 +139,11 @@
             <input class="d-none" type="file" multiple ref="photos" @change="uploadFiles" />
             <button
               @click="$refs.photos.click()"
-              class="btn btn-light px-5 text-secondary font-weight-bold py-2"
-            >Add photo</button>
+              class="btn btn-light px-4 text-secondary font-weight-bold py-2"
+            >
+              <img src="../../../assets/icons/image.svg" alt />
+              <span class="px-3">Add photo</span>
+            </button>
           </div>
         </div>
         <div class="col-12 px-2">

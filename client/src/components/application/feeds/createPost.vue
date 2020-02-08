@@ -70,7 +70,7 @@
               accept="image/*"
               multiple
             />
-            <img class="pointer" src="../../../assets/img/icon/path.svg" alt />
+            <img class="pointer" src="../../../assets/icons/image.svg" alt />
             <span class="px-2 d-none d-lg-inline">Picture</span>
           </button>
           <button :disabled="disablePost" @click="$refs.video.click()" class="btn btn-light mx-3">

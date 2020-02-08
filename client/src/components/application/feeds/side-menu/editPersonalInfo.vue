@@ -110,14 +110,20 @@
             <div class="col-12 px-2">
               <label class="font-12 text-secondary">Interests</label>
               <div class="d-flex flex-wrap">
-                <h5 class="px-1" v-for="(item,i) in interestsList" :key="i">
+                <h5 class="px-1 pointer" v-for="(item,i) in interestsList" :key="i">
                   <b-badge
                     class="p-2"
                     :variant="form.interests.includes(item.id) ? 'primary' : 'secondary'"
                     @click="toggleInterests(item.id)"
                   >
                     {{item.name}}
-                    <span>dll</span>
+                    <span class="pl-2" v-show="form.interests.includes(item.id)">
+                      <img
+                        style="width:15px;hight:15px"
+                        src="../../../../assets/icons/tick.svg"
+                        alt
+                      />
+                    </span>
                   </b-badge>
                 </h5>
               </div>
