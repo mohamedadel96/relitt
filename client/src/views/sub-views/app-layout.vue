@@ -13,6 +13,7 @@
       <friends-search />
       <friends-modal />
       <myEvent />
+      <side-footer />
     </div>
   </section>
 </template>
@@ -24,6 +25,7 @@ import expCard from "../../components/application/dashboard/expCard";
 import friendsSearch from "../../components/application/feeds/friendsSearch";
 import friendsModal from "../../components/application/feeds/friendsModal";
 import myEvent from "../../components/application/events/myEvent";
+import sideFooter from "../../components/application/feeds/sideFooter";
 
 export default {
   components: {
@@ -32,7 +34,8 @@ export default {
     expCard,
     friendsSearch,
     myEvent,
-    friendsModal
+    friendsModal,
+    sideFooter
   }
 };
 </script>
