@@ -12,7 +12,8 @@
       <form @submit.prevent>
         <div class="form-group d-flex overflow-hidden">
           <div class="col-12 px-2">
-            <select class="form-controls py-3 col-12 pointer" v-model="form.type_id">
+            <label class="font-12 text-secondary">Type</label>
+            <select class="form-controls py-2 col-12 pointer" v-model="form.type_id">
               <option class="font-20" :value="1">diving</option>
               <option class="font-20" :value="2">scuba diving</option>
             </select>
@@ -20,8 +21,9 @@
         </div>
         <div class="form-group d-flex overflow-hidden">
           <div class="col-12 px-2">
+            <label class="font-12 text-secondary">Title</label>
             <input
-              class="form-controls py-3 col-12"
+              class="form-controls py-2 col-12"
               type="text"
               v-model="form.title"
               placeholder="Title"
@@ -30,7 +32,8 @@
         </div>
         <div class="form-group d-flex overflow-hidden position-relative">
           <div class="col-12 px-2">
-            <flat-pickr class="form-controls py-3 col-12" v-model="form.date" placeholder="Date"></flat-pickr>
+            <label class="font-12 text-secondary">Date</label>
+            <flat-pickr class="form-controls py-2 col-12" v-model="form.date" placeholder="Date"></flat-pickr>
           </div>
           <div class="position-absolute">
             <img src="../../../assets/icons/calender-icon.svg" />
@@ -38,8 +41,9 @@
         </div>
         <div class="form-group d-flex overflow-hidden position-relative">
           <div class="col-12 px-2">
+            <label class="font-12 text-secondary">Duration</label>
             <input
-              class="form-controls py-3 col-12"
+              class="form-controls py-2 col-12"
               type="number"
               min="0"
               v-model="form.duration"
@@ -51,8 +55,9 @@
         </div>
         <div class="form-group d-flex overflow-hidden position-relative">
           <div class="col-12 px-2">
+            <label class="font-12 text-secondary">Depth</label>
             <input
-              class="form-controls py-3 col-12"
+              class="form-controls py-2 col-12"
               type="number"
               min="0"
               v-model="form.depth"
@@ -64,8 +69,9 @@
         </div>
         <div :class="['form-group overflow-hidden', form.type_id === 1 ? 'd-flex' : 'd-none']">
           <div class="col-12 px-2">
+            <label class="font-12 text-secondary">Temprature</label>
             <input
-              class="form-controls py-3 col-12"
+              class="form-controls py-2 col-12"
               type="number"
               min="0"
               v-model="form.temprature"
@@ -77,8 +83,9 @@
         </div>
         <div class="form-group d-flex">
           <div class="col-6 px-2">
+            <label class="font-12 text-secondary">Start air level</label>
             <input
-              class="form-controls py-3 col-12"
+              class="form-controls py-2 col-12"
               type="number"
               min="0"
               v-model="form.start_air_level"
@@ -88,8 +95,9 @@
           </div>
 
           <div class="col-6 px-2">
+            <label class="font-12 text-secondary">End air level</label>
             <input
-              class="form-controls py-3 col-12"
+              class="form-controls py-2 col-12"
               type="number"
               min="0"
               v-model="form.end_air_level"
@@ -292,7 +300,7 @@ export default {
 
   form {
     .position-absolute {
-      top: 27%;
+      top: 54%;
       right: 8%;
       width: 20px;
       height: 20px;
