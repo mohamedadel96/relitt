@@ -29,7 +29,7 @@
       </notifications>
       <profile-settings v-if="profile" :image="profile.image" />
 
-      <activity>
+      <activity v-if="$route.name === 'app'">
         <img
           class="mx-2 pointer"
           v-b-modal.addActivity

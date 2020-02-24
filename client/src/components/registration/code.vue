@@ -49,8 +49,16 @@ export default {
         if (this.$v.$invalid) {
           return;
         }
-        let res = await this.$store.dispatch("CODEVALIDATE", this.form);
-        this.$router.push("/registration/change-password");
+        this.$store.dispatch("CODEVALIDATE", this.form).then(res => {
+          if (!res) return;
+          this.$router.push("/registration/change-password");
+        }).catch(message => {
+          this.$toasted.error(message);
+        }).finally(() => {
+          loader.hide()
+        })
+
+        
       } catch (error) {
         console.log(error);
       }

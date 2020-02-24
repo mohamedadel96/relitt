@@ -1,5 +1,5 @@
 <template>
-  <section id="login">
+  <section id="login" ref="login">
     <div class="mb-5 mx-md-3 mx-1">
       <p
         class="title font-weight-bold px-lg-5 px-0 font-16"
@@ -91,19 +91,23 @@ export default {
     }
   },
   methods: {
-    async submit() {
-      try {
+    submit() {
         this.$v.$touch();
         if (this.$v.$invalid) {
           return;
         }
-        let res = await this.$store.dispatch("LOGIN", this.form);
-        if (res !== "done") return; //will return error in popup
+        let loader = this.$loading.show({
+          container: this.$refs.createPost
+        });
+        this.$store.dispatch("LOGIN", this.form).then(res => {
+          if (!res) return;
+          this.$router.push("/app");
+        }).catch(message => {
+          this.$toasted.error(message);
+        }).finally(() => {
+          loader.hide()
+        })
 
-        this.$router.push("/app");
-      } catch (error) {
-        console.log(error);
-      }
     },
     facebookLogin(res) {
       console.log(res);

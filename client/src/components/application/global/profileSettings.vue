@@ -17,11 +17,12 @@
           @click="$bvModal.show('friendsModal')"
         >Find Friends</p>
         <p
+          v-if="$route.name === 'app'"
           class="py-3 mb-0 font-16 pointer"
           @click="openModal('openPersonalInfo')"
         >Edit personal Info</p>
         <p
-          class="border-top py-3 mb-0 font-16 pointer"
+          :class="['py-3 mb-0 font-16 pointer', $route.name === 'app' ? 'border-top' : '']"
           @click="openModal('openManageNotifications')"
         >Manage notification</p>
         <p

@@ -45,18 +45,20 @@ export default {
   },
   methods: {
     async submit() {
-      try {
         this.$v.$touch();
         if (this.$v.$invalid) {
           return;
         }
 
-        let res = await this.$store.dispatch("RESETPASSWORD", this.form);
+        this.$store.dispatch("RESETPASSWORD", this.form).then(res => {
+          if (!res) return;
+          this.$router.push("/registration/code");
+        }).catch(message => {
+          this.$toasted.error(message);
+        }).finally(() => {
+          loader.hide()
+        })
 
-        this.$router.push("/registration/code");
-      } catch (error) {
-        console.log(error);
-      }
     }
   }
 };

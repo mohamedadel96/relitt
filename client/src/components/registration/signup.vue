@@ -83,25 +83,29 @@ export default {
     }
   },
   methods: {
-    async submit() {
-      try {
-        this.$v.$touch();
-        if (this.$v.$invalid) {
-          return;
-        }
-
-        let res = await this.$store.dispatch("VALIDATEEMAIL", this.form);
-
-        this.$toasted.success(res);
-
-        this.$router.push({
-          name: "entrance"
-        });
-      } catch (error) {
-        error.errorDetails.email.map(msg => {
-          this.$toasted.error(msg);
-        });
+    submit() {
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        return;
       }
+
+      let loader = this.$loading.show({
+        container: this.$refs.createPost
+      });
+      this.$store
+        .dispatch("VALIDATEEMAIL", this.form)
+        .then(res => {
+          if (!res) return;
+          this.$router.push({
+            name: "entrance"
+          });
+        })
+        .catch(message => {
+          this.$toasted.error(message);
+        })
+        .finally(() => {
+          loader.hide();
+        });
     }
   }
 };
