@@ -7,7 +7,7 @@
     >Edit personal info</p>
     <b-modal
       id="editPersonalInfo"
-      @hide="form.image = user.image"
+      @hide="resetModal(user)"
       hide-backdrop
       content-class="shadow"
       hide-header
@@ -130,9 +130,6 @@
               </div>
             </div>
           </div>
-          <!-- <div class="border-bottom pt-2 px-2">
-            <p class="text-primary pointer" @click="showInterestList = true">+ Add new interest</p>
-          </div>-->
         </div>
         <div class="col-12 px-2 my-3">
           <button
@@ -183,21 +180,24 @@ export default {
       immediate: true,
       handler(val) {
         if (val) {
-          this.form.firstname = val.firstname;
-          this.form.lastname = val.lastname;
-          this.form.image = val.image;
-          this.form.type = val.type;
-          this.form.bio = val.bio;
-          this.form.birthdate = val.birthdate;
-          this.form.interests = val.interests.map(item => item.id);
-          this.form.location_name = val.location_name;
-          this.form.lat = val.lat;
-          this.form.lng = val.lng;
+          this.resetModal(val)
         }
       }
     }
   },
   methods: {
+    resetModal(user) {
+      this.form.firstname = user.firstname;
+      this.form.lastname = user.lastname;
+      this.form.image = user.image;
+      this.form.type = user.type;
+      this.form.bio = user.bio;
+      this.form.birthdate = user.birthdate;
+      this.form.interests = user.interests.map(item => item.id);
+      this.form.location_name = user.location_name;
+      this.form.lat = user.lat;
+      this.form.lng = user.lng;
+    },
     uploadFiles(ref) {
       try {
         this.disableEdit = true;
