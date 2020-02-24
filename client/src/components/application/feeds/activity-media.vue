@@ -56,14 +56,14 @@
           />
           <div
             @click="$refs.lastImg.click()"
-            class="font-24 font-weight-bold pointer"
+            class="imagesNum font-24 font-weight-bold pointer"
             v-if="activity.images.length - 3"
           >+ {{activity.images.length - 3}}</div>
         </div>
       </div>
       <img
         v-show="false"
-        v-for="(src, i) in activity.images.slice(4, activity.images.length-1)"
+        v-for="(src, i) in activity.images.slice(2, activity.images.length-1)"
         :src="src.url"
         :key="i"
       />
@@ -120,6 +120,7 @@ export default {
 
         .imagesNum {
           position: absolute;
+          background: rgba(0, 0, 0, 0.612);
           top: 0;
           left: 0;
           color: $fontColor_white;
@@ -128,12 +129,16 @@ export default {
           justify-content: center;
           width: 100%;
           align-items: center;
+          transition: 0.4s;
+          &:hover {
+            background: rgba(0, 0, 0, 0.812);
+          }
         }
       }
 
       img {
         object-fit: cover;
-        max-height: 300px;
+        height: 300px;
       }
     }
   }
