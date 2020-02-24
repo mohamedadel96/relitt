@@ -25,25 +25,26 @@ export default {
   },
   methods: {
     addComment() {
-      try {
-        let loader = this.$loading.show({
-          container: this.$refs.addComment
-        });
-        this.$store
-          .dispatch("ADDCOMMENT", {
-            postId: this.$props.postId,
-            form: this.form
-          })
-          .then(res => {
-            this.form.body = null;
-            this.$root.$emit('bv::toggle::collapse', `comment-${this.$props.i}`)
-            this.$toasted.success(res);
-            loader.hide()
-          });
-      } catch (error) {
-        this.$toasted.error("error, please try again");
+
+    let loader = this.$loading.show({
+      container: this.$refs.addComment
+    });
+    this.$store
+      .dispatch("ADDCOMMENT", {
+        postId: this.$props.postId,
+        form: this.form
+      })
+      .then(res => {
+        this.form.body = null;
+        this.$root.$emit('bv::toggle::collapse', `comment-${this.$props.i}`)
+        this.$toasted.success(res);
         loader.hide()
-      }
+      }).catch(message => {
+          this.$toasted.error(message);
+          this.$toasted.info("please type your comment again");
+        }).finally(() => {
+          loader.hide()
+        })
     }
   }
 };

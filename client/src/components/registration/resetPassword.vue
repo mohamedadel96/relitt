@@ -44,14 +44,14 @@ export default {
     }
   },
   methods: {
-    async submit() {
+    submit() {
         this.$v.$touch();
         if (this.$v.$invalid) {
           return;
         }
 
+        let loader = this.$loading.show();
         this.$store.dispatch("RESETPASSWORD", this.form).then(res => {
-          if (!res) return;
           this.$router.push("/registration/code");
         }).catch(message => {
           this.$toasted.error(message);

@@ -1,5 +1,5 @@
 <template>
-  <section id="login" ref="login">
+  <section id="login">
     <div class="mb-5 mx-md-3 mx-1">
       <p
         class="title font-weight-bold px-lg-5 px-0 font-16"
@@ -96,11 +96,8 @@ export default {
         if (this.$v.$invalid) {
           return;
         }
-        let loader = this.$loading.show({
-          container: this.$refs.createPost
-        });
+        let loader = this.$loading.show();
         this.$store.dispatch("LOGIN", this.form).then(res => {
-          if (!res) return;
           this.$router.push("/app");
         }).catch(message => {
           this.$toasted.error(message);

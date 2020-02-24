@@ -224,17 +224,15 @@ export default {
       }
     },
     editProfile() {
-      try {
         let loader = this.$loading.show();
         this.$store.dispatch("EDITPROFILE", this.form).then(res => {
-          loader.hide();
           location.reload();
-        });
-      } catch (error) {
-        loader.hide();
-        this.$toasted.error("error");
-      }
-    },
+        }).catch(message => {
+          this.$toasted.error(message);
+        }).finally(() => {
+          loader.hide()
+        })
+      },
     toggleInterests(id) {
       let check = this.form.interests.filter(item => item == id);
       if (check.length) {

@@ -210,7 +210,6 @@ export default {
   },
   methods: {
     uploadFiles() {
-      try {
         this.disableUploading = true;
         let loader = this.$loading.show();
 
@@ -225,40 +224,36 @@ export default {
           this.$toasted.success("uploaded successfully");
           res.map(file => this.form.images.push(file.filePath));
 
+        }).catch(message => {
+          this.$toasted.error("error while uploading files");
+          this.$toasted.error(message);
+        }).finally(() => {
           this.disableUploading = false;
-          loader.hide();
-        });
-      } catch (error) {
-        this.$toasted.error("error while uploading files");
-        loader.hide();
-      }
+          loader.hide()
+        })
     },
     saveActivity() {
-      try {
         let loader = this.$loading.show();
 
         this.$store.dispatch("ADDACTIVITY", this.form).then(res => {
           this.clearData();
           this.$toasted.success(res);
-          loader.hide();
-        });
-      } catch (error) {
-        this.$toasted.error("error");
-        loader.hide();
-      }
+        }).catch(message => {
+          this.$toasted.error(message);
+        }).finally(() => {
+          loader.hide()
+        })
     },
     editActivity() {
-      try {
         let loader = this.$loading.show();
         this.$store.dispatch("EDITACTIVITY", this.form).then(res => {
           this.clearData();
           this.$toasted.success(res);
-          loader.hide();
-        });
-      } catch (error) {
-        this.$toasted.error("error");
-        loader.hide();
-      }
+        }).catch(message => {
+          this.$toasted.error(message);
+        }).finally(() => {
+          loader.hide()
+        })
     },
     clearData() {
       this.$bvModal.hide("addActivity");

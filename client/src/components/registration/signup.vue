@@ -89,13 +89,10 @@ export default {
         return;
       }
 
-      let loader = this.$loading.show({
-        container: this.$refs.createPost
-      });
+      let loader = this.$loading.show();
       this.$store
         .dispatch("VALIDATEEMAIL", this.form)
         .then(res => {
-          if (!res) return;
           this.$router.push({
             name: "entrance"
           });

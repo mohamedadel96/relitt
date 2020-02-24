@@ -88,7 +88,6 @@ export default {
   },
   methods: {
     editComment(id) {
-      try {
         let loader = this.$loading.show({
           container: this.$refs.comments
         });
@@ -101,25 +100,25 @@ export default {
             this.editState = false;
             this.$toasted.success(res);
             loader.hide();
-          });
-      } catch (error) {
-        this.$toasted.error("error");
-        loader.hide();
-      }
+          }).catch(message => {
+          this.$toasted.error(message);
+          this.$toasted.info("please type your comment again");
+        }).finally(() => {
+          loader.hide()
+        })
     },
     deleteComment(comment) {
-      try {
         let loader = this.$loading.show({
           container: this.$refs.comments
         });
         this.$store.dispatch("DELETECOMMENT", comment).then(res => {
           this.$toasted.info(res);
+        }).catch(message => {
+          this.$toasted.error(message);
+          this.$toasted.info("please type your comment again");
+        }).finally(() => {
           loader.hide()
-        });
-      } catch (error) {
-        this.$toasted.error("error");
-        loader.hide()
-      }
+        })
     },
     cancelEditMode(comment) {
       this.editState = null;
