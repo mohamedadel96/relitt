@@ -35,6 +35,7 @@
               <flat-pickr
                 class="form-controls py-2 px-1 col-12"
                 v-model="form.start_date"
+                :config="config"
                 placeholder="Start date"
               ></flat-pickr>
             </div>
@@ -45,6 +46,7 @@
               <flat-pickr
                 class="form-controls py-2 px-1 col-12"
                 v-model="form.end_date"
+                :config="config"
                 placeholder="End date"
               ></flat-pickr>
             </div>
@@ -111,6 +113,9 @@ export default {
         start_date: null,
         end_date: null,
         images: []
+      },
+      config: {
+        minDate: new Date()
       },
       editState: false,
       disableUploading: false

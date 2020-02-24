@@ -1,7 +1,7 @@
 <template>
   <footer class="mt-3 border-top">
     <div class="container">
-      <div class="d-flex flex-wrap justify-content-between my-5">
+      <div class="d-flex flex-wrap justify-content-between py-5">
         <div class="block_1 col-md-3 col-12">
           <div class="col-12 px-0">
             <img src="../../../assets/icons/dark-logo.svg" alt />

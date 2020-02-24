@@ -1,6 +1,6 @@
 <template>
   <footer class="container">
-    <div class="d-flex flex-wrap justify-content-between my-5">
+    <div class="d-flex flex-wrap justify-content-between py-5">
       <div class="block_1 col-md-4 col-12">
         <div class="col-md-10 col-12 px-0">
           <svg
