@@ -116,22 +116,31 @@
           <div class="d-flex">
             <div class="col-4 px-3">
               <input class="d-none" ref="clear" type="radio" v-model="form.visibility" :value="1" />
-              <div class="pointer" @click="$refs.clear.click()">
-                <p>icon</p>
+              <div class="text-center pointer" @click="$refs.clear.click()">
+                <img
+                  :src="form.visibility === 1 ? require('../../../assets/icons/flower-blue.svg') : require('../../../assets/icons/flower-silver.svg')"
+                  alt
+                />
                 <p :class="form.visibility === 1 ? 'text-primary' : ''">Clear</p>
               </div>
             </div>
             <div class="col-4 px-3">
               <input class="d-none" ref="normal" type="radio" v-model="form.visibility" :value="2" />
-              <div class="pointer" @click="$refs.normal.click()">
-                <p>icon</p>
+              <div class="text-center pointer" @click="$refs.normal.click()">
+                <img
+                  :src="form.visibility === 2 ? require('../../../assets/icons/is-flower-blue.svg') : require('../../../assets/icons/is-flower-silver.svg')"
+                  alt
+                />
                 <p :class="form.visibility === 2 ? 'text-primary' : ''">Normal</p>
               </div>
             </div>
             <div class="col-4 px-3">
               <input class="d-none" ref="bad" type="radio" v-model="form.visibility" :value="3" />
-              <div class="pointer" @click="$refs.bad.click()">
-                <p>icon</p>
+              <div class="text-center pointer" @click="$refs.bad.click()">
+                <img
+                  :src="form.visibility === 3 ? require('../../../assets/icons/cloud-blue.svg') : require('../../../assets/icons/cloud-silver.svg')"
+                  alt
+                />
                 <p :class="form.visibility === 3 ? 'text-primary' : ''">Bad</p>
               </div>
             </div>
@@ -210,50 +219,61 @@ export default {
   },
   methods: {
     uploadFiles() {
-        this.disableUploading = true;
-        let loader = this.$loading.show();
+      this.disableUploading = true;
+      let loader = this.$loading.show();
 
-        let formData = new FormData();
+      let formData = new FormData();
 
-        for (let i = 0; i < this.$refs.photos.files.length; i++) {
-          let file = this.$refs.photos.files[i];
-          formData.append("files[" + i + "]", file);
-        }
+      for (let i = 0; i < this.$refs.photos.files.length; i++) {
+        let file = this.$refs.photos.files[i];
+        formData.append("files[" + i + "]", file);
+      }
 
-        this.$store.dispatch("UPLOADFILES", formData).then(res => {
+      this.$store
+        .dispatch("UPLOADFILES", formData)
+        .then(res => {
           this.$toasted.success("uploaded successfully");
           res.map(file => this.form.images.push(file.filePath));
-
-        }).catch(message => {
+        })
+        .catch(message => {
           this.$toasted.error("error while uploading files");
           this.$toasted.error(message);
-        }).finally(() => {
-          this.disableUploading = false;
-          loader.hide()
         })
+        .finally(() => {
+          this.disableUploading = false;
+          loader.hide();
+        });
     },
     saveActivity() {
-        let loader = this.$loading.show();
+      let loader = this.$loading.show();
 
-        this.$store.dispatch("ADDACTIVITY", this.form).then(res => {
+      this.$store
+        .dispatch("ADDACTIVITY", this.form)
+        .then(res => {
           this.clearData();
           this.$toasted.success(res);
-        }).catch(message => {
-          this.$toasted.error(message);
-        }).finally(() => {
-          loader.hide()
         })
+        .catch(message => {
+          this.$toasted.error(message);
+        })
+        .finally(() => {
+          loader.hide();
+        });
     },
     editActivity() {
-        let loader = this.$loading.show();
-        this.$store.dispatch("EDITACTIVITY", this.form).then(res => {
+      let loader = this.$loading.show();
+      this.$store
+        .dispatch("EDITACTIVITY", this.form)
+        .then(res => {
           this.clearData();
           this.$toasted.success(res);
-        }).catch(message => {
-          this.$toasted.error(message);
-        }).finally(() => {
-          loader.hide()
         })
+        .catch(message => {
+          this.$toasted.error(message);
+        })
+        .finally(() => {
+          loader.hide();
+        });
     },
     clearData() {
       this.$bvModal.hide("addActivity");
