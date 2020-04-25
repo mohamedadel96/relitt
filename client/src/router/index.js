@@ -6,7 +6,10 @@ import App from '../views/application.vue'
 Vue.use(VueRouter)
 
 const routes = [
-
+  {
+    path: '*',
+    redirect: '/'
+  },
   {
     path: '/',
     name: 'home',

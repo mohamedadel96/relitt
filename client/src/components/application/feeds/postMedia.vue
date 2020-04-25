@@ -9,6 +9,7 @@
           alt="post picture"
         />
         <video
+          :poster="media[0].thumbnail"
           controlslist="nodownload"
           disablepictureinpicture
           v-if="media.length &&  media[0].type == 'video'"
@@ -31,6 +32,7 @@
           />
 
           <video
+            :poster="media[1].thumbnail"
             controlslist="nodownload"
             disablepictureinpicture
             v-if="media[1] && media[1].type == 'video'"
@@ -50,6 +52,7 @@
             alt="post picture"
           />
           <video
+            :poster="media[2].thumbnail"
             controlslist="nodownload"
             disablepictureinpicture
             v-if="media[2] && media[2].type == 'video'"

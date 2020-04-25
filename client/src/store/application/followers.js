@@ -71,6 +71,7 @@ export default {
                     commit('toggleFollowing', payload)
                     dispatch('PROFILE')
                     dispatch('SUGESTEDFOLLWERS')
+                    dispatch('FEEDS')
                     resolve('done')
                 })
             })
