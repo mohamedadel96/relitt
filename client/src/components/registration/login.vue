@@ -69,7 +69,7 @@
 <script>
 import GoogleLogin from "vue-google-login";
 import { VFBLogin as VFacebookLogin } from "vue-facebook-login-component";
-import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
+import { required, email, minLength } from "vuelidate/lib/validators";
 
 export default {
   components: {

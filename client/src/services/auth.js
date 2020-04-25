@@ -19,7 +19,7 @@ export default {
    changePassword(form) {
       return Api().post('auth/reset_password', form)
    },
-   logout(){
+   logout() {
       return Api().post('customer/auth/logout')
    }
 
