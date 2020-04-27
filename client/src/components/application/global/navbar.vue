@@ -3,40 +3,42 @@
     id="appNav"
     class="col-12 px-0 py-3 border-bottom position-fixed d-flex justify-content-between align-items-center"
   >
-    <div class="px-4 col-3">
+    <div class="px-md-4 col-md-3 col-5">
       <img src="../../../assets/img/icon/logo.svg" />
     </div>
 
-    <div class="col-6 d-flex justify-content-center">
-      <ul class="nav-list d-flex justify-content-between col-6 my-0">
-        <li :class="[$route.name === 'app' ? 'active' : '', 'fontLG']">
+    <div class="col-6 d-md-flex d-none justify-content-center">
+      <ul class="nav-list d-flex justify-content-between col-lg-6 col-12 my-0">
+        <li :class="[$route.name === 'app' ? 'active' : '', 'font-20']">
           <router-link to="/app">Feeds</router-link>
         </li>
-        <li :class="[$route.name === 'dashboard' ? 'active' : '' , 'fontLG']">
+        <li :class="['mx-4',$route.name === 'dashboard' ? 'active' : '' , 'font-20']">
           <router-link to="/app/dashboard">Dashboard</router-link>
         </li>
         <li
-          :class="[($route.name === 'events' || $route.name === 'centers') ? 'active' : '', 'fontLG']"
+          :class="[($route.name === 'events' || $route.name === 'centers') ? 'active' : '', 'font-20']"
         >
           <router-link to="/app/events">Explore</router-link>
         </li>
       </ul>
     </div>
 
-    <div class="col-3 block_3 d-flex justify-content-end px-4">
+    <div class="col-md-3 col-7 block_3 d-flex justify-content-end px-4">
       <notifications>
         <img class="pointer" v-b-modal.notifications src="../../../assets/icons/ring.svg" alt />
       </notifications>
-      <profile-settings v-if="profile">
-        <div
-          class="d-flex justify-content-center align-items-center border rounded-circle overflow-hidden pointer mx-1"
-        >
-          <img class="avatar" v-b-modal.profileSettings :src="profile.image" alt="avatar" />
-        </div>
-      </profile-settings>
-      <activity>
-        <img class="ml-2 pointer" v-b-modal.addActivity src="../../../assets/icons/navPlus.svg" alt />
+      <profile-settings v-if="profile" :image="profile.image" />
+
+      <activity v-if="$route.name === 'app'">
+        <img
+          class="mx-2 pointer"
+          v-b-modal.addActivity
+          src="../../../assets/icons/nav-plus.svg"
+          alt
+        />
       </activity>
+
+      <nav-items class="d-md-none d-block" />
     </div>
   </nav>
 </template>
@@ -45,11 +47,13 @@
 import activity from "./activity";
 import profileSettings from "./profileSettings";
 import notifications from "./notifications";
+import navItems from "./navItems";
 export default {
   components: {
     activity,
     profileSettings,
-    notifications
+    notifications,
+    navItems
   },
   data() {
     return {};

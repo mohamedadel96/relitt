@@ -1,14 +1,18 @@
 <template>
   <div id="center" v-if="center">
-    <div class="backgroundimg">
+    <!-- <div class="backgroundimg">
       <img src="../../assets/img/Layer1.png" />
+    </div>-->
+    <div class="container-fluid col-lg-10 col-12 px-0">
+      <center-carsoule :images="center.images" />
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid col-lg-10 col-12 py-3 px-md-5 px-3">
       <centerInfo :data="center"></centerInfo>
       <review :elementData="center"></review>
       <centerComment :elementData="center"></centerComment>
-      <location :elementData="center"></location>
+      <location :lat="center.lat" :lng="center.lng"></location>
     </div>
+    <app-footer />
   </div>
 </template>
 
@@ -17,20 +21,24 @@ import review from "../../components/application/centers/review";
 import location from "../../components/application/centers/location";
 import centerComment from "../../components/application/centers/centerComment";
 import centerInfo from "../../components/application/centers/centerInfo";
+import centerCarsoule from "../../components/application/centers/centerCarsoule";
+import appFooter from "../../components/application/global/footer";
 
 export default {
   components: {
+    centerCarsoule,
     review,
     location,
     centerComment,
-    centerInfo
+    centerInfo,
+    appFooter
   },
   computed: {
     center() {
       return this.$store.getters.center;
     }
   },
-  mounted() {
+  created() {
     this.$store.dispatch("CENTER", this.$route.params.id);
   }
 };
@@ -47,8 +55,6 @@ export default {
   }
 
   .container-fluid {
-    width: 80%;
-    padding: 60px 65px;
     background-color: #fff;
     -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.05);
     -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.05);

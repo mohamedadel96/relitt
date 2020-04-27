@@ -1,37 +1,58 @@
 <template>
   <section id="profileSettings">
-    <slot></slot>
+    <div
+      class="d-flex justify-content-center align-items-center rounded-circle overflow-hidden pointer mx-1"
+    >
+      <img
+        class="avatar"
+        v-b-modal.profileSettings
+        :src="image ? image : require('../../../assets/img/default-avatar.jpg')"
+        alt="avatar"
+      />
+    </div>
     <b-modal id="profileSettings" hide-backdrop content-class="shadow" hide-header hide-footer>
       <div @click="$bvModal.hide('profileSettings')">
-        <p class="py-3 mb-0 fontSM pointer" @click="openPersonalInfo">Edit personal Info</p>
-        <p class="border-top py-3 mb-0 fontSM pointer">Manage notification</p>
         <p
-          @click="openChangePassword"
-          class="menu-item border-top py-3 mb-0 fontSM pointer"
+          class="d-lg-none d-block border-bottom py-3 mb-0 font-16 pointer"
+          @click="$bvModal.show('friendsModal')"
+        >Find Friends</p>
+        <p
+          v-if="$route.name === 'app'"
+          class="py-3 mb-0 font-16 pointer"
+          @click="openModal('openPersonalInfo')"
+        >Edit personal Info</p>
+        <p
+          :class="['py-3 mb-0 font-16 pointer', $route.name === 'app' ? 'border-top' : '']"
+          @click="openModal('openManageNotifications')"
+        >Manage notification</p>
+        <p
+          @click="openModal('openChangePassword')"
+          class="menu-item border-top py-3 mb-0 font-16 pointer"
         >Change password</p>
-        <p class="border-top pt-3 pb-2 mb-0 fontSM pointer text-danger" @click="logout">LOGOUT</p>
+        <p class="border-top pt-3 pb-2 mb-0 font-16 pointer text-danger" @click="logout">LOGOUT</p>
       </div>
     </b-modal>
-    <change-password></change-password>
+    <change-password />
+    <manage-notifications />
   </section>
 </template>
 
 <script>
 import { Bus } from "../../../main";
 import changePassword from "./changePassword";
+import manageNotifications from "./manageNotifications";
 export default {
+  props: ["image"],
   components: {
-    changePassword
+    changePassword,
+    manageNotifications
   },
   methods: {
     logout() {
-      this.$store.dispatch('LOGOUT')
+      this.$store.dispatch("LOGOUT");
     },
-    openPersonalInfo() {
-      Bus.$emit("openPersonalInfo");
-    },
-    openChangePassword() {
-      Bus.$emit("openChangePassword");
+    openModal(name) {
+      Bus.$emit(name);
     }
   }
 };
@@ -39,6 +60,11 @@ export default {
 
 <style lang="scss">
 #profileSettings {
+  .avatar {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  }
   .modal-dialog {
     margin: 80px 10px 0 auto;
     position: relative;
@@ -47,24 +73,18 @@ export default {
   .menu-item {
     outline: none;
   }
+  .modal-content {
+    border: none;
+  }
   @media (min-width: 576px) {
-    .modal-content {
-      border: none;
-      &::after {
-        content: "";
-        width: 15px;
-        height: 15px;
-        display: block;
-        position: absolute;
-        top: -7.5px;
-        right: 21.7%;
-        background: white;
-        transform: rotate(45deg);
-        z-index: 1;
-      }
-    }
     .modal-dialog {
       max-width: 365px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .modal-dialog {
+      margin: 80px 10px 0 10px !important;
     }
   }
 }

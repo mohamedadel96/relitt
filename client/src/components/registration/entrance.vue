@@ -17,7 +17,7 @@
             />
             <div
               v-if="!$v.form.firstname.required"
-              class="invalid-feedback fontMD"
+              class="invalid-feedback font-18"
             >firstname is required</div>
           </div>
           <div class="form-group col-6 pl-2 pr-0">
@@ -30,21 +30,22 @@
             />
             <div
               v-if="!$v.form.lastname.required"
-              class="invalid-feedback fontMD"
+              class="invalid-feedback font-18"
             >lastname is required</div>
           </div>
         </div>
 
         <div class="form-group">
-          <input
-            :class="['col-12 form-control border-0 py-3', {'is-invalid': $v.form.birthdate.$error}]"
-            type="date"
-            autocomplete="off"
+          <flat-pickr
+            :class="['col-12 form-control border-0 py-3 bg-white', {'is-invalid': $v.form.birthdate.$error}]"
             v-model="form.birthdate"
-          />
+            :config="config"
+            placeholder="Date"
+          ></flat-pickr>
+
           <div
             v-if="!$v.form.birthdate.required"
-            class="invalid-feedback fontMD"
+            class="invalid-feedback font-18"
           >birthdate is required</div>
         </div>
 

@@ -17,6 +17,30 @@ import appsSection from "../components/home/appsSection";
 import appFooter from "../components/home/footer";
 
 export default {
+  metaInfo: {
+    title: "relit",
+    meta: [
+      { "http-equiv": "Content-Type", content: "text/html; charset=utf-8" },
+      {
+        name: "description",
+        content: "relit application"
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "http://relitt.com" },
+      {
+        property: "og:title",
+        content: "relit"
+      },
+      {
+        property: "og:description",
+        content: "relit application"
+      },
+      {
+        property: "og:image",
+        content: window.location.href + "img/logo.fdac59ee.svg"
+      }
+    ]
+  },
   components: {
     appHeader,
     appFeatures,
@@ -26,6 +50,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-</style>

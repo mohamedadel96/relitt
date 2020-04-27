@@ -12,9 +12,18 @@
                 <h5
                   class="card-title m-0 d-inline-block"
                 >{{element.user.firstname}} {{element.user.lastname}}</h5>
-                <p class="card-text m-0 d-lg-inline-flex justify-content-end fontXS">stars</p>
+                <p class="card-text m-0 d-lg-inline-flex justify-content-end fontXS">
+                  <star-rating
+                    class="mb-1"
+                    active-color="#FFB900"
+                    :increment="0.1"
+                    :star-size="16"
+                    read-only
+                    :rating="review.general_rate"
+                  />
+                </p>
               </div>
-              <p class="card-text fontXS">{{element.created_at | moment("from", "now") }}</p>
+              <p class="card-text font-12">{{element.created_at | moment("from", "now") }}</p>
               <p class="card-text">{{ element.comment}}</p>
             </div>
           </div>
@@ -57,7 +66,6 @@ export default {
 
   .card {
     border: none;
-    border-top: 1px solid #ddd;
   }
 
   .head {

@@ -1,8 +1,19 @@
 <template>
-  <section id="editPersonalInfo" v-if="user">
-    <slot></slot>
-    <b-modal id="editPersonalInfo" hide-backdrop content-class="shadow" hide-header hide-footer>
-      <p class="text-center font-weight-bold fontMD">Edit personal info</p>
+  <section id="editPersonalInfo" ref="editPersonalInfo" v-if="user">
+    <p
+      class="menu-item mb-0 font-14 py-3 pointer"
+      slot
+      v-b-modal.editPersonalInfo
+    >Edit personal info</p>
+    <b-modal
+      id="editPersonalInfo"
+      @hide="resetModal(user)"
+      hide-backdrop
+      content-class="shadow"
+      hide-header
+      hide-footer
+    >
+      <p class="text-center font-weight-bold font-18">Edit personal info</p>
       <form @submit.prevent>
         <div class="avatar d-flex justify-content-center mb-4">
           <input
@@ -14,11 +25,23 @@
             @change="uploadFiles('avatar')"
             accept="image/*"
           />
-          <img class="pointer" @click="$refs.avatar.click()" :src="user.image" alt="personal image" />
+          <div class="d-inline-block position-relative">
+            <img
+              class="pointer"
+              @click="$refs.avatar.click()"
+              :src="form.image ? form.image : require('../../../../assets/img/default-avatar.jpg')"
+              alt="profile image"
+            />
+            <div
+              v-if="form.image"
+              class="dlt-img rounded-circle text-white font-weight-bold pointer"
+              @click="form.image = null"
+            >x</div>
+          </div>
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
-            <label class="fontXS text-secondary">Firstname</label>
+            <label class="font-12 text-secondary">Firstname</label>
             <input
               class="form-controls py-2 px-1 col-12"
               type="text"
@@ -29,7 +52,7 @@
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
-            <label class="fontXS text-secondary">Lastname</label>
+            <label class="font-12 text-secondary">Lastname</label>
             <input
               class="form-controls py-2 px-1 col-12"
               type="text"
@@ -40,7 +63,7 @@
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
-            <label class="fontXS text-secondary">Position</label>
+            <label class="font-12 text-secondary">Position</label>
             <input
               class="form-controls py-2 px-1 col-12"
               type="text"
@@ -51,7 +74,7 @@
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
-            <label class="fontXS text-secondary">Bio</label>
+            <label class="font-12 text-secondary">Bio</label>
             <textarea-autosize
               placeholder="Bio..."
               ref="Bio"
@@ -65,16 +88,17 @@
         </div>
         <div class="form-group d-flex overflow-hidden">
           <div class="col-12 px-2">
-            <label class="fontXS text-secondary">Birthdate</label>
+            <label class="font-12 text-secondary">Birthdate</label>
             <flat-pickr
               class="form-controls py-2 px-1 col-12"
+              :config="config"
               v-model="form.birthdate"
               placeholder="Birthdate"
             ></flat-pickr>
           </div>
         </div>
         <div class="px-2">
-          <label class="fontXS text-secondary">Location</label>
+          <label class="font-12 text-secondary">Location</label>
           <place-autocomplete-field
             v-model="form.location_name"
             name="place"
@@ -82,23 +106,29 @@
             placeholder="Location"
           ></place-autocomplete-field>
         </div>
-        <div class="mt-5">
+        <div class="my-4">
           <div class="form-group d-flex overflow-hidden">
             <div class="col-12 px-2">
-              <label class="fontXS text-secondary">Interests</label>
-              <div class="position-relative" v-for="(interest, i) in form.interests" :key="i">
-                <input
-                  class="form-controls py-2 px-1 col-12"
-                  type="text"
-                  v-model="form.interests[i]"
-                  placeholder="Position"
-                />
-                <span class="delete-inerests pointer" @click="form.interests.splice(i, 1)">del</span>
+              <label class="font-12 text-secondary">Interests</label>
+              <div class="d-flex flex-wrap">
+                <h5 class="px-1 pointer" v-for="(item,i) in interestsList" :key="i">
+                  <b-badge
+                    class="p-2"
+                    :variant="form.interests.includes(item.id) ? 'primary' : 'secondary'"
+                    @click="toggleInterests(item.id)"
+                  >
+                    {{item.name}}
+                    <span class="pl-2" v-show="form.interests.includes(item.id)">
+                      <img
+                        style="width:15px;hight:15px"
+                        src="../../../../assets/icons/tick.svg"
+                        alt
+                      />
+                    </span>
+                  </b-badge>
+                </h5>
               </div>
             </div>
-          </div>
-          <div class="border-bottom pt-2 px-2">
-            <p class="text-primary pointer" @click="form.interests.push('')">+ Add new interest</p>
           </div>
         </div>
         <div class="col-12 px-2 my-3">
@@ -125,17 +155,24 @@ export default {
         type: null,
         bio: null,
         birthdate: null,
-        interests: [""],
+        interests: [],
         location_name: null,
         lat: "",
         lng: ""
       },
+      config: {
+        maxDate: new Date()
+      },
+      showInterestList: false,
       disableEdit: false
     };
   },
   computed: {
     user() {
       return this.$store.getters.profile;
+    },
+    interestsList() {
+      return this.$store.getters.interestsList;
     }
   },
   watch: {
@@ -143,24 +180,30 @@ export default {
       immediate: true,
       handler(val) {
         if (val) {
-          this.form.firstname = val.firstname;
-          this.form.lastname = val.lastname;
-          this.form.image = val.image;
-          this.form.type = val.type;
-          this.form.bio = val.bio;
-          this.form.birthdate = val.birthdate;
-          this.form.interests = val.interests;
-          this.form.location_name = val.location_name;
-          this.form.lat = val.lat;
-          this.form.lng = val.lng;
+          this.resetModal(val);
         }
       }
     }
   },
   methods: {
+    resetModal(user) {
+      this.form.firstname = user.firstname;
+      this.form.lastname = user.lastname;
+      this.form.image = user.image;
+      this.form.type = user.type;
+      this.form.bio = user.bio;
+      this.form.birthdate = user.birthdate;
+      this.form.interests = user.interests.map(item => item.id);
+      this.form.location_name = user.location_name;
+      this.form.lat = user.lat;
+      this.form.lng = user.lng;
+    },
     uploadFiles(ref) {
       try {
         this.disableEdit = true;
+        let loader = this.$loading.show();
+        this.$toasted.info("Please wait until uploading files");
+
         let formData = new FormData();
 
         for (let i = 0; i < this.$refs[ref].files.length; i++) {
@@ -170,24 +213,41 @@ export default {
 
         this.$store.dispatch("UPLOADFILES", formData).then(res => {
           this.$toasted.success("uploaded successfully");
-          console.log(res);
           this.form.image = res[0].filePath;
 
           this.disableEdit = false;
+          loader.hide();
         });
       } catch (error) {
+        loader.hide();
         this.$toasted.error("error while uploading files");
       }
     },
     editProfile() {
-      try {
-        this.$store.dispatch("EDITPROFILE", this.form).then(res => {
+      let loader = this.$loading.show();
+      this.$store
+        .dispatch("EDITPROFILE", this.form)
+        .then(res => {
           location.reload();
+        })
+        .catch(message => {
+          this.$toasted.error(message);
+        })
+        .finally(() => {
+          loader.hide();
         });
-      } catch (error) {
-        this.$toasted.error("error");
+    },
+    toggleInterests(id) {
+      let check = this.form.interests.filter(item => item == id);
+      if (check.length) {
+        this.form.interests = this.form.interests.filter(item => item != id);
+        return;
       }
+      this.form.interests.push(id);
     }
+  },
+  created() {
+    this.$store.dispatch("INTERESTSLIST");
   },
   mounted() {
     Bus.$on("openPersonalInfo", () => {
@@ -199,6 +259,20 @@ export default {
 
 <style lang="scss">
 #editPersonalInfo {
+  .menu-item {
+    outline: none;
+  }
+  .dlt-img {
+    position: absolute;
+    top: -5px;
+    left: -7px;
+    font-size: 15px;
+    text-align: center;
+    background: #000000c2;
+    width: 25px;
+    height: 25px;
+    z-index: 2;
+  }
   form {
     .avatar {
       img {

@@ -63,18 +63,21 @@ export default {
     }
   },
   methods: {
-    async submit() {
-      try {
+    submit() {
         this.$v.$touch();
         if (this.$v.$invalid) {
           return;
         }
-        let res = await this.$store.dispatch("CHANGEPASSWORD", this.form);
 
-        this.$router.push("/registration/login");
-      } catch (error) {
-        console.log(error);
-      }
+        let loader = this.$loading.show();
+        this.$store.dispatch("CHANGEPASSWORD", this.form).then(res => {
+          this.$router.push("/registration/login");
+        }).catch(message => {
+          this.$toasted.error(message);
+        }).finally(() => {
+          loader.hide()
+        })
+
     }
   }
 };

@@ -16,24 +16,24 @@ export default {
                     if (res.data.status === 401) {
                         // we will handle logout option // call logout function
                     }
-                    if (res.data.code !== 200) return reject(res.data.errors)
-                        commit('pushActivity', res.data.data)
-                        resolve('added')
+                    if (res.data.code !== 200) return reject(res.data.message)
+                    commit('pushActivity', res.data.data)
+                    resolve('added')
                 })
             })
         },
-        EDITACTIVITY({commit}, form) {
+        EDITACTIVITY({ commit }, form) {
             return new Promise((resolve, reject) => {
                 appServices.editActivity(form).then(res => {
-                  if (res.data.status === 401) {
-                    // we will handle logout option // call logout function
-                  }
-                  if (res.data.code !== 200) return reject(res.data.errors)
+                    if (res.data.status === 401) {
+                        // we will handle logout option // call logout function
+                    }
+                    if (res.data.code !== 200) return reject(res.data.message)
                     commit('deleteActivity', res.data.data)
                     commit('pushActivity', res.data.data)
                     resolve('Edited')
                 })
-              })
+            })
         }
     }
 }

@@ -1,7 +1,7 @@
 <template>
-  <div id="main">
+  <main id="main">
     <router-view />
-  </div>
+  </main>
 </template>
 
 <style lang="scss">
@@ -9,32 +9,35 @@
 * {
   font-family: "Open Sans", sans-serif;
 }
+a {
+  text-decoration: none !important;
+}
 #main {
   overflow: hidden;
 }
 .font-10 {
   font-size: $font-10;
 }
-.fontXS {
-  font-size: $fontXS;
+.font-12 {
+  font-size: $font-12;
 }
-.fontSM {
-  font-size: $fontSM;
+.font-16 {
+  font-size: $font-16;
 }
 .font-14 {
   font-size: $font-14;
 }
-.fontMD {
-  font-size: $fontMD;
+.font-18 {
+  font-size: $font-18;
 }
-.fontLG {
-  font-size: $fontLG;
+.font-20 {
+  font-size: $font-20;
 }
-.fontXL {
-  font-size: $fontXL;
+.font-22 {
+  font-size: $font-22;
 }
-.fontXXL {
-  font-size: $fontXXL;
+.font-24 {
+  font-size: $font-24;
 }
 .my-3 {
   margin-top: 0.7rem !important;
@@ -60,7 +63,7 @@
   height: auto !important;
 }
 .invalid-feedback {
-  font-size: $fontSM !important;
+  font-size: $font-16 !important;
   font-weight: bold !important;
   text-align: center !important;
 }

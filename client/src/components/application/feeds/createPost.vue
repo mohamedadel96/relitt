@@ -1,44 +1,66 @@
 <template>
-  <section id="create-post" class="rounded py-1">
-    <div
-      class="close border rounded-circle bg-danger text-white py-1 px-2 pointer overlay"
-      v-show="startPosting"
-      @click="clearPost"
-    >x</div>
-    <div class="post-media" v-show="startPosting">
-      <img v-for="(url,i) in form.images" :key="i" class="m-3" :src="url" alt />
-    </div>
-    <div class="post-body d-flex justify-content-between align-items-start">
-      <textarea
-        @focus="startPosting = true"
-        v-model="form.body"
-        class="py-2 px-4"
-        placeholder="what's in your mind"
-      ></textarea>
-
+  <section id="createPost" ref="createPost" class="rounded py-1">
+    <div class="post-body">
       <div
-        v-show="startPosting"
-        :class="{ 'd-flex flex-wrap align-items-between justify-content-end enlargement' : startPosting}"
+        v-if="profile"
+        :class="['post-info px-3 justify-content-between align-items-center' , startPosting ? 'd-flex' : 'd-none']"
       >
-        <div class="col-12 px-0 d-flex align-items-start justify-content-end pt-2">
-          <span class="px-0">
-            <input
-              ref="video"
-              @change="uploadFiles('video')"
-              class="d-none"
-              type="file"
-              name="video"
-              accept="video/*"
-              multiple
-            />
-            <img
-              @click="$refs.video.click()"
-              class="pointer"
-              src="../../../assets/img/icon/path2.png"
-              alt
-            />
-          </span>
-          <span class="px-3">
+        <div class="d-flex align-items-center py-2">
+          <img
+            class="rounded-circle mr-3"
+            :src="profile.image ? profile.image : require('../../../assets/img/default-avatar.jpg')"
+            alt="friend profile picture"
+          />
+          <div>
+            <p class="mb-0 font-weight-bold font-16">{{profile.firstname}} {{profile.lastname}}</p>
+          </div>
+        </div>
+      </div>
+      <div :class="['col-12 px-0', startPosting ? '' : 'smallHeight']" @click="startPosting = true">
+        <textarea-autosize
+          placeholder="what's in your mind"
+          class="col-12 py-2 px-4"
+          v-model="form.body"
+          :min-height="40"
+          :max-height="350"
+        />
+      </div>
+      <div class="post-media" v-show="startPosting">
+        <viewer :images="form.images">
+          <div class="col-12 px-0">
+            <div class="d-inline-block position-relative" v-for="(url,i) in form.videos" :key="i">
+              <video
+                controlslist="nodownload"
+                disablepictureinpicture
+                class="m-3 rounded pointer border"
+                controls
+              >
+                <source :src="url" type="video/mp4" />
+                <source :src="url" type="video/ogg" />Your browser does not support the video tag.
+              </video>
+              <div
+                class="dlt-img rounded-circle text-white font-weight-bold pointer"
+                @click="form.videos.splice(i, 1)"
+              >x</div>
+            </div>
+          </div>
+          <div class="col-12 px-0">
+            <div class="d-inline-block position-relative" v-for="(url,i) in form.images" :key="i">
+              <img class="m-3 rounded pointer border" :src="url" alt />
+              <div
+                class="dlt-img rounded-circle text-white font-weight-bold pointer"
+                @click="form.images.splice(i, 1)"
+              >x</div>
+            </div>
+          </div>
+        </viewer>
+      </div>
+      <div
+        :class="['col-12 px-3 pb-2', {'d-flex flex-wrap align-items-end justify-content-between showBtn' : startPosting}]"
+        v-show="startPosting"
+      >
+        <div class="d-flex">
+          <button :disabled="disablePost" @click="$refs.pic.click()" class="btn btn-light">
             <input
               ref="pic"
               @change="uploadFiles('pic')"
@@ -48,30 +70,42 @@
               accept="image/*"
               multiple
             />
-            <img
-              @click="$refs.pic.click()"
-              class="pointer"
-              src="../../../assets/img/icon/path.svg"
-              alt
+            <img class="pointer" src="../../../assets/icons/image.svg" alt />
+            <span class="px-2 d-none d-lg-inline">Picture</span>
+          </button>
+          <button :disabled="disablePost" @click="$refs.video.click()" class="btn btn-light mx-3">
+            <input
+              ref="video"
+              @change="uploadFiles('video')"
+              class="d-none"
+              type="file"
+              name="video"
+              accept="video/*"
+              multiple
             />
-          </span>
+            <img class="pointer" src="../../../assets/img/icon/path2.png" alt />
+            <span class="px-2 d-none d-lg-inline">Video</span>
+          </button>
         </div>
-        <div
-          :class="['col-12 px-3 pb-2 startPosting', {'d-flex align-items-end justify-content-end showBtn' : startPosting}]"
-          v-show="startPosting"
-        >
+        <div class="d-flex">
+          <button
+            :disabled="disablePost"
+            @click="startPosting = !startPosting"
+            class="btn btn-danger mx-3"
+          >Cancel</button>
+
           <button
             v-show="!editState"
             :disabled="disablePost"
             @click="post"
-            class="btn btn-primary"
+            class="btn btn-primary px-4"
           >Post</button>
 
           <button
             v-show="editState"
             :disabled="disablePost"
             @click="editPost"
-            class="btn btn-primary"
+            class="btn btn-primary px-4"
           >Edit</button>
         </div>
       </div>
@@ -87,12 +121,18 @@ export default {
       form: {
         postId: null,
         body: null,
-        images: []
+        images: [],
+        videos: []
       },
       startPosting: false,
       editState: false,
       disablePost: false
     };
+  },
+  computed: {
+    profile() {
+      return this.$store.getters.profile;
+    }
   },
   watch: {
     postData: {
@@ -102,6 +142,7 @@ export default {
           this.form.postId = val.id;
           this.form.body = val.body;
           this.form.images = val.images.map(img => img.url);
+          this.form.videos = val.videos.map(video => video.url);
           this.editState = true;
           this.startPosting = true;
           this.$toasted.info("you can edit post now");
@@ -109,12 +150,27 @@ export default {
           this.$emit("clearPostData");
         }
       }
+    },
+    startPosting(val) {
+      if (!val) {
+        this.disablePost = false;
+        this.startPosting = false;
+        this.editState = false;
+        this.form.body = null;
+        this.form.images = [];
+        this.form.videos = [];
+      }
     }
   },
   methods: {
     uploadFiles(ref) {
       try {
         this.disablePost = true;
+        let loader = this.$loading.show({
+          container: this.$refs.createPost
+        });
+        this.$toasted.info("Please wait until uploading files");
+
         let formData = new FormData();
 
         for (let i = 0; i < this.$refs[ref].files.length; i++) {
@@ -124,49 +180,57 @@ export default {
 
         this.$store.dispatch("UPLOADFILES", formData).then(res => {
           this.$toasted.success("uploaded successfully");
-          res.map(file => this.form.images.push(file.filePath));
+          ref == "pic"
+            ? res.map(file => this.form.images.push(file.filePath))
+            : res.map(file => this.form.videos.push(file.filePath));
 
           this.disablePost = false;
+
+          loader.hide();
         });
       } catch (error) {
+        loader.hide();
         this.$toasted.error("error while uploading files");
       }
     },
     post() {
       try {
         this.disablePost = true;
+        let loader = this.$loading.show({
+          container: this.$refs.createPost
+        });
         this.$store.dispatch("POST", this.form).then(res => {
           this.$toasted.success("your post uploaded successfully");
-          this.clearPost();
+          this.startPosting = false;
+          loader.hide();
         });
       } catch (error) {
+        loader.hide();
         console.log("error while uploading post");
       }
     },
     editPost() {
       try {
         this.disablePost = true;
+        let loader = this.$loading.show({
+          container: this.$refs.createPost
+        });
         this.$store.dispatch("EDITPOST", this.form).then(res => {
           this.$toasted.success("your post uploaded successfully");
-          this.clearPost();
+          this.startPosting = false;
+          loader.hide();
         });
       } catch (error) {
+        loader.hide();
         console.log("error while uploading post");
       }
-    },
-    clearPost() {
-      this.disablePost = false;
-      this.startPosting = false;
-      this.editState = false;
-      this.form.body = null;
-      this.form.images = [];
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-#create-post {
+#createPost {
   background: $background_white;
   box-shadow: 1px 1px 4px #ddd;
   position: relative;
@@ -179,76 +243,49 @@ export default {
       height: 200px;
       object-fit: cover;
     }
+    video {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
   }
 
   .post-body {
+    .post-info {
+      img {
+        width: 60px;
+        height: 60px;
+      }
+    }
+    .smallHeight {
+      height: 40px;
+      overflow: hidden;
+    }
     textarea {
       background: none;
       border: none;
       outline: none;
-      height: 40px;
-      width: 98%;
-      resize: none;
-      transition: 0.4s;
-
-      &:focus {
-        height: 250px;
-      }
-    }
-
-    .enlargement {
-      -webkit-animation-name: elongation;
-      /* Safari 4.0 - 8.0 */
-      -webkit-animation-duration: 2s;
-      /* Safari 4.0 - 8.0 */
-      animation-name: elongation;
-      animation-duration: 2s;
-      height: 250px;
-    }
-
-    .startPosting {
-      position: absolute;
-      height: 100;
-      bottom: 0;
-      opacity: 0;
     }
 
     .showBtn {
       -webkit-animation-name: showBtn;
-      /* Safari 4.0 - 8.0 */
       -webkit-animation-duration: 2s;
-      /* Safari 4.0 - 8.0 */
       animation-name: showBtn;
       animation-duration: 2s;
       opacity: 1;
     }
   }
 
-  .close {
+  .dlt-img {
     position: absolute;
-    top: -14px;
-    left: -18px;
-  }
-
-  @-webkit-keyframes elongation {
-    from {
-      height: auto;
-    }
-
-    to {
-      height: 250px;
-    }
-  }
-
-  /* Standard syntax */
-  @keyframes elongation {
-    from {
-      height: auto;
-    }
-
-    to {
-      height: 250px;
-    }
+    top: 21px;
+    left: 24px;
+    font-size: 22px;
+    text-align: center;
+    background: #000000c2;
+    width: 35px;
+    height: 35px;
+    z-index: 2;
   }
 
   @-webkit-keyframes showBtn {

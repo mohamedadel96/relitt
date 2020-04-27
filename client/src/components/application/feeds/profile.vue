@@ -2,7 +2,7 @@
   <section id="userCard" class="pb-2 rounded">
     <div v-if="profile">
       <div class="block_1 text-center">
-        <img class="border rounded-circle mt-4" :src="profile.image" alt="user image" />
+        <img class="rounded-circle mt-4" :src="profile.image ? profile.image : require('../../../assets/img/default-avatar.jpg')" alt="user image" />
         <p
           class="name font-weight-bold mb-0 font-14 px-2"
         >{{profile.firstname}} {{profile.lastname}}</p>

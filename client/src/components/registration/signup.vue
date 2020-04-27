@@ -2,7 +2,7 @@
   <section id="signup">
     <div class="mb-5 mx-md-3 mx-1">
       <p
-        class="title font-weight-bold px-lg-5 px-0 fontSM"
+        class="title font-weight-bold px-lg-5 px-0 font-16"
       >Welcome back, We are happy you are here again</p>
     </div>
 
@@ -10,13 +10,13 @@
       <form class="mb-3" @submit.prevent>
         <div class="form-group">
           <input
-            :class="['col-12 form-control border-0 py-3 fontSM', {'is-invalid': $v.form.email.$error}]"
+            :class="['col-12 form-control border-0 py-3 font-16', {'is-invalid': $v.form.email.$error}]"
             type="text"
             placeholder="Email"
             autocomplete="off"
             v-model="form.email"
           />
-          <div v-if="$v.form.email.$error" class="invalid-feedback fontMD">
+          <div v-if="$v.form.email.$error" class="invalid-feedback font-18">
             <span v-if="!$v.form.email.required">Email is required</span>
             <span v-if="!$v.form.email.email">Email is invalid</span>
           </div>
@@ -24,7 +24,7 @@
 
         <div class="form-group my-2">
           <input
-            :class="['col-12 form-control border-0 py-3 fontSM', {'is-invalid': $v.form.password.$error}]"
+            :class="['col-12 form-control border-0 py-3 font-16', {'is-invalid': $v.form.password.$error}]"
             type="password"
             placeholder="Password"
             autocomplete="off"
@@ -38,21 +38,21 @@
 
         <div class="mt-3">
           <button
-            class="btn btn-primary btn-block py-3 font-weight-bold fontSM"
+            class="btn btn-primary btn-block py-3 font-weight-bold font-16"
             @click="submit"
           >SIGNUP</button>
         </div>
       </form>
 
       <div class="mt-4 pt-5 pb-1">
-        <p class="text-secondary text-center mb-1 fontXS">or signup using social media</p>
+        <p class="text-secondary text-center mb-1 font-12">or signup using social media</p>
         <button class="btn btn-secondary btn-block py-3 my-2">facebook</button>
         <button class="btn btn-secondary btn-block py-3">google</button>
       </div>
 
       <div class="mt-3 d-flex justify-content-between">
-        <p class="text-secondary fontSM">if you have account</p>
-        <router-link class="text-white font-weight-bold fontSM" to="/registration/login">LOGIN</router-link>
+        <p class="text-secondary font-16">if you have account</p>
+        <router-link class="text-white font-weight-bold font-16" to="/registration/login">LOGIN</router-link>
       </div>
     </div>
   </section>
@@ -83,25 +83,26 @@ export default {
     }
   },
   methods: {
-    async submit() {
-      try {
-        this.$v.$touch();
-        if (this.$v.$invalid) {
-          return;
-        }
-
-        let res = await this.$store.dispatch("VALIDATEEMAIL", this.form);
-
-        this.$toasted.success(res);
-
-        this.$router.push({
-          name: "entrance"
-        });
-      } catch (error) {
-        error.errorDetails.email.map(msg => {
-          this.$toasted.error(msg);
-        });
+    submit() {
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        return;
       }
+
+      let loader = this.$loading.show();
+      this.$store
+        .dispatch("VALIDATEEMAIL", this.form)
+        .then(res => {
+          this.$router.push({
+            name: "entrance"
+          });
+        })
+        .catch(message => {
+          this.$toasted.error(message);
+        })
+        .finally(() => {
+          loader.hide();
+        });
     }
   }
 };

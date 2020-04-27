@@ -18,9 +18,9 @@ import spot from './application/spot'
 import myEvent from './application/myEvent'
 import event from './application/event'
 import uploadFiles from './application/uploadFiles'
-import createEvent from './application/createEvent'
 import postComment from './application/postComments'
 import activity from './application/activity';
+import followers from './application/followers';
 
 Vue.use(Vuex)
 
@@ -61,7 +61,6 @@ export default new Vuex.Store({
     event,
     logout,
     uploadFiles,
-    createEvent,
     postComment,
     activity,
     spot,

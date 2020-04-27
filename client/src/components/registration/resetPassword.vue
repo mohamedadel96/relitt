@@ -2,7 +2,7 @@
   <section id="resetPassword">
     <div class="mt-4 mb-5 pt-5 mx-md-3 mx-1">
       <p
-        class="title font-weight-bold px-lg-5 px-0 fontSM"
+        class="title font-weight-bold px-lg-5 px-0 font-16"
       >Enter your email, we will send you a password</p>
     </div>
 
@@ -10,17 +10,14 @@
       <form @submit.prevent>
         <div class="form-group">
           <input
-            :class="['col-12 border-0 py-3 fontSM form-control',{'is-invalid': $v.form.email.$error}]"
+            :class="['col-12 border-0 py-3 font-16 form-control',{'is-invalid': $v.form.email.$error}]"
             type="text"
             placeholder="Email"
             autocomplete="off"
             v-model="form.email"
-          />    
-        <div
-            v-if="!$v.form.email.required"
-            class="invalid-feedback fontMD"
-          >Email is required</div>
-          </div>
+          />
+          <div v-if="!$v.form.email.required" class="invalid-feedback font-18">Email is required</div>
+        </div>
 
         <div class="mt-3">
           <button @click="submit" class="btn btn-primary btn-block py-3">Reset Password</button>
@@ -31,7 +28,7 @@
 </template>
 
 <script>
-import { required ,email } from 'vuelidate/lib/validators'
+import { required, email } from "vuelidate/lib/validators";
 
 export default {
   data() {
@@ -44,22 +41,24 @@ export default {
   validations: {
     form: {
       email: { required }
-      }
+    }
   },
   methods: {
-    async submit() {
-      try {
+    submit() {
         this.$v.$touch();
         if (this.$v.$invalid) {
           return;
         }
 
-        let res = await this.$store.dispatch("RESETPASSWORD", this.form);
+        let loader = this.$loading.show();
+        this.$store.dispatch("RESETPASSWORD", this.form).then(res => {
+          this.$router.push("/registration/code");
+        }).catch(message => {
+          this.$toasted.error(message);
+        }).finally(() => {
+          loader.hide()
+        })
 
-        this.$router.push("/registration/code");
-      } catch (error) {
-        console.log(error);
-      }
     }
   }
 };

@@ -44,17 +44,20 @@ export default {
    deletePost(postId) {
       return Api().post(`posts/delete/${postId}`)
    },
-   createEvent(form) {
-      return Api().post('events', form)
+   createEvent(payload) {
+      return Api().post('events', payload)
    },
-   toggleLike(form) {
-      return Api().post(`posts/${form.liked ? 'unlike' : 'like'}/${form.id}`)
+   editEvent(payload) {
+      return Api().post(`events/${payload.id}`, payload)
+   },
+   toggleLike(payload) {
+      return Api().post(`posts/${payload.liked ? 'unlike' : 'like'}/${payload.id}`)
    },
    addComment(payload) {
       return Api().post(`posts/comments/${payload.postId}`, payload.form)
    },
    editComment(payload) {
-      return Api().post(`posts/comments/update/${payload.comment.id}`, payload.form)
+      return Api().post(`posts/comments/update/${payload.id}`, payload.form)
    },
    deleteComment(commentId) {
       return Api().post(`posts/comments/delete/${commentId}`)
@@ -73,6 +76,35 @@ export default {
    },
    profileChangePassword(payload) {
       return Api().post('profile/change_password', payload)
+   },
+   myReviews() {
+      return Api().get('centers/my_reviews')
+   },
+   notifications() {
+      return Api().get('notifications')
+   },
+   notificationSettings(payload) {
+      return Api().post('profile/settings', payload)
+   },
+   addEventComment(payload) {
+      return Api().post(`events/comments/${payload.eventId}`, payload.form)
+   },
+   toggleJoinMeeting(payload) {
+      return Api().post(`events/${payload.is_attending ? 'unrsvp' : 'rsvp'}/${payload.eventId}`)
+   },
+   deleteEvent(eventId) {
+      return Api().post(`events/delete/${eventId}`)
+   },
+   interestsList() {
+      return Api().get('interests')
+   },
+   suggestedFollowers() {
+      return Api().get('social/suggested_follows')
+   },
+   friends(query) {
+      return Api().get(`social/search?q=${query}`)
+   },
+   toggleFollowing(payload) {
+      return Api().post(`${payload.isFollowing ? 'unfollow' : 'follow'}/${payload.id}`)
    }
-
 }

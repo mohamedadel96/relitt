@@ -4,34 +4,50 @@
       <div class="card border-0 rounded d-flex flex-nowrap flex-row mb-3">
         <div class="image col-4 px-0">
           <img
-            class="p-3"
-            src="https://www.scubadiving.com/sites/scubadiving.com/files/styles/500_1x_/public/scuba-myths-shutterstock_208265431.jpg?itok=ivjB_LLa"
+            class="p-3 pointer"
+            :src="card.images.length ? card.images[0].url : '../../assets/img/Layer1.png'"
+            @click="$router.push('/app/centers/' + card.id)"
             alt="card image"
           />
         </div>
-        <div class="col-8 px-0 mt-3 d-flex flex-wrap align-items-between">
-          <div class="col-12 d-flex justify-content-between">
-            <div class="details col-7 px-2">
-              <p class="mb-0 font-weight-bold fontSM">{{card.name}}</p>
-              <p class="mb-2 text-secondary fontXS">{{card.location_name}}</p>
-              <p class="mb-0 text-secondary fontXS desc">{{card.description}}</p>
+        <div class="col-sm-8 col-12 px-0 mt-3 d-flex flex-wrap align-items-between">
+          <div class="col-12 d-flex flex-wrap justify-content-between mb-3">
+            <div class="details col-lg-7 col-12 px-2">
+              <p
+                class="mb-0 font-weight-bold font-16 pointer"
+                @click="$router.push('/app/centers/' + card.id)"
+              >{{card.name}}</p>
+              <p class="mb-2 text-secondary font-12">{{card.location_name}}</p>
+              <p class="mb-0 text-secondary font-12 desc">{{card.description}}</p>
             </div>
-            <div class="col-5 px-0 text-center">
-              <div>
-                <p class="fontXL font-weight-bold text-right">icon stars</p>
+            <div class="col-lg-5 col-12 px-0 my-lg-0 my-3 text-center">
+              <div class="d-flex justify-content-end my-lg-0 my-3">
+                <star-rating
+                  class="mb-1"
+                  :increment="0.1"
+                  active-color="#FFB900"
+                  :star-size="16"
+                  read-only
+                  :rating="card.avg_rate"
+                />
               </div>
-              <div class="props d-flex justify-content-between">
+              <div class="props d-flex justify-content-between my-lg-1 my-3">
                 <div class="prop col-4 px-0">
-                  <p class="fontSM font-weight-bold mb-0">High</p>
-                  <p class="fontXS text-secondary mb-0">price</p>
+                  <p     class="font-14 font-weight-bold mb-0 text-primary"
+                  >{{card.avg_price < 2 ? 'Low' : card.avg_price < 4 ? 'Medium' : 'High'}}</p>
+                  <p class="font-12 text-secondary mb-0">price</p>
                 </div>
                 <div class="prop col-4 px-0">
-                  <p class="fontSM font-weight-bold mb-0">Good</p>
-                  <p class="fontXS text-secondary mb-0">price</p>
+                  <p
+                    class="font-14 font-weight-bold mb-0 text-primary"
+                  >{{card.avg_quality < 2 ? 'Low' : card.avg_quality < 4 ? 'Medium' : 'High'}}</p>
+                  <p class="font-12 text-secondary mb-0">price</p>
                 </div>
                 <div class="prop col-4 px-0">
-                  <p class="fontSM font-weight-bold mb-0">Perfect</p>
-                  <p class="fontXS text-secondary mb-0">price</p>
+                  <p
+                    class="font-14 font-weight-bold mb-0 text-primary"
+                  >{{card.avg_rate<2 ? 'Low' : card.avg_rate < 4 ? 'Medium' : 'High'}}</p>
+                  <p class="font-12 text-secondary mb-0">General</p>
                 </div>
               </div>
             </div>
@@ -55,9 +71,9 @@
               </div>
             </div>
             <router-link
-              class="mr-3 btn btn-primary btn-block py-2 col-4"
+              class="mr-3 btn btn-primary btn-block py-2 col-4 font-14"
               :to="'/app/centers/' + card.id"
-            >Contact</router-link>
+            >Details...</router-link>
           </div>
         </div>
       </div>
@@ -81,13 +97,18 @@ export default {
   },
   methods: {
     moreFeeds(state) {
-      this.$store.dispatch("CENTERCARD").then(res => {
-        if (res !== "end") {
-          state.loaded();
-        } else {
-          state.complete();
-        }
-      });
+      this.$store
+        .dispatch("CENTERCARD")
+        .then(res => {
+          if (res !== "end") {
+            state.loaded();
+          } else {
+            state.complete();
+          }
+        })
+        .catch(message => {
+          this.$toasted.error(message);
+        });
     }
   }
 };
@@ -105,13 +126,15 @@ export default {
       .image {
         img {
           width: 100%;
+          height: 100%;
+          min-height: 250px;
           object-fit: cover;
         }
       }
 
       .details {
         .desc {
-          height: 120px;
+          height: 54px;
           overflow: hidden;
           white-space: pre-line;
           text-overflow: ellipsis;
@@ -124,7 +147,7 @@ export default {
           &:last-of-type {
             border: none;
           }
-          .fontMD {
+          .font-18 {
             color: $blue;
           }
         }

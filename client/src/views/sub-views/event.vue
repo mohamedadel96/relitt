@@ -1,31 +1,41 @@
 <template>
   <section id="event">
-    <div class="backgroundimg">
-      <img src="../../assets/img/Layer1.png" />
+    <div v-if="event">
+      <div class="col-10 px-0 container-fluid">
+        <img :src="event.image ? event.image : '../../assets/img/Layer1.png'" />
+      </div>
+      <div class="container-fluid col-lg-10 col-12 py-5 px-md-5 px-3">
+        <event-info />
+        <attendance />
+        <comments :comments="event.comments" />
+        <add-comment :eventId="event.id" />
+      </div>
     </div>
-    <div class="container-fluid col-10 p-5">
-      <event-info />
-      <attendance />
-      <comments />
-      <add-comment />
-    </div>
+    <app-footer />
   </section>
 </template>
 
 <script>
 import eventInfo from "../../components/application/events/eventInfo";
 import attendance from "../../components/application/events/attendance";
-import comments from "../../components/application/global/comments";
-import addComment from "../../components/application/global/addComment";
+import comments from "../../components/application/events/comments";
+import addComment from "../../components/application/events/addComment";
+import appFooter from "../../components/application/global/footer";
 
 export default {
   components: {
     eventInfo,
     attendance,
     comments,
-    addComment
+    addComment,
+    appFooter
   },
-  mounted() {
+  computed: {
+    event() {
+      return this.$store.getters.event;
+    }
+  },
+  created() {
     this.$store.dispatch("EVENT", this.$route.params.id);
   }
 };
@@ -35,7 +45,7 @@ export default {
 #event {
   img {
     width: 100%;
-    height: 370px;
+    height: 400px;
     object-fit: cover;
   }
 

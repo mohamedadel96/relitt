@@ -11,7 +11,7 @@ export default {
     LOGOUT({ commit }) {
       return new Promise((resolve, reject) => {
         // authServices.logout().then(res => {
-        //   if (res.data.code !== 200) return reject(res.data.errors)
+        //   if (res.data.code !== 200) return reject(res.data.message)
         // })
         commit('removeAuthData')
         resolve('done')

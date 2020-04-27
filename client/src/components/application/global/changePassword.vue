@@ -2,19 +2,19 @@
   <section id="changePassword">
     <b-modal
       id="changePassword"
+      @hide="clearData"
       hide-backdrop
       content-class="shadow"
       hide-header
       hide-footer
-      size="lg"
     >
-      <p class="text-center font-weight-bold fontMD">Change password</p>
+      <p class="text-center font-weight-bold font-18">Change password</p>
       <form @submit.prevent>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
-            <label class="fontXS text-secondary">Old password</label>
+            <label class="font-12 text-secondary">Old password</label>
             <input
-              :class="['form-control py-2 px-1 col-12',{'is-invalid': $v.form.password.$error}]"
+              :class="['form-control px-1 col-12',{'is-invalid': $v.form.password.$error}]"
               type="password"
               v-model="form.old_password"
               placeholder="Old password"
@@ -23,9 +23,9 @@
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
-            <label class="fontXS text-secondary">Password</label>
+            <label class="font-12 text-secondary">Password</label>
             <input
-              :class="['form-control py-2 px-1 col-12',{'is-invalid': $v.form.password.$error}]"
+              :class="['form-control px-1 col-12',{'is-invalid': $v.form.password.$error}]"
               type="password"
               v-model="form.password"
               placeholder="Password"
@@ -38,9 +38,9 @@
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
-            <label class="fontXS text-secondary">Confirm password</label>
+            <label class="font-12 text-secondary">Confirm password</label>
             <input
-              :class="['form-control py-2 px-1 col-12',{'is-invalid': $v.form.confirm_password.$error}]"
+              :class="['form-control px-1 col-12',{'is-invalid': $v.form.confirm_password.$error}]"
               type="password"
               v-model="form.confirm_password"
               placeholder="Confirm password"
@@ -71,9 +71,9 @@ export default {
     return {
       form: {
         email: null,
-        old_password: "null",
-        password: "null",
-        confirm_password: "null"
+        old_password: null,
+        password: null,
+        confirm_password: null
       },
       disableEdit: false
     };
@@ -112,9 +112,12 @@ export default {
       } catch (error) {
         console.error(error);
       }
+    },
+    clearData() {
+      Object.assign(this.$data, this.$options.data.apply(this));
     }
   },
-  mounted() {
+  created() {
     Bus.$on("openChangePassword", () => {
       this.$bvModal.show("changePassword");
     });
@@ -153,6 +156,11 @@ export default {
   @media (min-width: 576px) {
     .menu-item {
       outline: none;
+    }
+  }
+  @media (max-width: 576px) {
+    .modal-dialog {
+      margin: 80px 10px 0 10px !important;
     }
   }
 }

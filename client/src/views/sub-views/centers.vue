@@ -1,31 +1,38 @@
 <template>
   <section id="centers">
     <div class="d-flex justify-content">
-      <div class="col-md-3 px-4 mt-3 overflow-hidden">
+      <div class="col-xl-3 col-md-4 d-md-block d-none px-lg-4 px-3 mt-4 overflow-hidden">
         <filter-section />
       </div>
-      <div class="col-md-9">
-        <div class="tabs d-flex mt-4 justify-content-center mr-5">
-          <p class="mr-5">
-            <router-link to="/app/events">Events</router-link>
-          </p>
-          <p class="mr-5">
-            <router-link class="active" to="/app/centers">Centers</router-link>
-          </p>
-          <p class="mr-5">
-            <router-link to="/app/spots">Spots</router-link>
-          </p>
+      <div class="col-md-8 col-12 px-0">
+        <div
+          class="tabs d-flex mt-4 px-2 justify-content-md-center justify-content-between align-items-baseline font-16"
+        >
+          <div class="d-flex">
+            <p class="mr-5">
+              <router-link to="/app/events">Events</router-link>
+            </p>
+            <p class="mr-5">
+              <router-link class="active" to="/app/centers">Centers</router-link>
+            </p>
+            <p class="mr-5">
+              <router-link to="/app/spots">Spots</router-link>
+            </p>
+          </div>
+          <div class="d-md-none d-block">
+            <filter-modal />
+          </div>
         </div>
-        <div class="col-md-11 col-12 px-2">
-          <div class="search rounded mb-3 text-center fontSM">
+        <div class="col-xl-11 col-12 px-2">
+          <div class="search rounded mb-3 text-center font-16">
             <place-autocomplete-field
               v-model="place"
               name="place"
               api-key="AIzaSyAhSv9zWvisiTXRPRw6K8AE0DCmrRMpQcU"
-              placeholder="Enter an an address, zipcode, or location"
+              placeholder="Enter an address, zipcode, or location"
             ></place-autocomplete-field>
           </div>
-          <center-cards :cardsData="centersData()"/>
+          <center-cards :cardsData="centersData()" />
         </div>
       </div>
     </div>
@@ -35,6 +42,7 @@
 <script>
 import centerCards from "../../components/application/centers/centerCards";
 import filterSection from "../../components/application/centers/filterSection";
+import filterModal from "../../components/application/centers/filterModal";
 export default {
   data() {
     return {
@@ -43,7 +51,8 @@ export default {
   },
   components: {
     centerCards,
-    filterSection
+    filterSection,
+    filterModal
   },
   mounted() {
     this.$store.dispatch("CENTERCARD"); 
@@ -53,8 +62,10 @@ export default {
     centersData(){
       return this.$store.getters.getCenterCard;
     }
-  }
-};
+}  // created() {
+  //   this.$store.dispatch("CENTERCARD");
+  // }
+}
 </script>
 
 <style lang="scss">

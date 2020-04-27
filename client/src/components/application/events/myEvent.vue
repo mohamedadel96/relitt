@@ -1,26 +1,23 @@
 <template>
-  <div>
-    <div v-for="(event , i ) in  myEvents" :key="i">
-      <section id="myEvent" class="mb-3">
+  <div v-if="myEvents">
+    <div v-for="(event , i ) in  myEvents.slice(0,3)" :key="i">
+      <section @click="$router.push('/app/events/' + event.id)" id="myEvent" class="mb-3">
         <div class="head ml-3 mt-2 mb-0">
-          <p class="title fontMD font-weight-bold fontSM">{{event.title}}</p>
-          <p class="desc mb-2 text-truncate text-secondary fontXS">{{event.location_name}}</p>
+          <p class="title font-weight-bold font-16">{{event.title}}</p>
+          <p class="mb-2 text-secondary font-12 font-weight-bold">{{event.location_name}}</p>
         </div>
         <div class="image">
-          <img
-            src="https://www.scubadiving.com/sites/scubadiving.com/files/styles/500_1x_/public/scuba-myths-shutterstock_208265431.jpg?itok=ivjB_LLa"
-            alt="event image"
-          />
+          <img :src="event.image ? event.image : '../../assets/img/Layer1.png'" alt="event image" />
         </div>
         <div class="timing d-flex align-items-center">
-          <div class="col-3 text-center">
-            <p class="fontMD font-weight-bold num">{{event.start_date | moment('D')}}</p>
+          <div class="col-3 px-0 pt-3 text-center">
+            <p class="font-18 font-weight-bold num">{{event.start_date | moment('D')}}</p>
             <p class="font-14 font-weight-bold mb-0">{{event.start_date | moment('MMM')}}</p>
-            <p class="fontXSS text-secondary">{{event.start_date | moment('h a')}}</p>
+            <p class="font-12 text-secondary font-weight-bold">{{event.start_date | moment('h a')}}</p>
           </div>
           <div class="col-9 d-flex align-items-between flex-wrap justify-content-around">
-            <p class="mb-1 text-secondary fontXS">{{event.description}}</p>
-            <p class="text-secondary text-bold fontXS">13 attendance</p>
+            <p class="col-12 desc px-0 my-2 text-secondary font-12">{{event.description}}</p>
+            <!-- <p class="col-12 px-0 text-secondary font-weight-bold font-12 mb-2">13 attendance !!</p> -->
           </div>
         </div>
       </section>
@@ -54,10 +51,7 @@ export default {
       &.title {
         letter-spacing: 0.7px;
         word-spacing: 0.8px;
-        margin-bottom: -5px;
-      }
-      &.desc {
-        color: #777;
+        margin-bottom: -2px;
       }
     }
   }
@@ -77,7 +71,9 @@ export default {
       margin-bottom: -3px;
     }
     .desc {
-      color: #777;
+      height: 50px;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }

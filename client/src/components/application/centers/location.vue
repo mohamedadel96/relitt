@@ -1,29 +1,48 @@
 <template>
-  <section>
-    <div>Location</div>
-    <div class="mapouter">
-      <div class="gmap_canvas">
-        <iframe
-          width="1080"
-          height="250"
-          id="gmap_canvas"
-          src="https://maps.google.com/maps?q=university%20of%20san%20francisco&t=&z=15&ie=UTF8&iwloc=&output=embed"
-          frameborder="0"
-          scrolling="no"
-          marginheight="0"
-          marginwidth="0"
-        ></iframe>
-        <a href="https://www.embedgooglemap.net">embedgooglemap.net</a>
+  <section id="location">
+    <div class="py-3 border-bottom d-flex align-items-start">
+      <div class="d-flex">
+        <img class="mt-1 mr-3" src="../../../assets/icons/desc-ico.svg" alt />
+      </div>
+      <div>
+        <p class="mb-1 font-weight-bold font-14">Location</p>
       </div>
     </div>
+    <location-picker v-if="location.lat !== null && location.lng !== null" v-model="location"></location-picker>
   </section>
 </template>
+
 <script>
+import { LocationPicker } from "vue2-location-picker";
 export default {
-  props: {
-    elementData: {
-      type: [Object, Array],
-      required: true
+  props: [
+    "lat",
+    "lng",
+    {
+      elementData: {
+        type: [Object, Array],
+        required: true
+      }
+    }
+  ],
+  components: { LocationPicker },
+  data() {
+    return {
+      location: {
+        lat: null,
+        lng: null
+      }
+    };
+  },
+  watch: {
+    lat: {
+      immediate: true,
+      handler(val) {
+        if (this.$props.lat && this.$props.lng) {
+          this.location.lat = Number(this.$props.lat);
+          this.location.lng = Number(this.$props.lng);
+        }
+      }
     }
   }
 };

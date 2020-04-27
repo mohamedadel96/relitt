@@ -1,34 +1,44 @@
 <template>
   <section id="events">
     <div class="d-flex justify-content">
-      <div class="col-md-3 px-4 mt-4 overflow-hidden">
+      <div class="col-xl-3 col-lg-4 d-md-block d-none px-lg-4 px-3 mt-4 overflow-hidden">
         <div>
           <createEvent />
         </div>
-        <p class="text-secondary text-center fontXS">Your upcoming events</p>
+        <p class="text-secondary text-center font-12">Your upcoming events</p>
         <div>
           <myEvent />
         </div>
       </div>
-      <div class="col-md-9">
-        <div class="tabs d-flex mt-4 justify-content-center mr-5 fontSM">
-          <p class="mr-5">
-            <router-link class="active" to="/app/events">Events</router-link>
-          </p>
-          <p class="mr-5">
-            <router-link to="/app/centers">Centers</router-link>
-          </p>
-          <p class="mr-5">
-            <router-link to="/app/spots">Spots</router-link>
-          </p>
+      <div class="col-md-8 col-12 px-0">
+        <div
+          class="tabs d-flex mt-4 px-2 justify-content-md-center justify-content-between align-items-baseline font-16"
+        >
+          <div class="d-flex">
+            <p class="mr-4">
+              <router-link class="active" to="/app/events">Events</router-link>
+            </p>
+            <p class="mr-4">
+              <router-link to="/app/centers">Centers</router-link>
+            </p>
+            <p class="mr-4">
+              <router-link to="/app/spots">Spots</router-link>
+            </p>
+          </div>
+          <div class="d-md-none d-block">
+            <button
+              class="btn btn-outline-primary my-3"
+              @click="openModal('openCreateEvent')"
+            >Create event</button>
+          </div>
         </div>
-        <div class="col-md-10 col-12 px-5">
-          <div class="search rounded mb-3 text-center fontSM">
+        <div class="col-xl-11 col-12 px-xl-4 px-lg-3 px-2">
+          <div class="search rounded mb-3 text-center font-16">
             <place-autocomplete-field
               v-model="place"
               name="place"
               api-key="AIzaSyAhSv9zWvisiTXRPRw6K8AE0DCmrRMpQcU"
-              placeholder="Enter an an address, zipcode, or location"
+              placeholder="Enter an address, zipcode, or location"
             ></place-autocomplete-field>
           </div>
           <event-cards />
@@ -39,6 +49,7 @@
 </template>
 
 <script>
+import { Bus } from "../../main";
 import myEvent from "../../components/application/events/myEvent";
 import eventCards from "../../components/application/events/eventCards";
 import createEvent from "../../components/application/events/createEvent";
@@ -54,7 +65,12 @@ export default {
       place: ""
     };
   },
-  mounted() {
+  methods: {
+    openModal(name) {
+      Bus.$emit(name);
+    }
+  },
+  created() {
     this.$store.dispatch("EVENTS");
   }
 };

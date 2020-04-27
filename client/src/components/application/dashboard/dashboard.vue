@@ -2,21 +2,14 @@
   <section id="dashboard">
     <div v-if="dashboard">
       <div class="search rounded py-1 d-flex justify-content-between align-items-center">
-        <select class="py-2 px-4 mr-4 fontSM" v-model="hide">
+        <select class="py-2 px-4 mr-4 font-16" v-model="hide">
           <option value="free" selected>free diving</option>
           <option value="all">all</option>
         </select>
       </div>
 
-      <div class="chartSec mt-3 p-2" v-show="hide=='all'">
+      <div class="chartSec mt-3 p-2">
         <chart class="chart" :timeline="dashboard.timeline" />
-        <!-- <apx-chart :timeline="dashboard.timeline"/> -->
-        
-      </div>
-      <div class="chartSec mt-3 p-2" v-show="hide=='all'">
-        <!-- <chart class="chart" :timeline="dashboard.timeline" /> -->
-        <apx-chart :timeline="dashboard.timeline"/>
-        
       </div>
 
       <div class="posts mt-3">
@@ -52,7 +45,6 @@
 <script>
 import expCard from "./expCard";
 import chart from "./chart";
-import apxChart from './apxChart'
 
 export default {
   data() {
@@ -62,13 +54,15 @@ export default {
   },
   components: {
     chart,
-    expCard,
-    apxChart
+    expCard
   },
   computed: {
     dashboard() {
       return this.$store.getters.dashboard;
     }
+  },
+  created() {
+    this.$store.dispatch("DASHBOARD");
   }
 };
 </script>

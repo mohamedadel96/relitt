@@ -1,23 +1,26 @@
 <template>
-  <section id="notifications">
+  <section id="notifications" v-if="notifications">
     <slot></slot>
-    <b-modal id="notifications" hide-backdrop content-class="shadow" hide-header hide-footer>
-      <div>
-        <div class="d-flex justify-content-between align-content-center">
-          <div class="d-flex align-items-center">
+    <b-modal id="notifications" @show="getNotification" hide-backdrop content-class="shadow" hide-header hide-footer>
+      <div v-for="(notification, i) in notifications" :key="i">
+        <div class="d-flex justify-content-between align-content-center border-bottom py-2 mt-2">
+          <div class="d-flex align-items-top">
             <img
               class="user-img rounded-circle"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Facebook_icon.svg/1024px-Facebook_icon.svg.png"
+              src="../../../assets/icons/notification.gif"
               alt="user image"
             />
           </div>
           <div class="col-10 px-0">
             <div class="col-12 px-0 d-flex justify-content-between align-items-center">
-              <h5>title goes here</h5>
-              <div class="mx-2">ico</div>
+              <p class="font-16 font-weight-bold mb-1">{{notification.title}}</p>
+              <!-- <div class="mx-2">ico</div> -->
             </div>
             <div>
-              <p>notification body goes here notification body goes here</p>
+              <p class="desc font-14 text-secondary col-10 px-0">{{notification.body}}</p>
+              <p
+                class="font-12 text-secondary col-10 px-0 mb-0"
+              >{{notification.created_at | moment("from", "now")}}</p>
             </div>
           </div>
         </div>
@@ -26,7 +29,21 @@
   </section>
 </template>
 <script>
-export default {};
+export default {
+  computed: {
+    notifications() {
+      return this.$store.getters.notifications;
+    }
+  },
+  methods: {
+    getNotification() {
+      this.$store.dispatch("NOTIFICATIONS");
+    }
+  },
+  created() {
+    this.getNotification();
+  }
+};
 </script>
 
 <style lang="scss">
@@ -39,6 +56,12 @@ export default {};
     height: 40px;
   }
 
+  .desc {
+    height: 44px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .modal-dialog {
     margin: 80px 10px 0 auto;
     position: relative;
@@ -47,24 +70,18 @@ export default {};
   .menu-item {
     outline: none;
   }
+  .modal-content {
+    border: none;
+  }
   @media (min-width: 576px) {
-    .modal-content {
-      border: none;
-      &::after {
-        content: "";
-        width: 15px;
-        height: 15px;
-        display: block;
-        position: absolute;
-        top: -7.5px;
-        right: 33.4%;
-        background: white;
-        transform: rotate(45deg);
-        z-index: 1;
-      }
-    }
     .modal-dialog {
       max-width: 365px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .modal-dialog {
+      margin: 80px 10px 0 10px !important;
     }
   }
 }

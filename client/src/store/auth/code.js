@@ -19,10 +19,10 @@ export default {
           ...form,
           ...rootState.resetPassword
         }).then(res => {
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
 
           commit("saveCode", form.code)
-          resolve(res.message)
+          resolve(true)
         })
 
       })

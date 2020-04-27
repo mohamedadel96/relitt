@@ -2,16 +2,30 @@ import appServices from '../../services/application'
 
 export default {
   state: {
-    profile: null
+    profile: null,
+    notifications: null,
+    interestsList: null
   },
   getters: {
     profile(state) {
       return state.profile
-    }
+    },
+    notifications(state) {
+      return state.notifications
+    },
+    interestsList(state) {
+      return state.interestsList
+    },
   },
   mutations: {
     saveProfile(state, data) {
       state.profile = data
+    },
+    saveNotifications(state, data) {
+      state.notifications = data
+    },
+    saveInterestsList(state, data) {
+      state.interestsList = data
     }
   },
   actions: {
@@ -21,7 +35,7 @@ export default {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
           commit('saveProfile', res.data.data)
           resolve('done')
         })
@@ -33,15 +47,15 @@ export default {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
         })
         await appServices.editProfile(form).then(res => {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
           }
-          if (res.data.code !== 200) return reject(res.data.errors)
+          if (res.data.code !== 200) return reject(res.data.message)
           commit('saveProfile', res.data.data)
-          resolve('done')
+          resolve(true)
         })
       })
     },
@@ -53,6 +67,46 @@ export default {
         })
 
       })
+    },
+    NOTIFICATIONS({ commit }) {
+      return new Promise((resolve, reject) => {
+        appServices.notifications().then(res => {
+          if (res.data.status === 401) {
+            // we will handle logout option // call logout function
+          }
+          if (res.data.code !== 200) return reject(res.data.message)
+          commit('saveNotifications', res.data.data)
+          resolve('done')
+        })
+
+      })
+    },
+    NOTIFICATIONSETTINGS({ commit }, form) {
+      return new Promise((resolve, reject) => {
+        appServices.notificationSettings(form).then(res => {
+          if (res.data.status === 401) {
+            // we will handle logout option // call logout function
+          }
+          if (res.data.code !== 200) return reject(res.data.message)
+          commit('saveProfile', res.data.data)
+          resolve('done')
+        })
+
+      })
+    },
+    INTERESTSLIST({ commit }) {
+      return new Promise((resolve, reject) => {
+        appServices.interestsList().then(res => {
+          if (res.data.status === 401) {
+            // we will handle logout option // call logout function
+          }
+          if (res.data.code !== 200) return reject(res.data.message)
+          commit('saveInterestsList', res.data.data)
+          resolve('done')
+        })
+
+      })
     }
+
   }
 }

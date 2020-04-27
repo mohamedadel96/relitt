@@ -11,9 +11,9 @@ export default {
   components: {
     navBar
   },
-  mounted() {
+  created() {
     this.$store.dispatch("PROFILE");
-    this.$store.dispatch("DASHBOARD");
+    this.$store.dispatch("SUGESTEDFOLLWERS");
     this.$store.dispatch("MYEVENT");
   }
 };
@@ -21,6 +21,7 @@ export default {
 
 <style lang="scss">
 #app {
+  min-height: 100vh;
   background: #fafafa;
   padding-top: 72px;
 }
