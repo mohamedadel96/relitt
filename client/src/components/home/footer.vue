@@ -52,10 +52,10 @@
         </div>
       </div>
     </div>
-    <hr class="col-8 border" />
+    <hr class=" border" />
     <div class="d-flex justify-content-between flex-wrap">
       <p class="opacity col-md-6 col-12">&#64;2019 relitte inc</p>
-      <div class="d-flex flex-wrap justify-content-between col-md-6 col-12">
+      <div class="d-flex flex-wrap justify-content-between col-md-4 col-12">
         <p>LinkedIn</p>
         <p>Facebook</p>
         <p>Twitter</p>
