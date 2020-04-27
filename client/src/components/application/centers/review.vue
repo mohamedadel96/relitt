@@ -14,7 +14,7 @@
               :increment="0.1"
               :star-size="16"
               read-only
-              :rating="center.avg_rate"
+              :rating="elementData.avg_rate"
             />
           </div>
         </div>
@@ -23,19 +23,19 @@
         <div class="prop col-4 px-0">
           <p
             class="font-18 font-weight-bold mb-0 head"
-          >{{center.avg_price < 2 ? 'Low' : center.avg_price < 4 ? 'Medium' : 'High'}}</p>
+          >{{elementData.avg_price < 2 ? 'Low' : elementData.avg_price < 4 ? 'Medium' : 'High'}}</p>
           <p class="font-14 font-weight-bold text-secondary mb-0">price</p>
         </div>
         <div class="prop col-4 px-0">
           <p
             class="font-18 font-weight-bold mb-0 head"
-          >{{center.avg_quality < 2 ? 'Low' : center.avg_quality < 4 ? 'Medium' : 'High'}}</p>
+          >{{elementData.avg_quality < 2 ? 'Low' : elementData.avg_quality < 4 ? 'Medium' : 'High'}}</p>
           <p class="font-14 font-weight-bold text-secondary mb-0">Quality</p>
         </div>
         <div class="prop col-4 px-0">
           <p
             class="font-18 font-weight-bold mb-0 head"
-          >{{center.avg_rate < 2 ? 'Low' : center.avg_rate < 4 ? 'Medium' : 'High'}}</p>
+          >{{elementData.avg_rate < 2 ? 'Low' : elementData.avg_rate < 4 ? 'Medium' : 'High'}}</p>
           <p class="font-14 font-weight-bold text-secondary mb-0">General</p>
         </div>
       </div>

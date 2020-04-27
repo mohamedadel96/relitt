@@ -1,7 +1,7 @@
 <template>
   <section id="centerInfo">
-    <div v-if="center">
-      <h3 class="font-22 font-weight-bold border-bottom py-3 mb-0">{{center.name}}</h3>
+    <div v-if="elementData">
+      <h3 class="font-22 font-weight-bold border-bottom py-3 mb-0">{{elementData.name}}</h3>
 
       <div class="py-3 border-bottom d-flex align-items-start">
         <div class="d-flex">
@@ -9,7 +9,7 @@
         </div>
         <div>
           <p class="mb-1 font-weight-bold font-14">Descrition</p>
-          <p class="mb-0 font-14 text-secondary">{{center.description}}</p>
+          <p class="mb-0 font-14 text-secondary">{{elementData.description}}</p>
         </div>
       </div>
 
@@ -22,7 +22,7 @@
           <div class="d-flex flex-wrap col-12 px-0">
             <div
               class="col-6 d-flex align-items-center px-0 my-2"
-              v-for="(service , i) in center.services"
+              v-for="(service , i) in elementData.services"
               :key="i"
             >
               <img class="icon" :src="service.image" :alt="service.name" />
@@ -38,7 +38,12 @@
 
 <script>
 export default {
-  props: ["center"]
+  props: {
+    elementData: {
+      type: [Object, Array],
+      required: true
+    }
+  },
 };
 </script>
 

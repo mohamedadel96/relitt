@@ -4,10 +4,10 @@
       <img src="../../assets/img/Layer1.png" />
     </div>
     <div class="container-fluid ">
-      <spotInfo :data="spot()"></spotInfo>
+      <spotInfo :elementData="spot()"></spotInfo>
       <review :elementData="spot()"></review>
       <spotComment :elementData="spot()"></spotComment>
-      <location :elementData="spot()"></location>
+      <location :lat="spot().lat" :lng="spot().lng"></location>
     </div>
   </div>
 </template>

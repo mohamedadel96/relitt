@@ -64,7 +64,8 @@ export default new Vuex.Store({
     postComment,
     activity,
     spot,
-    spotCard
+    spotCard,
+    followers
 
   }
 })

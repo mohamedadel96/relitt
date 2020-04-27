@@ -19,7 +19,7 @@
                     :increment="0.1"
                     :star-size="16"
                     read-only
-                    :rating="review.general_rate"
+                    :rating="element.general_rate"
                   />
                 </p>
               </div>
