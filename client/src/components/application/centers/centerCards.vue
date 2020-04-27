@@ -1,6 +1,6 @@
 <template>
   <section id="centerCard">
-    <div class="cards" v-for="( card, i ) in centercards" :key="i">
+    <div class="cards" v-for="( card, i ) in cardsData" :key="i">
       <div class="card border-0 rounded d-flex flex-nowrap flex-row mb-3">
         <div class="image col-4 px-0">
           <img
@@ -68,10 +68,16 @@
 
 <script>
 export default {
-  computed: {
-    centercards() {
-      return this.$store.getters.getCenterCard;
+  props: {
+    cardsData:{
+      type:[Object, Array] ,
+      required: true
     }
+  },
+  computed: {
+    // cardsData() {
+    //   return this.$store.getters.getCenterCard;
+    // }
   },
   methods: {
     moreFeeds(state) {

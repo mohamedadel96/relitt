@@ -139,6 +139,22 @@ const routes = [
         meta: {
           requiresAuth: true
         }
+      },     
+      {
+        path: 'spots',
+        name: 'spots',
+        component: () => import('../views/sub-views/spots.vue'),
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: 'spots/:id',
+        name: 'spot',
+        component: () => import('../views/sub-views/spot.vue'),
+        meta: {
+          requiresAuth: true
+        }
       }
     ]
   }

@@ -1,28 +1,22 @@
 <template>
-  <section id="events">
+  <section id="centers">
     <div class="d-flex justify-content">
-      <div class="col-md-3 px-4 mt-4 overflow-hidden">
-        <div>
-          <createEvent />
-        </div>
-        <p class="text-secondary text-center fontXS">Your upcoming events</p>
-        <div>
-          <myEvent />
-        </div>
+      <div class="col-md-3 px-4 mt-3 overflow-hidden">
+        <filter-section />
       </div>
       <div class="col-md-9">
-        <div class="tabs d-flex mt-4 justify-content-center mr-5 fontSM">
+        <div class="tabs d-flex mt-4 justify-content-center mr-5">
           <p class="mr-5">
-            <router-link class="active" to="/app/events">Events</router-link>
+            <router-link to="/app/events">Events</router-link>
           </p>
           <p class="mr-5">
             <router-link to="/app/centers">Centers</router-link>
           </p>
           <p class="mr-5">
-            <router-link to="/app/spots">Spots</router-link>
+            <router-link class="active" to="/app/spots">Spots</router-link>
           </p>
         </div>
-        <div class="col-md-10 col-12 px-5">
+        <div class="col-md-11 col-12 px-2">
           <div class="search rounded mb-3 text-center fontSM">
             <place-autocomplete-field
               v-model="place"
@@ -31,7 +25,7 @@
               placeholder="Enter an an address, zipcode, or location"
             ></place-autocomplete-field>
           </div>
-          <event-cards />
+          <spot-cards  :cardsData="spotsData()" />
         </div>
       </div>
     </div>
@@ -39,29 +33,33 @@
 </template>
 
 <script>
-import myEvent from "../../components/application/events/myEvent";
-import eventCards from "../../components/application/events/eventCards";
-import createEvent from "../../components/application/events/createEvent";
-
+import spotCards from "../../components/application/centers/centerCards";
+import filterSection from "../../components/application/centers/filterSection";
 export default {
-  components: {
-    myEvent,
-    eventCards,
-    createEvent
-  },
   data() {
     return {
-      place: ""
+      place: null
     };
   },
+  components: {
+    spotCards,
+    filterSection
+  },
   mounted() {
-    this.$store.dispatch("EVENTS");
+    this.$store.dispatch("CENTERCARD");
+    this.spotsData();
+  },
+    methods:{
+    spotsData(){
+      return this.$store.getters.getCenterCard;
+    }
   }
+
 };
 </script>
 
 <style lang="scss">
-#events {
+#centers {
   .tabs {
     p {
       a {

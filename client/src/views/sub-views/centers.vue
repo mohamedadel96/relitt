@@ -12,6 +12,9 @@
           <p class="mr-5">
             <router-link class="active" to="/app/centers">Centers</router-link>
           </p>
+          <p class="mr-5">
+            <router-link to="/app/spots">Spots</router-link>
+          </p>
         </div>
         <div class="col-md-11 col-12 px-2">
           <div class="search rounded mb-3 text-center fontSM">
@@ -22,7 +25,7 @@
               placeholder="Enter an an address, zipcode, or location"
             ></place-autocomplete-field>
           </div>
-          <center-cards />
+          <center-cards :cardsData="centersData()"/>
         </div>
       </div>
     </div>
@@ -43,7 +46,13 @@ export default {
     filterSection
   },
   mounted() {
-    this.$store.dispatch("CENTERCARD");
+    this.$store.dispatch("CENTERCARD"); 
+    this.centersData();
+  },
+  methods:{
+    centersData(){
+      return this.$store.getters.getCenterCard;
+    }
   }
 };
 </script>
