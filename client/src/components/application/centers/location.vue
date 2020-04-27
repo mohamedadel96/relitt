@@ -19,7 +19,14 @@
   </section>
 </template>
 <script>
-export default {};
+export default {
+  props: {
+    elementData: {
+      type: [Object, Array],
+      required: true
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>

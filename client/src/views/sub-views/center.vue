@@ -5,9 +5,9 @@
     </div>
     <div class="container-fluid">
       <centerInfo :data="center"></centerInfo>
-      <review></review>
-      <centerComment ></centerComment>
-      <location></location>
+      <review :elementData="center"></review>
+      <centerComment :elementData="center"></centerComment>
+      <location :elementData="center"></location>
     </div>
   </div>
 </template>
@@ -65,7 +65,7 @@ export default {
     p {
       margin: 10px 20px;
     }
-    .service img{
+    .service img {
       width: 50px;
       height: 50px;
     }

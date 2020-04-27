@@ -13,6 +13,8 @@ import dashboard from './application/dashboard'
 import feeds from './application/feeds'
 import centerCard from './application/centerCard'
 import center from './application/center'
+import spotCard from './application/spotCard'
+import spot from './application/spot'
 import myEvent from './application/myEvent'
 import event from './application/event'
 import uploadFiles from './application/uploadFiles'
@@ -61,7 +63,9 @@ export default new Vuex.Store({
     uploadFiles,
     createEvent,
     postComment,
-    activity
+    activity,
+    spot,
+    spotCard
 
   }
 })

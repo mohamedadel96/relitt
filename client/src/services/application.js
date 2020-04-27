@@ -19,6 +19,12 @@ export default {
    },
    center(id) {
       return Api().get(`centers/${id}`)
+   },   
+   spotCard(payload) {
+      return Api().get(`centers?lat=29.9490403&lng=31.2916668&page=${payload.page}`)
+   },
+   spot(id) {
+      return Api().get(`centers/${id}`)
    },
    myEvent() {
       return Api().get("my_events")

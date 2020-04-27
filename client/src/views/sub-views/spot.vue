@@ -1,13 +1,13 @@
 <template>
-  <div id="center" v-if="center">
+  <div id="spot" v-if="spot() ">
     <div class="backgroundimg">
       <img src="../../assets/img/Layer1.png" />
     </div>
-    <div class="container-fluid">
-      <centerInfo :data="center"></centerInfo>
-      <review></review>
-      <centerComment ></centerComment>
-      <location></location>
+    <div class="container-fluid ">
+      <spotInfo :data="spot()"></spotInfo>
+      <review :elementData="spot()"></review>
+      <spotComment :elementData="spot()"></spotComment>
+      <location :elementData="spot()"></location>
     </div>
   </div>
 </template>
@@ -15,29 +15,35 @@
 <script>
 import review from "../../components/application/centers/review";
 import location from "../../components/application/centers/location";
-import centerComment from "../../components/application/centers/centerComment";
-import centerInfo from "../../components/application/centers/centerInfo";
+import spotComment from "../../components/application/centers/centerComment";
+import spotInfo from "../../components/application/centers/centerInfo";
 
 export default {
   components: {
     review,
     location,
-    centerComment,
-    centerInfo
+    spotComment,
+    spotInfo
   },
-  computed: {
-    center() {
-      return this.$store.getters.center;
-    }
-  },
+  // computed: {
+  //   spot() {
+  //     return console.log(this.$store.getters.spot);
+  //   }
+  // },
   mounted() {
-    this.$store.dispatch("CENTER", this.$route.params.id);
+    this.$store.dispatch("SPOT", this.$route.params.id);
+    this.spot();
+  },
+  methods: {
+    spot() {
+      return this.$store.getters.spot;
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-#center {
+#spot {
   background-color: #fafafb;
   color: #00223c;
 
@@ -65,10 +71,11 @@ export default {
     p {
       margin: 10px 20px;
     }
-    .service img{
+    .service img {
       width: 50px;
       height: 50px;
     }
   }
 }
 </style>
+

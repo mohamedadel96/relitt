@@ -24,10 +24,16 @@
 
 <script>
 export default {
-  computed: {
-    center() {
-      return this.$store.getters.center;
+  props: {
+    elementData: {
+      type: [Object, Array],
+      required: true
     }
+  },
+  computed: {
+    // center() {
+    //   return this.$store.getters.center;
+    // }
   }
 };
 </script>
