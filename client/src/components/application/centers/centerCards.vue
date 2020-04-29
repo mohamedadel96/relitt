@@ -46,7 +46,7 @@
                 <div class="prop col-4 px-0">
                   <p
                     class="font-14 font-weight-bold mb-0 text-primary"
-                  >{{card.avg_rate<2 ? 'Low' : card.avg_rate < 4 ? 'Medium' : 'High'}}</p>
+                  >{{card.avg_rate < 2 ? 'Low' : card.avg_rate < 4 ? 'Medium' : 'High'}}</p>
                   <p class="font-12 text-secondary mb-0">General</p>
                 </div>
               </div>
@@ -84,12 +84,7 @@
 
 <script>
 export default {
-  props: {
-    cardsData:{
-      type:[Object, Array] ,
-      required: true
-    }
-  },
+  props: ["cardsData"] ,
   computed: {
     // cardsData() {
     //   return this.$store.getters.getCenterCard;
