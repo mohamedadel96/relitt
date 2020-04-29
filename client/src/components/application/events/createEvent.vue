@@ -35,8 +35,9 @@
               <flat-pickr
                 class="form-controls py-2 px-1 col-12"
                 v-model="form.start_date"
-                :config="config"
+                :config="minConfig"
                 placeholder="Start date"
+                @on-change="onFromChange"
               ></flat-pickr>
             </div>
           </div>
@@ -46,7 +47,7 @@
               <flat-pickr
                 class="form-controls py-2 px-1 col-12"
                 v-model="form.end_date"
-                :config="config"
+                :config="maxConfig"
                 placeholder="End date"
               ></flat-pickr>
             </div>
@@ -114,14 +115,21 @@ export default {
         end_date: null,
         images: []
       },
-      config: {
+      minConfig: {
         minDate: new Date()
+      },
+      maxConfig: {
+        minDate: null
       },
       editState: false,
       disableUploading: false
     };
   },
   methods: {
+    onFromChange(selectedDates, dateStr, instance) {
+      this.$set(this.maxConfig, "minDate", dateStr);
+    },
+
     uploadFiles() {
       try {
         let loader = this.$loading.show();
