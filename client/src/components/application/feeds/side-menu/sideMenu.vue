@@ -1,6 +1,6 @@
 <template>
   <section id="sideMenu" class="mt-3">
-    <edit-personal-info />
+    <!-- <edit-personal-info /> -->
     <reviews>
       <p class="menu-item border-top py-3 mb-0 font-14 pointer" slot v-b-modal.reviews>My reviews</p>
     </reviews>
