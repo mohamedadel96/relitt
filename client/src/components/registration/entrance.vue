@@ -40,7 +40,7 @@
             :class="['col-12 form-control border-0 py-3 bg-white', {'is-invalid': $v.form.birthdate.$error}]"
             v-model="form.birthdate"
             :config="config"
-            placeholder="Date"
+            placeholder="Birth date"
           ></flat-pickr>
 
           <div

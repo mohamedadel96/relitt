@@ -34,7 +34,7 @@
               <label class="font-12 text-secondary">Start date</label>
               <flat-pickr
                 class="form-controls py-2 px-1 col-12"
-                v-model="form.start_date"
+                v-model="firstDate"
                 :config="minConfig"
                 placeholder="Start date"
                 @on-change="onFromChange"
@@ -46,7 +46,7 @@
               <label class="font-12 text-secondary">End date</label>
               <flat-pickr
                 class="form-controls py-2 px-1 col-12"
-                v-model="form.end_date"
+                v-model="secondDate"
                 :config="maxConfig"
                 placeholder="End date"
               ></flat-pickr>
@@ -113,17 +113,33 @@ export default {
         description: null,
         start_date: null,
         end_date: null,
-        images: []
+        images: [],
+        start_time:null,
+        end_time:null
       },
       minConfig: {
-        minDate: new Date()
+        minDate: new Date(),
+        enableTime: true
       },
       maxConfig: {
-        minDate: null
+        minDate: null,
+        enableTime: true
       },
+      firstDate:null,
+      secondDate:null,
       editState: false,
       disableUploading: false
     };
+  },
+  watch:{
+    firstDate:function(){
+      this.form.start_date = this.firstDate.split(" ")[0]
+      this.form.start_time = this.firstDate.split(" ")[1]
+    },    
+    secondDate:function(){
+      this.form.end_date = this.secondDate.split(" ")[0]
+      this.form.end_time = this.secondDate.split(" ")[1]
+    },
   },
   methods: {
     onFromChange(selectedDates, dateStr, instance) {

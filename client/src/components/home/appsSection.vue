@@ -5,11 +5,23 @@
         <p class="text-white">Wanna download ?</p>
         <h1 class="text-white pt-4">Only one app for all water-related sports.</h1>
         <p class="text-white">
-          We have made life easier for you now by providing a multi-usage application for users and centers both.<br>
-          We have a mine of services you will absolutely like ... you have to check them
+          We have made life easier for you now by providing a multi-usage application for users and centers both.
+          <br />We have a mine of services you will absolutely like ... you have to check them
         </p>
         <div>
           <p class="text-white">download now</p>
+        </div>
+        <div class="d-flex align-items-center justify-content-start">
+          <div class="mr-3">
+            <a href="#">
+              <img src="../../assets/img/Image 15.png" alt="andriod download" class="mx-auto" />
+            </a>
+          </div>
+          <div>
+            <a href="#">
+              <img src="../../assets/img/Image 16.png" alt="ios download" class="mx-auto" />
+            </a>
+          </div>
         </div>
       </div>
     </div>
