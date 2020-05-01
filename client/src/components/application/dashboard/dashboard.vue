@@ -1,50 +1,17 @@
 <template>
   <section id="dashboard">
     <div v-if="dashboard">
-      <div class="search rounded py-1 d-flex justify-content-between align-items-center">
-        <select class="py-2 px-4 mr-4 font-16" v-model="hide">
-          <option value="free" selected>free diving</option>
-          <option value="all">all</option>
-        </select>
-      </div>
-
-      <div class="chartSec mt-3 p-2">
-        <chart class="chart" :timeline="dashboard.timeline" />
-      </div>
-
-      <div class="posts mt-3">
-        <exp-card
-          :value="dashboard.avg_duration"
-          :minValue="dashboard.avg_duration_diving"
-          :maxValue="dashboard.avg_duration_scuba"
-          measure="min"
-          title="Average duration under water"
-          class="mt-4"
-        />
-        <exp-card
-          :value="dashboard.max_depth"
-          :minValue="dashboard.max_depth_diving"
-          :maxValue="dashboard.max_depth_scuba"
-          measure="m"
-          title="Max Depth"
-          class="mt-4"
-        />
-        <exp-card
-          :value="dashboard.dive_count"
-          :minValue="dashboard.dive_count_diving"
-          :maxValue="dashboard.dive_count_scuba"
-          measure="dive"
-          title="Number of Dives"
-          class="mt-4"
-        />
-      </div>
+      <nav />
+      <cards />
+      <expCards />
     </div>
   </section>
 </template>
 
 <script>
-import expCard from "./expCard";
-import chart from "./chart";
+import nav from "./component/dashboardNavbar";
+import cards from "./component/cards";
+import expCards from "./component/expCards";
 
 export default {
   data() {
@@ -53,8 +20,9 @@ export default {
     };
   },
   components: {
-    chart,
-    expCard
+    nav,
+    cards,
+    expCards
   },
   computed: {
     dashboard() {

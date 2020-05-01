@@ -9,7 +9,7 @@
             style="width: 80px; height: 80px; border-radius: 50%;"
           />
         </div>
-        <div class="d-flex justify-content-between mt-5">
+        <div class="d-flex justify-content-between mt-5 ">
           <div>
             <p
               class="mb-0 pr-2 font-weight-bolder text-primary font-14"

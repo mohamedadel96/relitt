@@ -21,10 +21,10 @@
 
 <script>
 import profile from "../../components/application/feeds/profile";
-import sidemenu from "../../components/application/feeds/side-menu/left";
+import sidemenu from "../../components/application/feeds/side-menu/sideMenu";
 
 // import sideMenu from "../../components/application/feeds/side-menu/sideMenu";
-import expCard from "../../components/application/dashboard/expCard";
+// import expCard from "../../components/application/dashboard/expCard";
 import friendsSearch from "../../components/application/feeds/friendsSearch";
 import friendsModal from "../../components/application/feeds/friendsModal";
 import myEvent from "../../components/application/events/myEvent";
@@ -35,7 +35,7 @@ export default {
     profile,
     sidemenu,
     // sideMenu,
-    expCard,
+    // expCard,
     friendsSearch,
     myEvent,
     friendsModal,
