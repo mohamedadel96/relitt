@@ -64,9 +64,9 @@
         <!-- <GoogleLogin class="btn btn-secondary btn-block py-3" /> -->
         <GoogleLogin
           :params="params"
-          :renderParams="renderParams"
-          
-        ></GoogleLogin>
+          style="background:white; color:black; font-weight:bold"
+          class="btn btn-secondary btn-block py-3 my-2"
+        >Google login</GoogleLogin>
       </div>
 
       <div class="mt-3 d-flex justify-content-between">
