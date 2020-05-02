@@ -50,12 +50,23 @@
 
       <div class="mt-4 pt-4 pb-1">
         <p class="text-secondary text-center mb-1">or signup using social media</p>
-        <v-facebook-login
+        <!-- <v-facebook-login
           class="btn btn-secondary btn-block py-3 my-2"
           app-id="966242223397117"
           @login="facebookLogin"
-        />
-        <GoogleLogin class="btn btn-secondary btn-block py-3" />
+        />-->
+
+        <v-facebook-login app-id="280363466316525" class="btn btn-secondary btn-block py-3 my-2"></v-facebook-login>
+
+        <!-- <v-facebook-login v-model="model" @sdk-init="handleSdkInit" />
+        <button v-if="scope.logout && model.connected" @click="scope.logout">Logout</button>-->
+
+        <!-- <GoogleLogin class="btn btn-secondary btn-block py-3" /> -->
+        <GoogleLogin
+          :params="params"
+          :renderParams="renderParams"
+          
+        ></GoogleLogin>
       </div>
 
       <div class="mt-3 d-flex justify-content-between">
@@ -68,7 +79,7 @@
 
 <script>
 import GoogleLogin from "vue-google-login";
-import { VFBLogin as VFacebookLogin } from "vue-facebook-login-component";
+import VFacebookLogin from "vue-facebook-login-component";
 import { required, email, minLength } from "vuelidate/lib/validators";
 
 export default {
@@ -81,6 +92,15 @@ export default {
       form: {
         email: null,
         password: null
+      },
+      params: {
+        client_id: "784667846506-f26bnfntiuuaplq014kkb5ob7n6e1c1c.apps.googleusercontent.com"
+      },
+      // only needed if you want to render the button with the google ui
+      renderParams: {
+        width: 443,
+        height: 60,
+        longtitle: true
       }
     };
   },
@@ -91,20 +111,27 @@ export default {
     }
   },
   methods: {
+    handleSdkInit({ FB, scope }) {
+      this.FB = FB;
+      this.scope = scope;
+    },
     submit() {
-        this.$v.$touch();
-        if (this.$v.$invalid) {
-          return;
-        }
-        let loader = this.$loading.show();
-        this.$store.dispatch("LOGIN", this.form).then(res => {
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        return;
+      }
+      let loader = this.$loading.show();
+      this.$store
+        .dispatch("LOGIN", this.form)
+        .then(res => {
           this.$router.push("/app");
-        }).catch(message => {
-          this.$toasted.error(message);
-        }).finally(() => {
-          loader.hide()
         })
-
+        .catch(message => {
+          this.$toasted.error(message);
+        })
+        .finally(() => {
+          loader.hide();
+        });
     },
     facebookLogin(res) {
       console.log(res);
