@@ -28,7 +28,7 @@
           />
         </div>
         <div class="col-sm-8 col-12 px-0 mt-3 d-flex flex-wrap align-items-between">
-          <div class="desc d-flex justify-content-between mb-3">
+          <div class="desc d-flex justify-content-between mb-3 w-100">
             <div class="col-10">
               <p
                 class="mb-0 font-weight-bold font-16 pointer"
