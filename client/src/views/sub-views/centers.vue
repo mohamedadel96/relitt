@@ -55,17 +55,17 @@ export default {
     filterModal
   },
   mounted() {
-    this.$store.dispatch("CENTERCARD"); 
+    this.$store.dispatch("CENTERCARD");
     this.centersData();
   },
-  methods:{
-    centersData(){
+  methods: {
+    centersData() {
       return this.$store.getters.getCenterCard;
     }
-}  // created() {
+  } // created() {
   //   this.$store.dispatch("CENTERCARD");
   // }
-}
+};
 </script>
 
 <style lang="scss">

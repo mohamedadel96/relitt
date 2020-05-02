@@ -1,13 +1,13 @@
 <template>
-  <div id="spot" v-if="spot() ">
+  <div id="spot" v-if="spot">
     <div class="backgroundimg">
       <img src="../../assets/img/Layer1.png" />
     </div>
-    <div class="container-fluid ">
-      <spotInfo :elementData="spot()"></spotInfo>
-      <review :elementData="spot()"></review>
-      <spotComment :elementData="spot()"></spotComment>
-      <location :lat="spot().lat" :lng="spot().lng"></location>
+    <div class="container-fluid">
+      <spotInfo :elementData="spot"></spotInfo>
+      <review :elementData="spot"></review>
+      <spotComment :elementData="spot"></spotComment>
+      <location :lat="spot.lat" :lng="spot.lng"></location>
     </div>
   </div>
 </template>
@@ -25,20 +25,20 @@ export default {
     spotComment,
     spotInfo
   },
-  // computed: {
-  //   spot() {
-  //     return console.log(this.$store.getters.spot);
-  //   }
-  // },
-  mounted() {
-    this.$store.dispatch("SPOT", this.$route.params.id);
-    this.spot();
-  },
-  methods: {
+  computed: {
     spot() {
       return this.$store.getters.spot;
     }
+  },
+  mounted() {
+    this.$store.dispatch("SPOT", this.$route.params.id);
+    // this.spot();
   }
+  // methods: {
+  //   spot() {
+  //     return this.$store.getters.spot;
+  //   }
+  // }
 };
 </script>
 

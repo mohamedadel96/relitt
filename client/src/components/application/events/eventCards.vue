@@ -22,7 +22,7 @@
         <div class="image col-sm-4 col-12 px-0">
           <img
             class="p-3 pointer"
-            :src="event.image ? event.image : '../../assets/img/Layer1.png'"
+            :src="event.image ? event.image[0].url : require('@/assets/img/Layer1.png')"
             @click="$router.push('/app/events/' + event.id)"
             alt="card image"
           />
