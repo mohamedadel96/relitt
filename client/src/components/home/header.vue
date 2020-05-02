@@ -16,6 +16,33 @@
             >Login</button>
           </router-link>
         </div>
+        <div class="d-flex mt-3">
+          <div
+            class="mr-3"
+            style="background: white; height: 50px; width: 50px; border-radius: 50%; line-height: 50px; text-align: center;"
+          >
+            <a href="#">
+              <img
+                src="../../assets/img/Image 4.png"
+                alt="andriod download"
+                class="mx-auto"
+                style="height:26px ; width:26px"
+              />
+            </a>
+          </div>
+          <div
+            style="background: #3B5999; height: 50px; width: 50px; border-radius: 50%; line-height: 50px; text-align: center;"
+          >
+            <a href="#">
+              <img
+                src="../../assets/img/Mask Group 12.png"
+                alt="andriod download"
+                class="mx-auto"
+                style="height:26px ; width:26px"
+              />
+            </a>
+          </div>
+        </div>
       </div>
       <div class="d-none d-md-block">
         <img class="mobile" src="../../assets/img/mobile.png" alt />

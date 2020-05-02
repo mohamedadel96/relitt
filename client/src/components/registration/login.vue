@@ -56,7 +56,7 @@
           @login="facebookLogin"
         />-->
 
-        <v-facebook-login app-id="280363466316525" class="btn btn-secondary btn-block py-3 my-2"></v-facebook-login>
+        <v-facebook-login app-id="280363466316525" class="btn btn-secondary btn-block py-3 my-2" @login="facebookLogin"></v-facebook-login>
 
         <!-- <v-facebook-login v-model="model" @sdk-init="handleSdkInit" />
         <button v-if="scope.logout && model.connected" @click="scope.logout">Logout</button>-->
@@ -64,6 +64,7 @@
         <!-- <GoogleLogin class="btn btn-secondary btn-block py-3" /> -->
         <GoogleLogin
           :params="params"
+          :onSuccess="onSuccess"
           style="background:white; color:black; font-weight:bold"
           class="btn btn-secondary btn-block py-3 my-2"
         >Google login</GoogleLogin>
@@ -94,7 +95,8 @@ export default {
         password: null
       },
       params: {
-        client_id: "784667846506-f26bnfntiuuaplq014kkb5ob7n6e1c1c.apps.googleusercontent.com"
+        client_id:
+          "784667846506-f26bnfntiuuaplq014kkb5ob7n6e1c1c.apps.googleusercontent.com"
       },
       // only needed if you want to render the button with the google ui
       renderParams: {
@@ -135,6 +137,12 @@ export default {
     },
     facebookLogin(res) {
       console.log(res);
+    },
+    onSuccess(googleUser) {
+      console.log(googleUser);
+
+      // This only gets the user information: id, name, imageUrl and email
+      console.log(googleUser.getBasicProfile());
     }
   }
 };
