@@ -17,10 +17,11 @@ export default {
         }
     },
     actions: {
-        ADDCOMMENT({ commit }, payload) {
+        ADDCOMMENT({ commit , dispatch }, payload) {
             return new Promise((resolve, reject) => {
                 appServices.addComment(payload).then(res => {
                     if (res.data.status === 401) {
+                        dispatch("LOGOUT")
                         // we will handle logout option // call logout function
                     }
                     if (res.data.code !== 200) return reject(res.data.message)
@@ -29,10 +30,11 @@ export default {
                 })
             })
         },
-        EDITCOMMENT({ commit }, payload) {
+        EDITCOMMENT({ commit , dispatch}, payload) {
             return new Promise((resolve, reject) => {
                 appServices.editComment(payload).then(res => {
                     if (res.data.status === 401) {
+                        dispatch("LOGOUT")
                         // we will handle logout option // call logout function
                     }
                     if (res.data.code !== 200) return reject(res.data.message)
@@ -41,10 +43,11 @@ export default {
                 })
             })
         },
-        DELETECOMMENT({ commit }, comment) {
+        DELETECOMMENT({ commit , dispatch }, comment) {
             return new Promise((resolve, reject) => {
                 appServices.deleteComment(comment.id).then(res => {
                     if (res.data.status === 401) {
+                        dispatch("LOGOUT")
                         // we will handle logout option // call logout function
                     }
                     if (res.data.code !== 200) return reject(res.data.message)

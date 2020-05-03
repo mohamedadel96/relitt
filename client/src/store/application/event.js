@@ -21,11 +21,12 @@ export default {
         }
     },
     actions: {
-        EVENT({ commit, state }, id) {
+        EVENT({ commit, dispatch }, id) {
             return new Promise((resolve, reject) => {
                 commit('removeEvent')
                 appServices.event(id).then(res => {
                     if (res.data.status === 401) {
+                        dispatch("LOGOUT")
                         // we will handle logout option // call logout function
                     }
                     if (res.data.code !== 200) return reject(res.data.message)
@@ -34,10 +35,11 @@ export default {
                 })
             })
         },
-        ADDEVENTCOMMENT({ commit }, payload) {
+        ADDEVENTCOMMENT({ commit , dispatch }, payload) {
             return new Promise((resolve, reject) => {
                 appServices.addEventComment(payload).then(res => {
                     if (res.data.status === 401) {
+                        dispatch("LOGOUT")
                         // we will handle logout option // call logout function
                     }
                     if (res.data.code !== 200) return reject(res.data.message)
@@ -50,6 +52,7 @@ export default {
             return new Promise((resolve, reject) => {
                 appServices.toggleJoinMeeting(payload).then(res => {
                     if (res.data.status === 401) {
+                        dispatch("LOGOUT")
                         // we will handle logout option // call logout function
                     }
                     if (res.data.code !== 200) return reject(res.data.message)

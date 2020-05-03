@@ -15,10 +15,12 @@ export default {
         }
     },
     actions: {
-        SPOT({ commit }, id) {
+        SPOT({ commit , dispatch }, id) {
             return new Promise((resolve, reject) => {
                 appServices.spot(id).then(res => {
                     if (res.data.status === 401) {
+                        dispatch("LOGOUT")
+
                         // we will handle logout option // call logout function
                     }
                     if (res.data.code !== 200) return reject(res.data.errors)

@@ -27,11 +27,12 @@ export default {
     }
   },
   actions: {
-    CENTERCARD({ commit, state }) {
+    CENTERCARD({ commit, state, dispatch }) {
       return new Promise((resolve, reject) => {
         appServices.centerCard(state.filter).then(res => {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
+            dispatch("LOGOUT")
           }
           if (res.data.code !== 200) return reject(res.data.message)
           if (!res.data.data.length) { return resolve('end') }
@@ -41,11 +42,13 @@ export default {
         })
       })
     },
-    MYREVIEWS({ commit }) {
+    MYREVIEWS({ commit , dispatch }) {
       return new Promise((resolve, reject) => {
         appServices.myReviews().then(res => {
           if (res.data.status === 401) {
             // we will handle logout option // call logout function
+            dispatch("LOGOUT")
+
           }
           if (res.data.code !== 200) return reject(res.data.message)
 

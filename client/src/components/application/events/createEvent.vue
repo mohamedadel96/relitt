@@ -11,6 +11,7 @@
       content-class="shadow"
       hide-header
       hide-footer
+      ref="modal"
     >
       <p class="text-center font-weight-bold font-18">
         <span v-show="!editState">Create</span>
@@ -178,6 +179,7 @@ export default {
         .dispatch("CREATEEVENT", this.form)
         .then(res => {
           this.$toasted.success(res);
+          this.$refs['modal'].hide()
         })
         .catch(message => {
           this.$toasted.error(message);
@@ -192,6 +194,7 @@ export default {
         .dispatch("EDITEVENT", this.form)
         .then(res => {
           this.$toasted.success(res);
+          this.$refs['modal'].hide()
           loader.hide();
         })
         .catch(message => {

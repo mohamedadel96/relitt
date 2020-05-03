@@ -1,5 +1,5 @@
 <template>
-  <section id="left">
+  <section id="left" v-if="profile">
     <!-- <div class="position-relative rounded text-center p-3 mt-5 bg-white">
       <div class="position-absolute" style="top: -41px; right: 35%;">
         <img
