@@ -132,13 +132,13 @@ export default {
     };
   },
   watch:{
-    firstDate:function(){
-      this.form.start_date = this.firstDate.split(" ")[0]
-      this.form.start_time = this.firstDate.split(" ")[1]
+    firstDate(val){
+      this.form.start_date = val.split(" ")[0]
+      this.form.start_time = val.split(" ")[1]
     },    
-    secondDate:function(){
-      this.form.end_date = this.secondDate.split(" ")[0]
-      this.form.end_time = this.secondDate.split(" ")[1]
+    secondDate(val)  {
+      this.form.end_date = val.split(" ")[0]
+      this.form.end_time = val.split(" ")[1]
     },
   },
   methods: {

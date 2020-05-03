@@ -27,6 +27,7 @@
                 <p class="mb-0 text-secondary">Safari(50)</p>
               </div>
             </div>
+            <chart />
           </div>
         </div>
       </div>
@@ -35,11 +36,13 @@
 </template>
 
 <script>
+import chart from "./googleChart";
 export default {
-    
-}
+  components: {
+    chart
+  }
+};
 </script>
 
 <style>
-
 </style>

@@ -100,11 +100,19 @@
         <p class="text-primary h4">80 SI</p>
       </div>
 
-      <div class="bg-white my-4">graph</div>
+      <div class="bg-white my-4">graph
+        <chart />
+      </div>
     </div>
   </section>
 </template>
 
 <script>
-export default {};
+import chart from "./googleChart"
+export default {
+components:{
+  chart
+}
+
+};
 </script>
