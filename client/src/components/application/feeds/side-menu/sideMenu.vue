@@ -1,56 +1,5 @@
 <template>
   <section id="left" v-if="profile">
-    <!-- <div class="position-relative rounded text-center p-3 mt-5 bg-white">
-      <div class="position-absolute" style="top: -41px; right: 35%;">
-        <img
-          src="@/assets/img/default-avatar.jpg"
-          alt="img"
-          style="width: 80px; height: 80px; border-radius: 50%;"
-        />
-      </div>
-      <div class="d-flex justify-content-between mt-5">
-        <div>
-          <p class="mb-0 pr-2 font-weight-bolder text-primary font-14">Victor Niculici</p>
-          <p class="mb-0 text-secondary font-10">Diving specialist</p>
-        </div>
-        <editPersonalInfo />
-        <!-- <div style="width: 18px; height: 18px; " class="m-1">
-          <svg
-            aria-hidden="true"
-            focusable="false"
-            data-prefix="fas"
-            data-icon="pen"
-            class="svg-inline--fa fa-pen fa-w-16 text-secondary"
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-          >
-            <path
-              fill="currentColor"
-              d="M290.74 93.24l128.02 128.02-277.99 277.99-114.14 12.6C11.35 513.54-1.56 500.62.14 485.34l12.7-114.22 277.9-277.88zm207.2-19.06l-60.11-60.11c-18.75-18.75-49.16-18.75-67.91 0l-56.55 56.55 128.02 128.02 56.55-56.55c18.75-18.76 18.75-49.16 0-67.91z"
-            />
-          </svg>
-        </div> 
-      </div>
-      <div class="mt-3 font-14">
-        <p class="mb-0 text-dark">We are passionate about</p>
-        <p class="mb-0 text-dark">creating diving better and saver</p>
-      </div>
-      <div class="d-flex justify-content-around mt-3">
-        <div>
-          <p class="mb-0 font-weight-bolder text-primary font-14">125</p>
-          <p class="mb-0 text-secondary font-10">Followers</p>
-        </div>
-        <div class="px-4 border-right border-left">
-          <p class="mb-0 font-weight-bolder text-primary font-14">150</p>
-          <p class="mb-0 text-secondary font-10">Following</p>
-        </div>
-        <div>
-          <p class="mb-0 font-weight-bolder text-primary font-14">8</p>
-          <p class="mb-0 text-secondary font-10">Activity</p>
-        </div>
-      </div>
-    </div>-->
     <div class="my-3 p-2 bg-white rounded">
       <div class="d-flex align-items-center mb-2">
         <div style="width: 18px; height: 18px; " class="mx-2">
@@ -128,7 +77,6 @@
       <p class="text-secondary">certificate & Training</p>
       <div class="d-flex">
         <div style="width:18px ; height:18px " class="mx-1">
-          <!-- <img src="./image/Component 2.svg" alt="icon" class="bg-info" style="border-radius: 50%;" /> -->
           <svg
             aria-hidden="true"
             focusable="false"
@@ -151,7 +99,6 @@
       </div>
       <div class="d-flex">
         <div style="width:18px ; height:18px " class="mx-1">
-          <!-- <img src="./image/Component 2.svg" alt="icon" class="bg-info" style="border-radius: 50%;" /> -->
           <svg
             aria-hidden="true"
             focusable="false"
@@ -176,13 +123,7 @@
     <div class="d-flex justify-content-between">
       <div class="col-6 pr-1 pl-0 text-center">
         <div class="bg-white rounded p-3">
-          <!-- <img
-            src="./image/Component 2.svg"
-            alt="icon"
-            class="bg-danger"
-            style="border-radius: 50%;"
 
-          />-->
           <div style="border-radius: 50%;width: 60px;height: 60px;line-heigh:60px;line-height: 60px;background: #dc354514;margin: auto;">
             <div>
               <svg

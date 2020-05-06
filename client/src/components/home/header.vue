@@ -21,26 +21,39 @@
             class="mr-3"
             style="background: white; height: 50px; width: 50px; border-radius: 50%; line-height: 50px; text-align: center;"
           >
-            <a href="#">
+            <GoogleLogin
+              :params="params"
+              ref="google"
+              style="background:white; color:black; font-weight:bold"
+              class="d-none"
+            >Google login</GoogleLogin>
+                
+            <div @click="$refs.google.click()" >
               <img
                 src="../../assets/img/Image 4.png"
-                alt="andriod download"
+                alt="andriod"
                 class="mx-auto"
                 style="height:26px ; width:26px"
               />
-            </a>
+            </div>
           </div>
           <div
             style="background: #3B5999; height: 50px; width: 50px; border-radius: 50%; line-height: 50px; text-align: center;"
           >
-            <a href="#">
+            <v-facebook-login
+              app-id="280363466316525"
+              class="d-none"
+              ref="testtt"
+              @login="facebookLogin"
+            ></v-facebook-login>
+            <div @click="ff()">
               <img
                 src="../../assets/img/Mask Group 12.png"
-                alt="andriod download"
+                alt="facebook"
                 class="mx-auto"
                 style="height:26px ; width:26px"
               />
-            </a>
+            </div>
           </div>
         </div>
       </div>
@@ -65,9 +78,30 @@
 
 <script>
 import navBar from "./_navbar";
+import VFacebookLogin from "vue-facebook-login-component";
+import GoogleLogin from "vue-google-login";
+
 export default {
   components: {
-    navBar
+    navBar,
+    VFacebookLogin,
+    GoogleLogin
+  },
+  data() {
+    return {
+      params: {
+        client_id:
+          "784667846506-f26bnfntiuuaplq014kkb5ob7n6e1c1c.apps.googleusercontent.com"
+      }
+    };
+  },
+  methods: {
+    facebookLogin(res) {
+      console.log(res);
+    },
+    ff(){
+      console.log( this.$refs.testtt)
+    }
   }
 };
 </script>

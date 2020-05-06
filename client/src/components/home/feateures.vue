@@ -70,11 +70,7 @@
         >Track your own activity now, with instant activity tracking indicator through the dashboard</p>
       </div>
       <div class="block col-md-4 col-12 py-3 text-center">
-        <!-- <img
-          class="rounded-circle"
-          src="../../assets/img/icon/round-explore-24px@2x.png"
-          alt="human"
-        />-->
+
         <div class="circleDev">
           <svg
             xmlns="http://www.w3.org/2000/svg"

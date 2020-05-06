@@ -50,7 +50,8 @@
 export default {
   data() {
     return {
-      filterRate: []
+      filterRate: [],      
+      filtertype    : []
     };
   }
 };
