@@ -27,17 +27,17 @@
         <p class="text-secondary font-14 mt-4 mb-1">Service</p>
         <div class="px-2">
           <div>
-            <div>
-              <span class="pr-2">ico</span>
+            <div @click="filtertype.push('scubaDiving')">
+              <scupeicon :color="'#80878d'" class="pr-2" />
               <span>scuba diving</span>
             </div>
-            <div>
-              <span class="pr-2">ico</span>
-              <span>scuba diving</span>
+            <div @click="filtertype.push('freeDiving')">
+              <freeicon class="pr-2" :color="'#80878d'" />
+              <span>Free diving</span>
             </div>
-            <div>
-              <span class="pr-2">ico</span>
-              <span>scuba diving</span>
+            <div @click="filtertype.push('divingCourses')">
+              <courseicon :color="'#80878d'" class="pr-2" />
+              <span>Diving Courses</span>
             </div>
           </div>
         </div>
@@ -47,12 +47,20 @@
 </template>
 
 <script>
+import scupeicon from "./scubaIcon";
+import freeicon from "./freeIcon";
+import courseicon from "./coursesIcon";
 export default {
   data() {
     return {
-      filterRate: [],      
-      filtertype    : []
+      filterRate: [],
+      filtertype: []
     };
+  },
+  components: {
+    scupeicon,
+    freeicon,
+    courseicon
   }
 };
 </script>

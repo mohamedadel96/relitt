@@ -25,35 +25,30 @@
               :params="params"
               ref="google"
               style="background:white; color:black; font-weight:bold"
-              class="d-none"
-            >Google login</GoogleLogin>
-                
-            <div @click="$refs.google.click()" >
+              class="google-btn"
+            >
               <img
                 src="../../assets/img/Image 4.png"
-                alt="andriod"
-                class="mx-auto"
-                style="height:26px ; width:26px"
+                title="google"
+                class="mx-auto log-icon"
               />
-            </div>
+            </GoogleLogin>
+
+            <!-- <div @click="$refs.google.click()">
+            </div> -->
           </div>
-          <div
-            style="background: #3B5999; height: 50px; width: 50px; border-radius: 50%; line-height: 50px; text-align: center;"
-          >
-            <v-facebook-login
-              app-id="280363466316525"
-              class="d-none"
-              ref="testtt"
-              @login="facebookLogin"
-            ></v-facebook-login>
-            <div @click="ff()">
-              <img
-                src="../../assets/img/Mask Group 12.png"
-                alt="facebook"
-                class="mx-auto"
-                style="height:26px ; width:26px"
-              />
-            </div>
+          <div class="face-btn">
+            <v-facebook-login-scope app-id="280363466316525">
+              <!-- Compose HTML/CSS here, otherwise nothing will be rendered -->
+              <div slot-scope="scope" @click="facebookLogin(scope)">
+                <!-- Compose with `scope` here -->
+                <img
+                  src="../../assets/img/Mask Group 12.png"
+                  title="facebook"
+                  class="mx-auto log-icon"
+                />
+              </div>
+            </v-facebook-login-scope>
           </div>
         </div>
       </div>
@@ -80,12 +75,14 @@
 import navBar from "./_navbar";
 import VFacebookLogin from "vue-facebook-login-component";
 import GoogleLogin from "vue-google-login";
+import { VFBLoginScope as VFacebookLoginScope } from "vue-facebook-login-component";
 
 export default {
   components: {
     navBar,
     VFacebookLogin,
-    GoogleLogin
+    GoogleLogin,
+    VFacebookLoginScope
   },
   data() {
     return {
@@ -96,11 +93,9 @@ export default {
     };
   },
   methods: {
-    facebookLogin(res) {
+    async facebookLogin(scope) {
+      let res = await scope.login();
       console.log(res);
-    },
-    ff(){
-      console.log( this.$refs.testtt)
     }
   }
 };
@@ -133,7 +128,32 @@ header {
       letter-spacing: 1px;
       word-spacing: 2px;
     }
-
+    .log-icon {
+      height: 26px;
+      width: 26px;
+      cursor: pointer;
+    }
+    .face-btn {
+      background: #3b5999;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      line-height: 50px;
+      text-align: center;
+    }
+    .google-btn {
+      background-color: white; /* Green */
+      border: none;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      line-height: 50px;      
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      outline: none;
+    }
     button {
       letter-spacing: 1px;
       color: white;

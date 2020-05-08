@@ -77,21 +77,7 @@
       <p class="text-secondary">certificate & Training</p>
       <div class="d-flex">
         <div style="width:18px ; height:18px " class="mx-1">
-          <svg
-            aria-hidden="true"
-            focusable="false"
-            data-prefix="fas"
-            data-icon="circle"
-            class="svg-inline--fa fa-circle fa-w-16 text-primary"
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-          >
-            <path
-              fill="currentColor"
-              d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"
-            />
-          </svg>
+          <img src="../../../../assets/icons/awsome-icon.svg" alt="icon"> 
         </div>
         <div>
           <p class="mb-0 pl-2 font-14">PADI Scuba Diver Or PADI Scuba Diver To Start.</p>
@@ -99,21 +85,7 @@
       </div>
       <div class="d-flex">
         <div style="width:18px ; height:18px " class="mx-1">
-          <svg
-            aria-hidden="true"
-            focusable="false"
-            data-prefix="fas"
-            data-icon="circle"
-            class="svg-inline--fa fa-circle fa-w-16 text-primary"
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-          >
-            <path
-              fill="currentColor"
-              d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"
-            />
-          </svg>
+          <img src="../../../../assets/icons/awsome-icon.svg" alt="icon">        
         </div>
         <div>
           <p class="mb-0 pl-2 font-14">Advanced Open Water</p>
@@ -124,25 +96,9 @@
       <div class="col-6 pr-1 pl-0 text-center">
         <div class="bg-white rounded p-3">
 
-          <div style="border-radius: 50%;width: 60px;height: 60px;line-heigh:60px;line-height: 60px;background: #dc354514;margin: auto;">
+          <div style="border-radius: 50%;width: 60px;height: 60px;line-heigh:60px;line-height: 60px;background: #FD43431A;margin: auto;">
             <div>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="far"
-                data-icon="calendar-minus"
-                class="svg-inline--fa fa-calendar-minus fa-w-14 text-danger"
-                role="img"
-                width="28"
-                height="28"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M124 328c-6.6 0-12-5.4-12-12v-24c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v24c0 6.6-5.4 12-12 12H124zm324-216v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"
-                />
-              </svg>
+              <img src="../../../../assets/icons/matiral-event.svg" alt="organized events icon">
             </div>
           </div>
           <p class="mb-0 text-secondary font-12">organized events</p>
@@ -152,26 +108,9 @@
 
       <div class="col-6 pl-1 pr-0 text-center">
         <div class="bg-white rounded p-3">
-          <div style="border-radius: 50%;width: 60px;height: 60px;line-height: 60px;background: #00336908;margin: auto;">
+          <div style="border-radius: 50%;width: 60px;height: 60px;line-height: 60px;background: #7576B81A;margin: auto;">
             <div>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="far"
-                data-icon="calendar-minus"
-                class="svg-inline--fa fa-calendar-minus fa-w-14"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-                width="28"
-                height="28"
-
-              >
-                <path
-                  fill="#003369"
-                  d="M124 328c-6.6 0-12-5.4-12-12v-24c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v24c0 6.6-5.4 12-12 12H124zm324-216v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"
-                />
-              </svg>
+              <img src="../../../../assets/icons/event-chair.svg" alt="organized events icon">
             </div>
           </div>
           <p class="mb-0 text-secondary font-12" style="font-size: small;">Attend events</p>
