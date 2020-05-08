@@ -29,10 +29,11 @@ export default {
     }
   },
   actions: {
-    PROFILE({ commit }) {
+    PROFILE({ commit , dispatch }) {
       return new Promise((resolve, reject) => {
         appServices.profile().then(res => {
           if (res.data.status === 401) {
+            dispatch("LOGOUT")
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.message)
@@ -41,16 +42,20 @@ export default {
         })
       })
     },
-    EDITPROFILE({ commit }, form) {
+    EDITPROFILE({ commit , dispatch }, form) {
       return new Promise(async (resolve, reject) => {
         await appServices.basicInfo(form).then(res => {
           if (res.data.status === 401) {
+            dispatch("LOGOUT")
+
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.message)
         })
         await appServices.editProfile(form).then(res => {
           if (res.data.status === 401) {
+            dispatch("LOGOUT")
+
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.message)
@@ -59,7 +64,7 @@ export default {
         })
       })
     },
-    PROFILECHANGEPASSWORD({ commit }, form) {
+    PROFILECHANGEPASSWORD({ dispatch  }, form) {
       return new Promise((resolve, reject) => {
         appServices.profileChangePassword(form).then(res => {
           if (res.data.code !== 200) return reject(res.data.message)
@@ -68,10 +73,12 @@ export default {
 
       })
     },
-    NOTIFICATIONS({ commit }) {
+    NOTIFICATIONS({ commit , dispatch}) {
       return new Promise((resolve, reject) => {
         appServices.notifications().then(res => {
           if (res.data.status === 401) {
+            dispatch("LOGOUT")
+
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.message)
@@ -81,10 +88,12 @@ export default {
 
       })
     },
-    NOTIFICATIONSETTINGS({ commit }, form) {
+    NOTIFICATIONSETTINGS({ commit , dispatch}, form) {
       return new Promise((resolve, reject) => {
         appServices.notificationSettings(form).then(res => {
           if (res.data.status === 401) {
+            dispatch("LOGOUT")
+
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.message)
@@ -94,10 +103,11 @@ export default {
 
       })
     },
-    INTERESTSLIST({ commit }) {
+    INTERESTSLIST({ commit , dispatch }) {
       return new Promise((resolve, reject) => {
         appServices.interestsList().then(res => {
           if (res.data.status === 401) {
+            dispatch("LOGOUT")
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.message)

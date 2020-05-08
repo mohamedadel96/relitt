@@ -21,7 +21,7 @@
 
           <p
             class="opacity"
-          >Lorem ipsum dolor sit laborum quas totam amet ut non ipsam vero nostrum omnis.</p>
+          >The first platform that gathers all water-related sports in one place. Create your free online dive logbook for all your diving activities. EXPLORE MORE.</p>
           <p class="opacity">mohamed@gmail.com</p>
         </div>
       </div>
@@ -50,15 +50,81 @@
           <p class="opacity">LOGIN</p>
           <p class="opacity">REGISTER</p>
         </div>
+        <div class="d-flex align-items-center justify-content-start">
+          <div class="mr-3">
+            <a href="#">
+              <img src="../../assets/img/Image 16.png" alt="andriod download" class="mx-auto" style="width:165px; height:50px" />
+            </a>
+          </div>
+          <div>
+            <a href="#">
+              <img src="../../assets/img/Image 15.png" alt="ios download" class="mx-auto" style="width:165px; height:50px" />
+            </a>
+          </div>
+        </div>
       </div>
     </div>
-    <hr class="col-8 border" />
+    <hr class="border" />
     <div class="d-flex justify-content-between flex-wrap">
       <p class="opacity col-md-6 col-12">&#64;2019 relitte inc</p>
-      <div class="d-flex flex-wrap justify-content-between col-md-6 col-12">
-        <p>LinkedIn</p>
-        <p>Facebook</p>
-        <p>Twitter</p>
+      <div class="d-flex flex-wrap justify-content-between col-md-4 col-12">
+        <a href="#">
+          <div class="d-flex text-secondary">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18.764"
+              height="17.93"
+              class="mr-2"
+              viewBox="0 0 18.764 17.93"
+            >
+              <path
+                fill="#80878d"
+                class="a"
+                d="M18.764,20.551v6.937H14.742V21.016c0-1.626-.582-2.736-2.037-2.736a2.2,2.2,0,0,0-2.064,1.471,2.752,2.752,0,0,0-.133.981v6.756H6.485s.054-10.962,0-12.1h4.023V17.1c-.008.013-.019.027-.026.039h.026V17.1a3.994,3.994,0,0,1,3.625-2C16.78,15.106,18.764,16.835,18.764,20.551ZM2.277,9.558a2.1,2.1,0,1,0-.053,4.181H2.25a2.1,2.1,0,1,0,.027-4.181ZM.239,27.488H4.261V15.39H.239Z"
+                transform="translate(0 -9.558)"
+              />
+            </svg>
+            <p>LinkedIn</p>
+          </div>
+        </a>
+        <a href="#">
+          <div class="d-flex text-secondary">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="8.757"
+              height="18.764"
+              class="mr-2"
+              viewBox="0 0 8.757 18.764"
+            >
+              <path
+                fill="#80878d"
+                class="a"
+                d="M116.589,3.635V6.218H114.7V9.377h1.893v9.387h3.888V9.378h2.609s.244-1.515.363-3.171h-2.957V4.047a.918.918,0,0,1,.843-.757h2.118V0h-2.88C116.493,0,116.589,3.163,116.589,3.635Z"
+                transform="translate(-114.696 -0.001)"
+              />
+            </svg>
+            <p>Facebook</p>
+          </div>
+        </a>
+        <a href="#">
+          <div class="d-flex text-secondary">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="11.884"
+              height="18.764"
+              viewBox="0 0 11.884 18.764"
+              class="mr-1"
+            >
+              <path
+                fill="#80878d"
+                class="a"
+                d="M86.443,15.336a1.744,1.744,0,0,1-.72-.811,8.1,8.1,0,0,1-.1-2.025V7.689H90V4.34H85.621V0H82.929a7.222,7.222,0,0,1-.662,2.391A5.152,5.152,0,0,1,80.989,4a6.694,6.694,0,0,1-2.134,1.029V7.689h2.571v6.58a5.509,5.509,0,0,0,.272,1.966,3.381,3.381,0,0,0,.977,1.28,5.021,5.021,0,0,0,1.7.926,5.846,5.846,0,0,0,2.04.324,9.538,9.538,0,0,0,2.127-.227,11.542,11.542,0,0,0,2.2-.795v-2.96a5.191,5.191,0,0,1-2.859.926A2.769,2.769,0,0,1,86.443,15.336Z"
+                transform="translate(-78.855)"
+              />
+            </svg>
+            <p>Twitter</p>
+          </div>
+        </a>
       </div>
     </div>
   </footer>

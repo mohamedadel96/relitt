@@ -15,8 +15,17 @@
 <script>
 import { LocationPicker } from "vue2-location-picker";
 export default {
+  props: [
+    "lat",
+    "lng",
+    {
+      elementData: {
+        type: [Object, Array],
+        required: true
+      }
+    }
+  ],
   components: { LocationPicker },
-  props: ["lat", "lng"],
   data() {
     return {
       location: {

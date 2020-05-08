@@ -20,6 +20,7 @@ import './plugins/vueToggleButton'
 import './plugins/locationPicker'
 import './plugins/loadingOverlay'
 import './plugins/vueMeta'
+import './plugins/googlechart'
 import "aos/dist/aos.css";
 
 Vue.config.productionTip = false;

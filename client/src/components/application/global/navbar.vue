@@ -4,7 +4,9 @@
     class="col-12 px-0 py-3 border-bottom position-fixed d-flex justify-content-between align-items-center"
   >
     <div class="px-md-4 col-md-3 col-5">
-      <img src="../../../assets/img/icon/logo.svg" />
+      <router-link to="/app">
+        <img src="../../../assets/img/icon/logo.svg" />
+      </router-link>
     </div>
 
     <div class="col-6 d-md-flex d-none justify-content-center">

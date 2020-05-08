@@ -25,10 +25,11 @@ export default {
     },
   },
   actions: {
-    EVENTS({ commit, state }) {
+    EVENTS({ commit, state , dispatch }) {
       return new Promise((resolve, reject) => {
         appServices.events(state.filter).then(res => {
           if (res.data.status === 401) {
+            dispatch("LOGOUT")
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.message)
@@ -38,7 +39,7 @@ export default {
         })
       })
     },
-    CREATEEVENT({ commit }, form) {
+    CREATEEVENT({ commit , dispatch }, form) {
       return new Promise((resolve, reject) => {
         appServices.createEvent(form).then(res => {
           if (res.data.status === 401) {
@@ -50,10 +51,11 @@ export default {
         })
       })
     },
-    EDITEVENT({ commit }, form) {
+    EDITEVENT({ commit,dispatch }, form) {
       return new Promise((resolve, reject) => {
         appServices.editEvent(form).then(res => {
           if (res.data.status === 401) {
+            dispatch("LOGOUT")
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.message)
@@ -63,10 +65,11 @@ export default {
         })
       })
     },
-    DELETEEVENT({ commit }, eventId) {
+    DELETEEVENT({ commit , dispatch }, eventId) {
       return new Promise((resolve, reject) => {
         appServices.deleteEvent(eventId).then(res => {
           if (res.data.status === 401) {
+            dispatch("LOGOUT")
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.message)

@@ -15,6 +15,9 @@
             <p class="mr-5">
               <router-link class="active" to="/app/centers">Centers</router-link>
             </p>
+            <p class="mr-5">
+              <router-link to="/app/spots">Spots</router-link>
+            </p>
           </div>
           <div class="d-md-none d-block">
             <filter-modal />
@@ -29,7 +32,7 @@
               placeholder="Enter an address, zipcode, or location"
             ></place-autocomplete-field>
           </div>
-          <center-cards />
+          <center-cards :cardsData="centersData()" />
         </div>
       </div>
     </div>
@@ -51,9 +54,17 @@ export default {
     filterSection,
     filterModal
   },
-  created() {
+  mounted() {
     this.$store.dispatch("CENTERCARD");
-  }
+    this.centersData();
+  },
+  methods: {
+    centersData() {
+      return this.$store.getters.getCenterCard;
+    }
+  } // created() {
+  //   this.$store.dispatch("CENTERCARD");
+  // }
 };
 </script>
 

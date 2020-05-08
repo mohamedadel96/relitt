@@ -15,10 +15,11 @@ export default {
         }
     },
     actions: {
-        CENTER({ commit }, id) {
+        CENTER({ commit , dispatch }, id) {
             return new Promise((resolve, reject) => {
                 appServices.center(id).then(res => {
                     if (res.data.status === 401) {
+                        dispatch("LOGOUT")
                         // we will handle logout option // call logout function
                     }
                     if (res.data.code !== 200) return reject(res.data.message)

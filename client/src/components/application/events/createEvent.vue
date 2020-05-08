@@ -11,6 +11,7 @@
       content-class="shadow"
       hide-header
       hide-footer
+      ref="modal"
     >
       <p class="text-center font-weight-bold font-18">
         <span v-show="!editState">Create</span>
@@ -34,9 +35,10 @@
               <label class="font-12 text-secondary">Start date</label>
               <flat-pickr
                 class="form-controls py-2 px-1 col-12"
-                v-model="form.start_date"
-                :config="config"
+                v-model="firstDate"
+                :config="minConfig"
                 placeholder="Start date"
+                @on-change="onFromChange"
               ></flat-pickr>
             </div>
           </div>
@@ -45,8 +47,8 @@
               <label class="font-12 text-secondary">End date</label>
               <flat-pickr
                 class="form-controls py-2 px-1 col-12"
-                v-model="form.end_date"
-                :config="config"
+                v-model="secondDate"
+                :config="maxConfig"
                 placeholder="End date"
               ></flat-pickr>
             </div>
@@ -112,16 +114,39 @@ export default {
         description: null,
         start_date: null,
         end_date: null,
-        images: []
+        images: [],
+        start_time:null,
+        end_time:null
       },
-      config: {
-        minDate: new Date()
+      minConfig: {
+        minDate: new Date(),
+        enableTime: true
       },
+      maxConfig: {
+        minDate: null,
+        enableTime: true
+      },
+      firstDate:null,
+      secondDate:null,
       editState: false,
       disableUploading: false
     };
   },
+  watch:{
+    firstDate(val){
+      this.form.start_date = val.split(" ")[0]
+      this.form.start_time = val.split(" ")[1]
+    },    
+    secondDate(val)  {
+      this.form.end_date = val.split(" ")[0]
+      this.form.end_time = val.split(" ")[1]
+    },
+  },
   methods: {
+    onFromChange(selectedDates, dateStr, instance) {
+      this.$set(this.maxConfig, "minDate", dateStr);
+    },
+
     uploadFiles() {
       try {
         let loader = this.$loading.show();
@@ -154,6 +179,7 @@ export default {
         .dispatch("CREATEEVENT", this.form)
         .then(res => {
           this.$toasted.success(res);
+          this.$refs['modal'].hide()
         })
         .catch(message => {
           this.$toasted.error(message);
@@ -168,6 +194,7 @@ export default {
         .dispatch("EDITEVENT", this.form)
         .then(res => {
           this.$toasted.success(res);
+          this.$refs['modal'].hide()
           loader.hide();
         })
         .catch(message => {

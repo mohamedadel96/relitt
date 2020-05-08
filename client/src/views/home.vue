@@ -18,22 +18,22 @@ import appFooter from "../components/home/footer";
 
 export default {
   metaInfo: {
-    title: "relit",
+    title: "Best Online Dive Logbook For Divers and Diving Directory | Relitt",
     meta: [
       { "http-equiv": "Content-Type", content: "text/html; charset=utf-8" },
       {
         name: "description",
-        content: "relit application"
+        content: "The first platform that gathers all water-related sports in one place. Create your free online dive logbook for all your diving activities. EXPLORE MORE"
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "http://relitt.com" },
       {
         property: "og:title",
-        content: "relit"
+        content: "Best Online Dive Logbook For Divers and Diving Directory | Relitt"
       },
       {
         property: "og:description",
-        content: "relit application"
+        content: "The first platform that gathers all water-related sports in one place. Create your free online dive logbook for all your diving activities. EXPLORE MORE"
       },
       {
         property: "og:image",

@@ -8,7 +8,7 @@
         >{{activity.temprature}} &#8451;</div>
         <div
           class="time text-white font-12 font-weight-bold"
-        >{{activity.duration.split(':')[0]}} min {{activity.duration.split(':')[1]}} sec</div>
+        >{{activity.duration.split(':')[2]}} min {{activity.duration.split(':')[1]}} sec</div>
         <div>
           <div class="col-12 d-flex justify-content-center flex-wrap mb-2">
             <img src="../../../assets/icons/line.svg" alt />

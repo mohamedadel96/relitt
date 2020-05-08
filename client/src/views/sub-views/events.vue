@@ -21,6 +21,9 @@
             <p class="mr-4">
               <router-link to="/app/centers">Centers</router-link>
             </p>
+            <p class="mr-4">
+              <router-link to="/app/spots">Spots</router-link>
+            </p>
           </div>
           <div class="d-md-none d-block">
             <button

@@ -1,12 +1,12 @@
 <template>
   <section id="centerCard">
-    <div class="cards" v-for="( center, i ) in centers" :key="i">
-      <div class="card border-0 rounded d-flex flex-wrap flex-row mb-3">
-        <div class="image col-sm-4 col-12 px-0">
+    <div class="cards" v-for="( card, i ) in cardsData" :key="i">
+      <div class="card border-0 rounded d-flex flex-nowrap flex-row mb-3">
+        <div class="image col-4 px-0">
           <img
             class="p-3 pointer"
-            :src="center.images.length ? center.images[0].url : '../../assets/img/Layer1.png'"
-            @click="$router.push('/app/centers/' + center.id)"
+            :src="card.images.length ? card.images[0].url : '../../assets/img/Layer1.png'"
+            @click="$router.push('/app/centers/' + card.id)"
             alt="card image"
           />
         </div>
@@ -15,10 +15,10 @@
             <div class="details col-lg-7 col-12 px-2">
               <p
                 class="mb-0 font-weight-bold font-16 pointer"
-                @click="$router.push('/app/centers/' + center.id)"
-              >{{center.name}}</p>
-              <p class="mb-2 text-secondary font-12">{{center.location_name}}</p>
-              <p class="mb-0 text-secondary font-12 desc">{{center.description}}</p>
+                @click="$router.push('/app/centers/' + card.id)"
+              >{{card.name}}</p>
+              <p class="mb-2 text-secondary font-12">{{card.location_name}}</p>
+              <p class="mb-0 text-secondary font-12 desc">{{card.description}}</p>
             </div>
             <div class="col-lg-5 col-12 px-0 my-lg-0 my-3 text-center">
               <div class="d-flex justify-content-end my-lg-0 my-3">
@@ -28,26 +28,25 @@
                   active-color="#FFB900"
                   :star-size="16"
                   read-only
-                  :rating="center.avg_rate"
+                  :rating="card.avg_rate"
                 />
               </div>
               <div class="props d-flex justify-content-between my-lg-1 my-3">
                 <div class="prop col-4 px-0">
-                  <p
-                    class="font-14 font-weight-bold mb-0 text-primary"
-                  >{{center.avg_price < 2 ? 'Low' : center.avg_price < 4 ? 'Medium' : 'High'}}</p>
+                  <p     class="font-14 font-weight-bold mb-0 text-primary"
+                  >{{card.avg_price < 2 ? 'Low' : card.avg_price < 4 ? 'Medium' : 'High'}}</p>
                   <p class="font-12 text-secondary mb-0">price</p>
                 </div>
                 <div class="prop col-4 px-0">
                   <p
                     class="font-14 font-weight-bold mb-0 text-primary"
-                  >{{center.avg_quality < 2 ? 'Low' : center.avg_quality < 4 ? 'Medium' : 'High'}}</p>
+                  >{{card.avg_quality < 2 ? 'Low' : card.avg_quality < 4 ? 'Medium' : 'High'}}</p>
                   <p class="font-12 text-secondary mb-0">price</p>
                 </div>
                 <div class="prop col-4 px-0">
                   <p
                     class="font-14 font-weight-bold mb-0 text-primary"
-                  >{{center.avg_rate < 2 ? 'Low' : center.avg_rate < 4 ? 'Medium' : 'High'}}</p>
+                  >{{card.avg_rate < 2 ? 'Low' : card.avg_rate < 4 ? 'Medium' : 'High'}}</p>
                   <p class="font-12 text-secondary mb-0">General</p>
                 </div>
               </div>
@@ -57,7 +56,7 @@
             <div class="row col-6">
               <div
                 class="service col-3 justify-content-start"
-                v-for="(service ,i) in center.services"
+                v-for="(service ,i) in card.services"
                 :key="i"
               >
                 <p class="mb-0 text-secondary">
@@ -73,7 +72,7 @@
             </div>
             <router-link
               class="mr-3 btn btn-primary btn-block py-2 col-4 font-14"
-              :to="'/app/centers/' + center.id"
+              :to="'/app/centers/' + card.id"
             >Details...</router-link>
           </div>
         </div>
@@ -85,10 +84,11 @@
 
 <script>
 export default {
+  props: ["cardsData"] ,
   computed: {
-    centers() {
-      return this.$store.getters.getCenterCard;
-    }
+    // cardsData() {
+    //   return this.$store.getters.getCenterCard;
+    // }
   },
   methods: {
     moreFeeds(state) {

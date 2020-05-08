@@ -33,10 +33,11 @@ export default {
         }
     },
     actions: {
-        SUGESTEDFOLLWERS({ commit }) {
+        SUGESTEDFOLLWERS({ commit , dispatch}) {
             return new Promise((resolve, reject) => {
                 appServices.suggestedFollowers().then(res => {
                     if (res.data.status === 401) {
+                        dispatch("LOGOUT")
                         // we will handle logout option // call logout function
                     }
                     if (res.data.code !== 200) return reject(res.data.message)
@@ -45,7 +46,7 @@ export default {
                 })
             })
         },
-        FRIENDS({ commit }, query) {
+        FRIENDS({ commit , dispatch }, query) {
             return new Promise((resolve, reject) => {
                 if (query == null || query == '') {
                     commit('removeFriends')
@@ -53,6 +54,7 @@ export default {
                 }
                 appServices.friends(query).then(res => {
                     if (res.data.status === 401) {
+                        dispatch("LOGOUT")
                         // we will handle logout option // call logout function
                     }
                     if (res.data.code !== 200) return reject(res.data.message)
@@ -65,6 +67,7 @@ export default {
             return new Promise((resolve, reject) => {
                 appServices.toggleFollowing(payload).then(res => {
                     if (res.data.status === 401) {
+                        dispatch("LOGOUT")
                         // we will handle logout option // call logout function
                     }
                     if (res.data.code !== 200) return reject(res.data.message)

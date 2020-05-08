@@ -83,7 +83,7 @@ export default {
             this.$toasted.success(res);
           });
       } catch (error) {
-        this.$toasted.error("error");
+        this.$toasted.error("danger");
       }
     },
     deleteComment(comment) {

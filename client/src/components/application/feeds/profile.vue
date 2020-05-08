@@ -1,21 +1,39 @@
 <template>
-  <section id="userCard" class="pb-2 rounded">
+  <section>
     <div v-if="profile">
-      <div class="block_1 text-center">
-        <img class="rounded-circle mt-4" :src="profile.image ? profile.image : require('../../../assets/img/default-avatar.jpg')" alt="user image" />
-        <p
-          class="name font-weight-bold mb-0 font-14 px-2"
-        >{{profile.firstname}} {{profile.lastname}}</p>
-        <p class="job font-10">{{profile.type}}</p>
-      </div>
-      <div class="block_2 d-flex pb-4 mt-4">
-        <div class="col-6 text-center pr-4 border-right">
-          <p class="num mb-0 font-weight-bold font-14">{{profile.followers_count}}</p>
-          <p class="mb-0 opacity font-weight-bold font-10">Followers</p>
+      <div class="position-relative rounded text-center p-3 mt-5 bg-white">
+        <div class="position-absolute" style="top: -41px; right: 35%;">
+          <img
+            :src="profile.image ? profile.image : require('../../../assets/img/default-avatar.jpg')"
+            alt="user image"
+            style="width: 80px; height: 80px; border-radius: 50%;"
+          />
         </div>
-        <div class="col-6 text-center pl-4 border-left">
-          <p class="num mb-0 font-weight-bold font-14">{{profile.following_count}}</p>
-          <p class="mb-0 opacity font-weight-bold font-10">Following</p>
+        <div class="d-flex justify-content-between mt-5 ">
+          <div>
+            <p
+              class="mb-0 pr-2 font-weight-bolder text-primary font-14"
+            >{{profile.firstname}} {{profile.lastname}}</p>
+            <p class="mb-0 text-secondary font-10">{{profile.type}}</p>
+          </div>
+          <editPersonalInfo />
+        </div>
+        <div class="mt-3 font-14">
+          <p class="mb-0 text-dark">{{profile.bio}}</p>
+        </div>
+        <div class="d-flex justify-content-around mt-3">
+          <div>
+            <p class="mb-0 font-weight-bolder text-primary font-14">{{profile.followers_count}}</p>
+            <p class="mb-0 text-secondary font-10">Followers</p>
+          </div>
+          <div class="px-4 border-right border-left">
+            <p class="mb-0 font-weight-bolder text-primary font-14">{{profile.following_count}}</p>
+            <p class="mb-0 text-secondary font-10">Following</p>
+          </div>
+          <div>
+            <p class="mb-0 font-weight-bolder text-primary font-14">8</p>
+            <p class="mb-0 text-secondary font-10">Activity</p>
+          </div>
         </div>
       </div>
     </div>
@@ -23,7 +41,13 @@
 </template>
 
 <script>
+import editPersonalInfo from "./side-menu/editPersonalInfo";
+
 export default {
+  components: {
+    editPersonalInfo
+  },
+
   computed: {
     profile() {
       return this.$store.getters.profile;

@@ -10,11 +10,12 @@ export default {
         }
     },
     actions: {
-        ADDACTIVITY({ commit }, form) {
+        ADDACTIVITY({ commit,dispatch }, form ) {
             return new Promise((resolve, reject) => {
                 appServices.addActivity(form).then(res => {
                     if (res.data.status === 401) {
                         // we will handle logout option // call logout function
+                        dispatch("LOGOUT")
                     }
                     if (res.data.code !== 200) return reject(res.data.message)
                     commit('pushActivity', res.data.data)
@@ -22,11 +23,12 @@ export default {
                 })
             })
         },
-        EDITACTIVITY({ commit }, form) {
+        EDITACTIVITY({ commit, dispatch }, form) {
             return new Promise((resolve, reject) => {
                 appServices.editActivity(form).then(res => {
                     if (res.data.status === 401) {
                         // we will handle logout option // call logout function
+                        dispatch("LOGOUT")
                     }
                     if (res.data.code !== 200) return reject(res.data.message)
                     commit('deleteActivity', res.data.data)

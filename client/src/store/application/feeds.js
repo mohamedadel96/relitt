@@ -47,10 +47,12 @@ export default {
     }
   },
   actions: {
-    FEEDS({ state, commit }) {
+    FEEDS({ state, commit , dispatch }) {
       return new Promise((resolve, reject) => {
         appServices.feeds(state.filter).then(res => {
           if (res.data.status === 401) {
+            dispatch("LOGOUT")
+
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.message)
@@ -62,10 +64,11 @@ export default {
         })
       })
     },
-    POST({ commit }, form) {
+    POST({ commit , dispatch }, form) {
       return new Promise((resolve, reject) => {
         appServices.post(form).then(res => {
           if (res.data.status === 401) {
+            dispatch("LOGOUT")
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.message)
@@ -74,10 +77,11 @@ export default {
         })
       })
     },
-    EDITPOST({ commit }, form) {
+    EDITPOST({ commit , dispatch }, form) {
       return new Promise((resolve, reject) => {
         appServices.editPost(form).then(res => {
           if (res.data.status === 401) {
+            dispatch("LOGOUT")
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.message)
@@ -87,10 +91,11 @@ export default {
         })
       })
     },
-    DELETEPOST({ commit }, postId) {
+    DELETEPOST({ commit , dispatch }, postId) {
       return new Promise((resolve, reject) => {
         appServices.deletePost(postId).then(res => {
           if (res.data.status === 401) {
+            dispatch("LOGOUT")
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.message)
@@ -99,10 +104,11 @@ export default {
         })
       })
     },
-    TOGGLELIKE({ commit }, form) {
+    TOGGLELIKE({ commit , dispatch}, form) {
       return new Promise((resolve, reject) => {
         appServices.toggleLike(form).then(res => {
           if (res.data.status === 401) {
+            dispatch("LOGOUT")
             // we will handle logout option // call logout function
           }
           if (res.data.code !== 200) return reject(res.data.message)

@@ -7,9 +7,9 @@
       <center-carsoule :images="center.images" />
     </div>
     <div class="container-fluid col-lg-10 col-12 py-3 px-md-5 px-3">
-      <centerInfo :center="center"></centerInfo>
-      <review></review>
-      <centerComment></centerComment>
+      <centerInfo :elementData="center"></centerInfo>
+      <review :elementData="center"></review>
+      <centerComment :elementData="center"></centerComment>
       <location :lat="center.lat" :lng="center.lng"></location>
     </div>
     <app-footer />
