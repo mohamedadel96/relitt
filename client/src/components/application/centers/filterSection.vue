@@ -27,17 +27,38 @@
         <p class="text-secondary font-14 mt-4 mb-1">Service</p>
         <div class="px-2">
           <div>
-            <div @click="filtertype.push('scubaDiving')">
-              <scupeicon :color="'#80878d'" class="pr-2" />
-              <span>scuba diving</span>
+            <div class="d-flex justify-content-between pointer">
+              <div @click="filterType.push('scubaDiving')">
+                <scupeicon :color="filterType.includes('scubaDiving') ? '#3e82f7' : '#80878d'" class="pr-2" />
+                <span :class="filterType.includes('scubaDiving') ? 'text-primary' : '#777'">scuba diving</span>
+              </div>
+              <div
+                v-show="filterType.includes('scubaDiving')"
+                @click="filterType = filterType.filter(item => item !== 'scubaDiving')"
+                class="text-secondary font-weight-bold"
+              >x</div>
             </div>
-            <div @click="filtertype.push('freeDiving')">
-              <freeicon class="pr-2" :color="'#80878d'" />
-              <span>Free diving</span>
+            <div class="d-flex justify-content-between pointer">
+              <div @click="filterType.push('freeDiving')">
+                <freeicon class="pr-2" :color="filterType.includes('freeDiving') ? '#3e82f7' : '#80878d'" />
+                <span :class="filterType.includes('freeDiving') ? 'text-primary' : '#777'">Free diving</span>
+              </div>
+              <div
+                v-show="filterType.includes('freeDiving')"
+                @click="filterType = filterType.filter(item => item !== 'freeDiving')"
+                class="text-secondary font-weight-bold"
+              >x</div>
             </div>
-            <div @click="filtertype.push('divingCourses')">
-              <courseicon :color="'#80878d'" class="pr-2" />
-              <span>Diving Courses</span>
+            <div class="d-flex justify-content-between pointer">
+              <div @click="filterType.push('divingCourses')">
+                <courseicon :color="'#80878d'" class="pr-2" />
+                <span>Diving Courses</span>
+              </div>
+              <div
+                v-show="filterType.includes('divingCourses')"
+                @click="filterType = filterType.filter(item => item !== 'divingCourses')"
+                class="text-secondary font-weight-bold"
+              >x</div>
             </div>
           </div>
         </div>
@@ -54,7 +75,7 @@ export default {
   data() {
     return {
       filterRate: [],
-      filtertype: []
+      filterType: []
     };
   },
   components: {
