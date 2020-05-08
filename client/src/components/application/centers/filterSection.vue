@@ -29,8 +29,13 @@
           <div>
             <div class="d-flex justify-content-between pointer">
               <div @click="filterType.push('scubaDiving')">
-                <scupeicon :color="filterType.includes('scubaDiving') ? '#3e82f7' : '#80878d'" class="pr-2" />
-                <span :class="filterType.includes('scubaDiving') ? 'text-primary' : '#777'">scuba diving</span>
+                <scupeicon
+                  :color="filterType.includes('scubaDiving') ? '#3e82f7' : '#80878d'"
+                  class="pr-2"
+                />
+                <span
+                  :class="filterType.includes('scubaDiving') ? 'text-primary' : '#777'"
+                >scuba diving</span>
               </div>
               <div
                 v-show="filterType.includes('scubaDiving')"
@@ -38,10 +43,15 @@
                 class="text-secondary font-weight-bold"
               >x</div>
             </div>
-            <div class="d-flex justify-content-between pointer">
+            <div class="d-flex justify-content-between pointer my-1">
               <div @click="filterType.push('freeDiving')">
-                <freeicon class="pr-2" :color="filterType.includes('freeDiving') ? '#3e82f7' : '#80878d'" />
-                <span :class="filterType.includes('freeDiving') ? 'text-primary' : '#777'">Free diving</span>
+                <freeicon
+                  class="pr-2"
+                  :color="filterType.includes('freeDiving') ? '#3e82f7' : '#80878d'"
+                />
+                <span
+                  :class="filterType.includes('freeDiving') ? 'text-primary' : '#777' "
+                >Free diving</span>
               </div>
               <div
                 v-show="filterType.includes('freeDiving')"
@@ -51,8 +61,13 @@
             </div>
             <div class="d-flex justify-content-between pointer">
               <div @click="filterType.push('divingCourses')">
-                <courseicon :color="'#80878d'" class="pr-2" />
-                <span>Diving Courses</span>
+                <courseicon
+                  class="pr-2"
+                  :color="filterType.includes('divingCourses') ? '#3e82f7' : '#80878d'"
+                />
+                <span
+                  :class="filterType.includes('divingCourses') ? 'text-primary' : '#777'"
+                >Diving Courses</span>
               </div>
               <div
                 v-show="filterType.includes('divingCourses')"
@@ -62,6 +77,12 @@
             </div>
           </div>
         </div>
+      </div>
+      <div
+        class="title mt-3 pointer text-center font-14"
+        v-show="filterRate.length > 0 ||filterType.length > 0"
+      >
+        <span @click="clearData">CLEAR</span>
       </div>
     </div>
   </section>
@@ -78,10 +99,23 @@ export default {
       filterType: []
     };
   },
+  watch:{
+    filterRate(val){
+      this.$store.dispatch("CENTERFILTER", this.$data)
+    },
+    filterType(val){
+      this.$store.dispatch("CENTERFILTER", this.$data)
+    }
+  },  
   components: {
     scupeicon,
     freeicon,
     courseicon
+  },
+  methods: {
+    clearData() {
+      Object.assign(this.$data, this.$options.data.apply(this));
+    }
   }
 };
 </script>

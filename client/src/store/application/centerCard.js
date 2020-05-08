@@ -56,6 +56,9 @@ export default {
           resolve('done')
         })
       })
+    },
+    CENTERFILTER({}, data){
+      console.log(data)
     }
   }
 }
