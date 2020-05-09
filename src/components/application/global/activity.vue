@@ -14,7 +14,7 @@
           <div class="col-12 px-2">
             <label class="font-12 text-secondary">Type</label>
             <select class="form-controls py-2 col-12 pointer" v-model="form.type_id">
-              <option class="font-20" :value="1">diving</option>
+              <option class="font-20" :value="1">Free diving</option>
               <option class="font-20" :value="2">scuba diving</option>
             </select>
           </div>
@@ -86,7 +86,7 @@
           </div>
           <div class="position-absolute text-secondary text-center" style="right:7%">&#8451;</div>
         </div>
-        <div class="form-group d-flex">
+        <div class="form-group d-flex" v-if="form.type_id !== 1">
           <div class="col-6 px-2">
             <label class="font-12 text-secondary">Start air level</label>
             <input
@@ -216,6 +216,16 @@ export default {
       disableUploading: false,
       editState: false
     };
+  },
+  watch: {
+    "form.end_air_level": {
+      handler: function(val) {
+        if (Number(val) > Number(this.form.start_air_level)) {
+          this.form.end_air_level = null;
+          this.$toasted.error('Invalid data "The end air level"')
+        }
+      },
+    }
   },
   methods: {
     uploadFiles() {

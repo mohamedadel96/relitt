@@ -2,7 +2,7 @@
   <section id="event">
     <div v-if="event">
       <div class="col-10 px-0 container-fluid">
-        <img :src="event.image ? event.image : '../../assets/img/Layer1.png'" />
+        <img :src="event.image ? event.image : require('../../assets/img/Layer1.png')" />
       </div>
       <div class="container-fluid col-lg-10 col-12 py-5 px-md-5 px-3">
         <event-info />
