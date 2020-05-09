@@ -56,18 +56,7 @@
         <img class="mobile" src="../../assets/img/mobile.png" alt />
       </div>
     </div>
-    <div class="text-white d-flex justify-content-center">
-      <div class="mr-3">
-        <a href="#">
-          <img src="../../assets/img/Image 15.png" alt="andriod download" class="mx-auto" />
-        </a>
-      </div>
-      <div>
-        <a href="#">
-          <img src="../../assets/img/Image 16.png" alt="ios download" class="mx-auto" />
-        </a>
-      </div>
-    </div>
+
   </header>
 </template>
 
