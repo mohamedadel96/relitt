@@ -46,8 +46,25 @@
 
       <div class="mt-4 pt-5 pb-1">
         <p class="text-secondary text-center mb-1 font-12">or signup using social media</p>
-        <button class="btn btn-secondary btn-block py-3 my-2">facebook</button>
-        <button class="btn btn-secondary btn-block py-3">google</button>
+        <v-facebook-login
+          app-id="280363466316525"
+          class="btn btn-secondary btn-block py-3 my-2"
+          @login="facebookLogin"
+        >
+          <template slot="login">Facebook</template>
+        </v-facebook-login>
+
+        <GoogleLogin
+          :params="params"
+          :onSuccess="onSuccess"
+          style="background:white; color:black; font-weight:bold"
+          class="btn btn-secondary btn-block py-3 my-2"
+        >
+          <span>
+            <img src="../../assets/img/Image 4.png" title="google" class="mx-auto log-icon" />
+          </span>
+          Google
+        </GoogleLogin>
       </div>
 
       <div class="mt-3 d-flex justify-content-between">
@@ -59,14 +76,26 @@
 </template>
 
 <script>
+import GoogleLogin from "vue-google-login";
+import VFacebookLogin from "vue-facebook-login-component";
+
 import { required, email, minLength } from "vuelidate/lib/validators";
 
 export default {
+  components: {
+    VFacebookLogin,
+    GoogleLogin
+  },
+
   data() {
     return {
       form: {
         email: null,
         password: null
+      },
+      params: {
+        client_id:
+          "784667846506-f26bnfntiuuaplq014kkb5ob7n6e1c1c.apps.googleusercontent.com"
       }
     };
   },
@@ -103,6 +132,15 @@ export default {
         .finally(() => {
           loader.hide();
         });
+    },
+    facebookLogin(res) {
+      console.log(res);
+    },
+    onSuccess(googleUser) {
+      console.log(googleUser);
+
+      // This only gets the user information: id, name, imageUrl and email
+      console.log(googleUser.getBasicProfile());
     }
   }
 };

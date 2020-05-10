@@ -50,24 +50,25 @@
 
       <div class="mt-4 pt-4 pb-1">
         <p class="text-secondary text-center mb-1">or signup using social media</p>
-        <!-- <v-facebook-login
+        <v-facebook-login
+          app-id="280363466316525"
           class="btn btn-secondary btn-block py-3 my-2"
-          app-id="966242223397117"
           @login="facebookLogin"
-        />-->
+        >
+          <template slot="login">Log in using Facebook</template>
+        </v-facebook-login>
 
-        <v-facebook-login app-id="280363466316525" class="btn btn-secondary btn-block py-3 my-2" @login="facebookLogin"></v-facebook-login>
-
-        <!-- <v-facebook-login v-model="model" @sdk-init="handleSdkInit" />
-        <button v-if="scope.logout && model.connected" @click="scope.logout">Logout</button>-->
-
-        <!-- <GoogleLogin class="btn btn-secondary btn-block py-3" /> -->
         <GoogleLogin
           :params="params"
           :onSuccess="onSuccess"
           style="background:white; color:black; font-weight:bold"
           class="btn btn-secondary btn-block py-3 my-2"
-        >Google login</GoogleLogin>
+        >
+          <span>
+            <img src="../../assets/img/Image 4.png" title="google" class="mx-auto log-icon" />
+          </span>
+          Log in using Google
+        </GoogleLogin>
       </div>
 
       <div class="mt-3 d-flex justify-content-between">
