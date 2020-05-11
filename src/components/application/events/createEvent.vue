@@ -56,6 +56,17 @@
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
+            <label class="font-12 text-secondary">Location</label>
+            <input
+              class="form-controls py-2 px-1 col-12"
+              type="text"
+              v-model="form.location_name"
+              placeholder="Location"
+            />
+          </div>
+        </div>
+        <div class="form-group d-flex overflow-hidden mt-2">
+          <div class="col-12 px-2">
             <label class="font-12 text-secondary">Description</label>
             <textarea-autosize
               placeholder="Type description here..."
@@ -115,8 +126,9 @@ export default {
         start_date: null,
         end_date: null,
         images: [],
-        start_time:null,
-        end_time:null
+        start_time: null,
+        end_time: null,
+        location_name:null
       },
       minConfig: {
         minDate: new Date(),
@@ -126,21 +138,21 @@ export default {
         minDate: null,
         enableTime: true
       },
-      firstDate:null,
-      secondDate:null,
+      firstDate: null,
+      secondDate: null,
       editState: false,
       disableUploading: false
     };
   },
-  watch:{
-    firstDate(val){
-      this.form.start_date = val.split(" ")[0]
-      this.form.start_time = val.split(" ")[1]
-    },    
-    secondDate(val)  {
-      this.form.end_date = val.split(" ")[0]
-      this.form.end_time = val.split(" ")[1]
+  watch: {
+    firstDate(val) {
+      this.form.start_date = val.split(" ")[0];
+      this.form.start_time = val.split(" ")[1];
     },
+    secondDate(val) {
+      this.form.end_date = val.split(" ")[0];
+      this.form.end_time = val.split(" ")[1];
+    }
   },
   methods: {
     onFromChange(selectedDates, dateStr, instance) {
@@ -178,8 +190,8 @@ export default {
       this.$store
         .dispatch("CREATEEVENT", this.form)
         .then(res => {
-          this.$toasted.success(res);
-          this.$refs['modal'].hide()
+          this.$toasted.success("Done Create Event Successfully");
+          this.$refs["modal"].hide();
         })
         .catch(message => {
           this.$toasted.error(message);
@@ -194,7 +206,7 @@ export default {
         .dispatch("EDITEVENT", this.form)
         .then(res => {
           this.$toasted.success(res);
-          this.$refs['modal'].hide()
+          this.$refs["modal"].hide();
           loader.hide();
         })
         .catch(message => {
@@ -218,6 +230,7 @@ export default {
       this.form.description = event.description;
       this.form.start_date = event.start_date;
       this.form.end_date = event.end_date;
+      this.form.location_name = event.location_name;
       this.form.images.push(event.image);
       this.editState = true;
       this.$bvModal.show("createEvent");
