@@ -40,17 +40,20 @@
                 placeholder="Start date"
                 @on-change="onFromChange"
               ></flat-pickr>
+              <!-- <datetime v-model="firstDate"   class="form-controls py-2 px-1 col-12"	input-style	="border:none " type="datetime" ></datetime> -->
             </div>
           </div>
           <div class="col-6 px-1 form-group d-flex overflow-hidden">
             <div class="col-12 px-1">
               <label class="font-12 text-secondary">End date</label>
-              <flat-pickr
+              <!-- <flat-pickr
                 class="form-controls py-2 px-1 col-12"
                 v-model="secondDate"
                 :config="maxConfig"
                 placeholder="End date"
-              ></flat-pickr>
+              ></flat-pickr> -->
+              <datetime v-model="secondDate" class="form-controls py-2 px-1 col-12"	input-style	="border:none " type="datetime" ></datetime>
+
             </div>
           </div>
         </div>
@@ -84,7 +87,7 @@
               <div
                 class="dlt-img rounded-circle text-white font-weight-bold pointer"
                 @click="form.images.splice(i, 1)"
-              >x</div>
+              >x</div>  
             </div>
           </div>
 
