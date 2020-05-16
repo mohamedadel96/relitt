@@ -1,7 +1,7 @@
 <template>
   <section>
     <div v-if="profile">
-      <div class="position-relative rounded text-center p-3 mt-5 bg-white">
+      <div class="position-relative rounded text-center p-3 mt-5 bg-white shadow-sm">
         <div class="position-absolute" style="top: -41px; right: 35%;">
           <img
             :src="profile.image ? profile.image : require('../../../assets/img/default-avatar.jpg')"
