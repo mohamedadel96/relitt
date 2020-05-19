@@ -30,7 +30,7 @@
     >
       <p class="text-center font-weight-bold font-18">Edit personal info</p>
       <form @submit.prevent>
-        <div class="avatar d-flex justify-content-center mb-4">
+        <div class="avatar d-flex flex-wrap justify-content-center mb-4">
           <input
             :class="['form-control-file d-none' , {'is-invalid': $v.form.image.$error}]"
             type="file"
@@ -41,7 +41,7 @@
             accept="image/*"
           />
 
-          <div class="d-inline-block position-relative">
+          <div class="d-block position-relative">
             <img
               class="pointer"
               @click="$refs.avatar.click()"
