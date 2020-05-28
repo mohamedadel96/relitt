@@ -1,7 +1,7 @@
 <template>
   <nav id="navbar" class="d-flex justify-content-between flex-wrap">
     <div class="py-3 col-lg-7 col-md-6 col-12 px-md-5 px-3">
-      <img src="../../assets/img/logo.svg" alt="">
+      <img src="../../assets/img/logo.svg" alt />
     </div>
     <div class="burger-btn" @click="hideNavItems = !hideNavItems">
       <svg
@@ -30,7 +30,9 @@
       <ul class="d-md-flex text-center justify-content-between pr-md-5 pr-0 px-1">
         <li>Home</li>
         <li>About</li>
-        <li>Download</li>
+        <li>
+          <a class="text-white" target="_blank" href="https://blog.relitt.com/">Blog</a>
+        </li>
         <li>
           <router-link class="text-white" to="/registration">Register</router-link>
         </li>
