@@ -16,76 +16,20 @@
             >Login</button>
           </router-link>
         </div>
-        <div class="d-flex mt-3">
-          <div
-            class="mr-3"
-            style="background: white; height: 50px; width: 50px; border-radius: 50%; line-height: 50px; text-align: center;"
-          >
-            <GoogleLogin
-              :params="params"
-              ref="google"
-              style="background:white; color:black; font-weight:bold"
-              class="google-btn"
-            >
-              <img
-                src="../../assets/img/Image 4.png"
-                title="google"
-                class="mx-auto log-icon"
-              />
-            </GoogleLogin>
-
-            <!-- <div @click="$refs.google.click()">
-            </div> -->
-          </div>
-          <div class="face-btn">
-            <v-facebook-login-scope app-id="280363466316525">
-              <!-- Compose HTML/CSS here, otherwise nothing will be rendered -->
-              <div slot-scope="scope" @click="facebookLogin(scope)">
-                <!-- Compose with `scope` here -->
-                <img
-                  src="../../assets/img/Mask Group 12.png"
-                  title="facebook"
-                  class="mx-auto log-icon"
-                />
-              </div>
-            </v-facebook-login-scope>
-          </div>
-        </div>
       </div>
       <div class="d-none d-md-block">
         <img class="mobile" src="../../assets/img/mobile.png" alt />
       </div>
     </div>
-
   </header>
 </template>
 
 <script>
 import navBar from "./_navbar";
-import VFacebookLogin from "vue-facebook-login-component";
-import GoogleLogin from "vue-google-login";
-import { VFBLoginScope as VFacebookLoginScope } from "vue-facebook-login-component";
 
 export default {
   components: {
-    navBar,
-    VFacebookLogin,
-    GoogleLogin,
-    VFacebookLoginScope
-  },
-  data() {
-    return {
-      params: {
-        client_id:
-          "784667846506-f26bnfntiuuaplq014kkb5ob7n6e1c1c.apps.googleusercontent.com"
-      }
-    };
-  },
-  methods: {
-    async facebookLogin(scope) {
-      let res = await scope.login();
-      console.log(res);
-    }
+    navBar
   }
 };
 </script>
@@ -136,7 +80,7 @@ header {
       height: 50px;
       width: 50px;
       border-radius: 50%;
-      line-height: 50px;      
+      line-height: 50px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
