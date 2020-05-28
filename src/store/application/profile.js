@@ -60,7 +60,7 @@ export default {
           }
           if (res.data.code !== 200) return reject(res.data.message)
           commit('saveProfile', res.data.data)
-          resolve(true)
+            resolve(true)
         })
       })
     },

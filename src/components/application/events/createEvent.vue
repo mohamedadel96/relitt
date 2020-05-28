@@ -40,18 +40,32 @@
                 placeholder="Start date"
                 @on-change="onFromChange"
               ></flat-pickr>
+              <!-- <datetime v-model="firstDate"   class="form-controls py-2 px-1 col-12"	input-style	="border:none " type="datetime" ></datetime> -->
             </div>
           </div>
           <div class="col-6 px-1 form-group d-flex overflow-hidden">
             <div class="col-12 px-1">
               <label class="font-12 text-secondary">End date</label>
-              <flat-pickr
+              <!-- <flat-pickr
                 class="form-controls py-2 px-1 col-12"
                 v-model="secondDate"
                 :config="maxConfig"
                 placeholder="End date"
-              ></flat-pickr>
+              ></flat-pickr> -->
+              <datetime v-model="secondDate" class="form-controls py-2 px-1 col-12"	input-style	="border:none " type="datetime" ></datetime>
+
             </div>
+          </div>
+        </div>
+        <div class="form-group d-flex overflow-hidden mt-2">
+          <div class="col-12 px-2">
+            <label class="font-12 text-secondary">Location</label>
+            <input
+              class="form-controls py-2 px-1 col-12"
+              type="text"
+              v-model="form.location_name"
+              placeholder="Location"
+            />
           </div>
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
@@ -73,7 +87,7 @@
               <div
                 class="dlt-img rounded-circle text-white font-weight-bold pointer"
                 @click="form.images.splice(i, 1)"
-              >x</div>
+              >x</div>  
             </div>
           </div>
 
@@ -115,8 +129,9 @@ export default {
         start_date: null,
         end_date: null,
         images: [],
-        start_time:null,
-        end_time:null
+        start_time: null,
+        end_time: null,
+        location_name:null
       },
       minConfig: {
         minDate: new Date(),
@@ -126,21 +141,21 @@ export default {
         minDate: null,
         enableTime: true
       },
-      firstDate:null,
-      secondDate:null,
+      firstDate: null,
+      secondDate: null,
       editState: false,
       disableUploading: false
     };
   },
-  watch:{
-    firstDate(val){
-      this.form.start_date = val.split(" ")[0]
-      this.form.start_time = val.split(" ")[1]
-    },    
-    secondDate(val)  {
-      this.form.end_date = val.split(" ")[0]
-      this.form.end_time = val.split(" ")[1]
+  watch: {
+    firstDate(val) {
+      this.form.start_date = val.split(" ")[0];
+      this.form.start_time = val.split(" ")[1];
     },
+    secondDate(val) {
+      this.form.end_date = val.split(" ")[0];
+      this.form.end_time = val.split(" ")[1];
+    }
   },
   methods: {
     onFromChange(selectedDates, dateStr, instance) {
@@ -178,8 +193,8 @@ export default {
       this.$store
         .dispatch("CREATEEVENT", this.form)
         .then(res => {
-          this.$toasted.success(res);
-          this.$refs['modal'].hide()
+          this.$toasted.success("Done Create Event Successfully");
+          this.$refs["modal"].hide();
         })
         .catch(message => {
           this.$toasted.error(message);
@@ -194,7 +209,7 @@ export default {
         .dispatch("EDITEVENT", this.form)
         .then(res => {
           this.$toasted.success(res);
-          this.$refs['modal'].hide()
+          this.$refs["modal"].hide();
           loader.hide();
         })
         .catch(message => {
@@ -218,6 +233,7 @@ export default {
       this.form.description = event.description;
       this.form.start_date = event.start_date;
       this.form.end_date = event.end_date;
+      this.form.location_name = event.location_name;
       this.form.images.push(event.image);
       this.editState = true;
       this.$bvModal.show("createEvent");

@@ -1,6 +1,6 @@
 <template>
   <section id="left" v-if="profile">
-    <div class="my-3 p-2 bg-white rounded">
+    <div class="my-3 p-2 bg-white rounded shadow-sm">
       <div class="d-flex align-items-center mb-2">
         <div style="width: 18px; height: 18px; " class="mx-2">
           <svg
@@ -62,7 +62,7 @@
         <p class="mb-0 text-secondary">English,Arabic</p>
       </div>
     </div>
-    <div class="my-3 p-2 bg-white rounded" style="width: 100%; height: 30%;">
+    <div class="my-3 p-2 bg-white rounded shadow-sm" style="width: 100%; height: 30%;">
       <p>Interests</p>
       <div class="d-flex flex-wrap">
         <h5 class="px-1 pointer" v-for="(item,i) in profile.interests" :key="i">
@@ -73,7 +73,7 @@
       </div>
     </div>
 
-    <div class="my-3 p-2 bg-white rounded">
+    <div class="my-3 p-2 bg-white rounded shadow-sm">
       <p class="text-secondary">certificate & Training</p>
       <div class="d-flex">
         <div style="width:18px ; height:18px " class="mx-1">
@@ -92,7 +92,7 @@
         </div>
       </div>
     </div>
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between shadow-sm">
       <div class="col-6 pr-1 pl-0 text-center">
         <div class="bg-white rounded p-3">
 

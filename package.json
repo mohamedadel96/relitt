@@ -13,9 +13,11 @@
     "bootstrap-vue": "^2.1.0",
     "chart.js": "^2.9.3",
     "core-js": "^3.4.0",
+    "luxon": "^1.24.1",
     "v-viewer": "^1.5.1",
     "vue": "^2.6.11",
     "vue-chartjs": "^3.5.0",
+    "vue-datetime": "^1.0.0-beta.13",
     "vue-facebook-login-component": "^1.4.0",
     "vue-flatpickr-component": "^8.1.5",
     "vue-google-charts": "^0.3.2",
@@ -35,7 +37,8 @@
     "vue2-location-picker": "^1.2.0",
     "vuelidate": "^0.7.4",
     "vuex": "^3.0.1",
-    "vulidate": "^0.2.3"
+    "vulidate": "^0.2.3",
+    "weekstart": "^1.0.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.7.4",

@@ -32,7 +32,7 @@
       <form @submit.prevent>
         <div class="avatar d-flex justify-content-center mb-4">
           <input
-            class="form-control-file d-none"
+            :class="['form-control-file d-none' , {'is-invalid': $v.form.image.$error}]"
             type="file"
             id="exampleFormControlFile1"
             placeholder="Add Photo"
@@ -40,6 +40,7 @@
             @change="uploadFiles('avatar')"
             accept="image/*"
           />
+
           <div class="d-inline-block position-relative">
             <img
               class="pointer"
@@ -53,38 +54,51 @@
               @click="form.image = null"
             >x</div>
           </div>
+          <div v-if="$v.form.image.$error" class="invalid-feedback font-14 d-block">
+            <span v-if="!$v.form.image.required">Image is required</span>
+          </div>
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
             <label class="font-12 text-secondary">Firstname</label>
             <input
-              class="form-controls py-2 px-1 col-12"
+              :class="['form-controls py-2 px-1 col-12' , {'is-invalid': $v.form.firstname.$error}]"
               type="text"
               v-model="form.firstname"
               placeholder="Firstname"
             />
+
+            <div v-if="$v.form.firstname.$error" class="invalid-feedback font-14">
+              <span v-if="!$v.form.firstname.required">Firstname is required</span>
+            </div>
           </div>
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
             <label class="font-12 text-secondary">Lastname</label>
             <input
-              class="form-controls py-2 px-1 col-12"
+              :class="['form-controls py-2 px-1 col-12' , {'is-invalid': $v.form.lastname.$error}]"
               type="text"
               v-model="form.lastname"
               placeholder="Lastname"
             />
+            <div v-if="$v.form.lastname.$error" class="invalid-feedback font-14">
+              <span v-if="!$v.form.lastname.required">lastname is required</span>
+            </div>
           </div>
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
           <div class="col-12 px-2">
             <label class="font-12 text-secondary">Position</label>
             <input
-              class="form-controls py-2 px-1 col-12"
+              :class="['form-controls py-2 px-1 col-12' , {'is-invalid': $v.form.type.$error}]"
               type="text"
               v-model="form.type"
               placeholder="Position"
             />
+            <div v-if="$v.form.type.$error" class="invalid-feedback font-14">
+              <span v-if="!$v.form.type.required">Position is required</span>
+            </div>
           </div>
         </div>
         <div class="form-group d-flex overflow-hidden mt-2">
@@ -105,11 +119,14 @@
           <div class="col-12 px-2">
             <label class="font-12 text-secondary">Birthdate</label>
             <flat-pickr
-              class="form-controls py-2 px-1 col-12"
+              :class="['form-controls py-2 px-1 col-12' , {'is-invalid': $v.form.birthdate.$error}]"
               :config="config"
               v-model="form.birthdate"
               placeholder="Birthdate"
             ></flat-pickr>
+            <div v-if="$v.form.birthdate.$error" class="invalid-feedback font-14">
+              <span v-if="!$v.form.birthdate.required">Birthdate is required</span>
+            </div>
           </div>
         </div>
         <div class="px-2">
@@ -160,6 +177,8 @@
 
 <script>
 import { Bus } from "../../../../main";
+import { required, minLength, between } from "vuelidate/lib/validators";
+
 export default {
   data() {
     return {
@@ -181,6 +200,25 @@ export default {
       showInterestList: false,
       disableEdit: false
     };
+  },
+  validations: {
+    form: {
+      firstname: {
+        required
+      },
+      lastname: {
+        required
+      },
+      image: {
+        required
+      },
+      type: {
+        required
+      },
+      birthdate: {
+        required
+      }
+    }
   },
   computed: {
     user() {
@@ -240,6 +278,10 @@ export default {
     },
     editProfile() {
       let loader = this.$loading.show();
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        return loader.hide();
+      }
       this.$store
         .dispatch("EDITPROFILE", this.form)
         .then(res => {
