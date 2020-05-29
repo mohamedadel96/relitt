@@ -118,12 +118,21 @@
         <div class="form-group d-flex overflow-hidden">
           <div class="col-12 px-2">
             <label class="font-12 text-secondary">Birthdate</label>
-            <flat-pickr
+            <!-- <flat-pickr
               :class="['form-controls py-2 px-1 col-12' , {'is-invalid': $v.form.birthdate.$error}]"
               :config="config"
               v-model="form.birthdate"
               placeholder="Birthdate"
-            ></flat-pickr>
+            ></flat-pickr>-->
+
+            <datetime
+              v-model="form.birthdate"
+              placeholder="Birthdate"
+              class="form-controls py-2 px-1 col-12"
+              :max-datetime="config"
+              input-style="border:none "
+            ></datetime>
+
             <div v-if="$v.form.birthdate.$error" class="invalid-feedback font-14">
               <span v-if="!$v.form.birthdate.required">Birthdate is required</span>
             </div>
@@ -194,9 +203,7 @@ export default {
         lat: "",
         lng: ""
       },
-      config: {
-        maxDate: new Date()
-      },
+      config: null,
       showInterestList: false,
       disableEdit: false
     };
@@ -236,7 +243,14 @@ export default {
           this.resetModal(val);
         }
       }
-    }
+    },
+    // "form.birthdate": {
+    //   handler: function(val) {
+    //     var dattte = val.split("T")[0];
+    //     return (this.form.date = date);
+    //   },
+    //   immediate: true
+    // }
   },
   methods: {
     resetModal(user) {
@@ -304,6 +318,8 @@ export default {
     }
   },
   created() {
+    var maxdate = new Date();
+    this.config = maxdate.toISOString();
     this.$store.dispatch("INTERESTSLIST");
   },
   mounted() {

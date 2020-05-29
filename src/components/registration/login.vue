@@ -51,7 +51,7 @@
       <div class="mt-4 pt-4 pb-1">
         <p class="text-secondary text-center mb-1">or signup using social media</p>
         <v-facebook-login
-          app-id="280363466316525"
+          app-id="855059468207917"
           class="btn btn-secondary btn-block py-3 my-2"
           @login="facebookLogin"
         >

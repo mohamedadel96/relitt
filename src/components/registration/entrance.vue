@@ -36,13 +36,19 @@
         </div>
 
         <div class="form-group">
-          <flat-pickr
+          <!-- <flat-pickr
             :class="['col-12 form-control border-0 py-3 bg-white', {'is-invalid': $v.form.birthdate.$error}]"
             v-model="form.birthdate"
             :config="config"
             placeholder="Birth date"
           ></flat-pickr>
-
+          -->
+          <datetime
+            v-model="form.birthdate"
+            placeholder="Birth date"
+            class="col-12 form-control border-0 py-3 bg-white"
+            input-style="border:none "
+          ></datetime>
           <div
             v-if="!$v.form.birthdate.required"
             class="invalid-feedback font-18"
@@ -124,6 +130,14 @@ export default {
       firstname: { required },
       lastname: { required },
       birthdate: { required }
+    }
+  },
+  watch: {
+    "form.birthdate": {
+      handler: function(val) {
+        var date = val.split('T')[0]
+        return this.form.birthdate = date
+      }
     }
   },
   methods: {
