@@ -37,7 +37,7 @@ export default {
       },
       {
         property: "og:image",
-        content: window.location.href + "img/logo.fdac59ee.svg"
+        content: window.location.href + "img/site_icon.png"
       }
     ]
   },
