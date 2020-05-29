@@ -33,12 +33,13 @@
         <div class="form-group d-flex overflow-hidden position-relative">
           <div class="col-12 px-2">
             <label class="font-12 text-secondary">Date</label>
-            <flat-pickr
-              class="form-controls py-2 col-12"
+            <datetime
               v-model="form.date"
-              :config="config"
               placeholder="Date"
-            ></flat-pickr>
+              class="form-controls py-2 col-12"
+              :max-datetime="config"
+              input-style="border:none "
+            ></datetime>
           </div>
           <div class="position-absolute">
             <img src="../../../assets/icons/calender-icon.svg" />
@@ -210,9 +211,7 @@ export default {
         lng: "12",
         images: []
       },
-      config: {
-        maxDate: new Date()
-      },
+      config: null ,
       disableUploading: false,
       editState: false
     };
@@ -222,9 +221,15 @@ export default {
       handler: function(val) {
         if (Number(val) > Number(this.form.start_air_level)) {
           this.form.end_air_level = null;
-          this.$toasted.error('Invalid data "The end air level"')
+          this.$toasted.error('Invalid data "The end air level"');
         }
-      },
+      }
+    },
+    "form.date": {
+      handler: function(val) {
+        var date = val.split("T")[0];
+        return (this.form.date = date);
+      }
     }
   },
   methods: {
@@ -314,6 +319,9 @@ export default {
       this.clearData();
       this.$bvModal.show("addActivity");
     });
+    var maxdate = new Date()
+    this.config = maxdate.toISOString()
+
   }
 };
 </script>
