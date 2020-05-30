@@ -137,7 +137,20 @@ export default {
         });
     },
     facebookLogin(res) {
-      console.log(res);
+      let loader = this.$loading.show();
+      let form = {
+        provider: "facebook",
+        access_token: res.authResponse.accessToken
+      };
+      this.$store.dispatch("SOCIALLOGIN", form).then(res => {
+          this.$router.push("/app");
+        })
+        .catch(message => {
+          this.$toasted.error(message);
+        })
+        .finally(() => {
+          loader.hide();
+        });
     },
     onSuccess(googleUser) {
       console.log(googleUser);
