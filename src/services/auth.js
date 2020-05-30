@@ -9,6 +9,9 @@ export default {
    },
    login(form) {
       return Api().post('auth', form)
+   },   
+   socialLogin(form) {
+      return Api().post('auth/social', form)
    },
    resetPassword(form) {
       return Api().post('auth/forget_password', form)

@@ -13,6 +13,15 @@ export default {
         })
 
       })
+    },    
+    SOCIALLOGIN({ commit }, form) {
+      return new Promise((resolve, reject) => {
+        authServices.socialLogin(form).then(res => {
+          if (res.data.code !== 200) return reject(res.data.message)
+          commit('saveUserData', res.data, { root: true })
+          resolve(true)
+        })
+      })
     }
   }
 }
