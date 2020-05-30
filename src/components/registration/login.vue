@@ -138,7 +138,7 @@ export default {
     },
     facebookLogin(res) {
       let loader = this.$loading.show();
-      var form = {
+      let form = {
         provider: "facebook",
         access_token: res.authResponse.accessToken
       };
