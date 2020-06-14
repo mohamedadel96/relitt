@@ -21,7 +21,7 @@
 
           <p
             class="opacity"
-          >The first platform that gathers all water-related sports in one place. Create your free online dive logbook for all your diving activities. EXPLORE MORE.</p>
+          >Relitt represents the main link between water sports providers and customers. We have a comprehensive platform for all sports and recreational services that will match your needs.</p>
           <p class="opacity">mohamed@gmail.com</p>
         </div>
       </div>

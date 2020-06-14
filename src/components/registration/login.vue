@@ -119,22 +119,21 @@ export default {
       this.scope = scope;
     },
     submit() {
-      this.$v.$touch();
-      if (this.$v.$invalid) {
-        return;
-      }
-      let loader = this.$loading.show();
-      this.$store
-        .dispatch("LOGIN", this.form)
+      // this.$v.$touch();
+      // if (this.$v.$invalid) {
+      //   return;
+      // }
+      // let loader = this.$loading.show();
+      this.$store.dispatch("LOGIN", this.form)
         .then(res => {
           this.$router.push("/app");
         })
         .catch(message => {
           this.$toasted.error(message);
         })
-        .finally(() => {
-          loader.hide();
-        });
+        // .finally(() => {
+        //   loader.hide();
+        // });
     },
     facebookLogin(res) {
       let loader = this.$loading.show();
@@ -142,7 +141,9 @@ export default {
         provider: "facebook",
         access_token: res.authResponse.accessToken
       };
-      this.$store.dispatch("SOCIALLOGIN", form).then(res => {
+      this.$store
+        .dispatch("SOCIALLOGIN", form)
+        .then(res => {
           this.$router.push("/app");
         })
         .catch(message => {
