@@ -18,7 +18,7 @@ import appFooter from "../components/home/footer";
 
 export default {
   metaInfo: {
-    title: "Best Online Dive Logbook For Divers and Diving Directory | Relitt",
+    title: "Best Online Logbook For all Diving Activities | Relitt",
     meta: [
       { "http-equiv": "Content-Type", content: "text/html; charset=utf-8" },
       {
