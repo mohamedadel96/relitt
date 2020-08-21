@@ -3,8 +3,8 @@
     <nav-bar />
     <div class="content d-flex align-items-center justify-content-between container">
       <div class="col-md-7 col-12">
-        <h1 class="text-white">Please be open for water</h1>
-        <p class="text-white">your journey shall began now!</p>
+        <h1 class="text-white">Be Open for Water</h1>
+        <p class="text-white">Your Journey Starts here</p>
         <div>
           <router-link to="/registration">
             <button class="reg-btn text-white py-3 rounded font-weight-bold col-md-4 col-5">Register</button>

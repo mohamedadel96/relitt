@@ -8,6 +8,7 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 * {
   font-family: "Open Sans", sans-serif;
+  scroll-behavior: smooth;
 }
 a {
   text-decoration: none !important;

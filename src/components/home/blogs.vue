@@ -29,7 +29,9 @@
         </div>
       </div>
     </div>
-    <p class="text-right col-12 font-weight-bold">See more articles</p>
+    <p class="text-right col-12 font-weight-bold">
+      <a class="text-dark" target="_blank" href="https://blog.relitt.com/ar/">See more articles</a>
+    </p>
   </section>
 </template>
 

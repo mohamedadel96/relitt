@@ -2,8 +2,7 @@
   <section id="appSection">
     <div class="content d-flex align-items-center justify-content-between container">
       <div class="col-md-7 col-12">
-        <p class="text-white">Wanna download ?</p>
-        <h1 class="text-white pt-4">Only one app for all water-related sports.</h1>
+        <h1 class="text-white pt-4">Only one APP for all Water Activities</h1>
         <p class="text-white">
           We have made life easier for you now by providing a multi-usage application for users and centers both.
           <br />We have a mine of services you will absolutely like ... you have to check them

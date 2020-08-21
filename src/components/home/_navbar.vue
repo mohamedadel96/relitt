@@ -29,7 +29,9 @@
     >
       <ul class="d-md-flex text-center justify-content-between pr-md-5 pr-0 px-1">
         <li>Home</li>
-        <li>About</li>
+        <li>
+          <a class="text-white" href="#appSection">About</a>
+        </li>
         <li>
           <a class="text-white" target="_blank" href="https://blog.relitt.com/">Blog</a>
         </li>

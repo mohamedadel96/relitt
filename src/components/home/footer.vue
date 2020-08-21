@@ -22,7 +22,7 @@
           <p
             class="opacity"
           >Relitt represents the main link between water sports providers and customers. We have a comprehensive platform for all sports and recreational services that will match your needs.</p>
-          <p class="opacity">mohamed@gmail.com</p>
+          <p class="text-dark font-weight-bold">info@relitt.com</p>
         </div>
       </div>
 
@@ -30,25 +30,25 @@
         <p class="font-weight-bold">Links</p>
         <div class="d-flex justify-content-between text-left">
           <div class="list col-6 px-0">
-            <p class="opacity">FEATURES</p>
-            <p class="opacity">ABOUT</p>
-            <p class="opacity">CAREERS</p>
-            <p class="opacity">BLOG</p>
+            <a href="#features" class="opacity pointer text-dark d-block">FEATURES</a>
+            <a href="#appSection" class="opacity pointer text-dark d-block">ABOUT</a>
+            <a href="" class="opacity pointer text-dark d-none">CAREERS</a>
+            <a href="#blogs" class="opacity pointer text-dark d-block">BLOG</a>
           </div>
-          <div class="list col-6 px-0">
-            <p class="opacity">SUPPORT</p>
-            <p class="opacity">BUSINISS</p>
-            <p class="opacity">TERMS</p>
-            <p class="opacity">PRIVACY</p>
+          <div class="list col-6 px-0 d-none">
+            <a class="opacity pointer text-dark d-block">SUPPORT</a>
+            <a class="opacity pointer text-dark d-block">BUSINISS</a>
+            <a class="opacity pointer text-dark d-block">TERMS</a>
+            <a class="opacity pointer text-dark d-block">PRIVACY</a>
           </div>
         </div>
       </div>
 
       <div class="block_3 col-md-4 col-12">
         <p class="font-weight-bold">Get started</p>
-        <div class="list col-12 px-0">
-          <p class="opacity">LOGIN</p>
-          <p class="opacity">REGISTER</p>
+        <div class="list col-12 px-0 mb-3">
+          <router-link to="/registration/login" class="text-dark opacity pointer d-block">LOGIN</router-link>
+          <router-link to="/registration/signup" class="text-dark opacity pointer d-block">REGISTER</router-link>
         </div>
         <div class="d-flex align-items-center justify-content-start">
           <div class="mr-3">
@@ -66,9 +66,9 @@
     </div>
     <hr class="border" />
     <div class="d-flex justify-content-between flex-wrap">
-      <p class="opacity col-md-6 col-12">&#64;2019 relitte inc</p>
+      <p class="opacity col-md-6 col-12">&#64;2019 relitt inc</p>
       <div class="d-flex flex-wrap justify-content-between col-md-4 col-12">
-        <a href="#">
+        <a href="https://www.linkedin.com/company/relitt" target="_blank">
           <div class="d-flex text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +87,7 @@
             <p>LinkedIn</p>
           </div>
         </a>
-        <a href="#">
+        <a href="https://www.facebook.com/Relittt" target="_blank">
           <div class="d-flex text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -106,23 +106,9 @@
             <p>Facebook</p>
           </div>
         </a>
-        <a href="#">
+        <a href="https://www.instagram.com/relittt">
           <div class="d-flex text-secondary">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="11.884"
-              height="18.764"
-              viewBox="0 0 11.884 18.764"
-              class="mr-1"
-            >
-              <path
-                fill="#80878d"
-                class="a"
-                d="M86.443,15.336a1.744,1.744,0,0,1-.72-.811,8.1,8.1,0,0,1-.1-2.025V7.689H90V4.34H85.621V0H82.929a7.222,7.222,0,0,1-.662,2.391A5.152,5.152,0,0,1,80.989,4a6.694,6.694,0,0,1-2.134,1.029V7.689h2.571v6.58a5.509,5.509,0,0,0,.272,1.966,3.381,3.381,0,0,0,.977,1.28,5.021,5.021,0,0,0,1.7.926,5.846,5.846,0,0,0,2.04.324,9.538,9.538,0,0,0,2.127-.227,11.542,11.542,0,0,0,2.2-.795v-2.96a5.191,5.191,0,0,1-2.859.926A2.769,2.769,0,0,1,86.443,15.336Z"
-                transform="translate(-78.855)"
-              />
-            </svg>
-            <p>Twitter</p>
+            <p>Instagram</p>
           </div>
         </a>
       </div>
